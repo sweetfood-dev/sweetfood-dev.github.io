@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://sweetfood-dev.github.io/sitemap.xml
