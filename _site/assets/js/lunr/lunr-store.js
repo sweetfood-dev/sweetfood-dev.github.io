@@ -23,6 +23,12 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/algorithm/dp/BOJ1463-DP/",
         "teaser": null
       },{
+        "title": "[백준 9095] 1, 2, 3 더하기",
+        "excerpt":"링크   문제   정수 4를 1, 2, 3의 합으로 나타내는 방법은 총 7가지가 있다. 합을 나타낼 때는 수를 1개 이상 사용해야 한다.      1+1+1+1   1+1+2   1+2+1   2+1+1   2+2   1+3   3+1   정수 n이 주어졌을 때, n을 1, 2, 3의 합으로 나타내는 방법의 수를 구하는 프로그램을 작성하시오.   입력     첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고, 정수 n이 주어진다. n은 양수이며 11보다 작다.    출력     각 테스트 케이스마다, n을 1, 2, 3의 합으로 나타내는 방법의 수를 출력한다.    풀이 :  1~3의 합으로 정수 N을 나타내는 경우의 수만 구하면된다,  구성은 상관없다는 소리.   N == 1 일 때 경우의 수 :   1  N == 2 일 때 경우의 수 :   1 + 1  2  N == 3 일 때 경우의 수 :   1 + 1 + 1  1 + 2  2 + 1  3   일 때,     N == 4는 다음과 같다   N == 4 :    1 + 1 + 1 + 1 :     3의 경우의 수 + 1    1 + 1 + 2 :             2의 경우의 수 + 2   1 + 2+ 1 :             3의 경우의 수 + 1   2 + 1 + 1 :             3의 경우의 수 + 1   2 + 2 :                     2의 경우의 수 + 2   1 + 3 :                     1의 경우의 수 + 3   3 + 1 :                     3의 경우의 수 + 1    1의 경우의 수 + 2의 경우의 수 + 3의 경우의 수 의 합과 같다.  수식으로 표현하면 N = (N - 3) + (N - 2) + (N - 1) 이므로 이를 그대로 사용!    func solve(n : Int) -&gt; Int{     if n == 0 { return 0 }     else if n == 3 { return 4 }     else if n == 2 { return 2 }     else if n == 1 { return 1 }     var arr = [Int](repeating:0, count: n + 1)     arr[1] = 1     arr[2] = 2     arr[3] = 4     for i in 4 ... n {         arr[i] = arr[i - 3] + arr[i - 2] + arr[i - 1]     }     return arr[n] }  var map = [Int:Int]() map[0] = 0 map[1] = 1 map[2] = 2 map[3] = 4 func recursive(n : Int) -&gt; Int {     if let res = map[n] {         return res     }          map[n] = recursive(n: n - 3) + recursive(n: n - 2) + recursive(n: n - 1)     return map[n]! } if let count = Int(readLine()!){          for _ in 0 ..&lt; count {         let n = Int(readLine()!)!         // 상향식         /*print(solve(n: n))*/         // 하향식         print(recursive(n: n))     } }   상향식과 하향식 모두 가능!  ","categories": ["Algorithm","DP"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP/",
+        "teaser": null
+      },{
         "title": "arc 공부해서 수정",
         "excerpt":"ㅇㅇ  ","categories": ["iOS"],
         "tags": [],

@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[백준 11727] 2 * n 타일링2 - 공부 그리고 기록</title>
-<meta name="description" content="링크 문제">
+<!-- begin _includes/seo.html --><title>[백준 9095] 1, 2, 3 더하기 - 공부 그리고 기록</title>
+<meta name="description" content="링크">
 
 
   <meta name="author" content="권지수">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부 그리고 기록">
-<meta property="og:title" content="[백준 11727] 2 * n 타일링2">
-<meta property="og:url" content="https://sweetfood-dev.github.io/algorithm/dp/BOJ11727-DP/">
+<meta property="og:title" content="[백준 9095] 1, 2, 3 더하기">
+<meta property="og:url" content="https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP/">
 
 
-  <meta property="og:description" content="링크 문제">
+  <meta property="og:description" content="링크">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="https://sweetfood-dev.github.io/algorithm/dp/BOJ11727-DP/">
+<link rel="canonical" href="https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP/">
 
 
 
@@ -198,7 +198,7 @@
     
       
       
-        <li class="current">[백준 11727] 2 * n 타일링2</li>
+        <li class="current">[백준 9095] 1, 2, 3 더하기</li>
       
     
   </ol>
@@ -336,15 +336,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[백준 11727] 2 * n 타일링2">
-    <meta itemprop="description" content="링크문제">
+    <meta itemprop="headline" content="[백준 9095] 1, 2, 3 더하기">
+    <meta itemprop="description" content="링크">
     <meta itemprop="datePublished" content="2021-01-22T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[백준 11727] 2 * n 타일링2
+          <h1 id="page-title" class="page__title" itemprop="headline">[백준 9095] 1, 2, 3 더하기
 </h1>
           
 
@@ -360,7 +360,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          2 분 소요
         
       </span>
     
@@ -372,39 +372,103 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><a href="https://www.acmicpc.net/problem/11727">링크</a>
-<strong>문제</strong></p>
+        <p><a href="https://www.acmicpc.net/problem/9095">링크</a></p>
 
-<p>2×n 직사각형을 1×2, 2×1과 2×2 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.</p>
+<p><strong>문제</strong></p>
+
+<p>정수 4를 1, 2, 3의 합으로 나타내는 방법은 총 7가지가 있다. 합을 나타낼 때는 수를 1개 이상 사용해야 한다.</p>
+
+<ul>
+  <li>1+1+1+1</li>
+  <li>1+1+2</li>
+  <li>1+2+1</li>
+  <li>2+1+1</li>
+  <li>2+2</li>
+  <li>1+3</li>
+  <li>3+1</li>
+</ul>
+
+<p><strong>정수 n이 주어졌을 때, n을 1, 2, 3의 합으로 나타내는 방법의 수를 구하는 프로그램을 작성하시오.</strong></p>
 
 <p><strong>입력</strong></p>
 <blockquote>
-  <p>첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)</p>
+  <p>첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고, 정수 n이 주어진다. n은 양수이며 11보다 작다.</p>
 </blockquote>
 
 <p><strong>출력</strong></p>
 <blockquote>
-  <p>첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.</p>
+  <p>각 테스트 케이스마다, n을 1, 2, 3의 합으로 나타내는 방법의 수를 출력한다.</p>
 </blockquote>
 
-<p>앞에 <a href="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/">타일링 문제</a>에서 2 * 2 타일이 추가되었을 뿐 개념은 같다
-(n - 1)  + (n - 2) * 2 &gt; 2 * 2 타일은 결국 ( n - 2 ) 타일과 같다</p>
+<p>풀이 : 
+1~3의 합으로 정수 N을 나타내는 경우의 수만 구하면된다,  구성은 상관없다는 소리.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func solve(n : Int) -&gt; Int {
-    if n == 0 { return 0}
-    if n == 1 { return 1}
-    if n == 2 { return 3}
-    var arr = [Int](repeating: 0, count : n + 1)
+<p>N == 1 일 때 경우의 수 : <br />
+<strong>1</strong><br />
+N == 2 일 때 경우의 수 : <br />
+<strong>1 + 1</strong><br />
+<strong>2</strong><br />
+N == 3 일 때 경우의 수 : <br />
+<strong>1 + 1 + 1</strong><br />
+<strong>1 + 2</strong><br />
+<strong>2 + 1</strong><br />
+<strong>3</strong><br />
+ 일 때, <br /></p>
 
+<p>N == 4는 다음과 같다<br />
+ N == 4 : <br />
+ <strong>1 + 1 + 1</strong> + 1 :     3의 경우의 수 + 1 <br />
+ <strong>1 + 1</strong> + 2 :             2의 경우의 수 + 2<br />
+ <strong>1 + 2</strong>+ 1 :             3의 경우의 수 + 1<br />
+ <strong>2 + 1</strong> + 1 :             3의 경우의 수 + 1<br />
+ <strong>2</strong> + 2 :                     2의 경우의 수 + 2<br />
+ <strong>1</strong> + 3 :                     1의 경우의 수 + 3<br />
+ <strong>3</strong> + 1 :                     3의 경우의 수 + 1<br /></p>
+
+<p>1의 경우의 수 + 2의 경우의 수 + 3의 경우의 수 의 합과 같다.
+ 수식으로 표현하면 N = (N - 3) + (N - 2) + (N - 1) 이므로 이를 그대로 사용!</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> func solve(n : Int) -&gt; Int{
+    if n == 0 { return 0 }
+    else if n == 3 { return 4 }
+    else if n == 2 { return 2 }
+    else if n == 1 { return 1 }
+    var arr = [Int](repeating:0, count: n + 1)
     arr[1] = 1
-    arr[2] = 3
-    for i in 3 ... n {
-        arr[i] = arr[i - 1] + (arr[i - 2] * 2)
-        arr[i] %= 10007
+    arr[2] = 2
+    arr[3] = 4
+    for i in 4 ... n {
+        arr[i] = arr[i - 3] + arr[i - 2] + arr[i - 1]
     }
     return arr[n]
 }
+
+var map = [Int:Int]()
+map[0] = 0
+map[1] = 1
+map[2] = 2
+map[3] = 4
+func recursive(n : Int) -&gt; Int {
+    if let res = map[n] {
+        return res
+    }
+    
+    map[n] = recursive(n: n - 3) + recursive(n: n - 2) + recursive(n: n - 1)
+    return map[n]!
+}
+if let count = Int(readLine()!){
+    
+    for _ in 0 ..&lt; count {
+        let n = Int(readLine()!)!
+        // 상향식
+        /*print(solve(n: n))*/
+        // 하향식
+        print(recursive(n: n))
+    }
+}
 </code></pre></div></div>
+
+<p>상향식과 하향식 모두 가능!</p>
 
         
       </section>
@@ -448,22 +512,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5B%EB%B0%B1%EC%A4%80+11727%5D+2+%2A+n+%ED%83%80%EC%9D%BC%EB%A7%812%20https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ11727-DP%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5B%EB%B0%B1%EC%A4%80+9095%5D+1%2C+2%2C+3+%EB%8D%94%ED%95%98%EA%B8%B0%20https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ9095-DP%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ11727-DP%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ9095-DP%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ11727-DP%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ9095-DP%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/" class="pagination--pager" title="동적계획법(DP) 이론
+      <a href="/algorithm/dp/BOJ1463-DP/" class="pagination--pager" title="[백준 1463] 1로 만들기
 ">이전</a>
     
     
-      <a href="/algorithm/dp/BOJ1463-DP/" class="pagination--pager" title="[백준 1463] 1로 만들기
+      <a href="/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/" class="pagination--pager" title="arc 공부해서 수정
 ">다음</a>
     
   </nav>
@@ -528,7 +592,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/dp/BOJ9095-DP/" rel="permalink">[백준 9095] 1, 2, 3 더하기
+        <a href="/algorithm/dp/BOJ1463-DP/" rel="permalink">[백준 1463] 1로 만들기
 </a>
       
     </h2>
@@ -568,7 +632,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/dp/BOJ1463-DP/" rel="permalink">[백준 1463] 1로 만들기
+        <a href="/algorithm/dp/BOJ11727-DP/" rel="permalink">[백준 11727] 2 * n 타일링2
 </a>
       
     </h2>
@@ -586,7 +650,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          최대 1 분 소요
         
       </span>
     
@@ -594,6 +658,7 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">링크
+문제
 </p>
   </article>
 </div>
