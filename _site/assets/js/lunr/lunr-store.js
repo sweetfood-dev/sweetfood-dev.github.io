@@ -1,4 +1,10 @@
 var store = [{
+        "title": "[백준 11726] 2 * n 타일링",
+        "excerpt":"링크 문제   2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.   아래 그림은 2×5 크기의 직사각형을 채운 한 가지 방법의 예이다.   입력     첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)    출력     첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.    코드  func solve(n : Int) { \tguard n &gt; 2 else { return n } \tvar arr = [Int](repeating: 0, count: n + 1) \tarr[1] = 1 \tarr[2] = 2 \tfor i in 3 ... n { \t\tarr[i] = arr[i - 1] + arr[i - 2] \t\tarr[i] %= 10007 \t} \t \treturn arr[i] }   풀이 : 조금 더 이해가 되면 작성할 예정  ","categories": ["Algorithm","DP"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/",
+        "teaser": null
+      },{
         "title": "동적계획법(DP) 이론",
         "excerpt":"동적계획법이란?      최적화 문제를 연구하는 수학이론에서 왔다.   처음 주어진 문제를 더 작은 문제로 나눈 뒤 조각의 답을 계산하고 이러한 답들로 원래 문제에 대한 답을 계산, 도출   어떤 부분문제는 두개 이상의 문제를 푸는데 사용할 수 있어 한번만 계산하고 계산 결과를 재활용하여 속도의 향상을 얻는다   계산한 값을 저장하는 곳을 캐시라고 한다.   이러한 한번만 계산한 값을 재활용 하는 최적화 기법을 메모이제이션 이라고 한다.  ","categories": ["Algorithm","DP"],
         "tags": [],

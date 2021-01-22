@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>arc 공부해서 수정 - 공부 그리고 기록</title>
-<meta name="description" content="ㅇㅇ">
+<!-- begin _includes/seo.html --><title>[백준 11726] 2 * n 타일링 - 공부 그리고 기록</title>
+<meta name="description" content="링크 문제">
 
 
   <meta name="author" content="권지수">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부 그리고 기록">
-<meta property="og:title" content="arc 공부해서 수정">
-<meta property="og:url" content="https://sweetfood-dev.github.io/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/">
+<meta property="og:title" content="[백준 11726] 2 * n 타일링">
+<meta property="og:url" content="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/">
 
 
-  <meta property="og:description" content="ㅇㅇ">
+  <meta property="og:description" content="링크 문제">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="https://sweetfood-dev.github.io/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/">
+<link rel="canonical" href="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/">
 
 
 
@@ -180,7 +180,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#ios" itemprop="item"><span itemprop="name">Ios</span></a>
+          <a href="/categories/#algorithm" itemprop="item"><span itemprop="name">Algorithm</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -188,7 +188,17 @@
     
       
       
-        <li class="current">arc 공부해서 수정</li>
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#dp" itemprop="item"><span itemprop="name">Dp</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[백준 11726] 2 * n 타일링</li>
       
     
   </ol>
@@ -326,15 +336,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="arc 공부해서 수정">
-    <meta itemprop="description" content="ㅇㅇ">
+    <meta itemprop="headline" content="[백준 11726] 2 * n 타일링">
+    <meta itemprop="description" content="링크문제">
     <meta itemprop="datePublished" content="2021-01-22T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">arc 공부해서 수정
+          <h1 id="page-title" class="page__title" itemprop="headline">[백준 11726] 2 * n 타일링
 </h1>
           
 
@@ -362,7 +372,39 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>ㅇㅇ</p>
+        <p><a href="https://www.acmicpc.net/problem/11726">링크</a>
+<strong>문제</strong></p>
+
+<p>2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.</p>
+
+<p>아래 그림은 2×5 크기의 직사각형을 채운 한 가지 방법의 예이다.</p>
+
+<p><strong>입력</strong></p>
+<blockquote>
+  <p>첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)</p>
+</blockquote>
+
+<p><strong>출력</strong></p>
+<blockquote>
+  <p>첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.</p>
+</blockquote>
+
+<p>코드</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func solve(n : Int) {
+	guard n &gt; 2 else { return n }
+	var arr = [Int](repeating: 0, count: n + 1)
+	arr[1] = 1
+	arr[2] = 2
+	for i in 3 ... n {
+		arr[i] = arr[i - 1] + arr[i - 2]
+		arr[i] %= 10007
+	}
+	
+	return arr[i]
+}
+</code></pre></div></div>
+
+<p>풀이 : 조금 더 이해가 되면 작성할 예정</p>
 
         
       </section>
@@ -385,7 +427,11 @@
     
       
       
-      <a href="/categories/#ios" class="page__taxonomy-item" rel="tag">iOS</a>
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#dp" class="page__taxonomy-item" rel="tag">DP</a>
     
     </span>
   </p>
@@ -402,22 +448,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=arc+%EA%B3%B5%EB%B6%80%ED%95%B4%EC%84%9C+%EC%88%98%EC%A0%95%20https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FiOS-ARC-%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5B%EB%B0%B1%EC%A4%80+11726%5D+2+%2A+n+%ED%83%80%EC%9D%BC%EB%A7%81%20https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2F11726-2-n%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FiOS-ARC-%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2F11726-2-n%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FiOS-ARC-%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2F11726-2-n%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/dp/BOJ1463-DP/" class="pagination--pager" title="[백준 1463] 1로 만들기
-">이전</a>
+      <a href="#" class="pagination--pager disabled">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/" class="pagination--pager" title="동적계획법(DP) 이론
+">다음</a>
     
   </nav>
 
@@ -431,6 +477,46 @@
     <div class="page__related">
       <h4 class="page__related-title">참고</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/" rel="permalink">arc 공부해서 수정
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ㅇㅇ
+</p>
+  </article>
+</div>
+
         
           
 
@@ -507,47 +593,6 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">동적계획법이란?
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/dp/11726-2-n/" rel="permalink">[백준 11726] 2 * n 타일링
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">링크
-문제
 </p>
   </article>
 </div>
