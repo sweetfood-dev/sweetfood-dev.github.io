@@ -1,4 +1,4 @@
-I"u
+I"t
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -7,7 +7,7 @@
         
         <a class="site-title" href="/">
           공부 그리고 기록
-          <span class="site-subtitle">꾸준하게</span>
+          <span class="site-subtitle">version 1.0</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/categories/">Categories</a>
