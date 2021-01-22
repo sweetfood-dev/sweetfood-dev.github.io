@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-01-22T17:28:55+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">[백준 11726] 2 * n 타일링</title><link href="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/" rel="alternate" type="text/html" title="[백준 11726] 2 * n 타일링" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/11726-2-n</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11726&quot;&gt;링크&lt;/a&gt;
-&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-01-22T18:04:14+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">[백준 11726] 2 * n 타일링</title><link href="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/" rel="alternate" type="text/html" title="[백준 11726] 2 * n 타일링" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/11726-2-n</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11726&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.&lt;/p&gt;
 
@@ -30,7 +31,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;풀이 : 조금 더 이해가 되면 작성할 예정&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크 문제</summary></entry><entry><title type="html">동적계획법(DP) 이론</title><link href="https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/" rel="alternate" type="text/html" title="동적계획법(DP) 이론" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/">&lt;p&gt;&lt;strong&gt;동적계획법이란?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;풀이 : 조금 더 이해가 되면 작성할 예정&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">동적계획법(DP) 이론</title><link href="https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/" rel="alternate" type="text/html" title="동적계획법(DP) 이론" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/">&lt;p&gt;&lt;strong&gt;동적계획법이란?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;최적화 문제를 연구하는 수학이론에서 왔다.&lt;/li&gt;
@@ -38,7 +39,39 @@
   &lt;li&gt;어떤 부분문제는 두개 이상의 문제를 푸는데 사용할 수 있어 한번만 계산하고 계산 결과를 &lt;strong&gt;재활용하여&lt;/strong&gt; 속도의 향상을 얻는다&lt;/li&gt;
   &lt;li&gt;계산한 값을 저장하는 곳을 &lt;strong&gt;캐시&lt;/strong&gt;라고 한다.&lt;/li&gt;
   &lt;li&gt;이러한 한번만 계산한 값을 재활용 하는 최적화 기법을 &lt;strong&gt;메모이제이션&lt;/strong&gt; 이라고 한다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">동적계획법이란?</summary></entry><entry><title type="html">[백준 1463] 1로 만들기</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ1463-DP/" rel="alternate" type="text/html" title="[백준 1463] 1로 만들기" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ1463-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ1463-DP/">&lt;p&gt;&lt;a href=&quot;http://https://www.acmicpc.net/problem/1463&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">동적계획법이란?</summary></entry><entry><title type="html">[백준 11727] 2 * n 타일링2</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ11727-DP/" rel="alternate" type="text/html" title="[백준 11727] 2 * n 타일링2" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ11727-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ11727-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11727&quot;&gt;링크&lt;/a&gt;
+&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;2×n 직사각형을 1×2, 2×1과 2×2 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;앞에 &lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/&quot;&gt;타일링 문제&lt;/a&gt;에서 2 * 2 타일이 추가되었을 뿐 개념은 같다
+(n - 1)  + (n - 2) * 2 &amp;gt; 2 * 2 타일은 결국 ( n - 2 ) 타일과 같다&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) -&amp;gt; Int {
+    if n == 0 { return 0}
+    if n == 1 { return 1}
+    if n == 2 { return 3}
+    var arr = [Int](repeating: 0, count : n + 1)
+
+    arr[1] = 1
+    arr[2] = 3
+    for i in 3 ... n {
+        arr[i] = arr[i - 1] + (arr[i - 2] * 2)
+        arr[i] %= 10007
+    }
+    return arr[n]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크 문제</summary></entry><entry><title type="html">[백준 1463] 1로 만들기</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ1463-DP/" rel="alternate" type="text/html" title="[백준 1463] 1로 만들기" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ1463-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ1463-DP/">&lt;p&gt;&lt;a href=&quot;http://https://www.acmicpc.net/problem/1463&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
 
