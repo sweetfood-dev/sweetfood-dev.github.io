@@ -1,0 +1,94 @@
+I"�<p><a href="https://www.acmicpc.net/problem/11057">링크</a></p>
+
+<p><strong>문제</strong>
+오르막 수는 수의 자리가 오름차순을 이루는 수를 말한다. 이때, 인접한 수가 같아도 오름차순으로 친다.</p>
+
+<p>예를 들어, 2234와 3678, 11119는 오르막 수이지만, 2232, 3676, 91111은 오르막 수가 아니다.</p>
+
+<p><strong>수의 길이 N이 주어졌을 때, 오르막 수의 개수를 구하는 프로그램을 작성하시오. 수는 0으로 시작할 수 있다.</strong><br /></p>
+
+<p><strong>입력</strong></p>
+<blockquote>
+  <p>첫째 줄에 N (1 ≤ N ≤ 1,000)이 주어진다.</p>
+</blockquote>
+
+<p><strong>출력</strong></p>
+<blockquote>
+  <p>첫째 줄에 길이가 N인 오르막 수의 개수를 10,007로 나눈 나머지를 출력한다.</p>
+</blockquote>
+
+<p><strong>풀이</strong></p>
+
+<p>N == 1일 때,  아래와 같다<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>오르막 수의 개수</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<p>N == 2일 때, 숫자의 길이는 2개 즉 ㅁㅁ 으로 구성되어지고<br />
+이 때 K == 0인 경우<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>오르막 수의 개수</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+:ET

@@ -9,28 +9,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>공부 그리고 기록</title>
-<meta name="description" content="Swift / Algorithm">
+<!-- begin _includes/seo.html --><title>[백준 11057] 오르막 수 - 공부 그리고 기록</title>
+<meta name="description" content="링크">
 
 
   <meta name="author" content="권지수">
   
+  <meta property="article:author" content="권지수">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부 그리고 기록">
-<meta property="og:title" content="공부 그리고 기록">
-<meta property="og:url" content="https://sweetfood-dev.github.io/">
+<meta property="og:title" content="[백준 11057] 오르막 수">
+<meta property="og:url" content="https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP/">
 
 
-  <meta property="og:description" content="Swift / Algorithm">
-
-
-
+  <meta property="og:description" content="링크">
 
 
 
+
+
+
+
+  <meta property="article:published_time" content="2021-01-26T00:00:00+09:00">
 
 
 
@@ -41,11 +45,9 @@
   
 
 
-<link rel="canonical" href="https://sweetfood-dev.github.io/">
+<link rel="canonical" href="https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP/">
 
 
-
-  <link rel="next" href="https://sweetfood-dev.github.io/page2/">
 
 
 <script type="application/ld+json">
@@ -105,7 +107,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <h2 class="screen-reader-text">Skip links</h2>
   <ul>
@@ -157,6 +159,52 @@
     <div class="initial-content">
       
 
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://sweetfood-dev.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#algorithm" itemprop="item"><span itemprop="name">Algorithm</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#dp" itemprop="item"><span itemprop="name">Dp</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[백준 11057] 오르막 수</li>
+      
+    
+  </ol>
+</nav>
+
+  
 
 
 <div id="main" role="main">
@@ -287,24 +335,349 @@
 
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[백준 11057] 오르막 수">
+    <meta itemprop="description" content="링크">
+    <meta itemprop="datePublished" content="2021-01-26T00:00:00+09:00">
     
-      <h1 id="page-title" class="page__title"></h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[백준 11057] 오르막 수
+</h1>
+          
+
+  <p class="page__meta">
     
+
     
 
-<h3 class="archive__subtitle">최근 포스트</h3>
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
 
 
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><a href="https://www.acmicpc.net/problem/11057">링크</a></p>
+
+<p><strong>문제</strong>
+오르막 수는 수의 자리가 오름차순을 이루는 수를 말한다. 이때, 인접한 수가 같아도 오름차순으로 친다.</p>
+
+<p>예를 들어, 2234와 3678, 11119는 오르막 수이지만, 2232, 3676, 91111은 오르막 수가 아니다.</p>
+
+<p><strong>수의 길이 N이 주어졌을 때, 오르막 수의 개수를 구하는 프로그램을 작성하시오. 수는 0으로 시작할 수 있다.</strong><br /></p>
+
+<p><strong>입력</strong></p>
+<blockquote>
+  <p>첫째 줄에 N (1 ≤ N ≤ 1,000)이 주어진다.</p>
+</blockquote>
+
+<p><strong>출력</strong></p>
+<blockquote>
+  <p>첫째 줄에 길이가 N인 오르막 수의 개수를 10,007로 나눈 나머지를 출력한다.</p>
+</blockquote>
+
+<p><strong>풀이</strong></p>
+
+<p>N == 1일 때,  아래와 같다<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>오르막 수의 개수</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+N == 2일 때, 숫자의 길이는 2개 즉 ㅁㅁ 으로 구성되어지고<br />
+이 때 K == 0인 경우<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>뒤의 숫자</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>결과</td>
+      <td>00</td>
+      <td>01</td>
+      <td>02</td>
+      <td>03</td>
+      <td>04</td>
+      <td>05</td>
+      <td>06</td>
+      <td>07</td>
+      <td>08</td>
+      <td>09</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>N == 2 &amp;&amp; K == 0 <br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>오르막 수의 개수</td>
+      <td>10</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>K == 1인 경우<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>뒤의 숫자</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>결과</td>
+      <td>X</td>
+      <td>11</td>
+      <td>12</td>
+      <td>13</td>
+      <td>14</td>
+      <td>15</td>
+      <td>16</td>
+      <td>17</td>
+      <td>18</td>
+      <td>19</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>N == 2 &amp;&amp; K == 0 <br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>오르막 수의 개수</td>
+      <td>10</td>
+      <td>9</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>보는 것과 같이 k 숫자의 뒤에 k ~ 9 까지가 붙어 오르막수를 만들 수 있다<br /></p>
+
+<p>이를 수식으로 만들면<br />
+N[K] = N-1[K] + N-1[K+1] + N-1[K+2] ….. N - 1[9]<br /></p>
+
+<p>이를 이용해 그대로 코드로 구현<br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func solve(n: Int) {
+    if n == 1 { // n이 1이면 10개
+        print(10)
+        return
+    }
+    let mod = 1_000_7 // 정답에 나머지값을 계산해 출력
+    var map = Array(repeating:Array(repeating:0, count: 10), count: 1001)
+    for i in 0 ... 9 {
+        map[1][i] = 1
+    }
+    for i in 2 ... n {
+        for j in 0 ... 9 {
+            for k in j ... 9 { // j가 0 이면 0 ~ 9 까지, j가 1이면 1 ~ 9 까지 
+                map[i][j] += map[i-1][k] % mod
+            }
+        }
+    }
+    print(map[n].reduce(0, +) % mod)
+}
 
 
-<div class="entries-list">
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
   
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
     
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#dp" class="page__taxonomy-item" rel="tag">DP</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-01-26T00:00:00+09:00">January 26, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5B%EB%B0%B1%EC%A4%80+11057%5D+%EC%98%A4%EB%A5%B4%EB%A7%89+%EC%88%98%20https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ11057-DP%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ11057-DP%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ11057-DP%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/dp/BOJ10844-DP/" class="pagination--pager" title="[백준 10844] 쉬운 계단 수
+">이전</a>
+    
+    
+      <a href="/algorithm/dp/BOJ2193-DP/" class="pagination--pager" title="[백준 2193] 이친수
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -339,52 +712,12 @@
   </article>
 </div>
 
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/dp/BOJ11057-DP/" rel="permalink">[백준 11057] 오르막 수
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">링크
-</p>
-  </article>
-</div>
-
-  
-    
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -419,12 +752,12 @@
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -459,12 +792,12 @@
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -499,50 +832,13 @@
   </article>
 </div>
 
+        
+      </div>
+    </div>
+  
   
 </div>
 
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-    <li><a href="#" class="disabled"><span aria-hidden="true">이전</span></a></li>
-    
-
-    
-    
-      <li><a href="#" class="disabled current">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-
-    
-    
-
-    
-      <li><a href="/page2/">2</a></li>
-    
-
-    
-    
-      <li><a href="/page2/">다음</a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
-</div>
     </div>
 
     

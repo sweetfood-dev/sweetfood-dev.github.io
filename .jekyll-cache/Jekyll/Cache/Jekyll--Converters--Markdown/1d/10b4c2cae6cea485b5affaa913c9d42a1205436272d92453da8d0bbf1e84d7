@@ -1,0 +1,168 @@
+I"�<p><a href="https://www.acmicpc.net/problem/11057">링크</a></p>
+
+<p><strong>문제</strong>
+오르막 수는 수의 자리가 오름차순을 이루는 수를 말한다. 이때, 인접한 수가 같아도 오름차순으로 친다.</p>
+
+<p>예를 들어, 2234와 3678, 11119는 오르막 수이지만, 2232, 3676, 91111은 오르막 수가 아니다.</p>
+
+<p><strong>수의 길이 N이 주어졌을 때, 오르막 수의 개수를 구하는 프로그램을 작성하시오. 수는 0으로 시작할 수 있다.</strong><br /></p>
+
+<p><strong>입력</strong></p>
+<blockquote>
+  <p>첫째 줄에 N (1 ≤ N ≤ 1,000)이 주어진다.</p>
+</blockquote>
+
+<p><strong>출력</strong></p>
+<blockquote>
+  <p>첫째 줄에 길이가 N인 오르막 수의 개수를 10,007로 나눈 나머지를 출력한다.</p>
+</blockquote>
+
+<p><strong>풀이</strong></p>
+
+<p>N == 1일 때,  아래와 같다<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>오르막 수의 개수</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+N == 2일 때, 숫자의 길이는 2개 즉 ㅁㅁ 으로 구성되어지고<br />
+이 때 K == 0인 경우<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>뒤의 숫자</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>결과</td>
+      <td>00</td>
+      <td>01</td>
+      <td>02</td>
+      <td>03</td>
+      <td>04</td>
+      <td>05</td>
+      <td>06</td>
+      <td>07</td>
+      <td>08</td>
+      <td>09</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>N == 2 &amp;&amp; K == 0 <br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>오르막 수의 개수</td>
+      <td>10</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>K == 1인 경우<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>뒤의 숫자</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>결과</td>
+      <td>X</td>
+      <td>11</td>
+      <td>12</td>
+      <td>13</td>
+      <td>14</td>
+      <td>15</td>
+      <td>16</td>
+      <td>17</td>
+      <td>18</td>
+      <td>19</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>보는 것과 같이 k 숫자의 뒤에 k ~ 9 까지가 붙어 오르막수를 만들 수 있다<br /></p>
+
+<p>이를 수식으로 만들면<br />
+N[K] = N</p>
+:ET
