@@ -65,6 +65,12 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/",
         "teaser": null
       },{
+        "title": "[백준 11053] 가장 긴 증가하는 수열",
+        "excerpt":"링크   풀이    W[n] : n 번째에 위치해있는 정수                   1       2       3       4       5       6                       10       20       10       30       20       50           D[n] : n의 위치에서 끝나는 최장 길이 수열    k : 0 ~ n - 1까지의 수라고 정의할 때   W[k] &lt; W[n] 일 경우   D[n] = max(D[n], D[k] + 1)로 갱신한다    코드   func solve() {     let arr = readLine()!.split(separator: \" \").map { Int(String($0))! }          var dp = [Int](repeating: 1, count: arr.count)          for i in 0 ..&lt; arr.count {         for j in 0 ..&lt; i {             if arr[i] &gt; arr[j] {                 dp[i] = max(dp[i], dp[j] + 1)             }         }     }          print(dp.max()!) }  ","categories": ["Algorithm","DP","LIS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/",
+        "teaser": null
+      },{
         "title": "이진 탐색",
         "excerpt":"정렬된 배열에서 원소 x를 찾고자 할 때 사용       찾고자 하는 x를 중간 원소와 비교   x가 중간 원소보다 크다면 오른쪽 절반을   x가 중간 원소보다 작다면 왼쪽 절반을 재탐색한다   1 ~ 3과정을 x를 찾거나 부분 배열의 크기가 0이 될 때까지 반복한다   코드   func binarySearch(arr: [Int], find: Int) -&gt; Int {     var low = 0     var high = arr.count - 1     var mid : Int          while low &lt;= high {         mid = (low + high) / 2         if arr[mid] &gt; find {             high = mid - 1         }else if arr[mid] &lt; find {             low = mid + 1         }else {             return mid         }     }     return -1 }   ","categories": ["Algorithm","Search","LIS"],
         "tags": [],

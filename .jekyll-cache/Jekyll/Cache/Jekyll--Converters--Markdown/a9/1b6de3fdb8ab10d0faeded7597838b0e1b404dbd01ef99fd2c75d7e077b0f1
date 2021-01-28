@@ -1,0 +1,54 @@
+I"�<p><a href="https://www.acmicpc.net/problem/11053">링크</a></p>
+
+<p><strong>풀이</strong><br /></p>
+
+<p>W[n] : n 번째에 위치해있는 정수<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td>20</td>
+      <td>10</td>
+      <td>30</td>
+      <td>20</td>
+      <td>50</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>D[n] : n의 위치에서 끝나는 최장 길이 수열<br /></p>
+
+<p>k : 0 ~ n - 1까지의 수라고 정의할 때 <br />
+W[k] &lt; W[n] 일 경우 <br />
+D[n] = max(D[n], D[k] + 1)로 갱신한다<br /></p>
+
+<p><strong>코드</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func solve() {
+    let arr = readLine()!.split(separator: " ").map { Int(String($0))! }
+    
+    var dp = [Int](repeating: 1, count: arr.count)
+    
+    for i in 0 ..&lt; arr.count {
+        for j in 0 ..&lt; i {
+            if arr[i] &gt; arr[j] {
+                dp[i] = max(dp[i], dp[j] + 1)
+            }
+        }
+    }
+    
+    print(dp.max()!)
+}
+</code></pre></div></div>
+:ET
