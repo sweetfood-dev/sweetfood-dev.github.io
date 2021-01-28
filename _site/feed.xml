@@ -1,4 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-01-28T17:17:17+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-01-28T19:47:40+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">이진 탐색</title><link href="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/" rel="alternate" type="text/html" title="이진 탐색" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/">&lt;p&gt;&lt;strong&gt;정렬된 배열&lt;/strong&gt;에서 원소 x를 찾고자 할 때 사용&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;찾고자 하는 x를 중간 원소와 비교&lt;/li&gt;
+  &lt;li&gt;x가 중간 원소보다 크다면 오른쪽 절반을&lt;/li&gt;
+  &lt;li&gt;x가 중간 원소보다 작다면 왼쪽 절반을 재탐색한다&lt;/li&gt;
+  &lt;li&gt;1 ~ 3과정을 x를 찾거나 부분 배열의 크기가 0이 될 때까지 반복한다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func binarySearch(arr: [Int], find: Int) -&amp;gt; Int {
+    var low = 0
+    var high = arr.count - 1
+    var mid : Int
+    
+    while low &amp;lt;= high {
+        mid = (low + high) / 2
+        if arr[mid] &amp;gt; find {
+            high = mid - 1
+        }else if arr[mid] &amp;lt; find {
+            low = mid + 1
+        }else {
+            return mid
+        }
+    }
+    return -1
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="Search" /><category term="LIS" /><summary type="html">정렬된 배열에서 원소 x를 찾고자 할 때 사용</summary></entry><entry><title type="html">[백준 9465] 스티커</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/" rel="alternate" type="text/html" title="[백준 9465] 스티커" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ%209465-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9465&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;이번 포스트 부터 문제와 입력/출력은 따로 작성하지 않겠습니다 상단 링크에서 확인해주세요!&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;스티커를 선택하는 방법은 3가지가 있다&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;아무것도 선택 안함&lt;/th&gt;
+      &lt;th&gt;위에만 선택&lt;/th&gt;
+      &lt;th&gt;아래만 선택&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;o&lt;/td&gt;
+      &lt;td&gt;x&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;o&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;그리고 몇 가지 정의를 한다 &lt;br /&gt;
+W[0][N] : 첫 번째 행의 N 번째 숫자&lt;br /&gt;
+W[1][N] : 두 번째 행의 N 번째 숫자 &lt;br /&gt;
+D[0][N] : 아무것도 선택 안했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
+D[1][N] : 첫 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
+D[2][N] : 두 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;경우 1 : N번째 숫자에서 아무것도 선택안할 경우에는 N - 1 번째의 &lt;strong&gt;최대값&lt;/strong&gt; 을 넣는다&lt;br /&gt;
+D[0][N] = max(D[0][N-1],D[1][N-1],D[2][N-1]) &lt;br /&gt;
+경우 2: N번째 숫자에서 첫 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
+N-1번째의 두 번째 행을 선택했을 경우의 최대값중 큰값과 첫번째 행 W[0][N]을 더한다&lt;br /&gt;
+D[1][N] = max(D[0][N-1],D[2][N-1]) + W[0][N]&lt;br /&gt;
+경우 3: N번째 숫자에서 두 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
+N-1번째의 첫 번째 행을 선택했을 경우의 최대값중 큰값과 두 번째 행 W[1][N]을 더한다&lt;br /&gt;
+D[2][N] = max(D[0][N-1],D[1][N-1]) + W[1][N]&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int, arr: [[Int]]) {
+    let size = n
+    var res = [[Int]](repeating:[Int](repeating:0, count: size), count: 3)
+    res[1][0] = arr[0][0]
+    res[2][0] = arr[1][0]
+    for i in 1 ..&amp;lt; size {
+        res[0][i] = max(max(res[1][i-1], res[2][i-1]), res[0][i-1])
+        res[1][i] = max(res[0][i-1], res[2][i-1]) + arr[0][i]
+        res[2][i] = max(res[0][i-1], res[1][i-1]) + arr[1][i]
+    }
+    
+    let result = max(max(res[0][size - 1], res[1][size - 1]), res[2][size - 1])
+    print(result)
+}
+
+if let tc = Int(readLine()!) {
+    for _ in 0 ..&amp;lt; tc {
+        let size = Int(readLine()!)!
+        let col1 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
+        let col2 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
+        var arr = [[Int]]()
+        arr.append(col1)
+        arr.append(col2)
+        solve(n: size, arr: arr)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -93,79 +195,6 @@ D[3] 일 때 : 총 3가지의 경우의 수가 있다.&lt;br /&gt;&lt;/p&gt;
     }
     
     print(dp[n])
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 9465] 스티커</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/" rel="alternate" type="text/html" title="[백준 9465] 스티커" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ%209465-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9465&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;이번 포스트 부터 문제와 입력/출력은 따로 작성하지 않겠습니다 상단 링크에서 확인해주세요!&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;스티커를 선택하는 방법은 3가지가 있다&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;아무것도 선택 안함&lt;/th&gt;
-      &lt;th&gt;위에만 선택&lt;/th&gt;
-      &lt;th&gt;아래만 선택&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;o&lt;/td&gt;
-      &lt;td&gt;x&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;o&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;그리고 몇 가지 정의를 한다 &lt;br /&gt;
-W[0][N] : 첫 번째 행의 N 번째 숫자&lt;br /&gt;
-W[1][N] : 두 번째 행의 N 번째 숫자 &lt;br /&gt;
-D[0][N] : 아무것도 선택 안했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
-D[1][N] : 첫 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
-D[2][N] : 두 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;경우 1 : N번째 숫자에서 아무것도 선택안할 경우에는 N - 1 번째의 &lt;strong&gt;최대값&lt;/strong&gt; 을 넣는다&lt;br /&gt;
-D[0][N] = max(D[0][N-1],D[1][N-1],D[2][N-1]) &lt;br /&gt;
-경우 2: N번째 숫자에서 첫 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
-N-1번째의 두 번째 행을 선택했을 경우의 최대값중 큰값과 첫번째 행 W[0][N]을 더한다&lt;br /&gt;
-D[1][N] = max(D[0][N-1],D[2][N-1]) + W[0][N]&lt;br /&gt;
-경우 3: N번째 숫자에서 두 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
-N-1번째의 첫 번째 행을 선택했을 경우의 최대값중 큰값과 두 번째 행 W[1][N]을 더한다&lt;br /&gt;
-D[2][N] = max(D[0][N-1],D[1][N-1]) + W[1][N]&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int, arr: [[Int]]) {
-    let size = n
-    var res = [[Int]](repeating:[Int](repeating:0, count: size), count: 3)
-    res[1][0] = arr[0][0]
-    res[2][0] = arr[1][0]
-    for i in 1 ..&amp;lt; size {
-        res[0][i] = max(max(res[1][i-1], res[2][i-1]), res[0][i-1])
-        res[1][i] = max(res[0][i-1], res[2][i-1]) + arr[0][i]
-        res[2][i] = max(res[0][i-1], res[1][i-1]) + arr[1][i]
-    }
-    
-    let result = max(max(res[0][size - 1], res[1][size - 1]), res[2][size - 1])
-    print(result)
-}
-
-if let tc = Int(readLine()!) {
-    for _ in 0 ..&amp;lt; tc {
-        let size = Int(readLine()!)!
-        let col1 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-        let col2 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-        var arr = [[Int]]()
-        arr.append(col1)
-        arr.append(col2)
-        solve(n: size, arr: arr)
-    }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 10844] 쉬운 계단 수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/" rel="alternate" type="text/html" title="[백준 10844] 쉬운 계단 수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
@@ -761,4 +790,4 @@ if let count = Int(readLine()!){
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;상향식과 하향식 모두 가능!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">arc 공부해서 수정</title><link href="https://sweetfood-dev.github.io/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/" rel="alternate" type="text/html" title="arc 공부해서 수정" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/iOS-ARC-%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/">&lt;p&gt;ㅇㅇ&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">ㅇㅇ</summary></entry></feed>
+&lt;p&gt;상향식과 하향식 모두 가능!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry></feed>
