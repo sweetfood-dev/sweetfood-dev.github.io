@@ -1,69 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-01-28T17:15:29+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">[백준 2193] 이친수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/" rel="alternate" type="text/html" title="[백준 2193] 이친수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2193&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-01-28T17:17:17+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
-0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;정의&lt;/strong&gt;&lt;br /&gt;
+W[N] : N번째 포도주의 양 &lt;br /&gt;
+D[N] : N번째에서 최대로 마실 수 있는 포도주 양&lt;br /&gt;
+ex) D[1] : 1번쨰에서 최대로 마실 수 있는 포도주의 양은 6이다&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;index&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;th&gt;6&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;W[N]&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;13&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;처음부터 한번 수식을 세워보자!&lt;br /&gt;
+D[0]  일 때 : 0 &lt;br /&gt;
+D[1] 일 때 : 1잔을 마시는게 최대값 즉, W[1] &lt;br /&gt;
+D[2] 일 때 : 2잔을 모두 마시는게 최대값 즉, W[1] + W[2] &lt;br /&gt;
+D[3] 일 때 : 총 3가지의 경우의 수가 있다.&lt;br /&gt;&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;이친수는 0으로 시작하지 않는다.&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다.&lt;br /&gt;
-예를 들면 1, 10, 100, 101, 1000, 1001 등이 이친수가 된다. 하지만 0010101이나 101101은 각각 1, 2번 규칙에 위배되므로 이친수가 아니다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;안마시는 경우, 이땐 D[2]가 최대값이 된다 &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;연속 1잔만 마시는 경우, 이전에 마시면 연속 2잔이 되기 때문에 이때는 W[1] + W[3]&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;연속 2잔 마시는 경우, 이전전에선 마시면 안된다! W[2] + W[3] + W[0]&lt;br /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;N(1 ≤ N ≤ 90)이 주어졌을 때, N자리 이친수의 개수를 구하는 프로그램을 작성하시오.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;이제 조금 정리를 해보자.&lt;br /&gt;
+연속 1잔만 마시는 경우 : W[1]+W[3] -&amp;gt; D[1] + W[3]과 같다 &lt;br /&gt;
+연속 2잔 마시는 경우 : W[2] + W[3] + D[0]과 같다 &lt;br /&gt;
+즉, D[3]일 때 3가지 경우의 수식은 &lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;D[3] = D[2]&lt;/li&gt;
+  &lt;li&gt;D[3] = D[1] + W[3]&lt;/li&gt;
+  &lt;li&gt;D[3] = W[2] + W[3] + D[0]&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N이 주어진다.&lt;br /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;이 3가지 경우의 수 중 최대값을 구하면된다. &lt;br /&gt;
+코드로 짤수 있도록 [숫자]를 n으로 변경해보자 &lt;br /&gt;
+예를 들어 D[3] = D[n] 이면, D[2]는 3-1 = 2이므로 D[n - 1]이 된다&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;D[n] = D[n - 1]&lt;/li&gt;
+  &lt;li&gt;D[n] = D[n-2] + W[n]&lt;/li&gt;
+  &lt;li&gt;D[n] = W[n -1] + W[n] + D[n - 3]&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N자리 이친수의 개수를 출력한다.&lt;br /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;이제 이 수식을 이용해 코드를 짜보자!&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;N == 1 일 때, 이친수는 1 &lt;br /&gt;
-N == 2 일 때, 이친수는 10 &lt;br /&gt;
-N == 3 일 때, 이친수는 100, 101 &lt;br /&gt;
-N == 4 일 때, 이친수는 1000, 1001, 1010 &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;유심히 보면 규칙이 보인다. &lt;br /&gt;
-N == 4 에서 1000과 1001은 N == 3의 100을 가지고 만들 수 있다. &lt;br /&gt;
-N == 4 에서 1010은 N == 3의 101을 가지고 만들 수 있다. &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;차이점은 뭘까? &lt;br /&gt;
-문제에서 조건 2에 의해 1이 두번 연속으로 나타나면 안된다&lt;br /&gt;
-즉 끝자리가 1이면 다음에 나타나는 수는 0밖에 없고&lt;br /&gt;
-끝 자리가 0이면 다음에 나타나는 수는 0, 1 모두 가능하다 &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;수식을 세워보자!&lt;br /&gt;
-K == 0 일 때&lt;br /&gt;
-N[0] = N -1[0] + N - 1[1] &lt;br /&gt;
-N번째 0으로 끝나는 이친 수의 갯수는 N-1번째 0으로 끝나는 이친수 갯수와 1로 끝나는 이친수 갯수의 합이다&lt;br /&gt;
-N[1] = N-1[0]&lt;br /&gt;
-N번째 1로 끝나는 이친 수의 갯수는 N-1번째 1로 끝나는 이친수 갯수와 같다&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-func solve(n: Int){
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int){
+    var wines = [Int](repeating: 0, count: n + 1)
+    var dp = wines
+    
+    for i in 1 ... n {
+        wines[i] = Int(readLine()!)!
+    }
+    
     if n == 1 {
-        print(1)
+        print(wines[1])
+        return 
+    }else if n == 2 {
+        print(wines[1] + wines[2])
         return
     }
+    dp[1] = wines[1]
+    dp[2] = wines[1] + wines[2]
     
-    var map = Array(repeating:Array(repeating:0, count:2), count: n + 1)
-		//n == 1일 때 이친수는 1 하나뿐
-    map[1][0] = 0 
-    map[1][1] = 1
-    
-    for i in 2 ... n {
-        map[i][0] = map[i-1][0] + map[i-1][1]
-        map[i][1] = map[i-1][0]
+    for i in 3 ... n {
+        var maxWines = dp[i - 1] // 0 잔 마실 때
+        maxWines = max(maxWines, dp[i - 2] + wines[i]) // 1잔 마실때 vs 0잔 마실 때 최대값 비교
+        dp[i] = max(maxWines, dp[i - 3] + wines[i] + wines[i - 1]) // 2잔 마실 때와 위의 결과값 비교
     }
     
-    print(map[n].reduce(0,+))
+    print(dp[n])
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 9465] 스티커</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/" rel="alternate" type="text/html" title="[백준 9465] 스티커" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ%209465-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9465&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 9465] 스티커</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/" rel="alternate" type="text/html" title="[백준 9465] 스티커" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ%209465-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9465&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;이번 포스트 부터 문제와 입력/출력은 따로 작성하지 않겠습니다 상단 링크에서 확인해주세요!&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -435,101 +466,70 @@ N[K] = N-1[K] + N-1[K+1] + N-1[K+2] ….. N - 1[9]&lt;br /&gt;&lt;/p&gt;
 }
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2193] 이친수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/" rel="alternate" type="text/html" title="[백준 2193] 이친수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2193&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;정의&lt;/strong&gt;&lt;br /&gt;
-W[N] : N번째 포도주의 양 &lt;br /&gt;
-D[N] : N번째에서 최대로 마실 수 있는 포도주 양&lt;br /&gt;
-ex) D[1] : 1번쨰에서 최대로 마실 수 있는 포도주의 양은 6이다&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;index&lt;/th&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;th&gt;6&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;W[N]&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;13&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;처음부터 한번 수식을 세워보자!&lt;br /&gt;
-D[0]  일 때 : 0 &lt;br /&gt;
-D[1] 일 때 : 1잔을 마시는게 최대값 즉, W[1] &lt;br /&gt;
-D[2] 일 때 : 2잔을 모두 마시는게 최대값 즉, W[1] + W[2] &lt;br /&gt;
-D[3] 일 때 : 총 3가지의 경우의 수가 있다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
+0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다.&lt;br /&gt;&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;안마시는 경우, 이땐 D[2]가 최대값이 된다 &lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;연속 1잔만 마시는 경우, 이전에 마시면 연속 2잔이 되기 때문에 이때는 W[1] + W[3]&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;연속 2잔 마시는 경우, 이전전에선 마시면 안된다! W[2] + W[3] + W[0]&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;이친수는 0으로 시작하지 않는다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다.&lt;br /&gt;
+예를 들면 1, 10, 100, 101, 1000, 1001 등이 이친수가 된다. 하지만 0010101이나 101101은 각각 1, 2번 규칙에 위배되므로 이친수가 아니다.&lt;br /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;이제 조금 정리를 해보자.&lt;br /&gt;
-연속 1잔만 마시는 경우 : W[1]+W[3] -&amp;gt; D[1] + W[3]과 같다 &lt;br /&gt;
-연속 2잔 마시는 경우 : W[2] + W[3] + D[0]과 같다 &lt;br /&gt;
-즉, D[3]일 때 3가지 경우의 수식은 &lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;D[3] = D[2]&lt;/li&gt;
-  &lt;li&gt;D[3] = D[1] + W[3]&lt;/li&gt;
-  &lt;li&gt;D[3] = W[2] + W[3] + D[0]&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;N(1 ≤ N ≤ 90)이 주어졌을 때, N자리 이친수의 개수를 구하는 프로그램을 작성하시오.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;이 3가지 경우의 수 중 최대값을 구하면된다. &lt;br /&gt;
-코드로 짤수 있도록 [숫자]를 n으로 변경해보자 &lt;br /&gt;
-예를 들어 D[3] = D[n] 이면, D[2]는 3-1 = 2이므로 D[n - 1]이 된다&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;D[n] = D[n - 1]&lt;/li&gt;
-  &lt;li&gt;D[n] = D[n-2] + W[n]&lt;/li&gt;
-  &lt;li&gt;D[n] = W[n -1] + W[n] + D[n - 3]&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;첫째 줄에 N이 주어진다.&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;이제 이 수식을 이용해 코드를 짜보자!&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;첫째 줄에 N자리 이친수의 개수를 출력한다.&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int){
-    var wines = [Int](repeating: 0, count: n + 1)
-    var dp = wines
-    
-    for i in 1 ... n {
-        wines[i] = Int(readLine()!)!
-    }
-    
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;N == 1 일 때, 이친수는 1 &lt;br /&gt;
+N == 2 일 때, 이친수는 10 &lt;br /&gt;
+N == 3 일 때, 이친수는 100, 101 &lt;br /&gt;
+N == 4 일 때, 이친수는 1000, 1001, 1010 &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;유심히 보면 규칙이 보인다. &lt;br /&gt;
+N == 4 에서 1000과 1001은 N == 3의 100을 가지고 만들 수 있다. &lt;br /&gt;
+N == 4 에서 1010은 N == 3의 101을 가지고 만들 수 있다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;차이점은 뭘까? &lt;br /&gt;
+문제에서 조건 2에 의해 1이 두번 연속으로 나타나면 안된다&lt;br /&gt;
+즉 끝자리가 1이면 다음에 나타나는 수는 0밖에 없고&lt;br /&gt;
+끝 자리가 0이면 다음에 나타나는 수는 0, 1 모두 가능하다 &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;수식을 세워보자!&lt;br /&gt;
+K == 0 일 때&lt;br /&gt;
+N[0] = N -1[0] + N - 1[1] &lt;br /&gt;
+N번째 0으로 끝나는 이친 수의 갯수는 N-1번째 0으로 끝나는 이친수 갯수와 1로 끝나는 이친수 갯수의 합이다&lt;br /&gt;
+N[1] = N-1[0]&lt;br /&gt;
+N번째 1로 끝나는 이친 수의 갯수는 N-1번째 1로 끝나는 이친수 갯수와 같다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+func solve(n: Int){
     if n == 1 {
-        print(wines[1])
-        return 
-    }else if n == 2 {
-        print(wines[1] + wines[2])
+        print(1)
         return
     }
-    dp[1] = wines[1]
-    dp[2] = wines[1] + wines[2]
     
-    for i in 3 ... n {
-        var maxWines = dp[i - 1] // 0 잔 마실 때
-        maxWines = max(maxWines, dp[i - 2] + wines[i]) // 1잔 마실때 vs 0잔 마실 때 최대값 비교
-        dp[i] = max(maxWines, dp[i - 3] + wines[i] + wines[i - 1]) // 2잔 마실 때와 위의 결과값 비교
+    var map = Array(repeating:Array(repeating:0, count:2), count: n + 1)
+		//n == 1일 때 이친수는 1 하나뿐
+    map[1][0] = 0 
+    map[1][1] = 1
+    
+    for i in 2 ... n {
+        map[i][0] = map[i-1][0] + map[i-1][1]
+        map[i][1] = map[i-1][0]
     }
     
-    print(dp[n])
+    print(map[n].reduce(0,+))
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">동적계획법(DP) 이론</title><link href="https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/" rel="alternate" type="text/html" title="동적계획법(DP) 이론" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/">&lt;p&gt;&lt;strong&gt;동적계획법이란?&lt;/strong&gt;&lt;/p&gt;
 
