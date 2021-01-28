@@ -9,28 +9,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>공부 그리고 기록 - 페이지 2</title>
-<meta name="description" content="Swift / Algorithm">
+<!-- begin _includes/seo.html --><title>[백준 9465] 스티커 - 공부 그리고 기록</title>
+<meta name="description" content="링크">
 
 
   <meta name="author" content="권지수">
   
+  <meta property="article:author" content="권지수">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부 그리고 기록">
-<meta property="og:title" content="공부 그리고 기록">
-<meta property="og:url" content="https://sweetfood-dev.github.io/page2/">
+<meta property="og:title" content="[백준 9465] 스티커">
+<meta property="og:url" content="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">
 
 
-  <meta property="og:description" content="Swift / Algorithm">
-
-
-
+  <meta property="og:description" content="링크">
 
 
 
+
+
+
+
+  <meta property="article:published_time" content="2021-01-26T00:00:00+09:00">
 
 
 
@@ -41,13 +45,9 @@
   
 
 
-<link rel="canonical" href="https://sweetfood-dev.github.io/page2/">
+<link rel="canonical" href="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">
 
 
-  <link rel="prev" href="https://sweetfood-dev.github.io/">
-
-
-  <link rel="next" href="https://sweetfood-dev.github.io/page3/">
 
 
 <script type="application/ld+json">
@@ -107,7 +107,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <h2 class="screen-reader-text">Skip links</h2>
   <ul>
@@ -159,6 +159,50 @@
     <div class="initial-content">
       
 
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://sweetfood-dev.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#algorithm" itemprop="item"><span itemprop="name">Algorithm</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#dp" itemprop="item"><span itemprop="name">Dp</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[백준 9465] 스티커</li>
+      
+    
+  </ol>
+</nav>
 
   
 
@@ -291,29 +335,201 @@
 
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[백준 9465] 스티커">
+    <meta itemprop="description" content="링크">
+    <meta itemprop="datePublished" content="2021-01-26T00:00:00+09:00">
     
-      <h1 id="page-title" class="page__title"></h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[백준 9465] 스티커
+</h1>
+          
+
+  <p class="page__meta">
     
+
     
 
-<h3 class="archive__subtitle">최근 포스트</h3>
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
 
 
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><a href="https://www.acmicpc.net/problem/9465">링크</a></p>
+
+<p><strong>이번 포스트 부터 문제와 입력/출력은 따로 작성하지 않겠습니다 상단 링크에서 확인해주세요!</strong><br /></p>
+
+<p><strong>풀이</strong><br /></p>
+
+<p>스티커를 선택하는 방법은 3가지가 있다<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>아무것도 선택 안함</th>
+      <th>위에만 선택</th>
+      <th>아래만 선택</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>x</td>
+      <td>o</td>
+      <td>x</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td>x</td>
+      <td>o</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>그리고 몇 가지 정의를 한다 <br />
+W[0][N] : 첫 번째 행의 N 번째 숫자<br />
+W[1][N] : 두 번째 행의 N 번째 숫자 <br />
+D[0][N] : 아무것도 선택 안했을 경우 N 숫자에서의 <strong>최대값</strong> <br />
+D[1][N] : 첫 번째 행을 선택했을 경우 N 숫자에서의 <strong>최대값</strong> <br />
+D[2][N] : 두 번째 행을 선택했을 경우 N 숫자에서의 <strong>최대값</strong> <br /></p>
+
+<p>경우 1 : N번째 숫자에서 아무것도 선택안할 경우에는 N - 1 번째의 <strong>최대값</strong> 을 넣는다<br />
+D[0][N] = max(D[0][N-1],D[1][N-1],D[2][N-1]) <br />
+경우 2: N번째 숫자에서 첫 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,<br />
+N-1번째의 두 번째 행을 선택했을 경우의 최대값중 큰값과 첫번째 행 W[0][N]을 더한다<br />
+D[1][N] = max(D[0][N-1],D[2][N-1]) + W[0][N]<br />
+경우 3: N번째 숫자에서 두 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,<br />
+N-1번째의 첫 번째 행을 선택했을 경우의 최대값중 큰값과 두 번째 행 W[1][N]을 더한다<br />
+D[2][N] = max(D[0][N-1],D[1][N-1]) + W[1][N]<br /></p>
+
+<p><strong>코드</strong><br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func solve(n: Int, arr: [[Int]]) {
+    let size = n
+    var res = [[Int]](repeating:[Int](repeating:0, count: size), count: 3)
+    res[1][0] = arr[0][0]
+    res[2][0] = arr[1][0]
+    for i in 1 ..&lt; size {
+        res[0][i] = max(max(res[1][i-1], res[2][i-1]), res[0][i-1])
+        res[1][i] = max(res[0][i-1], res[2][i-1]) + arr[0][i]
+        res[2][i] = max(res[0][i-1], res[1][i-1]) + arr[1][i]
+    }
+    
+    let result = max(max(res[0][size - 1], res[1][size - 1]), res[2][size - 1])
+    print(result)
+}
+
+if let tc = Int(readLine()!) {
+    for _ in 0 ..&lt; tc {
+        let size = Int(readLine()!)!
+        let col1 = readLine()!.split(separator: " ").map { Int(String($0))! }
+        let col2 = readLine()!.split(separator: " ").map { Int(String($0))! }
+        var arr = [[Int]]()
+        arr.append(col1)
+        arr.append(col2)
+        solve(n: size, arr: arr)
+    }
+}
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
 
 
-<div class="entries-list">
   
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
     
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#dp" class="page__taxonomy-item" rel="tag">DP</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-01-26T00:00:00+09:00">January 26, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5B%EB%B0%B1%EC%A4%80+9465%5D+%EC%8A%A4%ED%8B%B0%EC%BB%A4%20https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ-9465-DP%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ-9465-DP%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ-9465-DP%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/" class="pagination--pager" title="arc 공부해서 수정
+">이전</a>
+    
+    
+      <a href="/algorithm/dp/BOJ10844-DP/" class="pagination--pager" title="[백준 10844] 쉬운 계단 수
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/" rel="permalink">arc 공부해서 수정
+        <a href="/algorithm/dp/BOJ2193-DP/" rel="permalink">[백준 2193] 이친수
 </a>
       
     </h2>
@@ -331,29 +547,69 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          1 분 소요
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">ㅇㅇ
+    <p class="archive__item-excerpt" itemprop="description">링크
 </p>
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/dp/BOJ9095-DP/" rel="permalink">[백준 9095] 1, 2, 3 더하기
+        <a href="/algorithm/dp/BOJ2156-DP/" rel="permalink">[백준 2156] 포도주 시식
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">링크
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/dp/BOJ11057-DP/" rel="permalink">[백준 11057] 오르막 수
 </a>
       
     </h2>
@@ -383,17 +639,17 @@
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/dp/BOJ1463-DP/" rel="permalink">[백준 1463] 1로 만들기
+        <a href="/algorithm/dp/BOJ10844-DP/" rel="permalink">[백준 10844] 쉬운 계단 수
 </a>
       
     </h2>
@@ -423,137 +679,13 @@
   </article>
 </div>
 
+        
+      </div>
+    </div>
   
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/dp/BOJ11727-DP/" rel="permalink">[백준 11727] 2 * n 타일링2
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">링크
-문제
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/" rel="permalink">동적계획법(DP) 이론
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">동적계획법이란?
-</p>
-  </article>
-</div>
-
   
 </div>
 
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-      
-        <li><a href="/">이전</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-        <li><a href="/page2/" class="disabled current">2</a></li>
-      
-    
-
-    
-    
-
-    
-      <li><a href="/page3/">3</a></li>
-    
-
-    
-    
-      <li><a href="/page3/">다음</a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
-</div>
     </div>
 
     

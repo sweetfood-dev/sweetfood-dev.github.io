@@ -1,0 +1,75 @@
+I"�<p><a href="https://www.acmicpc.net/problem/9465">링크</a></p>
+
+<p><strong>이번 포스트 부터 문제와 입력/출력은 따로 작성하지 않겠습니다 상단 링크에서 확인해주세요!</strong><br /></p>
+
+<p><strong>풀이</strong><br /></p>
+
+<p>스티커를 선택하는 방법은 3가지가 있다<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>아무것도 선택 안함</th>
+      <th>위에만 선택</th>
+      <th>아래만 선택</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>x</td>
+      <td>o</td>
+      <td>x</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td>x</td>
+      <td>o</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>그리고 몇 가지 정의를 한다 <br />
+W[0][N] : 첫 번째 행의 N 번째 숫자<br />
+W[1][N] : 두 번째 행의 N 번째 숫자 <br />
+D[0][N] : 아무것도 선택 안했을 경우 N 숫자에서의 <strong>최대값</strong> <br />
+D[1][N] : 첫 번째 행을 선택했을 경우 N 숫자에서의 <strong>최대값</strong> <br />
+D[2][N] : 두 번째 행을 선택했을 경우 N 숫자에서의 <strong>최대값</strong> <br /></p>
+
+<p>경우 1 : N번째 숫자에서 아무것도 선택안할 경우에는 N - 1 번째의 <strong>최대값</strong> 을 넣는다<br />
+D[0][N] = max(D[0][N-1],D[1][N-1],D[2][N-1]) <br />
+경우 2: N번째 숫자에서 첫 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,<br />
+N-1번째의 두 번째 행을 선택했을 경우의 최대값중 큰값과 첫번째 행 W[0][N]을 더한다<br />
+D[1][N] = max(D[0][N-1],D[2][N-1]) + W[0][N]<br />
+경우 3: N번째 숫자에서 두 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,<br />
+N-1번째의 첫 번째 행을 선택했을 경우의 최대값중 큰값과 두 번째 행 W[1][N]을 더한다<br />
+D[2][N] = max(D[0][N-1],D[1][N-1]) + W[1][N]<br /></p>
+
+<p><strong>코드</strong><br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func solve(n: Int, arr: [[Int]]) {
+    let size = n
+    var res = [[Int]](repeating:[Int](repeating:0, count: size), count: 3)
+    res[1][0] = arr[0][0]
+    res[2][0] = arr[1][0]
+    for i in 1 ..&lt; size {
+        res[0][i] = max(max(res[1][i-1], res[2][i-1]), res[0][i-1])
+        res[1][i] = max(res[0][i-1], res[2][i-1]) + arr[0][i]
+        res[2][i] = max(res[0][i-1], res[1][i-1]) + arr[1][i]
+    }
+    
+    let result = max(max(res[0][size - 1], res[1][size - 1]), res[2][size - 1])
+    print(result)
+}
+
+if let tc = Int(readLine()!) {
+    for _ in 0 ..&lt; tc {
+        let size = Int(readLine()!)!
+        let col1 = readLine()!.split(separator: " ").map { Int(String($0))! }
+        let col2 = readLine()!.split(separator: " ").map { Int(String($0))! }
+        var arr = [[Int]]()
+        arr.append(col1)
+        arr.append(col2)
+        solve(n: size, arr: arr)
+    }
+}
+</code></pre></div></div>
+:ET
