@@ -1,0 +1,46 @@
+I"�<p><a href="https://www.acmicpc.net/problem/11055">링크</a></p>
+
+<p><strong>풀이</strong></p>
+
+<p><a href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/">가장 긴 증가하는 수열</a> 문제와 비슷하다.<br />
+다만 <strong>길이</strong>가 아니라 <strong>합</strong>이 라는게 차이 .<br /></p>
+
+<p>따라서 가장 긴 증가하는 수열의 코드에서 if 조건문의 수식만 살짝 바꿔주면 된다<br /></p>
+
+<p>정의를 살펴 보면<br />
+arr[n] : 문제의 입력으로 주어진 배열, n번째 숫자<br />
+map[n] : n번째 에서 가장 큰 수열의 합<br />
+k = 0 ..&lt; n 까지의 인덱스<br /></p>
+
+<p>따라서 수식은 <br />
+map[n] = max(map[n], arr[n] + map[k]) <br /></p>
+
+<p>위에 정의된 수식을 2중 포문으로 탐색한다<br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for i in 0 ..&lt; arr.count { // 0 부터 배열의 마지막 인덱스까지 탐색
+map[i] = arr[i] // 자기 자신은 부분 수열의 합에 항상 들어감
+for j in 0 ..&lt; i { // 0 ~ i - 1까지 탐색 , j == k( 위에 정의한 k를 j로 사용)
+	if arr[i] &gt; arr[j] { // i 인덱스의 값보다 j 인덱스의 값이 작으면 부분 수열에 포함 
+		map[i] = max(map[i], arr[i] + map[j]) // 현재 map[i]값 보다 arr[i] + map[j]의 값이 더 크면 더 큰 부분 수열의 합
+	}
+}
+</code></pre></div></div>
+
+<p>최종 코드는 아래와 같다<br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func solve(n : Int) {
+    let arr = readLine()!.split(separator:" ").map { Int(String($0))! }
+    var map = [Int](repeating:0, count: n + 1)
+    
+    for i in 0 ..&lt; arr.count {
+        map[i] = arr[i]
+        for j in 0 ..&lt; i {
+            if arr[i] &gt; arr[j] {
+                map[i] = max(map[i], map[j] + arr[i])
+            }
+        }
+    }
+    
+    print(map.max()!)
+}
+</code></pre></div></div>
+:ET

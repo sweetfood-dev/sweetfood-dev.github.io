@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-01-28T20:28:45+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">[백준 11053] 가장 긴 증가하는 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/" rel="alternate" type="text/html" title="[백준 11053] 가장 긴 증가하는 수열" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11053&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-01T16:45:41+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">[백준 11055] 가장 큰 증가 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/" rel="alternate" type="text/html" title="[백준 11055] 가장 큰 증가 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11055&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/&quot;&gt;가장 긴 증가하는 수열&lt;/a&gt; 문제와 비슷하다.&lt;br /&gt;
+다만 &lt;strong&gt;길이&lt;/strong&gt;가 아니라 &lt;strong&gt;합&lt;/strong&gt;이 라는게 차이 .&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;따라서 가장 긴 증가하는 수열의 코드에서 if 조건문의 수식만 살짝 바꿔주면 된다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;정의를 살펴 보면&lt;br /&gt;
+arr[n] : 문제의 입력으로 주어진 배열, n번째 숫자&lt;br /&gt;
+map[n] : n번째 에서 가장 큰 수열의 합&lt;br /&gt;
+k = 0 ..&amp;lt; n 까지의 인덱스&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;따라서 수식은 &lt;br /&gt;
+map[n] = max(map[n], arr[n] + map[k]) &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;위에 정의된 수식을 2중 포문으로 탐색한다&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 0 부터 배열의 마지막 인덱스까지 탐색
+for i in 0 ..&amp;lt; arr.count { 
+// 자기 자신은 부분 수열의 합에 항상 들어감
+	map[i] = arr[i] 
+	// 0 ~ i - 1까지 탐색 , j == k( 위에 정의한 k를 j로 사용)
+	for j in 0 ..&amp;lt; i { 
+	// i 인덱스의 값보다 j 인덱스의 값이 작으면 부분 수열에 포함 
+		if arr[i] &amp;gt; arr[j] { 
+		// 현재 map[i]값 보다 arr[i] + map[j]의 값이 더 크면 더 큰 부분 수열의 합
+		map[i] = max(map[i], arr[i] + map[j]) 
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;최종 코드는 아래와 같다&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
+    let arr = readLine()!.split(separator:&quot; &quot;).map { Int(String($0))! }
+    var map = [Int](repeating:0, count: n + 1)
+    
+    for i in 0 ..&amp;lt; arr.count {
+        map[i] = arr[i]
+        for j in 0 ..&amp;lt; i {
+            if arr[i] &amp;gt; arr[j] {
+                map[i] = max(map[i], map[j] + arr[i])
+            }
+        }
+    }
+    
+    print(map.max()!)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11722] 가장 긴 감소하는 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/" rel="alternate" type="text/html" title="[백준 11722] 가장 긴 감소하는 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11722&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;
+이전 문제 11053, 11055와 사실상 같은 문제&lt;br /&gt;
+&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/&quot;&gt;11053&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/&quot;&gt;11055&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
+    let arr = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
+    var map = [Int](repeating:1, count: n)
+    
+    for i in 0 ..&amp;lt; arr.count {
+        for j in 0 ..&amp;lt; i {
+            if arr[i] &amp;lt; arr[j] {
+                map[i] = max(map[i], map[j] + 1)
+            }
+        }
+    }
+    
+    print(map.max()!)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">이진 탐색</title><link href="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/" rel="alternate" type="text/html" title="이진 탐색" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/">&lt;p&gt;&lt;strong&gt;정렬된 배열&lt;/strong&gt;에서 원소 x를 찾고자 할 때 사용&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;찾고자 하는 x를 중간 원소와 비교&lt;/li&gt;
+  &lt;li&gt;x가 중간 원소보다 크다면 오른쪽 절반을&lt;/li&gt;
+  &lt;li&gt;x가 중간 원소보다 작다면 왼쪽 절반을 재탐색한다&lt;/li&gt;
+  &lt;li&gt;1 ~ 3과정을 x를 찾거나 부분 배열의 크기가 0이 될 때까지 반복한다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func binarySearch(arr: [Int], find: Int) -&amp;gt; Int {
+    var low = 0
+    var high = arr.count - 1
+    var mid : Int
+    
+    while low &amp;lt;= high {
+        mid = (low + high) / 2
+        if arr[mid] &amp;gt; find {
+            high = mid - 1
+        }else if arr[mid] &amp;lt; find {
+            low = mid + 1
+        }else {
+            return mid
+        }
+    }
+    return -1
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="Search" /><category term="LIS" /><summary type="html">정렬된 배열에서 원소 x를 찾고자 할 때 사용</summary></entry><entry><title type="html">[백준 11053] 가장 긴 증가하는 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/" rel="alternate" type="text/html" title="[백준 11053] 가장 긴 증가하는 수열" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11053&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -50,36 +150,7 @@ D[n] = max(D[n], D[k] + 1)로 갱신한다&lt;br /&gt;&lt;/p&gt;
     
     print(dp.max()!)
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">이진 탐색</title><link href="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/" rel="alternate" type="text/html" title="이진 탐색" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/">&lt;p&gt;&lt;strong&gt;정렬된 배열&lt;/strong&gt;에서 원소 x를 찾고자 할 때 사용&lt;br /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;찾고자 하는 x를 중간 원소와 비교&lt;/li&gt;
-  &lt;li&gt;x가 중간 원소보다 크다면 오른쪽 절반을&lt;/li&gt;
-  &lt;li&gt;x가 중간 원소보다 작다면 왼쪽 절반을 재탐색한다&lt;/li&gt;
-  &lt;li&gt;1 ~ 3과정을 x를 찾거나 부분 배열의 크기가 0이 될 때까지 반복한다&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func binarySearch(arr: [Int], find: Int) -&amp;gt; Int {
-    var low = 0
-    var high = arr.count - 1
-    var mid : Int
-    
-    while low &amp;lt;= high {
-        mid = (low + high) / 2
-        if arr[mid] &amp;gt; find {
-            high = mid - 1
-        }else if arr[mid] &amp;lt; find {
-            low = mid + 1
-        }else {
-            return mid
-        }
-    }
-    return -1
-}
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="Search" /><category term="LIS" /><summary type="html">정렬된 배열에서 원소 x를 찾고자 할 때 사용</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -247,6 +318,144 @@ if let tc = Int(readLine()!) {
         arr.append(col2)
         solve(n: size, arr: arr)
     }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 10844] 쉬운 계단 수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/" rel="alternate" type="text/html" title="[백준 10844] 쉬운 계단 수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
+45656이란 수를 보자.&lt;/p&gt;
+
+&lt;p&gt;이 수는 인접한 모든 자리수의 차이가 1이 난다. 이런 수를 계단 수라고 한다.&lt;/p&gt;
+
+&lt;p&gt;세준이는 수의 길이가 N인 계단 수가 몇 개 있는지 궁금해졌다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구하는 프로그램을 작성하시오. (0으로 시작하는 수는 없다.)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;첫째 줄에 N이 주어진다. N은 1보다 크거나 같고, 100보다 작거나 같은 자연수이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;첫째 줄에 정답을 1,000,000,000으로 나눈 나머지를 출력한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;N == 1 일 때, 계단 수 : 1,2,3,4,5,6,7,8,9&lt;br /&gt;
+N == 2 일 때, 계단 수 : 10,12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;규칙을 찾아 보자&lt;br /&gt;
+N == 1 일 때, 계단 수 에서 N == 2일 때, 계단 수를 구할 수 있을까?&lt;br /&gt;
+N == 2 일 때, 계단수 10, 12를 봐보자 &lt;br /&gt;
+N == 2 일 때, 10과 12는 N == 1 일 때, 1에서 0 과 2를 1의 자리에 넣어 준 것과 같다&lt;br /&gt;
+N == 2 일 때, 21과 23은 N == 1 일 때, 2에서 1과 3을 1의 자리에 넣어 준 것과 같다.&lt;br /&gt;
+N == 2 일 때의 계단 수는 N == 1일 때 계단 수에서 1의 자리에서 +1과, -1을 해준 숫자들이 들어감을 확인할 수 있다&lt;br /&gt;
+N == 2 일 때, 10과 12는 N == 1 일 때, 1에  1 - 1, 즉 0을 붙여 10, 1 에 1 + 1, 즉 2를 붙여 12가 만들어 짐을 알 수 있다.&lt;br /&gt;
+이를 이용하면 N이 주어질 때 마지막 1의 자리가 K인 숫자의 계단 수의 갯수는&lt;br /&gt;
+N - 1 번째의 K - 1의 계단 수의 갯수 + N - 1번째의 K + 1의 계단수의 갯수일 것이다&lt;br /&gt;
+예를 들어 N == 2 일 때 1의 자리 숫자가 3으로 끝나는 계단 수의 갯수는 &lt;br /&gt;
+N == 1 일 때, 2의 갯수,  그리고 4의 갯수를 합치면 된다&lt;br /&gt;
+글 보다 표를 그려 확인 해보자&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/images/Posts/Algorithm/DP/2021-01-26-BOJ10844-DP/image1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;수식으로 구성 해보자 &lt;br /&gt;
+N : 숫자의 길이, K : N 의 계단 수의 1의 자리 &lt;br /&gt;
+N[K] = N-1[K - 1] + N-1[K+1]
+이 때, 주의 할 것이 있다 &lt;br /&gt;
+N[K] == 0 일 경우엔  이전 단계에서 1일 경우만 더해주고 ( 즉, N-1[1])&lt;br /&gt;
+K == 9 : 8일 경우만 더해 준다 ( 즉 N-1[8]) &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이를 그대로 코드로 옮겨 보자&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
+    if n == 1 { // 1일 경우는 무조건 9개 밖에 없다
+        print(9)
+        return
+    }
+    let mod = 1_000_000_000 // 결과값에서 쓰일 나머지 연산 값 
+    var map = Array(repeating: Array(repeating: 0, count: 10), count: 101)
+    
+    for i in 1 ... 9 {
+        map[1][i] = 1
+    }
+    
+    for i in 2 ... n {
+        map[i][0] = map[i-1][1]
+        map[i][9] = map[i-1][8]
+        for k in 1 ... 8 {
+            map[i][k] = (map[i-1][k - 1] + map[i-1][k + 1]) % mod
+        }
+    }
+    
+    let result = map[n].reduce(0,+)
+    
+    print(result % mod)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2193] 이친수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/" rel="alternate" type="text/html" title="[백준 2193] 이친수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2193&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
+0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다.&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;이친수는 0으로 시작하지 않는다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다.&lt;br /&gt;
+예를 들면 1, 10, 100, 101, 1000, 1001 등이 이친수가 된다. 하지만 0010101이나 101101은 각각 1, 2번 규칙에 위배되므로 이친수가 아니다.&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;N(1 ≤ N ≤ 90)이 주어졌을 때, N자리 이친수의 개수를 구하는 프로그램을 작성하시오.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;첫째 줄에 N이 주어진다.&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;첫째 줄에 N자리 이친수의 개수를 출력한다.&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;N == 1 일 때, 이친수는 1 &lt;br /&gt;
+N == 2 일 때, 이친수는 10 &lt;br /&gt;
+N == 3 일 때, 이친수는 100, 101 &lt;br /&gt;
+N == 4 일 때, 이친수는 1000, 1001, 1010 &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;유심히 보면 규칙이 보인다. &lt;br /&gt;
+N == 4 에서 1000과 1001은 N == 3의 100을 가지고 만들 수 있다. &lt;br /&gt;
+N == 4 에서 1010은 N == 3의 101을 가지고 만들 수 있다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;차이점은 뭘까? &lt;br /&gt;
+문제에서 조건 2에 의해 1이 두번 연속으로 나타나면 안된다&lt;br /&gt;
+즉 끝자리가 1이면 다음에 나타나는 수는 0밖에 없고&lt;br /&gt;
+끝 자리가 0이면 다음에 나타나는 수는 0, 1 모두 가능하다 &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;수식을 세워보자!&lt;br /&gt;
+K == 0 일 때&lt;br /&gt;
+N[0] = N -1[0] + N - 1[1] &lt;br /&gt;
+N번째 0으로 끝나는 이친 수의 갯수는 N-1번째 0으로 끝나는 이친수 갯수와 1로 끝나는 이친수 갯수의 합이다&lt;br /&gt;
+N[1] = N-1[0]&lt;br /&gt;
+N번째 1로 끝나는 이친 수의 갯수는 N-1번째 1로 끝나는 이친수 갯수와 같다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+func solve(n: Int){
+    if n == 1 {
+        print(1)
+        return
+    }
+    
+    var map = Array(repeating:Array(repeating:0, count:2), count: n + 1)
+		//n == 1일 때 이친수는 1 하나뿐
+    map[1][0] = 0 
+    map[1][1] = 1
+    
+    for i in 2 ... n {
+        map[i][0] = map[i-1][0] + map[i-1][1]
+        map[i][1] = map[i-1][0]
+    }
+    
+    print(map[n].reduce(0,+))
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11057] 오르막 수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP/" rel="alternate" type="text/html" title="[백준 11057] 오르막 수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11057&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
@@ -474,215 +683,100 @@ N[K] = N-1[K] + N-1[K+1] + N-1[K+2] ….. N - 1[9]&lt;br /&gt;&lt;/p&gt;
 }
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2193] 이친수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/" rel="alternate" type="text/html" title="[백준 2193] 이친수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2193&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
-0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다.&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;이친수는 0으로 시작하지 않는다.&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다.&lt;br /&gt;
-예를 들면 1, 10, 100, 101, 1000, 1001 등이 이친수가 된다. 하지만 0010101이나 101101은 각각 1, 2번 규칙에 위배되므로 이친수가 아니다.&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;N(1 ≤ N ≤ 90)이 주어졌을 때, N자리 이친수의 개수를 구하는 프로그램을 작성하시오.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N이 주어진다.&lt;br /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N자리 이친수의 개수를 출력한다.&lt;br /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;N == 1 일 때, 이친수는 1 &lt;br /&gt;
-N == 2 일 때, 이친수는 10 &lt;br /&gt;
-N == 3 일 때, 이친수는 100, 101 &lt;br /&gt;
-N == 4 일 때, 이친수는 1000, 1001, 1010 &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;유심히 보면 규칙이 보인다. &lt;br /&gt;
-N == 4 에서 1000과 1001은 N == 3의 100을 가지고 만들 수 있다. &lt;br /&gt;
-N == 4 에서 1010은 N == 3의 101을 가지고 만들 수 있다. &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;차이점은 뭘까? &lt;br /&gt;
-문제에서 조건 2에 의해 1이 두번 연속으로 나타나면 안된다&lt;br /&gt;
-즉 끝자리가 1이면 다음에 나타나는 수는 0밖에 없고&lt;br /&gt;
-끝 자리가 0이면 다음에 나타나는 수는 0, 1 모두 가능하다 &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;수식을 세워보자!&lt;br /&gt;
-K == 0 일 때&lt;br /&gt;
-N[0] = N -1[0] + N - 1[1] &lt;br /&gt;
-N번째 0으로 끝나는 이친 수의 갯수는 N-1번째 0으로 끝나는 이친수 갯수와 1로 끝나는 이친수 갯수의 합이다&lt;br /&gt;
-N[1] = N-1[0]&lt;br /&gt;
-N번째 1로 끝나는 이친 수의 갯수는 N-1번째 1로 끝나는 이친수 갯수와 같다&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-func solve(n: Int){
-    if n == 1 {
-        print(1)
-        return
-    }
-    
-    var map = Array(repeating:Array(repeating:0, count:2), count: n + 1)
-		//n == 1일 때 이친수는 1 하나뿐
-    map[1][0] = 0 
-    map[1][1] = 1
-    
-    for i in 2 ... n {
-        map[i][0] = map[i-1][0] + map[i-1][1]
-        map[i][1] = map[i-1][0]
-    }
-    
-    print(map[n].reduce(0,+))
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 10844] 쉬운 계단 수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/" rel="alternate" type="text/html" title="[백준 10844] 쉬운 계단 수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
-45656이란 수를 보자.&lt;/p&gt;
-
-&lt;p&gt;이 수는 인접한 모든 자리수의 차이가 1이 난다. 이런 수를 계단 수라고 한다.&lt;/p&gt;
-
-&lt;p&gt;세준이는 수의 길이가 N인 계단 수가 몇 개 있는지 궁금해졌다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구하는 프로그램을 작성하시오. (0으로 시작하는 수는 없다.)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N이 주어진다. N은 1보다 크거나 같고, 100보다 작거나 같은 자연수이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 정답을 1,000,000,000으로 나눈 나머지를 출력한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;N == 1 일 때, 계단 수 : 1,2,3,4,5,6,7,8,9&lt;br /&gt;
-N == 2 일 때, 계단 수 : 10,12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;규칙을 찾아 보자&lt;br /&gt;
-N == 1 일 때, 계단 수 에서 N == 2일 때, 계단 수를 구할 수 있을까?&lt;br /&gt;
-N == 2 일 때, 계단수 10, 12를 봐보자 &lt;br /&gt;
-N == 2 일 때, 10과 12는 N == 1 일 때, 1에서 0 과 2를 1의 자리에 넣어 준 것과 같다&lt;br /&gt;
-N == 2 일 때, 21과 23은 N == 1 일 때, 2에서 1과 3을 1의 자리에 넣어 준 것과 같다.&lt;br /&gt;
-N == 2 일 때의 계단 수는 N == 1일 때 계단 수에서 1의 자리에서 +1과, -1을 해준 숫자들이 들어감을 확인할 수 있다&lt;br /&gt;
-N == 2 일 때, 10과 12는 N == 1 일 때, 1에  1 - 1, 즉 0을 붙여 10, 1 에 1 + 1, 즉 2를 붙여 12가 만들어 짐을 알 수 있다.&lt;br /&gt;
-이를 이용하면 N이 주어질 때 마지막 1의 자리가 K인 숫자의 계단 수의 갯수는&lt;br /&gt;
-N - 1 번째의 K - 1의 계단 수의 갯수 + N - 1번째의 K + 1의 계단수의 갯수일 것이다&lt;br /&gt;
-예를 들어 N == 2 일 때 1의 자리 숫자가 3으로 끝나는 계단 수의 갯수는 &lt;br /&gt;
-N == 1 일 때, 2의 갯수,  그리고 4의 갯수를 합치면 된다&lt;br /&gt;
-글 보다 표를 그려 확인 해보자&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/images/Posts/Algorithm/DP/2021-01-26-BOJ10844-DP/image1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;수식으로 구성 해보자 &lt;br /&gt;
-N : 숫자의 길이, K : N 의 계단 수의 1의 자리 &lt;br /&gt;
-N[K] = N-1[K - 1] + N-1[K+1]
-이 때, 주의 할 것이 있다 &lt;br /&gt;
-N[K] == 0 일 경우엔  이전 단계에서 1일 경우만 더해주고 ( 즉, N-1[1])&lt;br /&gt;
-K == 9 : 8일 경우만 더해 준다 ( 즉 N-1[8]) &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이를 그대로 코드로 옮겨 보자&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
-    if n == 1 { // 1일 경우는 무조건 9개 밖에 없다
-        print(9)
-        return
-    }
-    let mod = 1_000_000_000 // 결과값에서 쓰일 나머지 연산 값 
-    var map = Array(repeating: Array(repeating: 0, count: 10), count: 101)
-    
-    for i in 1 ... 9 {
-        map[1][i] = 1
-    }
-    
-    for i in 2 ... n {
-        map[i][0] = map[i-1][1]
-        map[i][9] = map[i-1][8]
-        for k in 1 ... 8 {
-            map[i][k] = (map[i-1][k - 1] + map[i-1][k + 1]) % mod
-        }
-    }
-    
-    let result = map[n].reduce(0,+)
-    
-    print(result % mod)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">동적계획법(DP) 이론</title><link href="https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/" rel="alternate" type="text/html" title="동적계획법(DP) 이론" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/Algorithm-DP-%EC%9D%B4%EB%A1%A0/">&lt;p&gt;&lt;strong&gt;동적계획법이란?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;최적화 문제를 연구하는 수학이론에서 왔다.&lt;/li&gt;
-  &lt;li&gt;처음 주어진 문제를 더 작은 문제로 나눈 뒤 조각의 답을 계산하고 이러한 답들로 원래 문제에 대한 답을 계산, 도출&lt;/li&gt;
-  &lt;li&gt;어떤 부분문제는 두개 이상의 문제를 푸는데 사용할 수 있어 한번만 계산하고 계산 결과를 &lt;strong&gt;재활용하여&lt;/strong&gt; 속도의 향상을 얻는다&lt;/li&gt;
-  &lt;li&gt;계산한 값을 저장하는 곳을 &lt;strong&gt;캐시&lt;/strong&gt;라고 한다.&lt;/li&gt;
-  &lt;li&gt;이러한 한번만 계산한 값을 재활용 하는 최적화 기법을 &lt;strong&gt;메모이제이션&lt;/strong&gt; 이라고 한다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">동적계획법이란?</summary></entry><entry><title type="html">[백준 11726] 2 * n 타일링</title><link href="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/" rel="alternate" type="text/html" title="[백준 11726] 2 * n 타일링" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/11726-2-n</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11726&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 9095] 1, 2, 3 더하기</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP/" rel="alternate" type="text/html" title="[백준 9095] 1, 2, 3 더하기" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9095&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.&lt;/p&gt;
+&lt;p&gt;정수 4를 1, 2, 3의 합으로 나타내는 방법은 총 7가지가 있다. 합을 나타낼 때는 수를 1개 이상 사용해야 한다.&lt;/p&gt;
 
-&lt;p&gt;아래 그림은 2×5 크기의 직사각형을 채운 한 가지 방법의 예이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;1+1+1+1&lt;/li&gt;
+  &lt;li&gt;1+1+2&lt;/li&gt;
+  &lt;li&gt;1+2+1&lt;/li&gt;
+  &lt;li&gt;2+1+1&lt;/li&gt;
+  &lt;li&gt;2+2&lt;/li&gt;
+  &lt;li&gt;1+3&lt;/li&gt;
+  &lt;li&gt;3+1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;정수 n이 주어졌을 때, n을 1, 2, 3의 합으로 나타내는 방법의 수를 구하는 프로그램을 작성하시오.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)&lt;/p&gt;
+  &lt;p&gt;첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고, 정수 n이 주어진다. n은 양수이며 11보다 작다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.&lt;/p&gt;
+  &lt;p&gt;각 테스트 케이스마다, n을 1, 2, 3의 합으로 나타내는 방법의 수를 출력한다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;코드&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
-	guard n &amp;gt; 2 else { return n }
-	var arr = [Int](repeating: 0, count: n + 1)
-	arr[1] = 1
-	arr[2] = 2
-	for i in 3 ... n {
-		arr[i] = arr[i - 1] + arr[i - 2]
-		arr[i] %= 10007
-	}
-	
-	return arr[i]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;풀이 : 
+1~3의 합으로 정수 N을 나타내는 경우의 수만 구하면된다,  구성은 상관없다는 소리.&lt;/p&gt;
 
-&lt;p&gt;풀이 : 조금 더 이해가 되면 작성할 예정&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11727] 2 * n 타일링2</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ11727-DP/" rel="alternate" type="text/html" title="[백준 11727] 2 * n 타일링2" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ11727-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ11727-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11727&quot;&gt;링크&lt;/a&gt;
-&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;N == 1 일 때 경우의 수 : &lt;br /&gt;
+&lt;strong&gt;1&lt;/strong&gt;&lt;br /&gt;
+N == 2 일 때 경우의 수 : &lt;br /&gt;
+&lt;strong&gt;1 + 1&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;2&lt;/strong&gt;&lt;br /&gt;
+N == 3 일 때 경우의 수 : &lt;br /&gt;
+&lt;strong&gt;1 + 1 + 1&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;1 + 2&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;2 + 1&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;3&lt;/strong&gt;&lt;br /&gt;
+ 일 때, &lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;2×n 직사각형을 1×2, 2×1과 2×2 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.&lt;/p&gt;
+&lt;p&gt;N == 4는 다음과 같다&lt;br /&gt;
+ N == 4 : &lt;br /&gt;
+ &lt;strong&gt;1 + 1 + 1&lt;/strong&gt; + 1 :     3의 경우의 수 + 1 &lt;br /&gt;
+ &lt;strong&gt;1 + 1&lt;/strong&gt; + 2 :             2의 경우의 수 + 2&lt;br /&gt;
+ &lt;strong&gt;1 + 2&lt;/strong&gt;+ 1 :             3의 경우의 수 + 1&lt;br /&gt;
+ &lt;strong&gt;2 + 1&lt;/strong&gt; + 1 :             3의 경우의 수 + 1&lt;br /&gt;
+ &lt;strong&gt;2&lt;/strong&gt; + 2 :                     2의 경우의 수 + 2&lt;br /&gt;
+ &lt;strong&gt;1&lt;/strong&gt; + 3 :                     1의 경우의 수 + 3&lt;br /&gt;
+ &lt;strong&gt;3&lt;/strong&gt; + 1 :                     3의 경우의 수 + 1&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;1의 경우의 수 + 2의 경우의 수 + 3의 경우의 수 의 합과 같다.
+ 수식으로 표현하면 N = (N - 3) + (N - 2) + (N - 1) 이므로 이를 그대로 사용!&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;앞에 &lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/11726-2-n/&quot;&gt;타일링 문제&lt;/a&gt;에서 2 * 2 타일이 추가되었을 뿐 개념은 같다
-(n - 1)  + (n - 2) * 2 &amp;gt; 2 * 2 타일은 결국 ( n - 2 ) 타일과 같다&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) -&amp;gt; Int {
-    if n == 0 { return 0}
-    if n == 1 { return 1}
-    if n == 2 { return 3}
-    var arr = [Int](repeating: 0, count : n + 1)
-
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; func solve(n : Int) -&amp;gt; Int{
+    if n == 0 { return 0 }
+    else if n == 3 { return 4 }
+    else if n == 2 { return 2 }
+    else if n == 1 { return 1 }
+    var arr = [Int](repeating:0, count: n + 1)
     arr[1] = 1
-    arr[2] = 3
-    for i in 3 ... n {
-        arr[i] = arr[i - 1] + (arr[i - 2] * 2)
-        arr[i] %= 10007
+    arr[2] = 2
+    arr[3] = 4
+    for i in 4 ... n {
+        arr[i] = arr[i - 3] + arr[i - 2] + arr[i - 1]
     }
     return arr[n]
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크 문제</summary></entry></feed>
+
+var map = [Int:Int]()
+map[0] = 0
+map[1] = 1
+map[2] = 2
+map[3] = 4
+func recursive(n : Int) -&amp;gt; Int {
+    if let res = map[n] {
+        return res
+    }
+    
+    map[n] = recursive(n: n - 3) + recursive(n: n - 2) + recursive(n: n - 1)
+    return map[n]!
+}
+if let count = Int(readLine()!){
+    
+    for _ in 0 ..&amp;lt; count {
+        let n = Int(readLine()!)!
+        // 상향식
+        /*print(solve(n: n))*/
+        // 하향식
+        print(recursive(n: n))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;상향식과 하향식 모두 가능!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry></feed>

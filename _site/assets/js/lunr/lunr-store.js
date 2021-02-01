@@ -76,4 +76,16 @@ var store = [{
         "tags": [],
         "url": "https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/",
         "teaser": null
+      },{
+        "title": "[백준 11055] 가장 큰 증가 부분 수열",
+        "excerpt":"링크   풀이   가장 긴 증가하는 수열 문제와 비슷하다.  다만 길이가 아니라 합이 라는게 차이 .    따라서 가장 긴 증가하는 수열의 코드에서 if 조건문의 수식만 살짝 바꿔주면 된다    정의를 살펴 보면  arr[n] : 문제의 입력으로 주어진 배열, n번째 숫자  map[n] : n번째 에서 가장 큰 수열의 합  k = 0 ..&lt; n 까지의 인덱스    따라서 수식은   map[n] = max(map[n], arr[n] + map[k])     위에 정의된 수식을 2중 포문으로 탐색한다   // 0 부터 배열의 마지막 인덱스까지 탐색 for i in 0 ..&lt; arr.count {  // 자기 자신은 부분 수열의 합에 항상 들어감 \tmap[i] = arr[i]  \t// 0 ~ i - 1까지 탐색 , j == k( 위에 정의한 k를 j로 사용) \tfor j in 0 ..&lt; i {  \t// i 인덱스의 값보다 j 인덱스의 값이 작으면 부분 수열에 포함  \t\tif arr[i] &gt; arr[j] {  \t\t// 현재 map[i]값 보다 arr[i] + map[j]의 값이 더 크면 더 큰 부분 수열의 합 \t\tmap[i] = max(map[i], arr[i] + map[j])  \t} }   최종 코드는 아래와 같다    func solve(n : Int) {     let arr = readLine()!.split(separator:\" \").map { Int(String($0))! }     var map = [Int](repeating:0, count: n + 1)          for i in 0 ..&lt; arr.count {         map[i] = arr[i]         for j in 0 ..&lt; i {             if arr[i] &gt; arr[j] {                 map[i] = max(map[i], map[j] + arr[i])             }         }     }          print(map.max()!) }  ","categories": ["Algorithm","DP","LIS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/",
+        "teaser": null
+      },{
+        "title": "[백준 11722] 가장 긴 감소하는 부분 수열",
+        "excerpt":"링크   풀이 이전 문제 11053, 11055와 사실상 같은 문제  11053  11055    코드  func solve(n : Int) {     let arr = readLine()!.split(separator: \" \").map { Int(String($0))! }     var map = [Int](repeating:1, count: n)          for i in 0 ..&lt; arr.count {         for j in 0 ..&lt; i {             if arr[i] &lt; arr[j] {                 map[i] = max(map[i], map[j] + 1)             }         }     }          print(map.max()!) }  ","categories": ["Algorithm","DP","LIS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/",
+        "teaser": null
       }]
