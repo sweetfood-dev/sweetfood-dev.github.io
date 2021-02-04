@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-04T18:46:31+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">defer</title><link href="https://sweetfood-dev.github.io/ios/defer/" rel="alternate" type="text/html" title="defer" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/defer</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/defer/">&lt;p&gt;&lt;strong&gt;defer&lt;/strong&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다&lt;/li&gt;
-  &lt;li&gt;defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.&lt;/li&gt;
-  &lt;li&gt;defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다&lt;/li&gt;
-  &lt;li&gt;defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">defer 작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다 defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다. defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다 defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다</summary></entry><entry><title type="html">ARC 및 참조 타입</title><link href="https://sweetfood-dev.github.io/ios/ARC/" rel="alternate" type="text/html" title="ARC 및 참조 타입" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/ARC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/ARC/">&lt;p&gt;&lt;strong&gt;ARC&lt;/strong&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-04T19:45:21+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">ARC 및 참조 타입</title><link href="https://sweetfood-dev.github.io/ios/ARC/" rel="alternate" type="text/html" title="ARC 및 참조 타입" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/ARC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/ARC/">&lt;p&gt;&lt;strong&gt;ARC&lt;/strong&gt;
 Swift에서 메모리를 자동으로 관리 &lt;br /&gt;
 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.&lt;br /&gt;
 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만&lt;br /&gt;
@@ -119,7 +112,117 @@ app = nil
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;잘못된 설명이 있으면 지적 부탁드립니다.&lt;br /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">ARC Swift에서 메모리를 자동으로 관리 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다</summary></entry><entry><title type="html">[백준 11055] 가장 큰 증가 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/" rel="alternate" type="text/html" title="[백준 11055] 가장 큰 증가 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11055&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;잘못된 설명이 있으면 지적 부탁드립니다.&lt;br /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">ARC Swift에서 메모리를 자동으로 관리 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다</summary></entry><entry><title type="html">클로저</title><link href="https://sweetfood-dev.github.io/ios/Closure/" rel="alternate" type="text/html" title="클로저" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/Closure</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/Closure/">&lt;p&gt;&lt;strong&gt;클로저&lt;/strong&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;클로저의 형태
+    &lt;ul&gt;
+      &lt;li&gt;이름을 가진 어떤 값도 캡처하지 않는 &lt;strong&gt;전역 함수&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;이름을 가진 자신을 감싸고 있는 함수에서 값을 캡쳐해 가질 수 있는 &lt;strong&gt;중첩 함수&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;이름이 없으며 주변 환경의 값을 캡처해 가질 수 있는 &lt;strong&gt;클로저 표현식&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@escaping
+    &lt;ul&gt;
+      &lt;li&gt;인자값으로 전달된 클로저를 저장해 두었다가 다른 곳에서도 실행할 수 있도록 허용해주는 속성&lt;/li&gt;
+      &lt;li&gt;인자값으로 전달된 클로저는 기본적으로 탈출불가의 성격을 가진다&lt;/li&gt;
+      &lt;li&gt;이는 &lt;strong&gt;함수 내에서, 직접 실행을 위해서만 사용&lt;/strong&gt;해야하는 것을 의미한다&lt;/li&gt;
+      &lt;li&gt;중첩된 내부 함수에서도 사용이 불가하다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func outerFunc( c: () -&amp;gt; () ) -&amp;gt; () -&amp;gt; (){
+    c()
+    func innerFunc() {
+        c()
+    }
+		// innerFunc() 안에서 매개변수 c를 호출하고 있기 때문에 에러 발생
+    return innerFunc 
+}
+
+
+let inner = outerFunc {
+    print(&quot;run func&quot;)
+}
+
+
+inner()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이러한 제약조건을 모두 제거하여 사용 가능 하게 만들어 주는 것이 &lt;strong&gt;@escaping&lt;/strong&gt; 속성이다&lt;br /&gt;
+아래와 같은 상황에서 사용 &lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;완료에 따른 처리&lt;/li&gt;
+  &lt;li&gt;비동기로 실행 시 함수 사이의 실행 순서를 정할 수 있음
+&lt;br /&gt;
+    &lt;ol&gt;
+      &lt;li&gt;값의 캡처&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;클로저 내부에서 사용되는 외부 변수의 값을 내부적으로 저장, 이를 &lt;strong&gt;캡처&lt;/strong&gt;되었다고 한다&lt;/li&gt;
+  &lt;li&gt;클로저에서의 캡처는 value type이여도 reference 캡처(카피)를 한다. &lt;strong&gt;변수가 사용되는 시점의 값을 캡처&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;단, capture list를 이용하면 value 카피로 사용 가능하다.&lt;/li&gt;
+  &lt;li&gt;value 캡쳐된 값은 클로저안에서 변경이 불가하다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Reference Capture&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var anInteger = 42
+let testClosure = {
+    // anInteger는 capture되는 순간 reference copy됨
+    print(&quot;Integer is: \(anInteger)&quot;)
+}
+testClosure() // &quot;Integer is 42&quot;
+anInteger = 84
+
+testClosure() // &quot;Integer is 84&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Value Capture&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var anInteger = 42
+
+let testClosure = { [anInteger] in    
+// anInteger는 capture되는 순간 value copy됨
+    print(&quot;Integer is: \(anInteger)&quot;)
+}
+testClosure() // &quot;Integer is 42&quot;
+anInteger = 84
+
+testClosure() // &quot;Integer is 42&quot;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">클로저</summary></entry><entry><title type="html">defer</title><link href="https://sweetfood-dev.github.io/ios/defer/" rel="alternate" type="text/html" title="defer" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/defer</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/defer/">&lt;p&gt;&lt;strong&gt;defer&lt;/strong&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다&lt;/li&gt;
+  &lt;li&gt;defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.&lt;/li&gt;
+  &lt;li&gt;defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다&lt;/li&gt;
+  &lt;li&gt;defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">defer 작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다 defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다. defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다 defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다</summary></entry><entry><title type="html">[백준 11722] 가장 긴 감소하는 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/" rel="alternate" type="text/html" title="[백준 11722] 가장 긴 감소하는 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11722&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;
+이전 문제 11053, 11055와 사실상 같은 문제&lt;br /&gt;
+&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/&quot;&gt;11053&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/&quot;&gt;11055&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
+    let arr = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
+    var map = [Int](repeating:1, count: n)
+    
+    for i in 0 ..&amp;lt; arr.count {
+        for j in 0 ..&amp;lt; i {
+            if arr[i] &amp;lt; arr[j] {
+                map[i] = max(map[i], map[j] + 1)
+            }
+        }
+    }
+    
+    print(map.max()!)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11055] 가장 큰 증가 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/" rel="alternate" type="text/html" title="[백준 11055] 가장 큰 증가 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11055&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
 
@@ -162,28 +265,6 @@ for i in 0 ..&amp;lt; arr.count {
         for j in 0 ..&amp;lt; i {
             if arr[i] &amp;gt; arr[j] {
                 map[i] = max(map[i], map[j] + arr[i])
-            }
-        }
-    }
-    
-    print(map.max()!)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11722] 가장 긴 감소하는 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/" rel="alternate" type="text/html" title="[백준 11722] 가장 긴 감소하는 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11722&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;
-이전 문제 11053, 11055와 사실상 같은 문제&lt;br /&gt;
-&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/&quot;&gt;11053&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/&quot;&gt;11055&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
-    let arr = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-    var map = [Int](repeating:1, count: n)
-    
-    for i in 0 ..&amp;lt; arr.count {
-        for j in 0 ..&amp;lt; i {
-            if arr[i] &amp;lt; arr[j] {
-                map[i] = max(map[i], map[j] + 1)
             }
         }
     }
@@ -271,7 +352,80 @@ D[n] = max(D[n], D[k] + 1)로 갱신한다&lt;br /&gt;&lt;/p&gt;
     return -1
 }
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="Search" /><category term="LIS" /><summary type="html">정렬된 배열에서 원소 x를 찾고자 할 때 사용</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="Search" /><category term="LIS" /><summary type="html">정렬된 배열에서 원소 x를 찾고자 할 때 사용</summary></entry><entry><title type="html">[백준 9465] 스티커</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/" rel="alternate" type="text/html" title="[백준 9465] 스티커" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ%209465-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9465&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;이번 포스트 부터 문제와 입력/출력은 따로 작성하지 않겠습니다 상단 링크에서 확인해주세요!&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;스티커를 선택하는 방법은 3가지가 있다&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;아무것도 선택 안함&lt;/th&gt;
+      &lt;th&gt;위에만 선택&lt;/th&gt;
+      &lt;th&gt;아래만 선택&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;o&lt;/td&gt;
+      &lt;td&gt;x&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;o&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;그리고 몇 가지 정의를 한다 &lt;br /&gt;
+W[0][N] : 첫 번째 행의 N 번째 숫자&lt;br /&gt;
+W[1][N] : 두 번째 행의 N 번째 숫자 &lt;br /&gt;
+D[0][N] : 아무것도 선택 안했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
+D[1][N] : 첫 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
+D[2][N] : 두 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;경우 1 : N번째 숫자에서 아무것도 선택안할 경우에는 N - 1 번째의 &lt;strong&gt;최대값&lt;/strong&gt; 을 넣는다&lt;br /&gt;
+D[0][N] = max(D[0][N-1],D[1][N-1],D[2][N-1]) &lt;br /&gt;
+경우 2: N번째 숫자에서 첫 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
+N-1번째의 두 번째 행을 선택했을 경우의 최대값중 큰값과 첫번째 행 W[0][N]을 더한다&lt;br /&gt;
+D[1][N] = max(D[0][N-1],D[2][N-1]) + W[0][N]&lt;br /&gt;
+경우 3: N번째 숫자에서 두 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
+N-1번째의 첫 번째 행을 선택했을 경우의 최대값중 큰값과 두 번째 행 W[1][N]을 더한다&lt;br /&gt;
+D[2][N] = max(D[0][N-1],D[1][N-1]) + W[1][N]&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int, arr: [[Int]]) {
+    let size = n
+    var res = [[Int]](repeating:[Int](repeating:0, count: size), count: 3)
+    res[1][0] = arr[0][0]
+    res[2][0] = arr[1][0]
+    for i in 1 ..&amp;lt; size {
+        res[0][i] = max(max(res[1][i-1], res[2][i-1]), res[0][i-1])
+        res[1][i] = max(res[0][i-1], res[2][i-1]) + arr[0][i]
+        res[2][i] = max(res[0][i-1], res[1][i-1]) + arr[1][i]
+    }
+    
+    let result = max(max(res[0][size - 1], res[1][size - 1]), res[2][size - 1])
+    print(result)
+}
+
+if let tc = Int(readLine()!) {
+    for _ in 0 ..&amp;lt; tc {
+        let size = Int(readLine()!)!
+        let col1 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
+        let col2 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
+        var arr = [[Int]]()
+        arr.append(col1)
+        arr.append(col2)
+        solve(n: size, arr: arr)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -367,79 +521,6 @@ D[3] 일 때 : 총 3가지의 경우의 수가 있다.&lt;br /&gt;&lt;/p&gt;
     
     print(dp[n])
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 9465] 스티커</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/" rel="alternate" type="text/html" title="[백준 9465] 스티커" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ%209465-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9465&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;이번 포스트 부터 문제와 입력/출력은 따로 작성하지 않겠습니다 상단 링크에서 확인해주세요!&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;스티커를 선택하는 방법은 3가지가 있다&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;아무것도 선택 안함&lt;/th&gt;
-      &lt;th&gt;위에만 선택&lt;/th&gt;
-      &lt;th&gt;아래만 선택&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;o&lt;/td&gt;
-      &lt;td&gt;x&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;o&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;그리고 몇 가지 정의를 한다 &lt;br /&gt;
-W[0][N] : 첫 번째 행의 N 번째 숫자&lt;br /&gt;
-W[1][N] : 두 번째 행의 N 번째 숫자 &lt;br /&gt;
-D[0][N] : 아무것도 선택 안했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
-D[1][N] : 첫 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
-D[2][N] : 두 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;경우 1 : N번째 숫자에서 아무것도 선택안할 경우에는 N - 1 번째의 &lt;strong&gt;최대값&lt;/strong&gt; 을 넣는다&lt;br /&gt;
-D[0][N] = max(D[0][N-1],D[1][N-1],D[2][N-1]) &lt;br /&gt;
-경우 2: N번째 숫자에서 첫 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
-N-1번째의 두 번째 행을 선택했을 경우의 최대값중 큰값과 첫번째 행 W[0][N]을 더한다&lt;br /&gt;
-D[1][N] = max(D[0][N-1],D[2][N-1]) + W[0][N]&lt;br /&gt;
-경우 3: N번째 숫자에서 두 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
-N-1번째의 첫 번째 행을 선택했을 경우의 최대값중 큰값과 두 번째 행 W[1][N]을 더한다&lt;br /&gt;
-D[2][N] = max(D[0][N-1],D[1][N-1]) + W[1][N]&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int, arr: [[Int]]) {
-    let size = n
-    var res = [[Int]](repeating:[Int](repeating:0, count: size), count: 3)
-    res[1][0] = arr[0][0]
-    res[2][0] = arr[1][0]
-    for i in 1 ..&amp;lt; size {
-        res[0][i] = max(max(res[1][i-1], res[2][i-1]), res[0][i-1])
-        res[1][i] = max(res[0][i-1], res[2][i-1]) + arr[0][i]
-        res[2][i] = max(res[0][i-1], res[1][i-1]) + arr[1][i]
-    }
-    
-    let result = max(max(res[0][size - 1], res[1][size - 1]), res[2][size - 1])
-    print(result)
-}
-
-if let tc = Int(readLine()!) {
-    for _ in 0 ..&amp;lt; tc {
-        let size = Int(readLine()!)!
-        let col1 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-        let col2 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-        var arr = [[Int]]()
-        arr.append(col1)
-        arr.append(col2)
-        solve(n: size, arr: arr)
-    }
-}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 10844] 쉬운 계단 수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/" rel="alternate" type="text/html" title="[백준 10844] 쉬운 계단 수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
@@ -513,230 +594,4 @@ K == 9 : 8일 경우만 더해 준다 ( 즉 N-1[8]) &lt;br /&gt;&lt;/p&gt;
     
     print(result % mod)
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11057] 오르막 수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP/" rel="alternate" type="text/html" title="[백준 11057] 오르막 수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11057&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
-오르막 수는 수의 자리가 오름차순을 이루는 수를 말한다. 이때, 인접한 수가 같아도 오름차순으로 친다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어, 2234와 3678, 11119는 오르막 수이지만, 2232, 3676, 91111은 오르막 수가 아니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;수의 길이 N이 주어졌을 때, 오르막 수의 개수를 구하는 프로그램을 작성하시오. 수는 0으로 시작할 수 있다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N (1 ≤ N ≤ 1,000)이 주어진다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 길이가 N인 오르막 수의 개수를 10,007로 나눈 나머지를 출력한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;N == 1일 때,  아래와 같다&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Index&lt;/th&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;th&gt;6&lt;/th&gt;
-      &lt;th&gt;7&lt;/th&gt;
-      &lt;th&gt;8&lt;/th&gt;
-      &lt;th&gt;9&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;오르막 수의 개수&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;br /&gt;
-N == 2일 때, 숫자의 길이는 2개 즉 ㅁㅁ 으로 구성되어지고&lt;br /&gt;
-이 때 K == 0인 경우&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;뒤의 숫자&lt;/th&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;th&gt;6&lt;/th&gt;
-      &lt;th&gt;7&lt;/th&gt;
-      &lt;th&gt;8&lt;/th&gt;
-      &lt;th&gt;9&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;결과&lt;/td&gt;
-      &lt;td&gt;00&lt;/td&gt;
-      &lt;td&gt;01&lt;/td&gt;
-      &lt;td&gt;02&lt;/td&gt;
-      &lt;td&gt;03&lt;/td&gt;
-      &lt;td&gt;04&lt;/td&gt;
-      &lt;td&gt;05&lt;/td&gt;
-      &lt;td&gt;06&lt;/td&gt;
-      &lt;td&gt;07&lt;/td&gt;
-      &lt;td&gt;08&lt;/td&gt;
-      &lt;td&gt;09&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;N == 2 &amp;amp;&amp;amp; K == 0 &lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Index&lt;/th&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;th&gt;6&lt;/th&gt;
-      &lt;th&gt;7&lt;/th&gt;
-      &lt;th&gt;8&lt;/th&gt;
-      &lt;th&gt;9&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;오르막 수의 개수&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;K == 1인 경우&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;뒤의 숫자&lt;/th&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;th&gt;6&lt;/th&gt;
-      &lt;th&gt;7&lt;/th&gt;
-      &lt;th&gt;8&lt;/th&gt;
-      &lt;th&gt;9&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;결과&lt;/td&gt;
-      &lt;td&gt;X&lt;/td&gt;
-      &lt;td&gt;11&lt;/td&gt;
-      &lt;td&gt;12&lt;/td&gt;
-      &lt;td&gt;13&lt;/td&gt;
-      &lt;td&gt;14&lt;/td&gt;
-      &lt;td&gt;15&lt;/td&gt;
-      &lt;td&gt;16&lt;/td&gt;
-      &lt;td&gt;17&lt;/td&gt;
-      &lt;td&gt;18&lt;/td&gt;
-      &lt;td&gt;19&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;N == 2 &amp;amp;&amp;amp; K == 0 &lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Index&lt;/th&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;th&gt;6&lt;/th&gt;
-      &lt;th&gt;7&lt;/th&gt;
-      &lt;th&gt;8&lt;/th&gt;
-      &lt;th&gt;9&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;오르막 수의 개수&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;보는 것과 같이 k 숫자의 뒤에 k ~ 9 까지가 붙어 오르막수를 만들 수 있다&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이를 수식으로 만들면&lt;br /&gt;
-N[K] = N-1[K] + N-1[K+1] + N-1[K+2] ….. N - 1[9]&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이를 이용해 그대로 코드로 구현&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int) {
-    if n == 1 { // n이 1이면 10개
-        print(10)
-        return
-    }
-    let mod = 1_000_7 // 정답에 나머지값을 계산해 출력
-    var map = Array(repeating:Array(repeating:0, count: 10), count: 1001)
-    for i in 0 ... 9 {
-        map[1][i] = 1
-    }
-    for i in 2 ... n {
-        for j in 0 ... 9 {
-            for k in j ... 9 { // j가 0 이면 0 ~ 9 까지, j가 1이면 1 ~ 9 까지 
-                map[i][j] += map[i-1][k] % mod
-            }
-        }
-    }
-    print(map[n].reduce(0, +) % mod)
-}
-
-
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry></feed>

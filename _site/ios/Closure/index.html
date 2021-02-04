@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>ARC 및 참조 타입 - 공부 그리고 기록</title>
-<meta name="description" content="ARC Swift에서 메모리를 자동으로 관리  특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다">
+<!-- begin _includes/seo.html --><title>클로저 - 공부 그리고 기록</title>
+<meta name="description" content="클로저">
 
 
   <meta name="author" content="권지수">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부 그리고 기록">
-<meta property="og:title" content="ARC 및 참조 타입">
-<meta property="og:url" content="https://sweetfood-dev.github.io/ios/ARC/">
+<meta property="og:title" content="클로저">
+<meta property="og:url" content="https://sweetfood-dev.github.io/ios/Closure/">
 
 
-  <meta property="og:description" content="ARC Swift에서 메모리를 자동으로 관리  특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다">
+  <meta property="og:description" content="클로저">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="https://sweetfood-dev.github.io/ios/ARC/">
+<link rel="canonical" href="https://sweetfood-dev.github.io/ios/Closure/">
 
 
 
@@ -188,7 +188,7 @@
     
       
       
-        <li class="current">ARC 및 참조 타입</li>
+        <li class="current">클로저</li>
       
     
   </ol>
@@ -326,15 +326,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="ARC 및 참조 타입">
-    <meta itemprop="description" content="ARCSwift에서 메모리를 자동으로 관리 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만참조 순환 즉, Memory Leak을 발생시킬 수 있다">
+    <meta itemprop="headline" content="클로저">
+    <meta itemprop="description" content="클로저">
     <meta itemprop="datePublished" content="2021-02-04T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">ARC 및 참조 타입
+          <h1 id="page-title" class="page__title" itemprop="headline">클로저
 </h1>
           
 
@@ -362,121 +362,88 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><strong>ARC</strong>
-Swift에서 메모리를 자동으로 관리 <br />
-특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.<br />
-컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만<br />
-참조 순환 즉, Memory Leak을 발생시킬 수 있다<br />
+        <p><strong>클로저</strong><br />
 <br /></p>
 
-<p><strong>순환 참조가 발생하는 경우</strong><br /></p>
 <ol>
-  <li>프로퍼티에서 인스턴스를 서로 강하게 참조<br /></li>
+  <li>클로저의 형태
+    <ul>
+      <li>이름을 가진 어떤 값도 캡처하지 않는 <strong>전역 함수</strong></li>
+      <li>이름을 가진 자신을 감싸고 있는 함수에서 값을 캡쳐해 가질 수 있는 <strong>중첩 함수</strong></li>
+      <li>이름이 없으며 주변 환경의 값을 캡처해 가질 수 있는 <strong>클로저 표현식</strong></li>
+    </ul>
+  </li>
+  <li>@escaping
+    <ul>
+      <li>인자값으로 전달된 클로저를 저장해 두었다가 다른 곳에서도 실행할 수 있도록 허용해주는 속성</li>
+      <li>인자값으로 전달된 클로저는 기본적으로 탈출불가의 성격을 가진다</li>
+      <li>이는 <strong>함수 내에서, 직접 실행을 위해서만 사용</strong>해야하는 것을 의미한다</li>
+      <li>중첩된 내부 함수에서도 사용이 불가하다</li>
+    </ul>
+  </li>
 </ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class App {
-    var os : iOS?
-    
-    deinit {
-        print("app deinit")
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func outerFunc( c: () -&gt; () ) -&gt; () -&gt; (){
+    c()
+    func innerFunc() {
+        c()
     }
+		// innerFunc() 안에서 매개변수 c를 호출하고 있기 때문에 에러 발생
+    return innerFunc 
 }
 
-class iOS {
-    var applications : App?
-    
-    deinit {
-        print("ios deinit")
-    }
+
+let inner = outerFunc {
+    print("run func")
 }
 
-var app : App? = App()
-var ios : iOS? = iOS()
 
-app?.os = ios
-ios?.applications = app
-
-
-app = nil
-ios = nil
+inner()
 </code></pre></div></div>
 
-<p>위 코드에서 각각 프로퍼티 <strong>os, applications</strong>가 <strong>App, iOS</strong> 인스턴스를 참조하여<br />
-App, iOS의 RC는 1씩 증가한 1인 상태이다<br />
-그 상태에서 참조 변수 app,ios가 nil로 변경되어 프로퍼티에 접근할 수 없어 순환참조가 발생하여 Memory Leak발생<br />
+<p>이러한 제약조건을 모두 제거하여 사용 가능 하게 만들어 주는 것이 <strong>@escaping</strong> 속성이다<br />
+아래와 같은 상황에서 사용 <br /></p>
+<ul>
+  <li>완료에 따른 처리</li>
+  <li>비동기로 실행 시 함수 사이의 실행 순서를 정할 수 있음
 <br />
-<br /></p>
-<ol>
-  <li>클로저에서 참조하는 경우<br />
-<br /></li>
-</ol>
+    <ol>
+      <li>값의 캡처</li>
+    </ol>
+  </li>
+  <li>클로저 내부에서 사용되는 외부 변수의 값을 내부적으로 저장, 이를 <strong>캡처</strong>되었다고 한다</li>
+  <li>클로저에서의 캡처는 value type이여도 reference 캡처(카피)를 한다. <strong>변수가 사용되는 시점의 값을 캡처</strong></li>
+  <li>단, capture list를 이용하면 value 카피로 사용 가능하다.</li>
+  <li>value 캡쳐된 값은 클로저안에서 변경이 불가하다</li>
+</ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class App {
-    var os : iOS?
-    let name : String
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    lazy var info: () -&gt; String = {
-        return self.name
-    }
-    deinit {
-        print("app deinit")
-    }
+<p><strong>Reference Capture</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var anInteger = 42
+let testClosure = {
+    // anInteger는 capture되는 순간 reference copy됨
+    print("Integer is: \(anInteger)")
 }
+testClosure() // "Integer is 42"
+anInteger = 84
 
-var app : App? = App(name: "Wallet")
-app = nil
-
+testClosure() // "Integer is 84"
 </code></pre></div></div>
 
-<p>위의 경우처럼 info 안에서 self를 참조 하고 있을때, <br />
-참조변수 app을 nil로 변경되면 클로저와 인스턴스 사이 순환참조가 발생된다<br />
-<br />
-<br /></p>
+<p><strong>Value Capture</strong></p>
 
-<p><strong>순환 참조 방지 하는 방법</strong> <br /></p>
-<ol>
-  <li>weak, unowend 사용
-    <ul>
-      <li>해당 키워드들로 인스턴스를 참조시 RC가 증가하지 않는다</li>
-      <li>weak은 아래서 설명하겠지만 옵셔널 타입으로 옵셔널 바인딩, 체이닝을 사용하여 런타임 크래시를 방지할 수 있다</li>
-      <li>unowend는 생명주기가 길거나 인스턴스가 존재함을 확신할 때 사용된다</li>
-    </ul>
-  </li>
-  <li>클로저에서 캡처리스트 작성
-    <ul>
-      <li>캡처리스트란 클로저가 참조하는 대상, 참조하는 방식을 지정하는 형식이다</li>
-      <li>즉, 강하게 캡처(참조)할지 약하게 캡처(참조)할지 지정이 가능하다</li>
-    </ul>
-  </li>
-</ol>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var anInteger = 42
 
-<p><br />
-<strong>참조 방식</strong></p>
-<ol>
-  <li>strong
-    <ul>
-      <li>객체를 <strong>소유</strong>하여 RC를 증가시키는 프로퍼티</li>
-      <li>ARC로 인한 메모리 해제를 피하고 객체를 안전하게 사용할 때 사용</li>
-    </ul>
-  </li>
-  <li>weak
-    <ul>
-      <li>객체를 소유하지 않고 <strong>주소값</strong>만을 가지고 있는 포인터 개념</li>
-      <li>메모리에서 해제될 경우 자동으로 <strong>nil</strong>로 초기화되기 때문에 <strong>옵셔널 타입</strong>으로 사용해야한다</li>
-    </ul>
-  </li>
-  <li>unowend
-    <ul>
-      <li>weak과 비슷한 개념이지만 nil값이 될 수 없기 때문에 옵셔널 타입으로 선언하면 안된다</li>
-    </ul>
-  </li>
-</ol>
+let testClosure = { [anInteger] in    
+// anInteger는 capture되는 순간 value copy됨
+    print("Integer is: \(anInteger)")
+}
+testClosure() // "Integer is 42"
+anInteger = 84
 
-<p>잘못된 설명이 있으면 지적 부탁드립니다.<br /></p>
+testClosure() // "Integer is 42"
+
+</code></pre></div></div>
 
         
       </section>
@@ -516,22 +483,22 @@ app = nil
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=ARC+%EB%B0%8F+%EC%B0%B8%EC%A1%B0+%ED%83%80%EC%9E%85%20https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FARC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%ED%81%B4%EB%A1%9C%EC%A0%80%20https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FClosure%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FARC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FClosure%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FARC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FClosure%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/dp/lis/BOJ11722-DP/" class="pagination--pager" title="[백준 11722] 가장 긴 감소하는 부분 수열
+      <a href="/ios/ARC/" class="pagination--pager" title="ARC 및 참조 타입
 ">이전</a>
     
     
-      <a href="/ios/Closure/" class="pagination--pager" title="클로저
+      <a href="/ios/defer/" class="pagination--pager" title="defer
 ">다음</a>
     
   </nav>
@@ -600,7 +567,7 @@ app = nil
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/ios/Closure/" rel="permalink">클로저
+        <a href="/ios/ARC/" rel="permalink">ARC 및 참조 타입
 </a>
       
     </h2>
@@ -625,9 +592,10 @@ app = nil
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">클로저
-
-</p>
+    <p class="archive__item-excerpt" itemprop="description">ARC
+Swift에서 메모리를 자동으로 관리 
+특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.
+컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만...</p>
   </article>
 </div>
 

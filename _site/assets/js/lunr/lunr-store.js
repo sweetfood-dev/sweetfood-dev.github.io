@@ -95,6 +95,12 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/ios/ARC/",
         "teaser": null
       },{
+        "title": "클로저",
+        "excerpt":"클로저         클로저의 형태            이름을 가진 어떤 값도 캡처하지 않는 전역 함수       이름을 가진 자신을 감싸고 있는 함수에서 값을 캡쳐해 가질 수 있는 중첩 함수       이름이 없으며 주변 환경의 값을 캡처해 가질 수 있는 클로저 표현식           @escaping            인자값으로 전달된 클로저를 저장해 두었다가 다른 곳에서도 실행할 수 있도록 허용해주는 속성       인자값으로 전달된 클로저는 기본적으로 탈출불가의 성격을 가진다       이는 함수 내에서, 직접 실행을 위해서만 사용해야하는 것을 의미한다       중첩된 내부 함수에서도 사용이 불가하다           func outerFunc( c: () -&gt; () ) -&gt; () -&gt; (){     c()     func innerFunc() {         c()     } \t\t// innerFunc() 안에서 매개변수 c를 호출하고 있기 때문에 에러 발생     return innerFunc  }   let inner = outerFunc {     print(\"run func\") }   inner()   이러한 제약조건을 모두 제거하여 사용 가능 하게 만들어 주는 것이 @escaping 속성이다  아래와 같은 상황에서 사용       완료에 따른 처리   비동기로 실행 시 함수 사이의 실행 순서를 정할 수 있음              값의 캡처           클로저 내부에서 사용되는 외부 변수의 값을 내부적으로 저장, 이를 캡처되었다고 한다   클로저에서의 캡처는 value type이여도 reference 캡처(카피)를 한다. 변수가 사용되는 시점의 값을 캡처   단, capture list를 이용하면 value 카피로 사용 가능하다.   value 캡쳐된 값은 클로저안에서 변경이 불가하다   Reference Capture   var anInteger = 42 let testClosure = {     // anInteger는 capture되는 순간 reference copy됨     print(\"Integer is: \\(anInteger)\") } testClosure() // \"Integer is 42\" anInteger = 84  testClosure() // \"Integer is 84\"   Value Capture   var anInteger = 42  let testClosure = { [anInteger] in     // anInteger는 capture되는 순간 value copy됨     print(\"Integer is: \\(anInteger)\") } testClosure() // \"Integer is 42\" anInteger = 84  testClosure() // \"Integer is 42\"   ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/Closure/",
+        "teaser": null
+      },{
         "title": "defer",
         "excerpt":"defer        작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다   defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다  ","categories": ["iOS"],
         "tags": [],
