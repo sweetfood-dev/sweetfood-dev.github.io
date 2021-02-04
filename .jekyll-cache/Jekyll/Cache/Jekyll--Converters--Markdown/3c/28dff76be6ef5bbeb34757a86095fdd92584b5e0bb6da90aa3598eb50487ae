@@ -1,0 +1,116 @@
+I"�<p><strong>ARC</strong>
+Swift에서 메모리를 자동으로 관리 <br />
+특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.<br />
+컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만<br />
+참조 순환 즉, Memory Leak을 발생시킬 수 있다<br />
+<br /></p>
+
+<p><strong>순환 참조가 발생하는 경우</strong><br /></p>
+<ol>
+  <li>프로퍼티에서 인스턴스를 서로 강하게 참조<br /></li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class App {
+    var os : iOS?
+    
+    deinit {
+        print("app deinit")
+    }
+}
+
+class iOS {
+    var applications : App?
+    
+    deinit {
+        print("ios deinit")
+    }
+}
+
+var app : App? = App()
+var ios : iOS? = iOS()
+
+app?.os = ios
+ios?.applications = app
+
+
+app = nil
+ios = nil
+</code></pre></div></div>
+
+<p>위 코드에서 각각 프로퍼티 <strong>os, applications</strong>가 <strong>App, iOS</strong> 인스턴스를 참조하여<br />
+App, iOS의 RC는 1씩 증가한 1인 상태이다<br />
+그 상태에서 참조 변수 app,ios가 nil로 변경되어 프로퍼티에 접근할 수 없어 순환참조가 발생하여 Memory Leak발생<br />
+<br />
+<br /></p>
+<ol>
+  <li>클로저에서 참조하는 경우<br />
+<br /></li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class App {
+    var os : iOS?
+    let name : String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    lazy var info: () -&gt; String = {
+        return self.name
+    }
+    deinit {
+        print("app deinit")
+    }
+}
+
+var app : App? = App(name: "Wallet")
+app = nil
+
+</code></pre></div></div>
+
+<p>위의 경우처럼 info 안에서 self를 참조 하고 있을때, <br />
+참조변수 app을 nil로 변경되면 클로저와 인스턴스 사이 순환참조가 발생된다<br />
+<br />
+<br /></p>
+
+<p><strong>순환 참조 방지 하는 방법</strong> <br /></p>
+<ol>
+  <li>weak, unowend 사용
+    <ul>
+      <li>해당 키워드들로 인스턴스를 참조시 RC가 증가하지 않는다</li>
+      <li>weak은 아래서 설명하겠지만 옵셔널 타입으로 옵셔널 바인딩, 체이닝을 사용하여 런타임 크래시를 방지할 수 있다</li>
+      <li>unowend는 생명주기가 길거나 인스턴스가 존재함을 확신할 때 사용된다</li>
+    </ul>
+  </li>
+  <li>클로저에서 캡처리스트 작성
+    <ul>
+      <li>캡처리스트란 클로저가 참조하는 대상, 참조하는 방식을 지정하는 형식이다</li>
+      <li>즉, 강하게 캡처(참조)할지 약하게 캡처(참조)할지 지정이 가능하다</li>
+    </ul>
+  </li>
+</ol>
+
+<p><br />
+<strong>참조 방식</strong></p>
+<ol>
+  <li>strong
+    <ul>
+      <li>객체를 <strong>소유</strong>하여 RC를 증가시키는 프로퍼티</li>
+      <li>ARC로 인한 메모리 해제를 피하고 객체를 안전하게 사용할 때 사용</li>
+    </ul>
+  </li>
+  <li>weak
+    <ul>
+      <li>객체를 소유하지 않고 <strong>주소값</strong>만을 가지고 있는 포인터 개념</li>
+      <li>메모리에서 해제될 경우 자동으로 <strong>nil</strong>로 초기화되기 때문에 <strong>옵셔널 타입</strong>으로 사용해야한다</li>
+    </ul>
+  </li>
+  <li>unowend
+    <ul>
+      <li>weak과 비슷한 개념이지만 nil값이 될 수 없기 때문에 옵셔널 타입으로 선언하면 안된다</li>
+    </ul>
+  </li>
+</ol>
+
+<p>잘못된 설명이 있으면 지적 부탁드립니다.<br /></p>
+:ET

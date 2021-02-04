@@ -1,4 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-01T16:45:41+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">[백준 11055] 가장 큰 증가 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/" rel="alternate" type="text/html" title="[백준 11055] 가장 큰 증가 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11055&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-04T18:46:31+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">defer</title><link href="https://sweetfood-dev.github.io/ios/defer/" rel="alternate" type="text/html" title="defer" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/defer</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/defer/">&lt;p&gt;&lt;strong&gt;defer&lt;/strong&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다&lt;/li&gt;
+  &lt;li&gt;defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.&lt;/li&gt;
+  &lt;li&gt;defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다&lt;/li&gt;
+  &lt;li&gt;defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">defer 작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다 defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다. defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다 defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다</summary></entry><entry><title type="html">ARC 및 참조 타입</title><link href="https://sweetfood-dev.github.io/ios/ARC/" rel="alternate" type="text/html" title="ARC 및 참조 타입" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/ARC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/ARC/">&lt;p&gt;&lt;strong&gt;ARC&lt;/strong&gt;
+Swift에서 메모리를 자동으로 관리 &lt;br /&gt;
+특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.&lt;br /&gt;
+컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만&lt;br /&gt;
+참조 순환 즉, Memory Leak을 발생시킬 수 있다&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;순환 참조가 발생하는 경우&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;프로퍼티에서 인스턴스를 서로 강하게 참조&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class App {
+    var os : iOS?
+    
+    deinit {
+        print(&quot;app deinit&quot;)
+    }
+}
+
+class iOS {
+    var applications : App?
+    
+    deinit {
+        print(&quot;ios deinit&quot;)
+    }
+}
+
+var app : App? = App()
+var ios : iOS? = iOS()
+
+app?.os = ios
+ios?.applications = app
+
+
+app = nil
+ios = nil
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 코드에서 각각 프로퍼티 &lt;strong&gt;os, applications&lt;/strong&gt;가 &lt;strong&gt;App, iOS&lt;/strong&gt; 인스턴스를 참조하여&lt;br /&gt;
+App, iOS의 RC는 1씩 증가한 1인 상태이다&lt;br /&gt;
+그 상태에서 참조 변수 app,ios가 nil로 변경되어 프로퍼티에 접근할 수 없어 순환참조가 발생하여 Memory Leak발생&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;클로저에서 참조하는 경우&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class App {
+    var os : iOS?
+    let name : String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    lazy var info: () -&amp;gt; String = {
+        return self.name
+    }
+    deinit {
+        print(&quot;app deinit&quot;)
+    }
+}
+
+var app : App? = App(name: &quot;Wallet&quot;)
+app = nil
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위의 경우처럼 info 안에서 self를 참조 하고 있을때, &lt;br /&gt;
+참조변수 app을 nil로 변경되면 클로저와 인스턴스 사이 순환참조가 발생된다&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;순환 참조 방지 하는 방법&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;weak, unowend 사용
+    &lt;ul&gt;
+      &lt;li&gt;해당 키워드들로 인스턴스를 참조시 RC가 증가하지 않는다&lt;/li&gt;
+      &lt;li&gt;weak은 아래서 설명하겠지만 옵셔널 타입으로 옵셔널 바인딩, 체이닝을 사용하여 런타임 크래시를 방지할 수 있다&lt;/li&gt;
+      &lt;li&gt;unowend는 생명주기가 길거나 인스턴스가 존재함을 확신할 때 사용된다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;클로저에서 캡처리스트 작성
+    &lt;ul&gt;
+      &lt;li&gt;캡처리스트란 클로저가 참조하는 대상, 참조하는 방식을 지정하는 형식이다&lt;/li&gt;
+      &lt;li&gt;즉, 강하게 캡처(참조)할지 약하게 캡처(참조)할지 지정이 가능하다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;strong&gt;참조 방식&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;strong
+    &lt;ul&gt;
+      &lt;li&gt;객체를 &lt;strong&gt;소유&lt;/strong&gt;하여 RC를 증가시키는 프로퍼티&lt;/li&gt;
+      &lt;li&gt;ARC로 인한 메모리 해제를 피하고 객체를 안전하게 사용할 때 사용&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;weak
+    &lt;ul&gt;
+      &lt;li&gt;객체를 소유하지 않고 &lt;strong&gt;주소값&lt;/strong&gt;만을 가지고 있는 포인터 개념&lt;/li&gt;
+      &lt;li&gt;메모리에서 해제될 경우 자동으로 &lt;strong&gt;nil&lt;/strong&gt;로 초기화되기 때문에 &lt;strong&gt;옵셔널 타입&lt;/strong&gt;으로 사용해야한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;unowend
+    &lt;ul&gt;
+      &lt;li&gt;weak과 비슷한 개념이지만 nil값이 될 수 없기 때문에 옵셔널 타입으로 선언하면 안된다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;잘못된 설명이 있으면 지적 부탁드립니다.&lt;br /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">ARC Swift에서 메모리를 자동으로 관리 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다</summary></entry><entry><title type="html">[백준 11055] 가장 큰 증가 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/" rel="alternate" type="text/html" title="[백준 11055] 가장 큰 증가 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11055&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
 
@@ -69,36 +190,7 @@ for i in 0 ..&amp;lt; arr.count {
     
     print(map.max()!)
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">이진 탐색</title><link href="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/" rel="alternate" type="text/html" title="이진 탐색" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/">&lt;p&gt;&lt;strong&gt;정렬된 배열&lt;/strong&gt;에서 원소 x를 찾고자 할 때 사용&lt;br /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;찾고자 하는 x를 중간 원소와 비교&lt;/li&gt;
-  &lt;li&gt;x가 중간 원소보다 크다면 오른쪽 절반을&lt;/li&gt;
-  &lt;li&gt;x가 중간 원소보다 작다면 왼쪽 절반을 재탐색한다&lt;/li&gt;
-  &lt;li&gt;1 ~ 3과정을 x를 찾거나 부분 배열의 크기가 0이 될 때까지 반복한다&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func binarySearch(arr: [Int], find: Int) -&amp;gt; Int {
-    var low = 0
-    var high = arr.count - 1
-    var mid : Int
-    
-    while low &amp;lt;= high {
-        mid = (low + high) / 2
-        if arr[mid] &amp;gt; find {
-            high = mid - 1
-        }else if arr[mid] &amp;lt; find {
-            low = mid + 1
-        }else {
-            return mid
-        }
-    }
-    return -1
-}
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="Search" /><category term="LIS" /><summary type="html">정렬된 배열에서 원소 x를 찾고자 할 때 사용</summary></entry><entry><title type="html">[백준 11053] 가장 긴 증가하는 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/" rel="alternate" type="text/html" title="[백준 11053] 가장 긴 증가하는 수열" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11053&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11053] 가장 긴 증가하는 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/" rel="alternate" type="text/html" title="[백준 11053] 가장 긴 증가하는 수열" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11053&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -150,7 +242,36 @@ D[n] = max(D[n], D[k] + 1)로 갱신한다&lt;br /&gt;&lt;/p&gt;
     
     print(dp.max()!)
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">이진 탐색</title><link href="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/" rel="alternate" type="text/html" title="이진 탐색" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/">&lt;p&gt;&lt;strong&gt;정렬된 배열&lt;/strong&gt;에서 원소 x를 찾고자 할 때 사용&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;찾고자 하는 x를 중간 원소와 비교&lt;/li&gt;
+  &lt;li&gt;x가 중간 원소보다 크다면 오른쪽 절반을&lt;/li&gt;
+  &lt;li&gt;x가 중간 원소보다 작다면 왼쪽 절반을 재탐색한다&lt;/li&gt;
+  &lt;li&gt;1 ~ 3과정을 x를 찾거나 부분 배열의 크기가 0이 될 때까지 반복한다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func binarySearch(arr: [Int], find: Int) -&amp;gt; Int {
+    var low = 0
+    var high = arr.count - 1
+    var mid : Int
+    
+    while low &amp;lt;= high {
+        mid = (low + high) / 2
+        if arr[mid] &amp;gt; find {
+            high = mid - 1
+        }else if arr[mid] &amp;lt; find {
+            low = mid + 1
+        }else {
+            return mid
+        }
+    }
+    return -1
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="Search" /><category term="LIS" /><summary type="html">정렬된 배열에서 원소 x를 찾고자 할 때 사용</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -392,71 +513,6 @@ K == 9 : 8일 경우만 더해 준다 ( 즉 N-1[8]) &lt;br /&gt;&lt;/p&gt;
     
     print(result % mod)
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2193] 이친수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/" rel="alternate" type="text/html" title="[백준 2193] 이친수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2193&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
-0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다.&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;이친수는 0으로 시작하지 않는다.&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다.&lt;br /&gt;
-예를 들면 1, 10, 100, 101, 1000, 1001 등이 이친수가 된다. 하지만 0010101이나 101101은 각각 1, 2번 규칙에 위배되므로 이친수가 아니다.&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;N(1 ≤ N ≤ 90)이 주어졌을 때, N자리 이친수의 개수를 구하는 프로그램을 작성하시오.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N이 주어진다.&lt;br /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N자리 이친수의 개수를 출력한다.&lt;br /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;N == 1 일 때, 이친수는 1 &lt;br /&gt;
-N == 2 일 때, 이친수는 10 &lt;br /&gt;
-N == 3 일 때, 이친수는 100, 101 &lt;br /&gt;
-N == 4 일 때, 이친수는 1000, 1001, 1010 &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;유심히 보면 규칙이 보인다. &lt;br /&gt;
-N == 4 에서 1000과 1001은 N == 3의 100을 가지고 만들 수 있다. &lt;br /&gt;
-N == 4 에서 1010은 N == 3의 101을 가지고 만들 수 있다. &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;차이점은 뭘까? &lt;br /&gt;
-문제에서 조건 2에 의해 1이 두번 연속으로 나타나면 안된다&lt;br /&gt;
-즉 끝자리가 1이면 다음에 나타나는 수는 0밖에 없고&lt;br /&gt;
-끝 자리가 0이면 다음에 나타나는 수는 0, 1 모두 가능하다 &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;수식을 세워보자!&lt;br /&gt;
-K == 0 일 때&lt;br /&gt;
-N[0] = N -1[0] + N - 1[1] &lt;br /&gt;
-N번째 0으로 끝나는 이친 수의 갯수는 N-1번째 0으로 끝나는 이친수 갯수와 1로 끝나는 이친수 갯수의 합이다&lt;br /&gt;
-N[1] = N-1[0]&lt;br /&gt;
-N번째 1로 끝나는 이친 수의 갯수는 N-1번째 1로 끝나는 이친수 갯수와 같다&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-func solve(n: Int){
-    if n == 1 {
-        print(1)
-        return
-    }
-    
-    var map = Array(repeating:Array(repeating:0, count:2), count: n + 1)
-		//n == 1일 때 이친수는 1 하나뿐
-    map[1][0] = 0 
-    map[1][1] = 1
-    
-    for i in 2 ... n {
-        map[i][0] = map[i-1][0] + map[i-1][1]
-        map[i][1] = map[i-1][0]
-    }
-    
-    print(map[n].reduce(0,+))
-}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11057] 오르막 수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP/" rel="alternate" type="text/html" title="[백준 11057] 오르막 수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ11057-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11057&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
@@ -683,100 +739,4 @@ N[K] = N-1[K] + N-1[K+1] + N-1[K+2] ….. N - 1[9]&lt;br /&gt;&lt;/p&gt;
 }
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 9095] 1, 2, 3 더하기</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP/" rel="alternate" type="text/html" title="[백준 9095] 1, 2, 3 더하기" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9095&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;정수 4를 1, 2, 3의 합으로 나타내는 방법은 총 7가지가 있다. 합을 나타낼 때는 수를 1개 이상 사용해야 한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1+1+1+1&lt;/li&gt;
-  &lt;li&gt;1+1+2&lt;/li&gt;
-  &lt;li&gt;1+2+1&lt;/li&gt;
-  &lt;li&gt;2+1+1&lt;/li&gt;
-  &lt;li&gt;2+2&lt;/li&gt;
-  &lt;li&gt;1+3&lt;/li&gt;
-  &lt;li&gt;3+1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;정수 n이 주어졌을 때, n을 1, 2, 3의 합으로 나타내는 방법의 수를 구하는 프로그램을 작성하시오.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고, 정수 n이 주어진다. n은 양수이며 11보다 작다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;각 테스트 케이스마다, n을 1, 2, 3의 합으로 나타내는 방법의 수를 출력한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;풀이 : 
-1~3의 합으로 정수 N을 나타내는 경우의 수만 구하면된다,  구성은 상관없다는 소리.&lt;/p&gt;
-
-&lt;p&gt;N == 1 일 때 경우의 수 : &lt;br /&gt;
-&lt;strong&gt;1&lt;/strong&gt;&lt;br /&gt;
-N == 2 일 때 경우의 수 : &lt;br /&gt;
-&lt;strong&gt;1 + 1&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;2&lt;/strong&gt;&lt;br /&gt;
-N == 3 일 때 경우의 수 : &lt;br /&gt;
-&lt;strong&gt;1 + 1 + 1&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;1 + 2&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;2 + 1&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;3&lt;/strong&gt;&lt;br /&gt;
- 일 때, &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;N == 4는 다음과 같다&lt;br /&gt;
- N == 4 : &lt;br /&gt;
- &lt;strong&gt;1 + 1 + 1&lt;/strong&gt; + 1 :     3의 경우의 수 + 1 &lt;br /&gt;
- &lt;strong&gt;1 + 1&lt;/strong&gt; + 2 :             2의 경우의 수 + 2&lt;br /&gt;
- &lt;strong&gt;1 + 2&lt;/strong&gt;+ 1 :             3의 경우의 수 + 1&lt;br /&gt;
- &lt;strong&gt;2 + 1&lt;/strong&gt; + 1 :             3의 경우의 수 + 1&lt;br /&gt;
- &lt;strong&gt;2&lt;/strong&gt; + 2 :                     2의 경우의 수 + 2&lt;br /&gt;
- &lt;strong&gt;1&lt;/strong&gt; + 3 :                     1의 경우의 수 + 3&lt;br /&gt;
- &lt;strong&gt;3&lt;/strong&gt; + 1 :                     3의 경우의 수 + 1&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;1의 경우의 수 + 2의 경우의 수 + 3의 경우의 수 의 합과 같다.
- 수식으로 표현하면 N = (N - 3) + (N - 2) + (N - 1) 이므로 이를 그대로 사용!&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; func solve(n : Int) -&amp;gt; Int{
-    if n == 0 { return 0 }
-    else if n == 3 { return 4 }
-    else if n == 2 { return 2 }
-    else if n == 1 { return 1 }
-    var arr = [Int](repeating:0, count: n + 1)
-    arr[1] = 1
-    arr[2] = 2
-    arr[3] = 4
-    for i in 4 ... n {
-        arr[i] = arr[i - 3] + arr[i - 2] + arr[i - 1]
-    }
-    return arr[n]
-}
-
-var map = [Int:Int]()
-map[0] = 0
-map[1] = 1
-map[2] = 2
-map[3] = 4
-func recursive(n : Int) -&amp;gt; Int {
-    if let res = map[n] {
-        return res
-    }
-    
-    map[n] = recursive(n: n - 3) + recursive(n: n - 2) + recursive(n: n - 1)
-    return map[n]!
-}
-if let count = Int(readLine()!){
-    
-    for _ in 0 ..&amp;lt; count {
-        let n = Int(readLine()!)!
-        // 상향식
-        /*print(solve(n: n))*/
-        // 하향식
-        print(recursive(n: n))
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;상향식과 하향식 모두 가능!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry></feed>

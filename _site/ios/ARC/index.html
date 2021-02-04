@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[백준 2193] 이친수 - 공부 그리고 기록</title>
-<meta name="description" content="링크">
+<!-- begin _includes/seo.html --><title>ARC 및 참조 타입 - 공부 그리고 기록</title>
+<meta name="description" content="ARC Swift에서 메모리를 자동으로 관리  특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다">
 
 
   <meta name="author" content="권지수">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부 그리고 기록">
-<meta property="og:title" content="[백준 2193] 이친수">
-<meta property="og:url" content="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/">
+<meta property="og:title" content="ARC 및 참조 타입">
+<meta property="og:url" content="https://sweetfood-dev.github.io/ios/ARC/">
 
 
-  <meta property="og:description" content="링크">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-01-26T00:00:00+09:00">
+  <meta property="og:description" content="ARC Swift에서 메모리를 자동으로 관리  특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2021-02-04T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2193-DP/">
+
+<link rel="canonical" href="https://sweetfood-dev.github.io/ios/ARC/">
 
 
 
@@ -180,7 +180,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#algorithm" itemprop="item"><span itemprop="name">Algorithm</span></a>
+          <a href="/categories/#ios" itemprop="item"><span itemprop="name">Ios</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -188,17 +188,7 @@
     
       
       
-        
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#dp" itemprop="item"><span itemprop="name">Dp</span></a>
-          <meta itemprop="position" content="3" />
-        </li>
-        <span class="sep">/</span>
-      
-    
-      
-      
-        <li class="current">[백준 2193] 이친수</li>
+        <li class="current">ARC 및 참조 타입</li>
       
     
   </ol>
@@ -336,15 +326,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[백준 2193] 이친수">
-    <meta itemprop="description" content="링크">
-    <meta itemprop="datePublished" content="2021-01-26T00:00:00+09:00">
+    <meta itemprop="headline" content="ARC 및 참조 타입">
+    <meta itemprop="description" content="ARCSwift에서 메모리를 자동으로 관리 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만참조 순환 즉, Memory Leak을 발생시킬 수 있다">
+    <meta itemprop="datePublished" content="2021-02-04T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[백준 2193] 이친수
+          <h1 id="page-title" class="page__title" itemprop="headline">ARC 및 참조 타입
 </h1>
           
 
@@ -372,72 +362,121 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><a href="https://www.acmicpc.net/problem/2193">링크</a></p>
+        <p><strong>ARC</strong>
+Swift에서 메모리를 자동으로 관리 <br />
+특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.<br />
+컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만<br />
+참조 순환 즉, Memory Leak을 발생시킬 수 있다<br />
+<br /></p>
 
-<p><strong>문제</strong>
-0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다.<br /></p>
+<p><strong>순환 참조가 발생하는 경우</strong><br /></p>
 <ol>
-  <li>이친수는 0으로 시작하지 않는다.<br /></li>
-  <li>이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다.<br />
-예를 들면 1, 10, 100, 101, 1000, 1001 등이 이친수가 된다. 하지만 0010101이나 101101은 각각 1, 2번 규칙에 위배되므로 이친수가 아니다.<br /></li>
+  <li>프로퍼티에서 인스턴스를 서로 강하게 참조<br /></li>
 </ol>
 
-<p><strong>N(1 ≤ N ≤ 90)이 주어졌을 때, N자리 이친수의 개수를 구하는 프로그램을 작성하시오.</strong><br /></p>
-
-<p><strong>입력</strong><br /></p>
-<blockquote>
-  <p>첫째 줄에 N이 주어진다.<br /></p>
-</blockquote>
-
-<p><strong>출력</strong><br /></p>
-<blockquote>
-  <p>첫째 줄에 N자리 이친수의 개수를 출력한다.<br /></p>
-</blockquote>
-
-<p><strong>풀이</strong> <br /></p>
-
-<p>N == 1 일 때, 이친수는 1 <br />
-N == 2 일 때, 이친수는 10 <br />
-N == 3 일 때, 이친수는 100, 101 <br />
-N == 4 일 때, 이친수는 1000, 1001, 1010 <br /></p>
-
-<p>유심히 보면 규칙이 보인다. <br />
-N == 4 에서 1000과 1001은 N == 3의 100을 가지고 만들 수 있다. <br />
-N == 4 에서 1010은 N == 3의 101을 가지고 만들 수 있다. <br /></p>
-
-<p>차이점은 뭘까? <br />
-문제에서 조건 2에 의해 1이 두번 연속으로 나타나면 안된다<br />
-즉 끝자리가 1이면 다음에 나타나는 수는 0밖에 없고<br />
-끝 자리가 0이면 다음에 나타나는 수는 0, 1 모두 가능하다 <br /></p>
-
-<p>수식을 세워보자!<br />
-K == 0 일 때<br />
-N[0] = N -1[0] + N - 1[1] <br />
-N번째 0으로 끝나는 이친 수의 갯수는 N-1번째 0으로 끝나는 이친수 갯수와 1로 끝나는 이친수 갯수의 합이다<br />
-N[1] = N-1[0]<br />
-N번째 1로 끝나는 이친 수의 갯수는 N-1번째 1로 끝나는 이친수 갯수와 같다<br /></p>
-
-<p><strong>코드</strong> <br /></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-func solve(n: Int){
-    if n == 1 {
-        print(1)
-        return
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class App {
+    var os : iOS?
+    
+    deinit {
+        print("app deinit")
     }
-    
-    var map = Array(repeating:Array(repeating:0, count:2), count: n + 1)
-		//n == 1일 때 이친수는 1 하나뿐
-    map[1][0] = 0 
-    map[1][1] = 1
-    
-    for i in 2 ... n {
-        map[i][0] = map[i-1][0] + map[i-1][1]
-        map[i][1] = map[i-1][0]
-    }
-    
-    print(map[n].reduce(0,+))
 }
+
+class iOS {
+    var applications : App?
+    
+    deinit {
+        print("ios deinit")
+    }
+}
+
+var app : App? = App()
+var ios : iOS? = iOS()
+
+app?.os = ios
+ios?.applications = app
+
+
+app = nil
+ios = nil
 </code></pre></div></div>
+
+<p>위 코드에서 각각 프로퍼티 <strong>os, applications</strong>가 <strong>App, iOS</strong> 인스턴스를 참조하여<br />
+App, iOS의 RC는 1씩 증가한 1인 상태이다<br />
+그 상태에서 참조 변수 app,ios가 nil로 변경되어 프로퍼티에 접근할 수 없어 순환참조가 발생하여 Memory Leak발생<br />
+<br />
+<br /></p>
+<ol>
+  <li>클로저에서 참조하는 경우<br />
+<br /></li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class App {
+    var os : iOS?
+    let name : String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    lazy var info: () -&gt; String = {
+        return self.name
+    }
+    deinit {
+        print("app deinit")
+    }
+}
+
+var app : App? = App(name: "Wallet")
+app = nil
+
+</code></pre></div></div>
+
+<p>위의 경우처럼 info 안에서 self를 참조 하고 있을때, <br />
+참조변수 app을 nil로 변경되면 클로저와 인스턴스 사이 순환참조가 발생된다<br />
+<br />
+<br /></p>
+
+<p><strong>순환 참조 방지 하는 방법</strong> <br /></p>
+<ol>
+  <li>weak, unowend 사용
+    <ul>
+      <li>해당 키워드들로 인스턴스를 참조시 RC가 증가하지 않는다</li>
+      <li>weak은 아래서 설명하겠지만 옵셔널 타입으로 옵셔널 바인딩, 체이닝을 사용하여 런타임 크래시를 방지할 수 있다</li>
+      <li>unowend는 생명주기가 길거나 인스턴스가 존재함을 확신할 때 사용된다</li>
+    </ul>
+  </li>
+  <li>클로저에서 캡처리스트 작성
+    <ul>
+      <li>캡처리스트란 클로저가 참조하는 대상, 참조하는 방식을 지정하는 형식이다</li>
+      <li>즉, 강하게 캡처(참조)할지 약하게 캡처(참조)할지 지정이 가능하다</li>
+    </ul>
+  </li>
+</ol>
+
+<p><br />
+<strong>참조 방식</strong></p>
+<ol>
+  <li>strong
+    <ul>
+      <li>객체를 <strong>소유</strong>하여 RC를 증가시키는 프로퍼티</li>
+      <li>ARC로 인한 메모리 해제를 피하고 객체를 안전하게 사용할 때 사용</li>
+    </ul>
+  </li>
+  <li>weak
+    <ul>
+      <li>객체를 소유하지 않고 <strong>주소값</strong>만을 가지고 있는 포인터 개념</li>
+      <li>메모리에서 해제될 경우 자동으로 <strong>nil</strong>로 초기화되기 때문에 <strong>옵셔널 타입</strong>으로 사용해야한다</li>
+    </ul>
+  </li>
+  <li>unowend
+    <ul>
+      <li>weak과 비슷한 개념이지만 nil값이 될 수 없기 때문에 옵셔널 타입으로 선언하면 안된다</li>
+    </ul>
+  </li>
+</ol>
+
+<p>잘못된 설명이 있으면 지적 부탁드립니다.<br /></p>
 
         
       </section>
@@ -460,18 +499,14 @@ func solve(n: Int){
     
       
       
-      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/categories/#dp" class="page__taxonomy-item" rel="tag">DP</a>
+      <a href="/categories/#ios" class="page__taxonomy-item" rel="tag">iOS</a>
     
     </span>
   </p>
 
 
         
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-01-26T00:00:00+09:00">January 26, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-02-04T00:00:00+09:00">February 4, 2021</time></p>
 
 
       </footer>
@@ -481,22 +516,22 @@ func solve(n: Int){
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5B%EB%B0%B1%EC%A4%80+2193%5D+%EC%9D%B4%EC%B9%9C%EC%88%98%20https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ2193-DP%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=ARC+%EB%B0%8F+%EC%B0%B8%EC%A1%B0+%ED%83%80%EC%9E%85%20https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FARC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ2193-DP%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FARC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Falgorithm%2Fdp%2FBOJ2193-DP%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2FARC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/dp/BOJ11057-DP/" class="pagination--pager" title="[백준 11057] 오르막 수
+      <a href="/algorithm/dp/lis/BOJ11722-DP/" class="pagination--pager" title="[백준 11722] 가장 긴 감소하는 부분 수열
 ">이전</a>
     
     
-      <a href="/algorithm/dp/BOJ-9465-DP/" class="pagination--pager" title="[백준 9465] 스티커
+      <a href="/ios/defer/" class="pagination--pager" title="defer
 ">다음</a>
     
   </nav>
@@ -552,48 +587,6 @@ func solve(n: Int){
   작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다
   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.
   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/ios/ARC/" rel="permalink">ARC 및 참조 타입
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ARC
-Swift에서 메모리를 자동으로 관리 
-특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.
-컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만...</p>
   </article>
 </div>
 
@@ -665,7 +658,7 @@ Swift에서 메모리를 자동으로 관리
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          1 분 소요
         
       </span>
     
@@ -673,6 +666,46 @@ Swift에서 메모리를 자동으로 관리
 
 
     <p class="archive__item-excerpt" itemprop="description">링크
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/search/lis/binary-search-DP/" rel="permalink">이진 탐색
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">정렬된 배열에서 원소 x를 찾고자 할 때 사용
 </p>
   </article>
 </div>

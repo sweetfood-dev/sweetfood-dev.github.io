@@ -88,4 +88,16 @@ var store = [{
         "tags": [],
         "url": "https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/",
         "teaser": null
+      },{
+        "title": "ARC 및 참조 타입",
+        "excerpt":"ARC Swift에서 메모리를 자동으로 관리   특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.  컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만  참조 순환 즉, Memory Leak을 발생시킬 수 있다      순환 참조가 발생하는 경우      프로퍼티에서 인스턴스를 서로 강하게 참조    class App {     var os : iOS?          deinit {         print(\"app deinit\")     } }  class iOS {     var applications : App?          deinit {         print(\"ios deinit\")     } }  var app : App? = App() var ios : iOS? = iOS()  app?.os = ios ios?.applications = app   app = nil ios = nil   위 코드에서 각각 프로퍼티 os, applications가 App, iOS 인스턴스를 참조하여  App, iOS의 RC는 1씩 증가한 1인 상태이다  그 상태에서 참조 변수 app,ios가 nil로 변경되어 프로퍼티에 접근할 수 없어 순환참조가 발생하여 Memory Leak발생          클로저에서 참조하는 경우      class App {     var os : iOS?     let name : String          init(name: String) {         self.name = name     }          lazy var info: () -&gt; String = {         return self.name     }     deinit {         print(\"app deinit\")     } }  var app : App? = App(name: \"Wallet\") app = nil    위의 경우처럼 info 안에서 self를 참조 하고 있을때,   참조변수 app을 nil로 변경되면 클로저와 인스턴스 사이 순환참조가 발생된다        순환 참조 방지 하는 방법       weak, unowend 사용            해당 키워드들로 인스턴스를 참조시 RC가 증가하지 않는다       weak은 아래서 설명하겠지만 옵셔널 타입으로 옵셔널 바인딩, 체이닝을 사용하여 런타임 크래시를 방지할 수 있다       unowend는 생명주기가 길거나 인스턴스가 존재함을 확신할 때 사용된다           클로저에서 캡처리스트 작성            캡처리스트란 클로저가 참조하는 대상, 참조하는 방식을 지정하는 형식이다       즉, 강하게 캡처(참조)할지 약하게 캡처(참조)할지 지정이 가능하다             참조 방식     strong            객체를 소유하여 RC를 증가시키는 프로퍼티       ARC로 인한 메모리 해제를 피하고 객체를 안전하게 사용할 때 사용           weak            객체를 소유하지 않고 주소값만을 가지고 있는 포인터 개념       메모리에서 해제될 경우 자동으로 nil로 초기화되기 때문에 옵셔널 타입으로 사용해야한다           unowend            weak과 비슷한 개념이지만 nil값이 될 수 없기 때문에 옵셔널 타입으로 선언하면 안된다           잘못된 설명이 있으면 지적 부탁드립니다.   ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/ARC/",
+        "teaser": null
+      },{
+        "title": "defer",
+        "excerpt":"defer        작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다   defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다  ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/defer/",
+        "teaser": null
       }]
