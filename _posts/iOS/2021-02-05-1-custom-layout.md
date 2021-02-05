@@ -20,7 +20,7 @@ categories:
 - collectionView는 이 정보를 활용하여 내부적으로 scrollView의 크기를 구성합니다.
 3. **layoutAttributesForElements (in :)**
 - in의 범위 안에 있는 모든 셀들의 레이아웃 속성들을 배열에 담아 반환합니다
-4. **layoutAttributesForItem (at :) **
+4. **layoutAttributesForItem (at :)**
 - at으로 들어온 cell의 레이아웃 속성을 반환합니다.
 
 <br>
