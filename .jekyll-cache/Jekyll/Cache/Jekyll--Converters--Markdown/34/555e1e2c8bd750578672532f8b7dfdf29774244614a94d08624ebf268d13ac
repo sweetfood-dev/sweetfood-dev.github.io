@@ -1,0 +1,26 @@
+I"�<p><strong>GCD란</strong><br /></p>
+<blockquote>
+  <p>Apple에서 제공하는 멀티쓰레드 처리 API</p>
+</blockquote>
+
+<p><br />
+DisPatchQueue가 GCD에 존재합니다<br />
+DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행을 관리하는 객체입니다<br />
+순차적으로 실행하는 Main Queue와 동시에 실행하는 Global Queue를 포함하고 있습니다<br /></p>
+
+<ol>
+  <li>Main Queue
+    <ul>
+      <li>보통 UI관련된 처리를 담당하고 앱이 실행 되었을 때 자동으로 실행됩니다</li>
+    </ul>
+  </li>
+  <li>Gloabal Queue
+    <ul>
+      <li>백그라운드에서 동작하고</li>
+      <li>동시에 작업을 수행합니다.</li>
+      <li>메인큐 작업에 영향을 주면 안되는 작업을 처리할 때 사용하며</li>
+      <li>QoS를 통해 작업의 우선순위를 부여할 수 있습니다.</li>
+    </ul>
+  </li>
+</ol>
+:ET

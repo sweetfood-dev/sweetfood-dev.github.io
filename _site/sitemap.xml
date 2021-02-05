@@ -69,6 +69,10 @@
 <lastmod>2021-02-04T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>https://sweetfood-dev.github.io/swift/02-Class-Struct/</loc>
+<lastmod>2021-02-05T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>https://sweetfood-dev.github.io/swift/1-type-casting/</loc>
 <lastmod>2021-02-05T00:00:00+09:00</lastmod>
 </url>
@@ -81,7 +85,7 @@
 <lastmod>2021-02-05T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>https://sweetfood-dev.github.io/swift/Class-Struct-02/</loc>
+<loc>https://sweetfood-dev.github.io/swift/5-Lazy/</loc>
 <lastmod>2021-02-05T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -98,6 +102,10 @@
 </url>
 <url>
 <loc>https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/</loc>
+<lastmod>2021-02-05T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>https://sweetfood-dev.github.io/ios/4-GCD/</loc>
 <lastmod>2021-02-05T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -120,5 +128,8 @@
 </url>
 <url>
 <loc>https://sweetfood-dev.github.io/page5/</loc>
+</url>
+<url>
+<loc>https://sweetfood-dev.github.io/page6/</loc>
 </url>
 </urlset>

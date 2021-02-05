@@ -101,6 +101,12 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/swift/defer/",
         "teaser": null
       },{
+        "title": "클래스와 구조체",
+        "excerpt":"               Class       Struct                       레퍼런스 타입       밸류 타입                 객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리       스택 영역에 저장                 상속가능       상속 불가, Protocol은 사용가능하다                 대입 연산 시 레퍼런스 공유       대입 연산 시  값 복사          ","categories": ["Swift"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/swift/02-Class-Struct/",
+        "teaser": null
+      },{
         "title": "as as? as!",
         "excerpt":"                       설명       실행 시점       캐스팅 종류                       as       컴파일러가 타입 변환의 성공을 보장       컴파일 타임       업 캐스팅                 as?       변환에 실패하는 경우 nil을 반환       런타임       다운 캐스팅                 as!       변환에 실패하는 경우 런타임에러 발생       런타임       다운 캐스팅          ","categories": ["Swift"],
         "tags": [],
@@ -119,10 +125,10 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/swift/4-autolayout-priority/",
         "teaser": null
       },{
-        "title": "클래스와 구조체",
-        "excerpt":"               Class       Struct                       레퍼런스 타입       밸류 타입                 객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리       스택 영역에 저장                 상속가능       상속 불가, Protocol은 사용가능하다                 대입 연산 시 레퍼런스 공유       대입 연산 시  값 복사          ","categories": ["Swift"],
+        "title": "Lazy",
+        "excerpt":"Lazy란     처음 사용되기전까지 연산이 되지 않습니다.     고려 사항      항상 var 키워드와 함께 사용            처음에는 아무 값이 없고 추후 사용될 때 값이 할당되기 때문에 let은 사용할 수 없습니다           구조체, 클래스에서 사용 가능   연산 프로퍼티에는 사용 불가            처음 사용 될 때, 메모리에 값을 올리고 이후에 사용 될 때는 메모리에 올린 값을 사용하기 때문에  사용할 때마다 연산이 되는 연산프로퍼티에서는 사용할 수 없습니다           클로저에서의 사용            클로저의 결과값으로 사용 될 때는 실행 이후 종료되기 때문에 메모리 누수의 걱정이 없지만       클로저 자체를 사용할 때는 클로저 리스트를 사용해 메모리 누수 방지를 해줘야 합니다          ","categories": ["Swift"],
         "tags": [],
-        "url": "https://sweetfood-dev.github.io/swift/Class-Struct-02/",
+        "url": "https://sweetfood-dev.github.io/swift/5-Lazy/",
         "teaser": null
       },{
         "title": "CollectionViewLayout",
@@ -147,5 +153,11 @@ var store = [{
         "excerpt":"iOS에서는 화면전환을 할 때 기존의 화면 위에 새로운 화면을 쌓는 식으로 화면 전환을 합니다.  이 때 각각의 ViewController는 자신만의 생명주기를 가지고 있습니다  그래서 상황에 맞는 함수들이 호출 되는데 이 생명주기를 나타내는 대표적인 메소드들은 다음과 같습니다        ViewDidLoad            ViewController 클래스가 생성될 때 딱 한번 실행됩니다.       보통 초기화 작업이 이루어집니다           ViewWillAppear            화면에 나타나기 직전에 실행됩니다       ViewDidload와 다르게 나타나기 직전마다 항상 실행됩니다           ViewDidAppear            화면에 나타난 직후에 실행됩니다.           ViewWillDisAppear            화면에서 사라기지 직전에 실행됩니다           ViewDidDisAppear            화면에서  사라지고 난 직후에 실행됩니다          ","categories": ["iOS"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "GCD",
+        "excerpt":"GCD란      Apple에서 제공하는 멀티쓰레드 처리 API      DisPatchQueue가 GCD에 존재합니다  DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행을 관리하는 객체입니다  순차적으로 실행하는 Main Queue와 동시에 실행하는 Global Queue를 포함하고 있습니다       Main Queue            보통 UI관련된 처리를 담당하고 앱이 실행 되었을 때 자동으로 실행됩니다           Gloabal Queue            백그라운드에서 동작하고       동시에 작업을 수행합니다.       메인큐 작업에 영향을 주면 안되는 작업을 처리할 때 사용하며       QoS를 통해 작업의 우선순위를 부여할 수 있습니다.          ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/4-GCD/",
         "teaser": null
       }]
