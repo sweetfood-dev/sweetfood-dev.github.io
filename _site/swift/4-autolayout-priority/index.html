@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>defer - 공부 그리고 기록</title>
-<meta name="description" content="defer     작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다   defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다">
+<!-- begin _includes/seo.html --><title>오토레이아웃의 우선순위 - 공부 그리고 기록</title>
+<meta name="description" content="constraint의 priority    제약 사항간의 우선순위   뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다   이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.">
 
 
   <meta name="author" content="권지수">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부 그리고 기록">
-<meta property="og:title" content="defer">
-<meta property="og:url" content="https://sweetfood-dev.github.io/ios/defer/">
+<meta property="og:title" content="오토레이아웃의 우선순위">
+<meta property="og:url" content="https://sweetfood-dev.github.io/swift/4-autolayout-priority/">
 
 
-  <meta property="og:description" content="defer     작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다   defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-02-04T00:00:00+09:00">
+  <meta property="og:description" content="constraint의 priority    제약 사항간의 우선순위   뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다   이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2021-02-05T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://sweetfood-dev.github.io/ios/defer/">
+
+<link rel="canonical" href="https://sweetfood-dev.github.io/swift/4-autolayout-priority/">
 
 
 
@@ -180,7 +180,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#ios" itemprop="item"><span itemprop="name">Ios</span></a>
+          <a href="/categories/#swift" itemprop="item"><span itemprop="name">Swift</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -188,7 +188,7 @@
     
       
       
-        <li class="current">defer</li>
+        <li class="current">오토레이아웃의 우선순위</li>
       
     
   </ol>
@@ -326,15 +326,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="defer">
-    <meta itemprop="description" content="defer  작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다  defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.  defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다  defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다">
-    <meta itemprop="datePublished" content="2021-02-04T00:00:00+09:00">
+    <meta itemprop="headline" content="오토레이아웃의 우선순위">
+    <meta itemprop="description" content="constraint의 priority  제약 사항간의 우선순위  뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다  이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.">
+    <meta itemprop="datePublished" content="2021-02-05T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">defer
+          <h1 id="page-title" class="page__title" itemprop="headline">오토레이아웃의 우선순위
 </h1>
           
 
@@ -362,14 +362,12 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><strong>defer</strong><br />
-<br /></p>
-<ol>
-  <li>작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다</li>
-  <li>defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.</li>
-  <li>defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다</li>
-  <li>defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다</li>
-</ol>
+        <p><strong>constraint</strong>의 priority<br /></p>
+<ul>
+  <li>제약 사항간의 우선순위</li>
+  <li>뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다</li>
+  <li>이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.</li>
+</ul>
 
         
       </section>
@@ -392,14 +390,14 @@
     
       
       
-      <a href="/categories/#ios" class="page__taxonomy-item" rel="tag">iOS</a>
+      <a href="/categories/#swift" class="page__taxonomy-item" rel="tag">Swift</a>
     
     </span>
   </p>
 
 
         
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-02-04T00:00:00+09:00">February 4, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-02-05T00:00:00+09:00">February 5, 2021</time></p>
 
 
       </footer>
@@ -409,22 +407,23 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=defer%20https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2Fdefer%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EC%98%A4%ED%86%A0%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83%EC%9D%98+%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%20https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2F4-autolayout-priority%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2Fdefer%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2F4-autolayout-priority%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fios%2Fdefer%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2F4-autolayout-priority%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/ios/Closure/" class="pagination--pager" title="클로저
+      <a href="/swift/3-frame-bounds/" class="pagination--pager" title="Frame과 Bounds
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/swift/Class-Struct-02/" class="pagination--pager" title="클래스와 구조체
+">다음</a>
     
   </nav>
 
@@ -448,90 +447,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/ios/Closure/" rel="permalink">클로저
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">클로저
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/ios/ARC/" rel="permalink">ARC 및 참조 타입
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ARC
-Swift에서 메모리를 자동으로 관리 
-특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.
-컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/dp/lis/BOJ11722-DP/" rel="permalink">[백준 11722] 가장 긴 감소하는 부분 수열
+        <a href="/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/" rel="permalink">ViewController 생명 주기
 </a>
       
     </h2>
@@ -556,8 +472,12 @@ Swift에서 메모리를 자동으로 관리
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">링크
-</p>
+    <p class="archive__item-excerpt" itemprop="description">iOS에서는 화면전환을 할 때 기존의 화면 위에 새로운 화면을 쌓는 식으로 화면 전환을 합니다.
+이 때 각각의 ViewController는 자신만의 생명주기를 가지고 있습니다
+그래서 상황에 맞는 함수들이 호출 되는데 이 생명주기를 나타내는 대표적인 메소드들은 다음과 같습니다
+
+
+ ...</p>
   </article>
 </div>
 
@@ -571,7 +491,7 @@ Swift에서 메모리를 자동으로 관리
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/dp/lis/BOJ11055-DP/" rel="permalink">[백준 11055] 가장 큰 증가 부분 수열
+        <a href="/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/" rel="permalink">Application 생명 주기
 </a>
       
     </h2>
@@ -589,15 +509,102 @@ Swift에서 메모리를 자동으로 관리
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 분 소요
+          최대 1 분 소요
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">링크
+    <p class="archive__item-excerpt" itemprop="description">App 생명주기란
+
+  앱의 실행부터 종료까지의 주기를 말하며, 앱이 foreground나 background에 있을 때 시스템 알림에 응답하고 기타 중요한 시스템 관련 이벤트를 처리하는 단계들을 말한다.
+
+
 </p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/ios/2-UICollectionViewDataSourcePrefetching/" rel="permalink">UICollectionViewDataSourcePrefetching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">UITableView/UICollectionView 에서 Pagenation을 위해 보통 아래 방법을 사용했다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/ios/1-custom-layout/" rel="permalink">CollectionViewLayout
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">일반적인 collectionview의 delegate와 datasource는
+화면에 셀을 표시하는 역할을 담당합니다
+표시 할 때 구성과 같은 layout은 UICollectionViewLayout을 구현하여 처리해야합니다
+
+커스텀 CollectionViewLayout의 주 역할은 ...</p>
   </article>
 </div>
 

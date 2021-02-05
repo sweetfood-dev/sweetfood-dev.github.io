@@ -1,4 +1,213 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-04T19:45:21+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">ARC 및 참조 타입</title><link href="https://sweetfood-dev.github.io/ios/ARC/" rel="alternate" type="text/html" title="ARC 및 참조 타입" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/ARC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/ARC/">&lt;p&gt;&lt;strong&gt;ARC&lt;/strong&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-05T08:59:05+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">Frame과 Bounds</title><link href="https://sweetfood-dev.github.io/swift/3-frame-bounds/" rel="alternate" type="text/html" title="Frame과 Bounds" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/3-frame-bounds</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/3-frame-bounds/">&lt;p&gt;&lt;strong&gt;Frame&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;상위뷰 좌표 시스템 내에서 View의 위치와 크기&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Bounds&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;자기 자신의 좌표시스템에서의 (sub view들의)위치와 크기, 부모뷰와는 관계가 없다&lt;/li&gt;
+  &lt;li&gt;default origin은 0,0이다&lt;/li&gt;
+  &lt;li&gt;origin의 변경은 sub view들의 위치가 변경됨을 의미&lt;/li&gt;
+  &lt;li&gt;sub view의 위치가 변한다는 것은 그려져야하는 위치가 달라지는 것이지 sub view들의 frame 값의 변화는 없다&lt;/li&gt;
+  &lt;li&gt;스크롤 시 sub view들의 위치가 달라지는 것이 대표적인 예이다&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">Frame 상위뷰 좌표 시스템 내에서 View의 위치와 크기</summary></entry><entry><title type="html">as as? as!</title><link href="https://sweetfood-dev.github.io/swift/1-type-casting/" rel="alternate" type="text/html" title="as as? as!" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/1-type-casting</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/1-type-casting/">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+      &lt;th&gt;실행 시점&lt;/th&gt;
+      &lt;th&gt;캐스팅 종류&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as&lt;/td&gt;
+      &lt;td&gt;컴파일러가 타입 변환의 성공을 보장&lt;/td&gt;
+      &lt;td&gt;컴파일 타임&lt;/td&gt;
+      &lt;td&gt;업 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as?&lt;/td&gt;
+      &lt;td&gt;변환에 실패하는 경우 nil을 반환&lt;/td&gt;
+      &lt;td&gt;런타임&lt;/td&gt;
+      &lt;td&gt;다운 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as!&lt;/td&gt;
+      &lt;td&gt;변환에 실패하는 경우 런타임에러 발생&lt;/td&gt;
+      &lt;td&gt;런타임&lt;/td&gt;
+      &lt;td&gt;다운 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">  설명 실행 시점 캐스팅 종류 as 컴파일러가 타입 변환의 성공을 보장 컴파일 타임 업 캐스팅 as? 변환에 실패하는 경우 nil을 반환 런타임 다운 캐스팅 as! 변환에 실패하는 경우 런타임에러 발생 런타임 다운 캐스팅</summary></entry><entry><title type="html">Application 생명 주기</title><link href="https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/" rel="alternate" type="text/html" title="Application 생명 주기" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/">&lt;p&gt;&lt;strong&gt;App 생명주기란&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;앱의 실행부터 종료까지의 주기를 말하며, 앱이 foreground나 background에 있을 때 시스템 알림에 응답하고 기타 중요한 시스템 관련 이벤트를 처리하는 단계들을 말한다.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;앱 실행시 &lt;br /&gt;
+UIAppliation 객체를 생성한다.&lt;br /&gt;
+이후 UIApplication 어노테이션이 있는 객체를 찾아 AppDelegate를 생성한다.&lt;br /&gt;
+Main Run Loop ( Main Event Loop)를 실행하고&lt;br /&gt;
+Main Run Loop는 발생한 이벤트를 큐에 담아놓고&lt;br /&gt;
+담겨 있는 이벤트를 꺼내 하나하나 실행하여 처리한다&lt;br /&gt;
+AppDelegate 객체는 Life Cycle을 전달 받기 때문에 이를 통하여 현재 상태를 알 수 있다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Life Cycle&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Not Running
+    &lt;ul&gt;
+      &lt;li&gt;아무 것도 하지 않는 상태 혹은, 실행 중이나 시스템에 의해 종료된 상태&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;In-Active
+    &lt;ul&gt;
+      &lt;li&gt;상태 전환 과정에서 잠시 머무르는 상태&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Active
+    &lt;ul&gt;
+      &lt;li&gt;실제 앱이 실행 되는 상태( 이벤트를 받는 단계 )&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;BackGround
+    &lt;ul&gt;
+      &lt;li&gt;Suspend 진입 전에 거치는 단계&lt;/li&gt;
+      &lt;li&gt;데이터의 저장등의 작업을 처리한다&lt;/li&gt;
+      &lt;li&gt;일반적인 앱은 잠시 머물고 바로 Suspend상태로 진입하지만&lt;/li&gt;
+      &lt;li&gt;음악, 통화, 녹음등의 앱은 이 상태에서도 동작한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Suspend
+    &lt;ul&gt;
+      &lt;li&gt;BackGround 상태지만 아무 실행도 하지 않는 상태, Not Running 상태와 같다&lt;/li&gt;
+      &lt;li&gt;시스템이 임의로 BackGround상태를 Suspend로 만든다 ( 리소스 해제 )&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">App 생명주기란 앱의 실행부터 종료까지의 주기를 말하며, 앱이 foreground나 background에 있을 때 시스템 알림에 응답하고 기타 중요한 시스템 관련 이벤트를 처리하는 단계들을 말한다.</summary></entry><entry><title type="html">ViewController 생명 주기</title><link href="https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/" rel="alternate" type="text/html" title="ViewController 생명 주기" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/">&lt;p&gt;iOS에서는 화면전환을 할 때 기존의 화면 위에 새로운 화면을 쌓는 식으로 화면 전환을 합니다.&lt;br /&gt;
+이 때 각각의 ViewController는 자신만의 생명주기를 가지고 있습니다&lt;br /&gt;
+그래서 상황에 맞는 함수들이 호출 되는데 이 생명주기를 나타내는 대표적인 메소드들은 다음과 같습니다&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;ViewDidLoad
+    &lt;ul&gt;
+      &lt;li&gt;ViewController 클래스가 생성될 때 딱 한번 실행됩니다.&lt;/li&gt;
+      &lt;li&gt;보통 초기화 작업이 이루어집니다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ViewWillAppear
+    &lt;ul&gt;
+      &lt;li&gt;화면에 나타나기 직전에 실행됩니다&lt;/li&gt;
+      &lt;li&gt;ViewDidload와 다르게 나타나기 직전마다 항상 실행됩니다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ViewDidAppear
+    &lt;ul&gt;
+      &lt;li&gt;화면에 나타난 직후에 실행됩니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ViewWillDisAppear
+    &lt;ul&gt;
+      &lt;li&gt;화면에서 사라기지 직전에 실행됩니다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ViewDidDisAppear
+    &lt;ul&gt;
+      &lt;li&gt;화면에서  사라지고 난 직후에 실행됩니다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">iOS에서는 화면전환을 할 때 기존의 화면 위에 새로운 화면을 쌓는 식으로 화면 전환을 합니다. 이 때 각각의 ViewController는 자신만의 생명주기를 가지고 있습니다 그래서 상황에 맞는 함수들이 호출 되는데 이 생명주기를 나타내는 대표적인 메소드들은 다음과 같습니다 ViewDidLoad ViewController 클래스가 생성될 때 딱 한번 실행됩니다. 보통 초기화 작업이 이루어집니다 ViewWillAppear 화면에 나타나기 직전에 실행됩니다 ViewDidload와 다르게 나타나기 직전마다 항상 실행됩니다 ViewDidAppear 화면에 나타난 직후에 실행됩니다. ViewWillDisAppear 화면에서 사라기지 직전에 실행됩니다 ViewDidDisAppear 화면에서 사라지고 난 직후에 실행됩니다</summary></entry><entry><title type="html">UICollectionViewDataSourcePrefetching</title><link href="https://sweetfood-dev.github.io/ios/2-UICollectionViewDataSourcePrefetching/" rel="alternate" type="text/html" title="UICollectionViewDataSourcePrefetching" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-UICollectionViewDataSourcePrefetching</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-UICollectionViewDataSourcePrefetching/">&lt;p&gt;UITableView/UICollectionView 에서 Pagenation을 위해 보통 아래 방법을 사용했다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == myItemList.count - 1 {
+            fetchNextPage()
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+보여지는 Cell을 기준으로 List 의 마지막 아이템을 부르기 전에 다음 리스트 호출을 하는 식이다.&lt;br /&gt;
+하지만 이번에 과제를 하면서 너무 버벅여 다른 방법을 찾아봤는데, UICollectionViewDataSourcePrefetching 프로토콜이 존재하였다&lt;br /&gt;
+‘willDisplay’ 이 실제 보여지는 Cell을 기준으로 한다면 prefetchDataSource 는 이 작업을 백그라운드로 옮겨와 처리하는 것이다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;extension ViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+		//내용 
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이렇게 수정 후 눈에 띄게 속도가 향상되었다!!!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">UITableView/UICollectionView 에서 Pagenation을 위해 보통 아래 방법을 사용했다.</summary></entry><entry><title type="html">CollectionViewLayout</title><link href="https://sweetfood-dev.github.io/ios/1-custom-layout/" rel="alternate" type="text/html" title="CollectionViewLayout" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/1-custom-layout</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/1-custom-layout/">&lt;p&gt;일반적인 collectionview의 delegate와 datasource는&lt;br /&gt;
+화면에 셀을 표시하는 역할을 담당합니다&lt;br /&gt;
+표시 할 때 구성과 같은 layout은 UICollectionViewLayout을 구현하여 처리해야합니다&lt;br /&gt;
+&lt;br /&gt;
+커스텀 CollectionViewLayout의 &lt;strong&gt;주 역할&lt;/strong&gt;은 UICollectionView에서 요청하는 레이아웃 관련 정보를 제공하는 것입니다.&lt;br /&gt;
+레이아웃을 미리 준비해 놓았다가 UICollectionView에서 요청하면 준비한 레이아웃 정보를 제공합니다.&lt;br /&gt;
+이 때 몇가지 필수 메소드들이 존재합니다&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;prepare()&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;UICollectionView에 표시되는 전체 크기를 계산하고 각 셀의 레이아웃 속성, collectionView의 크기와 cell의 위치를 미리 계산(캐싱)하여 메모리에 적재한 뒤 유지합니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;collectionViewContentSize&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;collectionView의 전체 높이와 너비를 반환합니다.&lt;/li&gt;
+      &lt;li&gt;화면에 보이는 contents 뿐만 아니라 collectionView의 전체를 반환해야 합니다.&lt;/li&gt;
+      &lt;li&gt;collectionView는 이 정보를 활용하여 내부적으로 scrollView의 크기를 구성합니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;layoutAttributesForElements (in :)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;in의 범위 안에 있는 모든 셀들의 레이아웃 속성들을 배열에 담아 반환합니다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;**layoutAttributesForItem (at :) **
+    &lt;ul&gt;
+      &lt;li&gt;at으로 들어온 cell의 레이아웃 속성을 반환합니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;strong&gt;호출 순서&lt;/strong&gt;&lt;br /&gt;
+Layout prepare() : 전체 크기, 셀의 위치를 미리 계산&lt;br /&gt;
+collectionView numberOfItemsInSection : 아이템의 전체 개수&lt;br /&gt;
+Layout collectionViewContentSize : collectionView의 전체 크기(너비, 높이)&lt;br /&gt;
+Layout layoutAttributesForElements : 범위 안에 있는 모든 셀들의 레이아웃 속성&lt;br /&gt;
+Layout collectionViewContentSize :  collectionView의 전체 크기(너비, 높이)&lt;br /&gt;
+collectionView cellForItemAt : cell 표시&lt;br /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">일반적인 collectionview의 delegate와 datasource는 화면에 셀을 표시하는 역할을 담당합니다 표시 할 때 구성과 같은 layout은 UICollectionViewLayout을 구현하여 처리해야합니다 커스텀 CollectionViewLayout의 주 역할은 UICollectionView에서 요청하는 레이아웃 관련 정보를 제공하는 것입니다. 레이아웃을 미리 준비해 놓았다가 UICollectionView에서 요청하면 준비한 레이아웃 정보를 제공합니다. 이 때 몇가지 필수 메소드들이 존재합니다 prepare() UICollectionView에 표시되는 전체 크기를 계산하고 각 셀의 레이아웃 속성, collectionView의 크기와 cell의 위치를 미리 계산(캐싱)하여 메모리에 적재한 뒤 유지합니다. collectionViewContentSize collectionView의 전체 높이와 너비를 반환합니다. 화면에 보이는 contents 뿐만 아니라 collectionView의 전체를 반환해야 합니다. collectionView는 이 정보를 활용하여 내부적으로 scrollView의 크기를 구성합니다. layoutAttributesForElements (in :) in의 범위 안에 있는 모든 셀들의 레이아웃 속성들을 배열에 담아 반환합니다 **layoutAttributesForItem (at :) ** at으로 들어온 cell의 레이아웃 속성을 반환합니다.</summary></entry><entry><title type="html">클래스와 구조체</title><link href="https://sweetfood-dev.github.io/swift/Class-Struct-02/" rel="alternate" type="text/html" title="클래스와 구조체" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/Class-Struct-02</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/Class-Struct-02/">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Class&lt;/th&gt;
+      &lt;th&gt;Struct&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;레퍼런스 타입&lt;/td&gt;
+      &lt;td&gt;밸류 타입&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리&lt;/td&gt;
+      &lt;td&gt;스택 영역에 저장&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;상속가능&lt;/td&gt;
+      &lt;td&gt;상속 불가, Protocol은 사용가능하다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;대입 연산 시 레퍼런스 공유&lt;/td&gt;
+      &lt;td&gt;대입 연산 시  값 복사&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">Class Struct 레퍼런스 타입 밸류 타입 객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리 스택 영역에 저장 상속가능 상속 불가, Protocol은 사용가능하다 대입 연산 시 레퍼런스 공유 대입 연산 시 값 복사</summary></entry><entry><title type="html">오토레이아웃의 우선순위</title><link href="https://sweetfood-dev.github.io/swift/4-autolayout-priority/" rel="alternate" type="text/html" title="오토레이아웃의 우선순위" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/4-autolayout-priority</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/4-autolayout-priority/">&lt;p&gt;&lt;strong&gt;constraint&lt;/strong&gt;의 priority&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;제약 사항간의 우선순위&lt;/li&gt;
+  &lt;li&gt;뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다&lt;/li&gt;
+  &lt;li&gt;이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">constraint의 priority 제약 사항간의 우선순위 뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다 이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.</summary></entry><entry><title type="html">ARC 및 참조 타입</title><link href="https://sweetfood-dev.github.io/swift/ARC/" rel="alternate" type="text/html" title="ARC 및 참조 타입" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/ARC</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/ARC/">&lt;p&gt;&lt;strong&gt;ARC&lt;/strong&gt;
 Swift에서 메모리를 자동으로 관리 &lt;br /&gt;
 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.&lt;br /&gt;
 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만&lt;br /&gt;
@@ -112,486 +321,11 @@ app = nil
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;잘못된 설명이 있으면 지적 부탁드립니다.&lt;br /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">ARC Swift에서 메모리를 자동으로 관리 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다</summary></entry><entry><title type="html">클로저</title><link href="https://sweetfood-dev.github.io/ios/Closure/" rel="alternate" type="text/html" title="클로저" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/Closure</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/Closure/">&lt;p&gt;&lt;strong&gt;클로저&lt;/strong&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;클로저의 형태
-    &lt;ul&gt;
-      &lt;li&gt;이름을 가진 어떤 값도 캡처하지 않는 &lt;strong&gt;전역 함수&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;이름을 가진 자신을 감싸고 있는 함수에서 값을 캡쳐해 가질 수 있는 &lt;strong&gt;중첩 함수&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;이름이 없으며 주변 환경의 값을 캡처해 가질 수 있는 &lt;strong&gt;클로저 표현식&lt;/strong&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;@escaping
-    &lt;ul&gt;
-      &lt;li&gt;인자값으로 전달된 클로저를 저장해 두었다가 다른 곳에서도 실행할 수 있도록 허용해주는 속성&lt;/li&gt;
-      &lt;li&gt;인자값으로 전달된 클로저는 기본적으로 탈출불가의 성격을 가진다&lt;/li&gt;
-      &lt;li&gt;이는 &lt;strong&gt;함수 내에서, 직접 실행을 위해서만 사용&lt;/strong&gt;해야하는 것을 의미한다&lt;/li&gt;
-      &lt;li&gt;중첩된 내부 함수에서도 사용이 불가하다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func outerFunc( c: () -&amp;gt; () ) -&amp;gt; () -&amp;gt; (){
-    c()
-    func innerFunc() {
-        c()
-    }
-		// innerFunc() 안에서 매개변수 c를 호출하고 있기 때문에 에러 발생
-    return innerFunc 
-}
-
-
-let inner = outerFunc {
-    print(&quot;run func&quot;)
-}
-
-
-inner()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이러한 제약조건을 모두 제거하여 사용 가능 하게 만들어 주는 것이 &lt;strong&gt;@escaping&lt;/strong&gt; 속성이다&lt;br /&gt;
-아래와 같은 상황에서 사용 &lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;완료에 따른 처리&lt;/li&gt;
-  &lt;li&gt;비동기로 실행 시 함수 사이의 실행 순서를 정할 수 있음
-&lt;br /&gt;
-    &lt;ol&gt;
-      &lt;li&gt;값의 캡처&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;클로저 내부에서 사용되는 외부 변수의 값을 내부적으로 저장, 이를 &lt;strong&gt;캡처&lt;/strong&gt;되었다고 한다&lt;/li&gt;
-  &lt;li&gt;클로저에서의 캡처는 value type이여도 reference 캡처(카피)를 한다. &lt;strong&gt;변수가 사용되는 시점의 값을 캡처&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;단, capture list를 이용하면 value 카피로 사용 가능하다.&lt;/li&gt;
-  &lt;li&gt;value 캡쳐된 값은 클로저안에서 변경이 불가하다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Reference Capture&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var anInteger = 42
-let testClosure = {
-    // anInteger는 capture되는 순간 reference copy됨
-    print(&quot;Integer is: \(anInteger)&quot;)
-}
-testClosure() // &quot;Integer is 42&quot;
-anInteger = 84
-
-testClosure() // &quot;Integer is 84&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Value Capture&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var anInteger = 42
-
-let testClosure = { [anInteger] in    
-// anInteger는 capture되는 순간 value copy됨
-    print(&quot;Integer is: \(anInteger)&quot;)
-}
-testClosure() // &quot;Integer is 42&quot;
-anInteger = 84
-
-testClosure() // &quot;Integer is 42&quot;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">클로저</summary></entry><entry><title type="html">defer</title><link href="https://sweetfood-dev.github.io/ios/defer/" rel="alternate" type="text/html" title="defer" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/defer</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/defer/">&lt;p&gt;&lt;strong&gt;defer&lt;/strong&gt;&lt;br /&gt;
+&lt;p&gt;잘못된 설명이 있으면 지적 부탁드립니다.&lt;br /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">ARC Swift에서 메모리를 자동으로 관리 특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다. 컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만 참조 순환 즉, Memory Leak을 발생시킬 수 있다</summary></entry><entry><title type="html">defer</title><link href="https://sweetfood-dev.github.io/swift/defer/" rel="alternate" type="text/html" title="defer" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/defer</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/defer/">&lt;p&gt;&lt;strong&gt;defer&lt;/strong&gt;&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다&lt;/li&gt;
   &lt;li&gt;defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.&lt;/li&gt;
   &lt;li&gt;defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다&lt;/li&gt;
   &lt;li&gt;defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">defer 작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다 defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다. defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다 defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다</summary></entry><entry><title type="html">[백준 11722] 가장 긴 감소하는 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/" rel="alternate" type="text/html" title="[백준 11722] 가장 긴 감소하는 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11722-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11722&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;
-이전 문제 11053, 11055와 사실상 같은 문제&lt;br /&gt;
-&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/&quot;&gt;11053&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/&quot;&gt;11055&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
-    let arr = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-    var map = [Int](repeating:1, count: n)
-    
-    for i in 0 ..&amp;lt; arr.count {
-        for j in 0 ..&amp;lt; i {
-            if arr[i] &amp;lt; arr[j] {
-                map[i] = max(map[i], map[j] + 1)
-            }
-        }
-    }
-    
-    print(map.max()!)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11055] 가장 큰 증가 부분 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/" rel="alternate" type="text/html" title="[백준 11055] 가장 큰 증가 부분 수열" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11055-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11055&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/&quot;&gt;가장 긴 증가하는 수열&lt;/a&gt; 문제와 비슷하다.&lt;br /&gt;
-다만 &lt;strong&gt;길이&lt;/strong&gt;가 아니라 &lt;strong&gt;합&lt;/strong&gt;이 라는게 차이 .&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;따라서 가장 긴 증가하는 수열의 코드에서 if 조건문의 수식만 살짝 바꿔주면 된다&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;정의를 살펴 보면&lt;br /&gt;
-arr[n] : 문제의 입력으로 주어진 배열, n번째 숫자&lt;br /&gt;
-map[n] : n번째 에서 가장 큰 수열의 합&lt;br /&gt;
-k = 0 ..&amp;lt; n 까지의 인덱스&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;따라서 수식은 &lt;br /&gt;
-map[n] = max(map[n], arr[n] + map[k]) &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;위에 정의된 수식을 2중 포문으로 탐색한다&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 0 부터 배열의 마지막 인덱스까지 탐색
-for i in 0 ..&amp;lt; arr.count { 
-// 자기 자신은 부분 수열의 합에 항상 들어감
-	map[i] = arr[i] 
-	// 0 ~ i - 1까지 탐색 , j == k( 위에 정의한 k를 j로 사용)
-	for j in 0 ..&amp;lt; i { 
-	// i 인덱스의 값보다 j 인덱스의 값이 작으면 부분 수열에 포함 
-		if arr[i] &amp;gt; arr[j] { 
-		// 현재 map[i]값 보다 arr[i] + map[j]의 값이 더 크면 더 큰 부분 수열의 합
-		map[i] = max(map[i], arr[i] + map[j]) 
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;최종 코드는 아래와 같다&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
-    let arr = readLine()!.split(separator:&quot; &quot;).map { Int(String($0))! }
-    var map = [Int](repeating:0, count: n + 1)
-    
-    for i in 0 ..&amp;lt; arr.count {
-        map[i] = arr[i]
-        for j in 0 ..&amp;lt; i {
-            if arr[i] &amp;gt; arr[j] {
-                map[i] = max(map[i], map[j] + arr[i])
-            }
-        }
-    }
-    
-    print(map.max()!)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 11053] 가장 긴 증가하는 수열</title><link href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/" rel="alternate" type="text/html" title="[백준 11053] 가장 긴 증가하는 수열" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11053&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;W[n] : n 번째에 위치해있는 정수&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;th&gt;6&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;30&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;50&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;D[n] : n의 위치에서 끝나는 최장 길이 수열&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;k : 0 ~ n - 1까지의 수라고 정의할 때 &lt;br /&gt;
-W[k] &amp;lt; W[n] 일 경우 &lt;br /&gt;
-D[n] = max(D[n], D[k] + 1)로 갱신한다&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve() {
-    let arr = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-    
-    var dp = [Int](repeating: 1, count: arr.count)
-    
-    for i in 0 ..&amp;lt; arr.count {
-        for j in 0 ..&amp;lt; i {
-            if arr[i] &amp;gt; arr[j] {
-                dp[i] = max(dp[i], dp[j] + 1)
-            }
-        }
-    }
-    
-    print(dp.max()!)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><category term="LIS" /><summary type="html">링크</summary></entry><entry><title type="html">이진 탐색</title><link href="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/" rel="alternate" type="text/html" title="이진 탐색" /><published>2021-01-28T00:00:00+09:00</published><updated>2021-01-28T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/search/lis/binary-search-DP/">&lt;p&gt;&lt;strong&gt;정렬된 배열&lt;/strong&gt;에서 원소 x를 찾고자 할 때 사용&lt;br /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;찾고자 하는 x를 중간 원소와 비교&lt;/li&gt;
-  &lt;li&gt;x가 중간 원소보다 크다면 오른쪽 절반을&lt;/li&gt;
-  &lt;li&gt;x가 중간 원소보다 작다면 왼쪽 절반을 재탐색한다&lt;/li&gt;
-  &lt;li&gt;1 ~ 3과정을 x를 찾거나 부분 배열의 크기가 0이 될 때까지 반복한다&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func binarySearch(arr: [Int], find: Int) -&amp;gt; Int {
-    var low = 0
-    var high = arr.count - 1
-    var mid : Int
-    
-    while low &amp;lt;= high {
-        mid = (low + high) / 2
-        if arr[mid] &amp;gt; find {
-            high = mid - 1
-        }else if arr[mid] &amp;lt; find {
-            low = mid + 1
-        }else {
-            return mid
-        }
-    }
-    return -1
-}
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="Search" /><category term="LIS" /><summary type="html">정렬된 배열에서 원소 x를 찾고자 할 때 사용</summary></entry><entry><title type="html">[백준 9465] 스티커</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/" rel="alternate" type="text/html" title="[백준 9465] 스티커" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ%209465-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ-9465-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9465&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;이번 포스트 부터 문제와 입력/출력은 따로 작성하지 않겠습니다 상단 링크에서 확인해주세요!&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;스티커를 선택하는 방법은 3가지가 있다&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;아무것도 선택 안함&lt;/th&gt;
-      &lt;th&gt;위에만 선택&lt;/th&gt;
-      &lt;th&gt;아래만 선택&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;o&lt;/td&gt;
-      &lt;td&gt;x&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;o&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;그리고 몇 가지 정의를 한다 &lt;br /&gt;
-W[0][N] : 첫 번째 행의 N 번째 숫자&lt;br /&gt;
-W[1][N] : 두 번째 행의 N 번째 숫자 &lt;br /&gt;
-D[0][N] : 아무것도 선택 안했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
-D[1][N] : 첫 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;
-D[2][N] : 두 번째 행을 선택했을 경우 N 숫자에서의 &lt;strong&gt;최대값&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;경우 1 : N번째 숫자에서 아무것도 선택안할 경우에는 N - 1 번째의 &lt;strong&gt;최대값&lt;/strong&gt; 을 넣는다&lt;br /&gt;
-D[0][N] = max(D[0][N-1],D[1][N-1],D[2][N-1]) &lt;br /&gt;
-경우 2: N번째 숫자에서 첫 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
-N-1번째의 두 번째 행을 선택했을 경우의 최대값중 큰값과 첫번째 행 W[0][N]을 더한다&lt;br /&gt;
-D[1][N] = max(D[0][N-1],D[2][N-1]) + W[0][N]&lt;br /&gt;
-경우 3: N번째 숫자에서 두 번째 행을 선택했을 경우 N-1번째의 아무것도 선택 안했을 경우최대값과,&lt;br /&gt;
-N-1번째의 첫 번째 행을 선택했을 경우의 최대값중 큰값과 두 번째 행 W[1][N]을 더한다&lt;br /&gt;
-D[2][N] = max(D[0][N-1],D[1][N-1]) + W[1][N]&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;코드&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int, arr: [[Int]]) {
-    let size = n
-    var res = [[Int]](repeating:[Int](repeating:0, count: size), count: 3)
-    res[1][0] = arr[0][0]
-    res[2][0] = arr[1][0]
-    for i in 1 ..&amp;lt; size {
-        res[0][i] = max(max(res[1][i-1], res[2][i-1]), res[0][i-1])
-        res[1][i] = max(res[0][i-1], res[2][i-1]) + arr[0][i]
-        res[2][i] = max(res[0][i-1], res[1][i-1]) + arr[1][i]
-    }
-    
-    let result = max(max(res[0][size - 1], res[1][size - 1]), res[2][size - 1])
-    print(result)
-}
-
-if let tc = Int(readLine()!) {
-    for _ in 0 ..&amp;lt; tc {
-        let size = Int(readLine()!)!
-        let col1 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-        let col2 = readLine()!.split(separator: &quot; &quot;).map { Int(String($0))! }
-        var arr = [[Int]]()
-        arr.append(col1)
-        arr.append(col2)
-        solve(n: size, arr: arr)
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 2156] 포도주 시식</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/" rel="alternate" type="text/html" title="[백준 2156] 포도주 시식" /><published>2021-01-27T00:00:00+09:00</published><updated>2021-01-27T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ2156-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;정의&lt;/strong&gt;&lt;br /&gt;
-W[N] : N번째 포도주의 양 &lt;br /&gt;
-D[N] : N번째에서 최대로 마실 수 있는 포도주 양&lt;br /&gt;
-ex) D[1] : 1번쨰에서 최대로 마실 수 있는 포도주의 양은 6이다&lt;br /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;index&lt;/th&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;th&gt;6&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;W[N]&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;13&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;처음부터 한번 수식을 세워보자!&lt;br /&gt;
-D[0]  일 때 : 0 &lt;br /&gt;
-D[1] 일 때 : 1잔을 마시는게 최대값 즉, W[1] &lt;br /&gt;
-D[2] 일 때 : 2잔을 모두 마시는게 최대값 즉, W[1] + W[2] &lt;br /&gt;
-D[3] 일 때 : 총 3가지의 경우의 수가 있다.&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;안마시는 경우, 이땐 D[2]가 최대값이 된다 &lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;연속 1잔만 마시는 경우, 이전에 마시면 연속 2잔이 되기 때문에 이때는 W[1] + W[3]&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;연속 2잔 마시는 경우, 이전전에선 마시면 안된다! W[2] + W[3] + W[0]&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이제 조금 정리를 해보자.&lt;br /&gt;
-연속 1잔만 마시는 경우 : W[1]+W[3] -&amp;gt; D[1] + W[3]과 같다 &lt;br /&gt;
-연속 2잔 마시는 경우 : W[2] + W[3] + D[0]과 같다 &lt;br /&gt;
-즉, D[3]일 때 3가지 경우의 수식은 &lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;D[3] = D[2]&lt;/li&gt;
-  &lt;li&gt;D[3] = D[1] + W[3]&lt;/li&gt;
-  &lt;li&gt;D[3] = W[2] + W[3] + D[0]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이 3가지 경우의 수 중 최대값을 구하면된다. &lt;br /&gt;
-코드로 짤수 있도록 [숫자]를 n으로 변경해보자 &lt;br /&gt;
-예를 들어 D[3] = D[n] 이면, D[2]는 3-1 = 2이므로 D[n - 1]이 된다&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;D[n] = D[n - 1]&lt;/li&gt;
-  &lt;li&gt;D[n] = D[n-2] + W[n]&lt;/li&gt;
-  &lt;li&gt;D[n] = W[n -1] + W[n] + D[n - 3]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이제 이 수식을 이용해 코드를 짜보자!&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n: Int){
-    var wines = [Int](repeating: 0, count: n + 1)
-    var dp = wines
-    
-    for i in 1 ... n {
-        wines[i] = Int(readLine()!)!
-    }
-    
-    if n == 1 {
-        print(wines[1])
-        return 
-    }else if n == 2 {
-        print(wines[1] + wines[2])
-        return
-    }
-    dp[1] = wines[1]
-    dp[2] = wines[1] + wines[2]
-    
-    for i in 3 ... n {
-        var maxWines = dp[i - 1] // 0 잔 마실 때
-        maxWines = max(maxWines, dp[i - 2] + wines[i]) // 1잔 마실때 vs 0잔 마실 때 최대값 비교
-        dp[i] = max(maxWines, dp[i - 3] + wines[i] + wines[i - 1]) // 2잔 마실 때와 위의 결과값 비교
-    }
-    
-    print(dp[n])
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry><entry><title type="html">[백준 10844] 쉬운 계단 수</title><link href="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/" rel="alternate" type="text/html" title="[백준 10844] 쉬운 계단 수" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP</id><content type="html" xml:base="https://sweetfood-dev.github.io/algorithm/dp/BOJ10844-DP/">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;링크&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;
-45656이란 수를 보자.&lt;/p&gt;
-
-&lt;p&gt;이 수는 인접한 모든 자리수의 차이가 1이 난다. 이런 수를 계단 수라고 한다.&lt;/p&gt;
-
-&lt;p&gt;세준이는 수의 길이가 N인 계단 수가 몇 개 있는지 궁금해졌다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구하는 프로그램을 작성하시오. (0으로 시작하는 수는 없다.)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 N이 주어진다. N은 1보다 크거나 같고, 100보다 작거나 같은 자연수이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;첫째 줄에 정답을 1,000,000,000으로 나눈 나머지를 출력한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;N == 1 일 때, 계단 수 : 1,2,3,4,5,6,7,8,9&lt;br /&gt;
-N == 2 일 때, 계단 수 : 10,12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;규칙을 찾아 보자&lt;br /&gt;
-N == 1 일 때, 계단 수 에서 N == 2일 때, 계단 수를 구할 수 있을까?&lt;br /&gt;
-N == 2 일 때, 계단수 10, 12를 봐보자 &lt;br /&gt;
-N == 2 일 때, 10과 12는 N == 1 일 때, 1에서 0 과 2를 1의 자리에 넣어 준 것과 같다&lt;br /&gt;
-N == 2 일 때, 21과 23은 N == 1 일 때, 2에서 1과 3을 1의 자리에 넣어 준 것과 같다.&lt;br /&gt;
-N == 2 일 때의 계단 수는 N == 1일 때 계단 수에서 1의 자리에서 +1과, -1을 해준 숫자들이 들어감을 확인할 수 있다&lt;br /&gt;
-N == 2 일 때, 10과 12는 N == 1 일 때, 1에  1 - 1, 즉 0을 붙여 10, 1 에 1 + 1, 즉 2를 붙여 12가 만들어 짐을 알 수 있다.&lt;br /&gt;
-이를 이용하면 N이 주어질 때 마지막 1의 자리가 K인 숫자의 계단 수의 갯수는&lt;br /&gt;
-N - 1 번째의 K - 1의 계단 수의 갯수 + N - 1번째의 K + 1의 계단수의 갯수일 것이다&lt;br /&gt;
-예를 들어 N == 2 일 때 1의 자리 숫자가 3으로 끝나는 계단 수의 갯수는 &lt;br /&gt;
-N == 1 일 때, 2의 갯수,  그리고 4의 갯수를 합치면 된다&lt;br /&gt;
-글 보다 표를 그려 확인 해보자&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/images/Posts/Algorithm/DP/2021-01-26-BOJ10844-DP/image1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;수식으로 구성 해보자 &lt;br /&gt;
-N : 숫자의 길이, K : N 의 계단 수의 1의 자리 &lt;br /&gt;
-N[K] = N-1[K - 1] + N-1[K+1]
-이 때, 주의 할 것이 있다 &lt;br /&gt;
-N[K] == 0 일 경우엔  이전 단계에서 1일 경우만 더해주고 ( 즉, N-1[1])&lt;br /&gt;
-K == 9 : 8일 경우만 더해 준다 ( 즉 N-1[8]) &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이를 그대로 코드로 옮겨 보자&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func solve(n : Int) {
-    if n == 1 { // 1일 경우는 무조건 9개 밖에 없다
-        print(9)
-        return
-    }
-    let mod = 1_000_000_000 // 결과값에서 쓰일 나머지 연산 값 
-    var map = Array(repeating: Array(repeating: 0, count: 10), count: 101)
-    
-    for i in 1 ... 9 {
-        map[1][i] = 1
-    }
-    
-    for i in 2 ... n {
-        map[i][0] = map[i-1][1]
-        map[i][9] = map[i-1][8]
-        for k in 1 ... 8 {
-            map[i][k] = (map[i-1][k - 1] + map[i-1][k + 1]) % mod
-        }
-    }
-    
-    let result = map[n].reduce(0,+)
-    
-    print(result % mod)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Algorithm" /><category term="DP" /><summary type="html">링크</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">defer 작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다 defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다. defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다 defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다</summary></entry></feed>

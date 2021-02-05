@@ -29,12 +29,6 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/algorithm/dp/BOJ9095-DP/",
         "teaser": null
       },{
-        "title": "arc 공부해서 수정",
-        "excerpt":"ㅇㅇ  ","categories": ["iOS"],
-        "tags": [],
-        "url": "https://sweetfood-dev.github.io/ios/iOS-ARC-%EC%A0%95%EB%A6%AC/",
-        "teaser": null
-      },{
         "title": "[백준 10844] 쉬운 계단 수",
         "excerpt":"링크   문제 45656이란 수를 보자.   이 수는 인접한 모든 자리수의 차이가 1이 난다. 이런 수를 계단 수라고 한다.   세준이는 수의 길이가 N인 계단 수가 몇 개 있는지 궁금해졌다.   N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구하는 프로그램을 작성하시오. (0으로 시작하는 수는 없다.)   입력     첫째 줄에 N이 주어진다. N은 1보다 크거나 같고, 100보다 작거나 같은 자연수이다.    출력     첫째 줄에 정답을 1,000,000,000으로 나눈 나머지를 출력한다.    풀이   N == 1 일 때, 계단 수 : 1,2,3,4,5,6,7,8,9  N == 2 일 때, 계단 수 : 10,12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98    규칙을 찾아 보자  N == 1 일 때, 계단 수 에서 N == 2일 때, 계단 수를 구할 수 있을까?  N == 2 일 때, 계단수 10, 12를 봐보자   N == 2 일 때, 10과 12는 N == 1 일 때, 1에서 0 과 2를 1의 자리에 넣어 준 것과 같다  N == 2 일 때, 21과 23은 N == 1 일 때, 2에서 1과 3을 1의 자리에 넣어 준 것과 같다.  N == 2 일 때의 계단 수는 N == 1일 때 계단 수에서 1의 자리에서 +1과, -1을 해준 숫자들이 들어감을 확인할 수 있다  N == 2 일 때, 10과 12는 N == 1 일 때, 1에  1 - 1, 즉 0을 붙여 10, 1 에 1 + 1, 즉 2를 붙여 12가 만들어 짐을 알 수 있다.  이를 이용하면 N이 주어질 때 마지막 1의 자리가 K인 숫자의 계단 수의 갯수는  N - 1 번째의 K - 1의 계단 수의 갯수 + N - 1번째의 K + 1의 계단수의 갯수일 것이다  예를 들어 N == 2 일 때 1의 자리 숫자가 3으로 끝나는 계단 수의 갯수는   N == 1 일 때, 2의 갯수,  그리고 4의 갯수를 합치면 된다  글 보다 표를 그려 확인 해보자     수식으로 구성 해보자   N : 숫자의 길이, K : N 의 계단 수의 1의 자리   N[K] = N-1[K - 1] + N-1[K+1] 이 때, 주의 할 것이 있다   N[K] == 0 일 경우엔  이전 단계에서 1일 경우만 더해주고 ( 즉, N-1[1])  K == 9 : 8일 경우만 더해 준다 ( 즉 N-1[8])     이를 그대로 코드로 옮겨 보자   func solve(n : Int) {     if n == 1 { // 1일 경우는 무조건 9개 밖에 없다         print(9)         return     }     let mod = 1_000_000_000 // 결과값에서 쓰일 나머지 연산 값      var map = Array(repeating: Array(repeating: 0, count: 10), count: 101)          for i in 1 ... 9 {         map[1][i] = 1     }          for i in 2 ... n {         map[i][0] = map[i-1][1]         map[i][9] = map[i-1][8]         for k in 1 ... 8 {             map[i][k] = (map[i-1][k - 1] + map[i-1][k + 1]) % mod         }     }          let result = map[n].reduce(0,+)          print(result % mod) }  ","categories": ["Algorithm","DP"],
         "tags": [],
@@ -90,20 +84,68 @@ var store = [{
         "teaser": null
       },{
         "title": "ARC 및 참조 타입",
-        "excerpt":"ARC Swift에서 메모리를 자동으로 관리   특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.  컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만  참조 순환 즉, Memory Leak을 발생시킬 수 있다      순환 참조가 발생하는 경우      프로퍼티에서 인스턴스를 서로 강하게 참조    class App {     var os : iOS?          deinit {         print(\"app deinit\")     } }  class iOS {     var applications : App?          deinit {         print(\"ios deinit\")     } }  var app : App? = App() var ios : iOS? = iOS()  app?.os = ios ios?.applications = app   app = nil ios = nil   위 코드에서 각각 프로퍼티 os, applications가 App, iOS 인스턴스를 참조하여  App, iOS의 RC는 1씩 증가한 1인 상태이다  그 상태에서 참조 변수 app,ios가 nil로 변경되어 프로퍼티에 접근할 수 없어 순환참조가 발생하여 Memory Leak발생          클로저에서 참조하는 경우      class App {     var os : iOS?     let name : String          init(name: String) {         self.name = name     }          lazy var info: () -&gt; String = {         return self.name     }     deinit {         print(\"app deinit\")     } }  var app : App? = App(name: \"Wallet\") app = nil    위의 경우처럼 info 안에서 self를 참조 하고 있을때,   참조변수 app을 nil로 변경되면 클로저와 인스턴스 사이 순환참조가 발생된다        순환 참조 방지 하는 방법       weak, unowend 사용            해당 키워드들로 인스턴스를 참조시 RC가 증가하지 않는다       weak은 아래서 설명하겠지만 옵셔널 타입으로 옵셔널 바인딩, 체이닝을 사용하여 런타임 크래시를 방지할 수 있다       unowend는 생명주기가 길거나 인스턴스가 존재함을 확신할 때 사용된다           클로저에서 캡처리스트 작성            캡처리스트란 클로저가 참조하는 대상, 참조하는 방식을 지정하는 형식이다       즉, 강하게 캡처(참조)할지 약하게 캡처(참조)할지 지정이 가능하다             참조 방식     strong            객체를 소유하여 RC를 증가시키는 프로퍼티       ARC로 인한 메모리 해제를 피하고 객체를 안전하게 사용할 때 사용           weak            객체를 소유하지 않고 주소값만을 가지고 있는 포인터 개념       메모리에서 해제될 경우 자동으로 nil로 초기화되기 때문에 옵셔널 타입으로 사용해야한다           unowend            weak과 비슷한 개념이지만 nil값이 될 수 없기 때문에 옵셔널 타입으로 선언하면 안된다           잘못된 설명이 있으면 지적 부탁드립니다.   ","categories": ["iOS"],
+        "excerpt":"ARC Swift에서 메모리를 자동으로 관리   특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.  컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만  참조 순환 즉, Memory Leak을 발생시킬 수 있다      순환 참조가 발생하는 경우      프로퍼티에서 인스턴스를 서로 강하게 참조    class App {     var os : iOS?          deinit {         print(\"app deinit\")     } }  class iOS {     var applications : App?          deinit {         print(\"ios deinit\")     } }  var app : App? = App() var ios : iOS? = iOS()  app?.os = ios ios?.applications = app   app = nil ios = nil   위 코드에서 각각 프로퍼티 os, applications가 App, iOS 인스턴스를 참조하여  App, iOS의 RC는 1씩 증가한 1인 상태이다  그 상태에서 참조 변수 app,ios가 nil로 변경되어 프로퍼티에 접근할 수 없어 순환참조가 발생하여 Memory Leak발생          클로저에서 참조하는 경우      class App {     var os : iOS?     let name : String          init(name: String) {         self.name = name     }          lazy var info: () -&gt; String = {         return self.name     }     deinit {         print(\"app deinit\")     } }  var app : App? = App(name: \"Wallet\") app = nil    위의 경우처럼 info 안에서 self를 참조 하고 있을때,   참조변수 app을 nil로 변경되면 클로저와 인스턴스 사이 순환참조가 발생된다        순환 참조 방지 하는 방법       weak, unowend 사용            해당 키워드들로 인스턴스를 참조시 RC가 증가하지 않는다       weak은 아래서 설명하겠지만 옵셔널 타입으로 옵셔널 바인딩, 체이닝을 사용하여 런타임 크래시를 방지할 수 있다       unowend는 생명주기가 길거나 인스턴스가 존재함을 확신할 때 사용된다           클로저에서 캡처리스트 작성            캡처리스트란 클로저가 참조하는 대상, 참조하는 방식을 지정하는 형식이다       즉, 강하게 캡처(참조)할지 약하게 캡처(참조)할지 지정이 가능하다             참조 방식     strong            객체를 소유하여 RC를 증가시키는 프로퍼티       ARC로 인한 메모리 해제를 피하고 객체를 안전하게 사용할 때 사용           weak            객체를 소유하지 않고 주소값만을 가지고 있는 포인터 개념       메모리에서 해제될 경우 자동으로 nil로 초기화되기 때문에 옵셔널 타입으로 사용해야한다           unowend            weak과 비슷한 개념이지만 nil값이 될 수 없기 때문에 옵셔널 타입으로 선언하면 안된다           잘못된 설명이 있으면 지적 부탁드립니다.   ","categories": ["Swift"],
         "tags": [],
-        "url": "https://sweetfood-dev.github.io/ios/ARC/",
+        "url": "https://sweetfood-dev.github.io/swift/ARC/",
         "teaser": null
       },{
         "title": "클로저",
-        "excerpt":"클로저         클로저의 형태            이름을 가진 어떤 값도 캡처하지 않는 전역 함수       이름을 가진 자신을 감싸고 있는 함수에서 값을 캡쳐해 가질 수 있는 중첩 함수       이름이 없으며 주변 환경의 값을 캡처해 가질 수 있는 클로저 표현식           @escaping            인자값으로 전달된 클로저를 저장해 두었다가 다른 곳에서도 실행할 수 있도록 허용해주는 속성       인자값으로 전달된 클로저는 기본적으로 탈출불가의 성격을 가진다       이는 함수 내에서, 직접 실행을 위해서만 사용해야하는 것을 의미한다       중첩된 내부 함수에서도 사용이 불가하다           func outerFunc( c: () -&gt; () ) -&gt; () -&gt; (){     c()     func innerFunc() {         c()     } \t\t// innerFunc() 안에서 매개변수 c를 호출하고 있기 때문에 에러 발생     return innerFunc  }   let inner = outerFunc {     print(\"run func\") }   inner()   이러한 제약조건을 모두 제거하여 사용 가능 하게 만들어 주는 것이 @escaping 속성이다  아래와 같은 상황에서 사용       완료에 따른 처리   비동기로 실행 시 함수 사이의 실행 순서를 정할 수 있음              값의 캡처           클로저 내부에서 사용되는 외부 변수의 값을 내부적으로 저장, 이를 캡처되었다고 한다   클로저에서의 캡처는 value type이여도 reference 캡처(카피)를 한다. 변수가 사용되는 시점의 값을 캡처   단, capture list를 이용하면 value 카피로 사용 가능하다.   value 캡쳐된 값은 클로저안에서 변경이 불가하다   Reference Capture   var anInteger = 42 let testClosure = {     // anInteger는 capture되는 순간 reference copy됨     print(\"Integer is: \\(anInteger)\") } testClosure() // \"Integer is 42\" anInteger = 84  testClosure() // \"Integer is 84\"   Value Capture   var anInteger = 42  let testClosure = { [anInteger] in     // anInteger는 capture되는 순간 value copy됨     print(\"Integer is: \\(anInteger)\") } testClosure() // \"Integer is 42\" anInteger = 84  testClosure() // \"Integer is 42\"   ","categories": ["iOS"],
+        "excerpt":"클로저         클로저의 형태            이름을 가진 어떤 값도 캡처하지 않는 전역 함수       이름을 가진 자신을 감싸고 있는 함수에서 값을 캡쳐해 가질 수 있는 중첩 함수       이름이 없으며 주변 환경의 값을 캡처해 가질 수 있는 클로저 표현식           @escaping            인자값으로 전달된 클로저를 저장해 두었다가 다른 곳에서도 실행할 수 있도록 허용해주는 속성       인자값으로 전달된 클로저는 기본적으로 탈출불가의 성격을 가진다       이는 함수 내에서, 직접 실행을 위해서만 사용해야하는 것을 의미한다       중첩된 내부 함수에서도 사용이 불가하다           func outerFunc( c: () -&gt; () ) -&gt; () -&gt; (){     c()     func innerFunc() {         c()     } \t\t// innerFunc() 안에서 매개변수 c를 호출하고 있기 때문에 에러 발생     return innerFunc  }   let inner = outerFunc {     print(\"run func\") }   inner()   이러한 제약조건을 모두 제거하여 사용 가능 하게 만들어 주는 것이 @escaping 속성이다  아래와 같은 상황에서 사용       완료에 따른 처리   비동기로 실행 시 함수 사이의 실행 순서를 정할 수 있음              값의 캡처           클로저 내부에서 사용되는 외부 변수의 값을 내부적으로 저장, 이를 캡처되었다고 한다   클로저에서의 캡처는 value type이여도 reference 캡처(카피)를 한다. 변수가 사용되는 시점의 값을 캡처   단, capture list를 이용하면 value 카피로 사용 가능하다.   value 캡쳐된 값은 클로저안에서 변경이 불가하다   Reference Capture   var anInteger = 42 let testClosure = {     // anInteger는 capture되는 순간 reference copy됨     print(\"Integer is: \\(anInteger)\") } testClosure() // \"Integer is 42\" anInteger = 84  testClosure() // \"Integer is 84\"   Value Capture   var anInteger = 42  let testClosure = { [anInteger] in     // anInteger는 capture되는 순간 value copy됨     print(\"Integer is: \\(anInteger)\") } testClosure() // \"Integer is 42\" anInteger = 84  testClosure() // \"Integer is 42\"   ","categories": ["Swift"],
         "tags": [],
-        "url": "https://sweetfood-dev.github.io/ios/Closure/",
+        "url": "https://sweetfood-dev.github.io/swift/Closure/",
         "teaser": null
       },{
         "title": "defer",
-        "excerpt":"defer        작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다   defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다  ","categories": ["iOS"],
+        "excerpt":"defer        작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다   defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다  ","categories": ["Swift"],
         "tags": [],
-        "url": "https://sweetfood-dev.github.io/ios/defer/",
+        "url": "https://sweetfood-dev.github.io/swift/defer/",
+        "teaser": null
+      },{
+        "title": "as as? as!",
+        "excerpt":"                       설명       실행 시점       캐스팅 종류                       as       컴파일러가 타입 변환의 성공을 보장       컴파일 타임       업 캐스팅                 as?       변환에 실패하는 경우 nil을 반환       런타임       다운 캐스팅                 as!       변환에 실패하는 경우 런타임에러 발생       런타임       다운 캐스팅          ","categories": ["Swift"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/swift/1-type-casting/",
+        "teaser": null
+      },{
+        "title": "Frame과 Bounds",
+        "excerpt":"Frame      상위뷰 좌표 시스템 내에서 View의 위치와 크기      Bounds      자기 자신의 좌표시스템에서의 (sub view들의)위치와 크기, 부모뷰와는 관계가 없다   default origin은 0,0이다   origin의 변경은 sub view들의 위치가 변경됨을 의미   sub view의 위치가 변한다는 것은 그려져야하는 위치가 달라지는 것이지 sub view들의 frame 값의 변화는 없다   스크롤 시 sub view들의 위치가 달라지는 것이 대표적인 예이다  ","categories": ["Swift"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/swift/3-frame-bounds/",
+        "teaser": null
+      },{
+        "title": "오토레이아웃의 우선순위",
+        "excerpt":"constraint의 priority      제약 사항간의 우선순위   뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다   이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.  ","categories": ["Swift"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/swift/4-autolayout-priority/",
+        "teaser": null
+      },{
+        "title": "클래스와 구조체",
+        "excerpt":"               Class       Struct                       레퍼런스 타입       밸류 타입                 객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리       스택 영역에 저장                 상속가능       상속 불가, Protocol은 사용가능하다                 대입 연산 시 레퍼런스 공유       대입 연산 시  값 복사          ","categories": ["Swift"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/swift/Class-Struct-02/",
+        "teaser": null
+      },{
+        "title": "CollectionViewLayout",
+        "excerpt":"일반적인 collectionview의 delegate와 datasource는  화면에 셀을 표시하는 역할을 담당합니다  표시 할 때 구성과 같은 layout은 UICollectionViewLayout을 구현하여 처리해야합니다    커스텀 CollectionViewLayout의 주 역할은 UICollectionView에서 요청하는 레이아웃 관련 정보를 제공하는 것입니다.  레이아웃을 미리 준비해 놓았다가 UICollectionView에서 요청하면 준비한 레이아웃 정보를 제공합니다.  이 때 몇가지 필수 메소드들이 존재합니다        prepare()            UICollectionView에 표시되는 전체 크기를 계산하고 각 셀의 레이아웃 속성, collectionView의 크기와 cell의 위치를 미리 계산(캐싱)하여 메모리에 적재한 뒤 유지합니다.           collectionViewContentSize            collectionView의 전체 높이와 너비를 반환합니다.       화면에 보이는 contents 뿐만 아니라 collectionView의 전체를 반환해야 합니다.       collectionView는 이 정보를 활용하여 내부적으로 scrollView의 크기를 구성합니다.           layoutAttributesForElements (in :)            in의 범위 안에 있는 모든 셀들의 레이아웃 속성들을 배열에 담아 반환합니다           **layoutAttributesForItem (at :) **            at으로 들어온 cell의 레이아웃 속성을 반환합니다.             호출 순서  Layout prepare() : 전체 크기, 셀의 위치를 미리 계산  collectionView numberOfItemsInSection : 아이템의 전체 개수  Layout collectionViewContentSize : collectionView의 전체 크기(너비, 높이)  Layout layoutAttributesForElements : 범위 안에 있는 모든 셀들의 레이아웃 속성  Layout collectionViewContentSize :  collectionView의 전체 크기(너비, 높이)  collectionView cellForItemAt : cell 표시   ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/1-custom-layout/",
+        "teaser": null
+      },{
+        "title": "UICollectionViewDataSourcePrefetching",
+        "excerpt":"UITableView/UICollectionView 에서 Pagenation을 위해 보통 아래 방법을 사용했다.    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {         if indexPath.row == myItemList.count - 1 {             fetchNextPage()         }     }    보여지는 Cell을 기준으로 List 의 마지막 아이템을 부르기 전에 다음 리스트 호출을 하는 식이다.  하지만 이번에 과제를 하면서 너무 버벅여 다른 방법을 찾아봤는데, UICollectionViewDataSourcePrefetching 프로토콜이 존재하였다  ‘willDisplay’ 이 실제 보여지는 Cell을 기준으로 한다면 prefetchDataSource 는 이 작업을 백그라운드로 옮겨와 처리하는 것이다.    extension ViewController: UICollectionViewDataSourcePrefetching {     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) { \t\t//내용      } }   이렇게 수정 후 눈에 띄게 속도가 향상되었다!!!  ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/2-UICollectionViewDataSourcePrefetching/",
+        "teaser": null
+      },{
+        "title": "Application 생명 주기",
+        "excerpt":"App 생명주기란     앱의 실행부터 종료까지의 주기를 말하며, 앱이 foreground나 background에 있을 때 시스템 알림에 응답하고 기타 중요한 시스템 관련 이벤트를 처리하는 단계들을 말한다.       앱 실행시   UIAppliation 객체를 생성한다.  이후 UIApplication 어노테이션이 있는 객체를 찾아 AppDelegate를 생성한다.  Main Run Loop ( Main Event Loop)를 실행하고  Main Run Loop는 발생한 이벤트를 큐에 담아놓고  담겨 있는 이벤트를 꺼내 하나하나 실행하여 처리한다  AppDelegate 객체는 Life Cycle을 전달 받기 때문에 이를 통하여 현재 상태를 알 수 있다    Life Cycle     Not Running            아무 것도 하지 않는 상태 혹은, 실행 중이나 시스템에 의해 종료된 상태           In-Active            상태 전환 과정에서 잠시 머무르는 상태           Active            실제 앱이 실행 되는 상태( 이벤트를 받는 단계 )           BackGround            Suspend 진입 전에 거치는 단계       데이터의 저장등의 작업을 처리한다       일반적인 앱은 잠시 머물고 바로 Suspend상태로 진입하지만       음악, 통화, 녹음등의 앱은 이 상태에서도 동작한다           Suspend            BackGround 상태지만 아무 실행도 하지 않는 상태, Not Running 상태와 같다       시스템이 임의로 BackGround상태를 Suspend로 만든다 ( 리소스 해제 )          ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "ViewController 생명 주기",
+        "excerpt":"iOS에서는 화면전환을 할 때 기존의 화면 위에 새로운 화면을 쌓는 식으로 화면 전환을 합니다.  이 때 각각의 ViewController는 자신만의 생명주기를 가지고 있습니다  그래서 상황에 맞는 함수들이 호출 되는데 이 생명주기를 나타내는 대표적인 메소드들은 다음과 같습니다        ViewDidLoad            ViewController 클래스가 생성될 때 딱 한번 실행됩니다.       보통 초기화 작업이 이루어집니다           ViewWillAppear            화면에 나타나기 직전에 실행됩니다       ViewDidload와 다르게 나타나기 직전마다 항상 실행됩니다           ViewDidAppear            화면에 나타난 직후에 실행됩니다.           ViewWillDisAppear            화면에서 사라기지 직전에 실행됩니다           ViewDidDisAppear            화면에서  사라지고 난 직후에 실행됩니다          ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/",
         "teaser": null
       }]

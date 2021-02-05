@@ -1,0 +1,27 @@
+I"_<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Struct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>레퍼런스 타입</td>
+      <td>밸류 타입</td>
+    </tr>
+    <tr>
+      <td>객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리</td>
+      <td>스택 영역에 저장</td>
+    </tr>
+    <tr>
+      <td>상속가능</td>
+      <td>상속 불가, Protocol은 사용가능하다</td>
+    </tr>
+    <tr>
+      <td>대입 연산 시 레퍼런스 공유</td>
+      <td>대입 연산 시  값 복사</td>
+    </tr>
+  </tbody>
+</table>
+:ET
