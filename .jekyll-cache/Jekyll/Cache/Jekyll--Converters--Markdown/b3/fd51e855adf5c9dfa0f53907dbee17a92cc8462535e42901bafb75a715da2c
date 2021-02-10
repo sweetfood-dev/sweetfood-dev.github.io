@@ -1,0 +1,20 @@
+I"�<p>Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!<br /></p>
+
+<p><img src="http://localhost:4000/assets/images/Posts/iOS/tranditional_mvc.png" alt="" /></p>
+
+<p>그림을 보면 MVC가 모두 밀접하게 연관되어 있다<br />
+이는 곧 재사용성이 떨어짐을 의미한다<br />
+그만 알아보자<br />
+<strong>전통적인 MVC는 iOS에 적합해 보이지 않는다!</strong><br /></p>
+
+<p>Apple이 권고하는 MVC에 대해 알아보자.<br />
+<img src="http://localhost:4000/assets/images/Posts/iOS/cocoa_mvc.png" alt="" /></p>
+
+<p>그림에서 볼 수 있듯 Controller는 중간에서 Model과 View를 이어준다<br />
+Model – View는 서로 알 필요가 없다<br />
+Controller는 여전히 재사용이 어려워 보인다<br /></p>
+
+<p><strong>한계</strong>
+위의 그림과 대조적이게 실제로 Cocoa MVC는 다음 그림과 같다<br />
+<img src="http://localhost:4000/assets/images/Posts/iOS/real_cocoa_mvc.png" alt="" /></p>
+:ET

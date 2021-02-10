@@ -1,58 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-05T10:26:47+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">as as? as!</title><link href="https://sweetfood-dev.github.io/swift/1-type-casting/" rel="alternate" type="text/html" title="as as? as!" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/1-type-casting</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/1-type-casting/">&lt;table&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-10T12:46:07+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">MVC 패턴</title><link href="https://sweetfood-dev.github.io/ios/2-MVC/" rel="alternate" type="text/html" title="MVC 패턴" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-MVC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-MVC/">&lt;p&gt;Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/tranditional_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림을 보면 MVC가 모두 밀접하게 연관되어 있다&lt;br /&gt;
+이는 곧 재사용성이 떨어짐을 의미한다&lt;br /&gt;
+그만 알아보자&lt;br /&gt;
+&lt;strong&gt;전통적인 MVC는 iOS에 적합해 보이지 않는다!&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apple이 권고하는 MVC에 대해 알아보자.&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/cocoa_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림에서 볼 수 있듯 Controller는 중간에서 Model과 View를 이어준다&lt;br /&gt;
+Model – View는 서로 알 필요가 없다&lt;br /&gt;
+Controller는 여전히 재사용이 어려워 보인다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;한계&lt;/strong&gt;&lt;br /&gt;
+위의 그림과 대조적이게 실제로 Cocoa MVC는 다음 그림과 같다&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/real_cocoa_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;왜 위와 같이 구성될까?&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Controller는 View를 가지고 있다.(그래서 이름도 ViewController다)&lt;/li&gt;
+  &lt;li&gt;따라서 View의 생명 주기와 Controller의 분리가 사실상 어렵다&lt;/li&gt;
+  &lt;li&gt;이렇게 View를 가지고 있고, 그 생명주기도 관리하기 때문에 Controller자체가 거대해진다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;좋은 아키텍쳐 특징에서 바라보기&lt;/strong&gt;&lt;br /&gt;
+좋은 아키텍처의 특징, 요소 측면에서 이 패턴을 파악해보자!&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;책임 분리
+    &lt;ul&gt;
+      &lt;li&gt;View와 Controller의 관계가 매우 밀접하여 , 책임분리가 안된다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;테스트
+    &lt;ul&gt;
+      &lt;li&gt;View와 Controller의 밀접한 관계로 인해 사실상 Model만 테스트가 가능하다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;사용 용이성
+    &lt;ul&gt;
+      &lt;li&gt;코드길이는 적고, 진입장벽 자체는 낮다!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;정리&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;개발속도가 빠르기에 아키텍처에 투자할 시간이 부족할 때 사용하면 유용하다&lt;/li&gt;
+  &lt;li&gt;유지보수 비용이 많이 들어가는 편이다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;MVC가 개발속도는 짱이다! 그러나 유지보수 비용은 많이 들어간다!&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!</summary></entry><entry><title type="html">아키텍처</title><link href="https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" rel="alternate" type="text/html" title="아키텍처" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/">&lt;p&gt;&lt;strong&gt;왜 아키텍처를 사용해야하지?&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;개발을 하다보면 디버깅을 해야하는 상황이 필연적으로 찾아온다&lt;br /&gt;
+이 때 프로젝트의 몸집이 크다면 디버깅을 하는데 있어 어려움을 겪게 될 것이다&lt;br /&gt;
+구조적으로 잘 정의된 프로젝트는 디버깅을 쉽게 해주며, 개발자간의 의사소통, 유지보수에도 도움이 된다!&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;좋은 아키텍쳐의 특징
+    &lt;ul&gt;
+      &lt;li&gt;객체간 &lt;strong&gt;책임 분리&lt;/strong&gt;가 균형있게 잡혀 있고 명확하게 이루어저야 한다.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;테스트&lt;/strong&gt;가 용이해야 한다&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;사용이 용이&lt;/strong&gt;해야 한다. 즉 유지 보수가 쉬워야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;책임 분리는 왜 이루어 저야 할까?&lt;br /&gt;
+로직을 쉽게, 단순하게 한눈에 볼 수 있다&lt;br /&gt;
+즉, 복잡함을 극복하는 방법은 &lt;strong&gt;단일책임 원칙&lt;/strong&gt;으로 책임을 나누는 것이다!&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;왜 테스트가 가능해야 할까?&lt;br /&gt;
+런타임 내에서 이슈를 찾는것을 도와준다&lt;br /&gt;
+실사용자가 이슈를 접한다면 그 이슈를 수정하는데 오랜 시간이 걸리니까, 미연에 방지해야한다!&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;사용의 용이&lt;br /&gt;
+단순하다. &lt;strong&gt;유지보수&lt;/strong&gt;가 용이하니까!&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;어떤 아키텍쳐들이 있는데?&lt;/strong&gt;&lt;br /&gt;
+기본적으로 많이 접해본 mvc, mvp, mvvm, viper가 있고 이러한 아키텍쳐는 &lt;br /&gt;
+3가지 카테고리(요소)를 포함한다&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;요소&lt;/th&gt;
       &lt;th&gt;설명&lt;/th&gt;
-      &lt;th&gt;실행 시점&lt;/th&gt;
-      &lt;th&gt;캐스팅 종류&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;as&lt;/td&gt;
-      &lt;td&gt;컴파일러가 타입 변환의 성공을 보장&lt;/td&gt;
-      &lt;td&gt;컴파일 타임&lt;/td&gt;
-      &lt;td&gt;업 캐스팅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;as?&lt;/td&gt;
-      &lt;td&gt;변환에 실패하는 경우 nil을 반환&lt;/td&gt;
-      &lt;td&gt;런타임&lt;/td&gt;
-      &lt;td&gt;다운 캐스팅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;as!&lt;/td&gt;
-      &lt;td&gt;변환에 실패하는 경우 런타임에러 발생&lt;/td&gt;
-      &lt;td&gt;런타임&lt;/td&gt;
-      &lt;td&gt;다운 캐스팅&lt;/td&gt;
+      &lt;td&gt;Model&lt;/td&gt;
+      &lt;td&gt;데이터, 데이터 접근자&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">  설명 실행 시점 캐스팅 종류 as 컴파일러가 타입 변환의 성공을 보장 컴파일 타임 업 캐스팅 as? 변환에 실패하는 경우 nil을 반환 런타임 다운 캐스팅 as! 변환에 실패하는 경우 런타임에러 발생 런타임 다운 캐스팅</summary></entry><entry><title type="html">클래스와 구조체</title><link href="https://sweetfood-dev.github.io/swift/02-Class-Struct/" rel="alternate" type="text/html" title="클래스와 구조체" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/02-Class-Struct</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/02-Class-Struct/">&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Class&lt;/th&gt;
-      &lt;th&gt;Struct&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;레퍼런스 타입&lt;/td&gt;
-      &lt;td&gt;밸류 타입&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리&lt;/td&gt;
-      &lt;td&gt;스택 영역에 저장&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;상속가능&lt;/td&gt;
-      &lt;td&gt;상속 불가, Protocol은 사용가능하다&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;대입 연산 시 레퍼런스 공유&lt;/td&gt;
-      &lt;td&gt;대입 연산 시  값 복사&lt;/td&gt;
+      &lt;td&gt;View&lt;/td&gt;
+      &lt;td&gt;화면에 표시되는 UI적인 요소&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">Class Struct 레퍼런스 타입 밸류 타입 객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리 스택 영역에 저장 상속가능 상속 불가, Protocol은 사용가능하다 대입 연산 시 레퍼런스 공유 대입 연산 시 값 복사</summary></entry><entry><title type="html">GCD</title><link href="https://sweetfood-dev.github.io/ios/4-GCD/" rel="alternate" type="text/html" title="GCD" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/4-GCD</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/4-GCD/">&lt;p&gt;&lt;strong&gt;GCD란&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Controller,Presentor,ViewModel&lt;/td&gt;
+      &lt;td&gt;model과 View를 붙여준다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;View의 액션을 처리하여 Model을 변경하거나&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Model이 변경되었을 때 View를 갱신하는 책임을 가진다&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;이러한 구성을 통해 이해가 용이, 재사용이 가능, 독립적으로 테스트가 가능한 이점을 얻을 수 있다!&lt;br /&gt;
+다음 포스트를 통해 mvc 부터 차근차근 알아보자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">왜 아키텍처를 사용해야하지?</summary></entry><entry><title type="html">GCD</title><link href="https://sweetfood-dev.github.io/ios/4-GCD/" rel="alternate" type="text/html" title="GCD" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/4-GCD</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/4-GCD/">&lt;p&gt;&lt;strong&gt;GCD란&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Apple에서 제공하는 멀티쓰레드 처리 API&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -76,39 +142,7 @@ DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행�
       &lt;li&gt;QoS를 통해 작업의 우선순위를 부여할 수 있습니다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">GCD란 Apple에서 제공하는 멀티쓰레드 처리 API</summary></entry><entry><title type="html">ViewController 생명 주기</title><link href="https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/" rel="alternate" type="text/html" title="ViewController 생명 주기" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/">&lt;p&gt;iOS에서는 화면전환을 할 때 기존의 화면 위에 새로운 화면을 쌓는 식으로 화면 전환을 합니다.&lt;br /&gt;
-이 때 각각의 ViewController는 자신만의 생명주기를 가지고 있습니다&lt;br /&gt;
-그래서 상황에 맞는 함수들이 호출 되는데 이 생명주기를 나타내는 대표적인 메소드들은 다음과 같습니다&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;ViewDidLoad
-    &lt;ul&gt;
-      &lt;li&gt;ViewController 클래스가 생성될 때 딱 한번 실행됩니다.&lt;/li&gt;
-      &lt;li&gt;보통 초기화 작업이 이루어집니다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;ViewWillAppear
-    &lt;ul&gt;
-      &lt;li&gt;화면에 나타나기 직전에 실행됩니다&lt;/li&gt;
-      &lt;li&gt;ViewDidload와 다르게 나타나기 직전마다 항상 실행됩니다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;ViewDidAppear
-    &lt;ul&gt;
-      &lt;li&gt;화면에 나타난 직후에 실행됩니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;ViewWillDisAppear
-    &lt;ul&gt;
-      &lt;li&gt;화면에서 사라기지 직전에 실행됩니다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;ViewDidDisAppear
-    &lt;ul&gt;
-      &lt;li&gt;화면에서  사라지고 난 직후에 실행됩니다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">iOS에서는 화면전환을 할 때 기존의 화면 위에 새로운 화면을 쌓는 식으로 화면 전환을 합니다. 이 때 각각의 ViewController는 자신만의 생명주기를 가지고 있습니다 그래서 상황에 맞는 함수들이 호출 되는데 이 생명주기를 나타내는 대표적인 메소드들은 다음과 같습니다 ViewDidLoad ViewController 클래스가 생성될 때 딱 한번 실행됩니다. 보통 초기화 작업이 이루어집니다 ViewWillAppear 화면에 나타나기 직전에 실행됩니다 ViewDidload와 다르게 나타나기 직전마다 항상 실행됩니다 ViewDidAppear 화면에 나타난 직후에 실행됩니다. ViewWillDisAppear 화면에서 사라기지 직전에 실행됩니다 ViewDidDisAppear 화면에서 사라지고 난 직후에 실행됩니다</summary></entry><entry><title type="html">Application 생명 주기</title><link href="https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/" rel="alternate" type="text/html" title="Application 생명 주기" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/">&lt;p&gt;&lt;strong&gt;App 생명주기란&lt;/strong&gt;&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">GCD란 Apple에서 제공하는 멀티쓰레드 처리 API</summary></entry><entry><title type="html">Application 생명 주기</title><link href="https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/" rel="alternate" type="text/html" title="Application 생명 주기" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/">&lt;p&gt;&lt;strong&gt;App 생명주기란&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;앱의 실행부터 종료까지의 주기를 말하며, 앱이 foreground나 background에 있을 때 시스템 알림에 응답하고 기타 중요한 시스템 관련 이벤트를 처리하는 단계들을 말한다.&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
@@ -256,4 +290,33 @@ collectionView cellForItemAt : cell 표시&lt;br /&gt;&lt;/p&gt;</content><autho
   &lt;li&gt;origin의 변경은 sub view들의 위치가 변경됨을 의미&lt;/li&gt;
   &lt;li&gt;sub view의 위치가 변한다는 것은 그려져야하는 위치가 달라지는 것이지 sub view들의 frame 값의 변화는 없다&lt;/li&gt;
   &lt;li&gt;스크롤 시 sub view들의 위치가 달라지는 것이 대표적인 예이다&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">Frame 상위뷰 좌표 시스템 내에서 View의 위치와 크기</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">Frame 상위뷰 좌표 시스템 내에서 View의 위치와 크기</summary></entry><entry><title type="html">as as? as!</title><link href="https://sweetfood-dev.github.io/swift/1-type-casting/" rel="alternate" type="text/html" title="as as? as!" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/1-type-casting</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/1-type-casting/">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+      &lt;th&gt;실행 시점&lt;/th&gt;
+      &lt;th&gt;캐스팅 종류&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as&lt;/td&gt;
+      &lt;td&gt;컴파일러가 타입 변환의 성공을 보장&lt;/td&gt;
+      &lt;td&gt;컴파일 타임&lt;/td&gt;
+      &lt;td&gt;업 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as?&lt;/td&gt;
+      &lt;td&gt;변환에 실패하는 경우 nil을 반환&lt;/td&gt;
+      &lt;td&gt;런타임&lt;/td&gt;
+      &lt;td&gt;다운 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as!&lt;/td&gt;
+      &lt;td&gt;변환에 실패하는 경우 런타임에러 발생&lt;/td&gt;
+      &lt;td&gt;런타임&lt;/td&gt;
+      &lt;td&gt;다운 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">  설명 실행 시점 캐스팅 종류 as 컴파일러가 타입 변환의 성공을 보장 컴파일 타임 업 캐스팅 as? 변환에 실패하는 경우 nil을 반환 런타임 다운 캐스팅 as! 변환에 실패하는 경우 런타임에러 발생 런타임 다운 캐스팅</summary></entry></feed>

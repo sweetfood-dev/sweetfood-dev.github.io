@@ -1,0 +1,55 @@
+I"�<p>Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!<br /></p>
+
+<p><img src="http://localhost:4000/assets/images/Posts/iOS/tranditional_mvc.png" alt="" /></p>
+
+<p>그림을 보면 MVC가 모두 밀접하게 연관되어 있다<br />
+이는 곧 재사용성이 떨어짐을 의미한다<br />
+그만 알아보자<br />
+<strong>전통적인 MVC는 iOS에 적합해 보이지 않는다!</strong><br /></p>
+
+<p>Apple이 권고하는 MVC에 대해 알아보자.<br />
+<img src="http://localhost:4000/assets/images/Posts/iOS/cocoa_mvc.png" alt="" /></p>
+
+<p>그림에서 볼 수 있듯 Controller는 중간에서 Model과 View를 이어준다<br />
+Model – View는 서로 알 필요가 없다<br />
+Controller는 여전히 재사용이 어려워 보인다<br /></p>
+
+<p><strong>한계</strong>
+위의 그림과 대조적이게 실제로 Cocoa MVC는 다음 그림과 같다<br />
+<img src="http://localhost:4000/assets/images/Posts/iOS/real_cocoa_mvc.png" alt="" /></p>
+
+<p>왜 위와 같이 구성될까?<br /></p>
+<ul>
+  <li>Controller는 View를 가지고 있다.(그래서 이름도 ViewController다)</li>
+  <li>따라서 View의 생명 주기와 Controller의 분리가 사실상 어렵다</li>
+  <li>이렇게 View를 가지고 있고, 그 생명주기도 관리하기 때문에 Controller자체가 거대해진다</li>
+</ul>
+
+<p><strong>좋은 아키텍쳐 특징에서 바라보기</strong><br />
+좋은 아키텍처의 특징, 요소 측면에서 이 패턴을 파악해보자!<br /></p>
+<ol>
+  <li>책임 분리
+    <ul>
+      <li>View와 Controller의 관계가 매우 밀접하여 , 책임분리가 안된다</li>
+    </ul>
+  </li>
+  <li>테스트
+    <ul>
+      <li>View와 Controller의 밀접한 관계로 인해 사실상 Model만 테스트가 가능하다.</li>
+    </ul>
+  </li>
+  <li>사용 용이성
+    <ul>
+      <li>코드길이는 적고, 진입장벽 자체는 낮다!</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>정리</strong><br /></p>
+<ol>
+  <li>개발속도가 빠르기에 아키텍처에 투자할 시간이 부족할 때 사용하면 유용하다</li>
+  <li>유지보수 비용이 많이 들어가는 편이다</li>
+</ol>
+
+<p><strong>MVC가 개발속도는 짱이다! 그러나 유지보수 비용은 많이 들어간다!</strong></p>
+:ET

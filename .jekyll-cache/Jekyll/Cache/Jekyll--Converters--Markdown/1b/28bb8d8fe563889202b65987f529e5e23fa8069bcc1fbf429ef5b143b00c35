@@ -1,0 +1,9 @@
+I"�<p>Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!<br /></p>
+
+<p><img src="http://localhost:4000/assets/images/Posts/iOS/tranditional_mvc.png" alt="" /></p>
+
+<p>그림을 보면 MVC가 모두 밀접하게 연관되어 있다<br />
+이는 곧 재사용성이 떨어짐을 의미한다<br />
+그만 알아보자<br />
+<strong>전통적인 MVC는 iOS에 적합해 보이지 않는다!</strong></p>
+:ET
