@@ -172,4 +172,16 @@ var store = [{
         "tags": [],
         "url": "https://sweetfood-dev.github.io/ios/2-MVC/",
         "teaser": null
+      },{
+        "title": "MVP",
+        "excerpt":"MVC에 이어 MVP를 알아보자     기본적으로 MVC와 유사하다  차이점은 ViewController가 View와 함께 Passive View에 속해있다는 점!  presenter는 Model과 Passive View 사이에 다리 역할을 하며   이로 인해 MVC에서의 문제였던 View의 생명 주기에서 자유로울 수 있다   View는 이로 인해 데이터와 상태를 갱신하는 역할에 집중 할 수 있다  같은 이유로 View도 Test가 가능하게 되었다  다만 View의 갱신, 이벤트 처리에 대한 메소드 바인딩이 이루어저야 하여  개발비용이 MVC보다 더 많이 든다!    좋은 아키텍처 특징에서 보기     책임 분배 : Presenter와 Model을 완벽하게 분리하고 View는 단순히 출력하는 용도로 분리 되었다   테스트 : View의 재사용이 가능하여 대부분의 로직을 테스트할 수 있다   사용 용이성 : 코드는 MVC에 비해 늘어나지만 각 요소들의 역할이 더 명확해 진다   iOS에서 테스트를 하기에 좋다!, 다만 코드는 길어진다!  ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/3-MVP/",
+        "teaser": null
+      },{
+        "title": "MVVM",
+        "excerpt":"MVVM 패턴은 MVP와 비슷하다     ViewController를 MVP에선 PassiveView로 보앗듯이   MVVM에서는 View로 본다  View와 Model이 연결되지 않는다   View와 ViewModel사이를 바인딩으로 연결해 준다  다만 구조자체가 복잡하기 때문에 디버깅이 비교적 오래 걸린다    ViewModel이란?  View의 독립된 표현 혹은 상태를 말한다  Model에서 변경을 호출하고 Model 자체를 갱신한다  View와 Model 사이에서 바인딩을 하여 갱신한다    좋은 아키텍쳐 특징에서 보기      책임분배 : MVVM에서의 View는 MVP의 View보다 책임지는 것이 더 많다   테스트 : ViewModel은 View에 대해 전혀 모르기 때문에 테스트가 용이하다   사용용이성 : MVP보다 비교적 적은 코드로 개발할 수 있다   View 입장에서 바인딩을 하기 때문에 View를 갱신하는데 추가 코드가 필요하지 않다!  테스트에도 좋은 난이도 있는 아키텍처  ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/4-MVVM/",
+        "teaser": null
       }]

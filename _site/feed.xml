@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-10T12:46:07+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">MVC 패턴</title><link href="https://sweetfood-dev.github.io/ios/2-MVC/" rel="alternate" type="text/html" title="MVC 패턴" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-MVC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-MVC/">&lt;p&gt;Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-02-10T14:24:53+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">MVVM</title><link href="https://sweetfood-dev.github.io/ios/4-MVVM/" rel="alternate" type="text/html" title="MVVM" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/4-MVVM</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/4-MVVM/">&lt;p&gt;MVVM 패턴은 MVP와 비슷하다&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/mvvm.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ViewController를 MVP에선 &lt;strong&gt;PassiveView&lt;/strong&gt;로 보앗듯이 &lt;br /&gt;
+&lt;strong&gt;MVVM&lt;/strong&gt;에서는 &lt;strong&gt;View&lt;/strong&gt;로 본다&lt;br /&gt;
+View와 Model이 연결되지 않는다 &lt;br /&gt;
+View와 ViewModel사이를 바인딩으로 연결해 준다&lt;br /&gt;
+다만 구조자체가 복잡하기 때문에 디버깅이 비교적 오래 걸린다&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;ViewModel이란?&lt;/strong&gt;&lt;br /&gt;
+View의 독립된 표현 혹은 상태를 말한다&lt;br /&gt;
+Model에서 변경을 호출하고 Model 자체를 갱신한다&lt;br /&gt;
+View와 Model 사이에서 바인딩을 하여 갱신한다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;좋은 아키텍쳐 특징에서 보기&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;책임분배 : MVVM에서의 View는 MVP의 View보다 책임지는 것이 더 많다&lt;/li&gt;
+  &lt;li&gt;테스트 : ViewModel은 View에 대해 전혀 모르기 때문에 테스트가 용이하다&lt;/li&gt;
+  &lt;li&gt;사용용이성 : MVP보다 비교적 적은 코드로 개발할 수 있다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;View 입장에서 바인딩을 하기 때문에 View를 갱신하는데 추가 코드가 필요하지 않다!&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;테스트에도 좋은 난이도 있는 아키텍처&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">MVVM 패턴은 MVP와 비슷하다</summary></entry><entry><title type="html">MVC 패턴</title><link href="https://sweetfood-dev.github.io/ios/2-MVC/" rel="alternate" type="text/html" title="MVC 패턴" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-MVC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-MVC/">&lt;p&gt;Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/tranditional_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -118,7 +140,26 @@ Controller는 여전히 재사용이 어려워 보인다&lt;br /&gt;&lt;/p&gt;
 &lt;/table&gt;
 
 &lt;p&gt;이러한 구성을 통해 이해가 용이, 재사용이 가능, 독립적으로 테스트가 가능한 이점을 얻을 수 있다!&lt;br /&gt;
-다음 포스트를 통해 mvc 부터 차근차근 알아보자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">왜 아키텍처를 사용해야하지?</summary></entry><entry><title type="html">GCD</title><link href="https://sweetfood-dev.github.io/ios/4-GCD/" rel="alternate" type="text/html" title="GCD" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/4-GCD</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/4-GCD/">&lt;p&gt;&lt;strong&gt;GCD란&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+다음 포스트를 통해 mvc 부터 차근차근 알아보자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">왜 아키텍처를 사용해야하지?</summary></entry><entry><title type="html">MVP</title><link href="https://sweetfood-dev.github.io/ios/3-MVP/" rel="alternate" type="text/html" title="MVP" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-MVP</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-MVP/">&lt;p&gt;MVC에 이어 MVP를 알아보자&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/mvp1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기본적으로 MVC와 유사하다&lt;br /&gt;
+차이점은 ViewController가 View와 함께 &lt;strong&gt;Passive View&lt;/strong&gt;에 속해있다는 점!&lt;br /&gt;
+&lt;strong&gt;presenter&lt;/strong&gt;는 Model과 Passive View 사이에 다리 역할을 하며 &lt;br /&gt;
+이로 인해 MVC에서의 문제였던 View의 생명 주기에서 자유로울 수 있다 &lt;br /&gt;
+View는 이로 인해 데이터와 상태를 갱신하는 역할에 집중 할 수 있다&lt;br /&gt;
+같은 이유로 View도 Test가 가능하게 되었다&lt;br /&gt;
+다만 View의 갱신, 이벤트 처리에 대한 메소드 바인딩이 이루어저야 하여&lt;br /&gt;
+개발비용이 MVC보다 더 많이 든다!&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;좋은 아키텍처 특징에서 보기&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;책임 분배 : Presenter와 Model을 완벽하게 분리하고 View는 단순히 출력하는 용도로 분리 되었다&lt;/li&gt;
+  &lt;li&gt;테스트 : View의 재사용이 가능하여 대부분의 로직을 테스트할 수 있다&lt;/li&gt;
+  &lt;li&gt;사용 용이성 : 코드는 MVC에 비해 늘어나지만 각 요소들의 역할이 더 명확해 진다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;iOS에서 테스트를 하기에 좋다!, 다만 코드는 길어진다!&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">MVC에 이어 MVP를 알아보자</summary></entry><entry><title type="html">GCD</title><link href="https://sweetfood-dev.github.io/ios/4-GCD/" rel="alternate" type="text/html" title="GCD" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/4-GCD</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/4-GCD/">&lt;p&gt;&lt;strong&gt;GCD란&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Apple에서 제공하는 멀티쓰레드 처리 API&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -277,46 +318,4 @@ collectionView cellForItemAt : cell 표시&lt;br /&gt;&lt;/p&gt;</content><autho
   &lt;li&gt;제약 사항간의 우선순위&lt;/li&gt;
   &lt;li&gt;뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다&lt;/li&gt;
   &lt;li&gt;이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">constraint의 priority 제약 사항간의 우선순위 뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다 이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.</summary></entry><entry><title type="html">Frame과 Bounds</title><link href="https://sweetfood-dev.github.io/swift/3-frame-bounds/" rel="alternate" type="text/html" title="Frame과 Bounds" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/3-frame-bounds</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/3-frame-bounds/">&lt;p&gt;&lt;strong&gt;Frame&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;상위뷰 좌표 시스템 내에서 View의 위치와 크기&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Bounds&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;자기 자신의 좌표시스템에서의 (sub view들의)위치와 크기, 부모뷰와는 관계가 없다&lt;/li&gt;
-  &lt;li&gt;default origin은 0,0이다&lt;/li&gt;
-  &lt;li&gt;origin의 변경은 sub view들의 위치가 변경됨을 의미&lt;/li&gt;
-  &lt;li&gt;sub view의 위치가 변한다는 것은 그려져야하는 위치가 달라지는 것이지 sub view들의 frame 값의 변화는 없다&lt;/li&gt;
-  &lt;li&gt;스크롤 시 sub view들의 위치가 달라지는 것이 대표적인 예이다&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">Frame 상위뷰 좌표 시스템 내에서 View의 위치와 크기</summary></entry><entry><title type="html">as as? as!</title><link href="https://sweetfood-dev.github.io/swift/1-type-casting/" rel="alternate" type="text/html" title="as as? as!" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/1-type-casting</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/1-type-casting/">&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th&gt;설명&lt;/th&gt;
-      &lt;th&gt;실행 시점&lt;/th&gt;
-      &lt;th&gt;캐스팅 종류&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;as&lt;/td&gt;
-      &lt;td&gt;컴파일러가 타입 변환의 성공을 보장&lt;/td&gt;
-      &lt;td&gt;컴파일 타임&lt;/td&gt;
-      &lt;td&gt;업 캐스팅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;as?&lt;/td&gt;
-      &lt;td&gt;변환에 실패하는 경우 nil을 반환&lt;/td&gt;
-      &lt;td&gt;런타임&lt;/td&gt;
-      &lt;td&gt;다운 캐스팅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;as!&lt;/td&gt;
-      &lt;td&gt;변환에 실패하는 경우 런타임에러 발생&lt;/td&gt;
-      &lt;td&gt;런타임&lt;/td&gt;
-      &lt;td&gt;다운 캐스팅&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">  설명 실행 시점 캐스팅 종류 as 컴파일러가 타입 변환의 성공을 보장 컴파일 타임 업 캐스팅 as? 변환에 실패하는 경우 nil을 반환 런타임 다운 캐스팅 as! 변환에 실패하는 경우 런타임에러 발생 런타임 다운 캐스팅</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">constraint의 priority 제약 사항간의 우선순위 뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다 이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.</summary></entry></feed>
