@@ -1,9 +1,0 @@
-I"�<p>UITableView/UICollectionView 에서 Pagenation을 위해 보통 아래 방법을 사용했다.<br /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == myItemList.count - 1 {
-            fetchNextPage()
-        }
-    }
-</code></pre></div></div>
-:ET

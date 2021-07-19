@@ -184,4 +184,16 @@ var store = [{
         "tags": [],
         "url": "https://sweetfood-dev.github.io/ios/4-MVVM/",
         "teaser": null
+      },{
+        "title": "간편하게 포스트 하는 법?",
+        "excerpt":"터미널에서 로컬의 gitblog 폴더로 이동!   jekyll serve 실행     http://localhost:4000/admin     편하게 글 올리자!  ","categories": [],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/GitBlog_Post/",
+        "teaser": null
+      },{
+        "title": "Optional",
+        "excerpt":"옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다.     옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다.    var number : Int? // Int 옵셔널  var text : String? // String 옵셔널   값이 없을 수 있다는 것은 무슨 의미일까?   String  값을 Int로 변환을 해야하는 경우 아래처럼 사용할 수 있다.   var test: Int = Int(\"123\") // test = 123   하지만 다음과 같은 경우엔?  var test: Int = Int(\"Hello World\") // test = ??   변환 할 수 없을 것이다. 이때 변환할 수 없음, 값이 없음이란 의미로 nil이란 값을 반환할 것이다     // var test: Int = Int(\"Hello World\")  var test: Int? = Int(\"Hello World\") // test = nil  주석 처리한 코드와 그 밑에 코드를 보면 ?가 달려 있는걸 알 수 있다   이 물음표는 해당 타입이 옵셔널이라는 것을 나타낸다!     정리하자면 Optional은 변수 혹은 상수에 값이 없음을 나타낼 수 있게 만들어 주고 값이 없는 상태는 nil로 표현한다!   ","categories": [],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/Optional/",
+        "teaser": null
       }]
