@@ -1,0 +1,9 @@
+I"�<p>이전글 <a href="https://sweetfood-dev.github.io/Optional/">Optional</a>에서는 Optional과 nil에 대해 알아 보았다<br /></p>
+
+<p>옵셔널을 사용하기 위해 아래와 같은 코드를 실행해보았다<br /></p>
+<blockquote>
+  <p>에러에러에러!
+<img src="http://localhost:4000/optional.png" alt="" />
+Swift는 Type에 대해 엄격하다. Int Type과 Int? Type은 엄연히 다른 타입이다.<br /></p>
+</blockquote>
+:ET

@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-07-20T21:34:26+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">Optional</title><link href="https://sweetfood-dev.github.io/Optional/" rel="alternate" type="text/html" title="Optional" /><published>2021-07-19T00:00:00+09:00</published><updated>2021-07-19T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/Optional</id><content type="html" xml:base="https://sweetfood-dev.github.io/Optional/">&lt;p&gt;옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. &lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-07-20T23:34:50+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">옵셔널의 사용</title><link href="https://sweetfood-dev.github.io/Optional2/" rel="alternate" type="text/html" title="옵셔널의 사용" /><published>2021-07-20T00:00:00+09:00</published><updated>2021-07-20T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/Optional2</id><content type="html" xml:base="https://sweetfood-dev.github.io/Optional2/">&lt;p&gt;이전글 &lt;a href=&quot;https://sweetfood-dev.github.io/Optional/&quot;&gt;Optional&lt;/a&gt;에서는 Optional과 nil에 대해 알아 보았다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;옵셔널을 사용하기 위해 아래와 같은 코드를 실행해보았다&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/optional.png&quot; alt=&quot;&quot; /&gt;
+Swift는 Type에 대해 엄격하다. Int Type과 Int? Type은 엄연히 다른 타입이다.&lt;br /&gt;
+Int type으로 선언된 변수에는 Int? type의 값이 들어 갈 수 없다. 그렇다면?&lt;br /&gt;
+옵셔널을 &lt;strong&gt;해제&lt;/strong&gt; 해주어야 한다.  그렇다면 어떻게 해제를 하여 사용하는지 알아보자!!&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;if문과 강제 언래핑&lt;/strong&gt;&lt;br /&gt;
+if 문을 사용하여 옵셔널과 nil을 비교하여 옵셔널에 값이 있는지, 아니면 없는지(nil)를 확인할 수 있다&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/Optional_if.png&quot; alt=&quot;&quot; /&gt;
+if 문에서 nil 이 아닐 때 print가 실행이 된다. 그럼 print가 되었을때 옵셔널 변수의 값은 어떨까?&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/Optional_if2.png&quot; alt=&quot;&amp;lt;br&amp;gt;&quot; /&gt;
+optional 변수인 &lt;strong&gt;convertedNumber&lt;/strong&gt;는 Optional(123)이 출력되고, 일반 Int 타입의 변수 intTypeNumber은 123이 출력된다.&lt;br /&gt;
+Optional(123)에서 괄호 안에 있는 123을 꺼내 사용하고 싶다면?&lt;br /&gt; 변수명 이름뒤에 &lt;strong&gt;!&lt;/strong&gt; 만 붙이면 된다&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/Optional_if3.png&quot; alt=&quot;&quot; /&gt;
+&lt;strong&gt;!&lt;/strong&gt; 를 붙여 Optionald 해제하는 것을 &lt;strong&gt;강제 언래핑&lt;/strong&gt; 이라고 한다. 이 강제 언래핑을 사용할 때에는 항상 nil인지를 확인 후에 사용해야한다. 만약 확인을 하지 않았을 때 변수가 nil인 상태라면 런타임 오류가 발생할 것이다!
+&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Optional Binding&lt;/strong&gt; &lt;br /&gt;
+옵셔널을 해제 하는 또 다른 방법엔 옵셔널 바인딩이 있다.&lt;br /&gt;
+옵셔널 바인딩을 사용하면 옵셔널에 값이 있는지 확인하고 값이 있다면&lt;strong&gt;해당 값&lt;/strong&gt;을  임시 상수나 변수로 &lt;strong&gt;추출&lt;/strong&gt;하여  사용할 수 있다&lt;br /&gt;
+이 때, 추출된 값은 옵셔널이 해제된 순수한 값이므로 일반 변수처럼 사용 가능하다.&lt;br /&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Optional Binding의 형태
+if (let 혹은 var) 추출 후 사용할 변수 = 옵셔널 변수 {
+// 코드 실행
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;강제 언래핑에 사용한 예제 코드를 옵셔널 바인딩 형태로 변경 하면 다음과 같다&lt;/p&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let possibleNumber = &quot;123&quot;
+if let actualNumber = Int(possibleNumber) {
+print(&quot;문자열 \(possibleNumber)은 Int \(actualNumber) 이다!&quot;)
+}else {
+print(&quot;문자열 \(possibleNumber)는 Int로 변환할 수 없다&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;Int(possibleNumber)가 반환하는 옵셔널 Int에 값이 있으면 해당 값을 &lt;strong&gt;추출&lt;/strong&gt;하여 actualNumber에 설정해라!&lt;br /&gt;
+actualNumber에 값이 들어가 있다면 해당 if문 안에서는 일반 상수처럼(var로 선언하였다면 변수) 사용이 가능하다!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><summary type="html">이전글 Optional에서는 Optional과 nil에 대해 알아 보았다</summary></entry><entry><title type="html">Optional</title><link href="https://sweetfood-dev.github.io/Optional/" rel="alternate" type="text/html" title="Optional" /><published>2021-07-19T00:00:00+09:00</published><updated>2021-07-19T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/Optional</id><content type="html" xml:base="https://sweetfood-dev.github.io/Optional/">&lt;p&gt;옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. &lt;br /&gt;
 &lt;br /&gt;
 옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. &lt;br /&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var number : Int? // Int 옵셔널 
@@ -59,26 +98,7 @@ jekyll serve 실행 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://localhost:4000/admin&quot;&gt;http://localhost:4000/admin&lt;/a&gt; &lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;편하게 글 올리자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><summary type="html">터미널에서 로컬의 gitblog 폴더로 이동! jekyll serve 실행</summary></entry><entry><title type="html">MVP</title><link href="https://sweetfood-dev.github.io/ios/3-MVP/" rel="alternate" type="text/html" title="MVP" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-MVP</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-MVP/">&lt;p&gt;MVC에 이어 MVP를 알아보자&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/mvp1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;기본적으로 MVC와 유사하다&lt;br /&gt;
-차이점은 ViewController가 View와 함께 &lt;strong&gt;Passive View&lt;/strong&gt;에 속해있다는 점!&lt;br /&gt;
-&lt;strong&gt;presenter&lt;/strong&gt;는 Model과 Passive View 사이에 다리 역할을 하며 &lt;br /&gt;
-이로 인해 MVC에서의 문제였던 View의 생명 주기에서 자유로울 수 있다 &lt;br /&gt;
-View는 이로 인해 데이터와 상태를 갱신하는 역할에 집중 할 수 있다&lt;br /&gt;
-같은 이유로 View도 Test가 가능하게 되었다&lt;br /&gt;
-다만 View의 갱신, 이벤트 처리에 대한 메소드 바인딩이 이루어저야 하여&lt;br /&gt;
-개발비용이 MVC보다 더 많이 든다!&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;좋은 아키텍처 특징에서 보기&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;책임 분배 : Presenter와 Model을 완벽하게 분리하고 View는 단순히 출력하는 용도로 분리 되었다&lt;/li&gt;
-  &lt;li&gt;테스트 : View의 재사용이 가능하여 대부분의 로직을 테스트할 수 있다&lt;/li&gt;
-  &lt;li&gt;사용 용이성 : 코드는 MVC에 비해 늘어나지만 각 요소들의 역할이 더 명확해 진다&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;iOS에서 테스트를 하기에 좋다!, 다만 코드는 길어진다!&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">MVC에 이어 MVP를 알아보자</summary></entry><entry><title type="html">MVC 패턴</title><link href="https://sweetfood-dev.github.io/ios/2-MVC/" rel="alternate" type="text/html" title="MVC 패턴" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-MVC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-MVC/">&lt;p&gt;Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;편하게 글 올리자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><summary type="html">터미널에서 로컬의 gitblog 폴더로 이동! jekyll serve 실행</summary></entry><entry><title type="html">MVC 패턴</title><link href="https://sweetfood-dev.github.io/ios/2-MVC/" rel="alternate" type="text/html" title="MVC 패턴" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-MVC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-MVC/">&lt;p&gt;Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/tranditional_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -220,133 +240,70 @@ View와 Model 사이에서 바인딩을 하여 갱신한다&lt;br /&gt;&lt;/p&gt
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;View 입장에서 바인딩을 하기 때문에 View를 갱신하는데 추가 코드가 필요하지 않다!&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;테스트에도 좋은 난이도 있는 아키텍처&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">MVVM 패턴은 MVP와 비슷하다</summary></entry><entry><title type="html">GCD</title><link href="https://sweetfood-dev.github.io/ios/4-GCD/" rel="alternate" type="text/html" title="GCD" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/4-GCD</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/4-GCD/">&lt;p&gt;&lt;strong&gt;GCD란&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Apple에서 제공하는 멀티쓰레드 처리 API&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;strong&gt;테스트에도 좋은 난이도 있는 아키텍처&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">MVVM 패턴은 MVP와 비슷하다</summary></entry><entry><title type="html">MVP</title><link href="https://sweetfood-dev.github.io/ios/3-MVP/" rel="alternate" type="text/html" title="MVP" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-MVP</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-MVP/">&lt;p&gt;MVC에 이어 MVP를 알아보자&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/mvp1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-DisPatchQueue가 GCD에 존재합니다&lt;br /&gt;
-DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행을 관리하는 객체입니다&lt;br /&gt;
-순차적으로 실행하는 Main Queue와 동시에 실행하는 Global Queue를 포함하고 있습니다&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;기본적으로 MVC와 유사하다&lt;br /&gt;
+차이점은 ViewController가 View와 함께 &lt;strong&gt;Passive View&lt;/strong&gt;에 속해있다는 점!&lt;br /&gt;
+&lt;strong&gt;presenter&lt;/strong&gt;는 Model과 Passive View 사이에 다리 역할을 하며 &lt;br /&gt;
+이로 인해 MVC에서의 문제였던 View의 생명 주기에서 자유로울 수 있다 &lt;br /&gt;
+View는 이로 인해 데이터와 상태를 갱신하는 역할에 집중 할 수 있다&lt;br /&gt;
+같은 이유로 View도 Test가 가능하게 되었다&lt;br /&gt;
+다만 View의 갱신, 이벤트 처리에 대한 메소드 바인딩이 이루어저야 하여&lt;br /&gt;
+개발비용이 MVC보다 더 많이 든다!&lt;br /&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;좋은 아키텍처 특징에서 보기&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;Main Queue
-    &lt;ul&gt;
-      &lt;li&gt;보통 UI관련된 처리를 담당하고 앱이 실행 되었을 때 자동으로 실행됩니다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Gloabal Queue
-    &lt;ul&gt;
-      &lt;li&gt;백그라운드에서 동작하고&lt;/li&gt;
-      &lt;li&gt;동시에 작업을 수행합니다.&lt;/li&gt;
-      &lt;li&gt;메인큐 작업에 영향을 주면 안되는 작업을 처리할 때 사용하며&lt;/li&gt;
-      &lt;li&gt;QoS를 통해 작업의 우선순위를 부여할 수 있습니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">GCD란 Apple에서 제공하는 멀티쓰레드 처리 API</summary></entry><entry><title type="html">Application 생명 주기</title><link href="https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/" rel="alternate" type="text/html" title="Application 생명 주기" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/">&lt;p&gt;&lt;strong&gt;App 생명주기란&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;앱의 실행부터 종료까지의 주기를 말하며, 앱이 foreground나 background에 있을 때 시스템 알림에 응답하고 기타 중요한 시스템 관련 이벤트를 처리하는 단계들을 말한다.&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;앱 실행시 &lt;br /&gt;
-UIAppliation 객체를 생성한다.&lt;br /&gt;
-이후 UIApplication 어노테이션이 있는 객체를 찾아 AppDelegate를 생성한다.&lt;br /&gt;
-Main Run Loop ( Main Event Loop)를 실행하고&lt;br /&gt;
-Main Run Loop는 발생한 이벤트를 큐에 담아놓고&lt;br /&gt;
-담겨 있는 이벤트를 꺼내 하나하나 실행하여 처리한다&lt;br /&gt;
-AppDelegate 객체는 Life Cycle을 전달 받기 때문에 이를 통하여 현재 상태를 알 수 있다&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Life Cycle&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Not Running
-    &lt;ul&gt;
-      &lt;li&gt;아무 것도 하지 않는 상태 혹은, 실행 중이나 시스템에 의해 종료된 상태&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;In-Active
-    &lt;ul&gt;
-      &lt;li&gt;상태 전환 과정에서 잠시 머무르는 상태&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Active
-    &lt;ul&gt;
-      &lt;li&gt;실제 앱이 실행 되는 상태( 이벤트를 받는 단계 )&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;BackGround
-    &lt;ul&gt;
-      &lt;li&gt;Suspend 진입 전에 거치는 단계&lt;/li&gt;
-      &lt;li&gt;데이터의 저장등의 작업을 처리한다&lt;/li&gt;
-      &lt;li&gt;일반적인 앱은 잠시 머물고 바로 Suspend상태로 진입하지만&lt;/li&gt;
-      &lt;li&gt;음악, 통화, 녹음등의 앱은 이 상태에서도 동작한다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Suspend
-    &lt;ul&gt;
-      &lt;li&gt;BackGround 상태지만 아무 실행도 하지 않는 상태, Not Running 상태와 같다&lt;/li&gt;
-      &lt;li&gt;시스템이 임의로 BackGround상태를 Suspend로 만든다 ( 리소스 해제 )&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">App 생명주기란 앱의 실행부터 종료까지의 주기를 말하며, 앱이 foreground나 background에 있을 때 시스템 알림에 응답하고 기타 중요한 시스템 관련 이벤트를 처리하는 단계들을 말한다.</summary></entry><entry><title type="html">UICollectionViewDataSourcePrefetching</title><link href="https://sweetfood-dev.github.io/ios/2-UICollectionViewDataSourcePrefetching/" rel="alternate" type="text/html" title="UICollectionViewDataSourcePrefetching" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-UICollectionViewDataSourcePrefetching</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-UICollectionViewDataSourcePrefetching/">&lt;p&gt;UITableView/UICollectionView 에서 Pagenation을 위해 보통 아래 방법을 사용했다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == myItemList.count - 1 {
-            fetchNextPage()
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-보여지는 Cell을 기준으로 List 의 마지막 아이템을 부르기 전에 다음 리스트 호출을 하는 식이다.&lt;br /&gt;
-하지만 이번에 과제를 하면서 너무 버벅여 다른 방법을 찾아봤는데, UICollectionViewDataSourcePrefetching 프로토콜이 존재하였다&lt;br /&gt;
-‘willDisplay’ 이 실제 보여지는 Cell을 기준으로 한다면 prefetchDataSource 는 이 작업을 백그라운드로 옮겨와 처리하는 것이다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;extension ViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-		//내용 
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이렇게 수정 후 눈에 띄게 속도가 향상되었다!!!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">UITableView/UICollectionView 에서 Pagenation을 위해 보통 아래 방법을 사용했다.</summary></entry><entry><title type="html">CollectionViewLayout</title><link href="https://sweetfood-dev.github.io/ios/1-custom-layout/" rel="alternate" type="text/html" title="CollectionViewLayout" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/1-custom-layout</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/1-custom-layout/">&lt;p&gt;일반적인 collectionview의 delegate와 datasource는&lt;br /&gt;
-화면에 셀을 표시하는 역할을 담당합니다&lt;br /&gt;
-표시 할 때 구성과 같은 layout은 UICollectionViewLayout을 구현하여 처리해야합니다&lt;br /&gt;
-&lt;br /&gt;
-커스텀 CollectionViewLayout의 &lt;strong&gt;주 역할&lt;/strong&gt;은 UICollectionView에서 요청하는 레이아웃 관련 정보를 제공하는 것입니다.&lt;br /&gt;
-레이아웃을 미리 준비해 놓았다가 UICollectionView에서 요청하면 준비한 레이아웃 정보를 제공합니다.&lt;br /&gt;
-이 때 몇가지 필수 메소드들이 존재합니다&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;prepare()&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;UICollectionView에 표시되는 전체 크기를 계산하고 각 셀의 레이아웃 속성, collectionView의 크기와 cell의 위치를 미리 계산(캐싱)하여 메모리에 적재한 뒤 유지합니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;collectionViewContentSize&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;collectionView의 전체 높이와 너비를 반환합니다.&lt;/li&gt;
-      &lt;li&gt;화면에 보이는 contents 뿐만 아니라 collectionView의 전체를 반환해야 합니다.&lt;/li&gt;
-      &lt;li&gt;collectionView는 이 정보를 활용하여 내부적으로 scrollView의 크기를 구성합니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;layoutAttributesForElements (in :)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;in의 범위 안에 있는 모든 셀들의 레이아웃 속성들을 배열에 담아 반환합니다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;layoutAttributesForItem (at :)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;at으로 들어온 cell의 레이아웃 속성을 반환합니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;책임 분배 : Presenter와 Model을 완벽하게 분리하고 View는 단순히 출력하는 용도로 분리 되었다&lt;/li&gt;
+  &lt;li&gt;테스트 : View의 재사용이 가능하여 대부분의 로직을 테스트할 수 있다&lt;/li&gt;
+  &lt;li&gt;사용 용이성 : 코드는 MVC에 비해 늘어나지만 각 요소들의 역할이 더 명확해 진다&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;호출 순서&lt;/strong&gt;&lt;br /&gt;
-Layout prepare() : 전체 크기, 셀의 위치를 미리 계산&lt;br /&gt;
-collectionView numberOfItemsInSection : 아이템의 전체 개수&lt;br /&gt;
-Layout collectionViewContentSize : collectionView의 전체 크기(너비, 높이)&lt;br /&gt;
-Layout layoutAttributesForElements : 범위 안에 있는 모든 셀들의 레이아웃 속성&lt;br /&gt;
-Layout collectionViewContentSize :  collectionView의 전체 크기(너비, 높이)&lt;br /&gt;
-collectionView cellForItemAt : cell 표시&lt;br /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">일반적인 collectionview의 delegate와 datasource는 화면에 셀을 표시하는 역할을 담당합니다 표시 할 때 구성과 같은 layout은 UICollectionViewLayout을 구현하여 처리해야합니다 커스텀 CollectionViewLayout의 주 역할은 UICollectionView에서 요청하는 레이아웃 관련 정보를 제공하는 것입니다. 레이아웃을 미리 준비해 놓았다가 UICollectionView에서 요청하면 준비한 레이아웃 정보를 제공합니다. 이 때 몇가지 필수 메소드들이 존재합니다 prepare() UICollectionView에 표시되는 전체 크기를 계산하고 각 셀의 레이아웃 속성, collectionView의 크기와 cell의 위치를 미리 계산(캐싱)하여 메모리에 적재한 뒤 유지합니다. collectionViewContentSize collectionView의 전체 높이와 너비를 반환합니다. 화면에 보이는 contents 뿐만 아니라 collectionView의 전체를 반환해야 합니다. collectionView는 이 정보를 활용하여 내부적으로 scrollView의 크기를 구성합니다. layoutAttributesForElements (in :) in의 범위 안에 있는 모든 셀들의 레이아웃 속성들을 배열에 담아 반환합니다 layoutAttributesForItem (at :) at으로 들어온 cell의 레이아웃 속성을 반환합니다.</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;iOS에서 테스트를 하기에 좋다!, 다만 코드는 길어진다!&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">MVC에 이어 MVP를 알아보자</summary></entry><entry><title type="html">오토레이아웃의 우선순위</title><link href="https://sweetfood-dev.github.io/swift/4-autolayout-priority/" rel="alternate" type="text/html" title="오토레이아웃의 우선순위" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/4-autolayout-priority</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/4-autolayout-priority/">&lt;p&gt;&lt;strong&gt;constraint&lt;/strong&gt;의 priority&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;제약 사항간의 우선순위&lt;/li&gt;
+  &lt;li&gt;뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다&lt;/li&gt;
+  &lt;li&gt;이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">constraint의 priority 제약 사항간의 우선순위 뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다 이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.</summary></entry><entry><title type="html">Frame과 Bounds</title><link href="https://sweetfood-dev.github.io/swift/3-frame-bounds/" rel="alternate" type="text/html" title="Frame과 Bounds" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/3-frame-bounds</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/3-frame-bounds/">&lt;p&gt;&lt;strong&gt;Frame&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;상위뷰 좌표 시스템 내에서 View의 위치와 크기&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Bounds&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;자기 자신의 좌표시스템에서의 (sub view들의)위치와 크기, 부모뷰와는 관계가 없다&lt;/li&gt;
+  &lt;li&gt;default origin은 0,0이다&lt;/li&gt;
+  &lt;li&gt;origin의 변경은 sub view들의 위치가 변경됨을 의미&lt;/li&gt;
+  &lt;li&gt;sub view의 위치가 변한다는 것은 그려져야하는 위치가 달라지는 것이지 sub view들의 frame 값의 변화는 없다&lt;/li&gt;
+  &lt;li&gt;스크롤 시 sub view들의 위치가 달라지는 것이 대표적인 예이다&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">Frame 상위뷰 좌표 시스템 내에서 View의 위치와 크기</summary></entry><entry><title type="html">as as? as!</title><link href="https://sweetfood-dev.github.io/swift/1-type-casting/" rel="alternate" type="text/html" title="as as? as!" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/1-type-casting</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/1-type-casting/">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+      &lt;th&gt;실행 시점&lt;/th&gt;
+      &lt;th&gt;캐스팅 종류&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as&lt;/td&gt;
+      &lt;td&gt;컴파일러가 타입 변환의 성공을 보장&lt;/td&gt;
+      &lt;td&gt;컴파일 타임&lt;/td&gt;
+      &lt;td&gt;업 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as?&lt;/td&gt;
+      &lt;td&gt;변환에 실패하는 경우 nil을 반환&lt;/td&gt;
+      &lt;td&gt;런타임&lt;/td&gt;
+      &lt;td&gt;다운 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as!&lt;/td&gt;
+      &lt;td&gt;변환에 실패하는 경우 런타임에러 발생&lt;/td&gt;
+      &lt;td&gt;런타임&lt;/td&gt;
+      &lt;td&gt;다운 캐스팅&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">  설명 실행 시점 캐스팅 종류 as 컴파일러가 타입 변환의 성공을 보장 컴파일 타임 업 캐스팅 as? 변환에 실패하는 경우 nil을 반환 런타임 다운 캐스팅 as! 변환에 실패하는 경우 런타임에러 발생 런타임 다운 캐스팅</summary></entry></feed>

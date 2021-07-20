@@ -196,4 +196,10 @@ var store = [{
         "tags": [],
         "url": "https://sweetfood-dev.github.io/Optional/",
         "teaser": null
+      },{
+        "title": "옵셔널의 사용",
+        "excerpt":"이전글 Optional에서는 Optional과 nil에 대해 알아 보았다    옵셔널을 사용하기 위해 아래와 같은 코드를 실행해보았다   Swift는 Type에 대해 엄격하다. Int Type과 Int? Type은 엄연히 다른 타입이다.  Int type으로 선언된 변수에는 Int? type의 값이 들어 갈 수 없다. 그렇다면?  옵셔널을 해제 해주어야 한다.  그렇다면 어떻게 해제를 하여 사용하는지 알아보자!!       if문과 강제 언래핑  if 문을 사용하여 옵셔널과 nil을 비교하여 옵셔널에 값이 있는지, 아니면 없는지(nil)를 확인할 수 있다   if 문에서 nil 이 아닐 때 print가 실행이 된다. 그럼 print가 되었을때 옵셔널 변수의 값은 어떨까?   optional 변수인 convertedNumber는 Optional(123)이 출력되고, 일반 Int 타입의 변수 intTypeNumber은 123이 출력된다.  Optional(123)에서 괄호 안에 있는 123을 꺼내 사용하고 싶다면?  변수명 이름뒤에 ! 만 붙이면 된다   ! 를 붙여 Optionald 해제하는 것을 강제 언래핑 이라고 한다. 이 강제 언래핑을 사용할 때에는 항상 nil인지를 확인 후에 사용해야한다. 만약 확인을 하지 않았을 때 변수가 nil인 상태라면 런타임 오류가 발생할 것이다!     Optional Binding   옵셔널을 해제 하는 또 다른 방법엔 옵셔널 바인딩이 있다.  옵셔널 바인딩을 사용하면 옵셔널에 값이 있는지 확인하고 값이 있다면해당 값을  임시 상수나 변수로 추출하여  사용할 수 있다  이 때, 추출된 값은 옵셔널이 해제된 순수한 값이므로 일반 변수처럼 사용 가능하다.      // Optional Binding의 형태 if (let 혹은 var) 추출 후 사용할 변수 = 옵셔널 변수 { // 코드 실행 }          강제 언래핑에 사용한 예제 코드를 옵셔널 바인딩 형태로 변경 하면 다음과 같다      let possibleNumber = \"123\" if let actualNumber = Int(possibleNumber) { print(\"문자열 \\(possibleNumber)은 Int \\(actualNumber) 이다!\") }else { print(\"문자열 \\(possibleNumber)는 Int로 변환할 수 없다\") }          Int(possibleNumber)가 반환하는 옵셔널 Int에 값이 있으면 해당 값을 추출하여 actualNumber에 설정해라!  actualNumber에 값이 들어가 있다면 해당 if문 안에서는 일반 상수처럼(var로 선언하였다면 변수) 사용이 가능하다!      ","categories": [],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/Optional2/",
+        "teaser": null
       }]

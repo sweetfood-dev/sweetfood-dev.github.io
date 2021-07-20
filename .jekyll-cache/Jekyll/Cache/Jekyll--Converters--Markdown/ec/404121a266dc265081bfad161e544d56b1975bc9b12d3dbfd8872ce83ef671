@@ -1,0 +1,20 @@
+I"�<p>이전글 <a href="https://sweetfood-dev.github.io/Optional/">Optional</a>에서는 Optional과 nil에 대해 알아 보았다<br /></p>
+
+<p>옵셔널을 사용하기 위해 아래와 같은 코드를 실행해보았다<br />
+<img src="http://localhost:4000/optional.png" alt="" />
+Swift는 Type에 대해 엄격하다. Int Type과 Int? Type은 엄연히 다른 타입이다.<br />
+Int type으로 선언된 변수에는 Int? type의 값이 들어 갈 수 없다. 그렇다면?<br />
+옵셔널을 <strong>해제</strong> 해주어야 한다.  그렇다면 어떻게 해제를 하여 사용하는지 알아보자!!<br /></p>
+
+<ol>
+  <li><strong>if문과 강제 언래핑</strong><br />
+if 문을 사용하여 옵셔널과 nil을 비교하여 옵셔널에 값이 있는지, 아니면 없는지(nil)를 확인할 수 있다<br />
+<img src="http://localhost:4000/Optional_if.png" alt="" />
+if 문에서 nil 이 아닐 때 print가 실행이 된다. 그럼 print가 되었을때 옵셔널 변수의 값은 어떨까?<br />
+<img src="http://localhost:4000/Optional_if2.png" alt="" />
+optional 변수인 <strong>convertedNumber</strong>는 Optional(123)이 출력되고, 일반 Int 타입의 변수 intTypeNumber은 123이 출력된다.<br />
+Optional(123)에서 괄호 안에 있는 123을 꺼내 사용하고 싶다면?<br /> 변수명 이름뒤에 <strong>!</strong> 만 붙이면 된다<br />
+<img src="http://localhost:4000/Optional_if3.png" alt="" />
+<strong>!</strong> 를 붙여 Optionald 해제하는 것을 <strong>강제 언래핑</strong> 이라고 한다. 이 강제 언래핑을 사용할 때에는 항상 nil인지를 확인 후에 사용해야한다. 만약 확인을 하지 않았을 때 변수가 nil인 상태라면 런타임 오류가 발생할 것이다!</li>
+</ol>
+:ET
