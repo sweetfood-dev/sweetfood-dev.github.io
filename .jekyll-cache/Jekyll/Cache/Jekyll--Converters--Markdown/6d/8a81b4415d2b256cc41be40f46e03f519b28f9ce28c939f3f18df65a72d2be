@@ -1,0 +1,7 @@
+I"�<p>옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. <br />
+<br />
+옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. <br /></p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">number</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="c1">// Int 옵셔널 </span>
+<span class="k">var</span> <span class="nv">text</span> <span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="c1">// String 옵셔널</span>
+</code></pre></div></div>
+:ET
