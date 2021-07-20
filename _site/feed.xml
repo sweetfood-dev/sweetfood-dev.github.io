@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-07-20T21:13:55+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">Optional</title><link href="https://sweetfood-dev.github.io/Optional/" rel="alternate" type="text/html" title="Optional" /><published>2021-07-19T00:00:00+09:00</published><updated>2021-07-19T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/Optional</id><content type="html" xml:base="https://sweetfood-dev.github.io/Optional/">&lt;p&gt;옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. &lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-07-20T21:34:26+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">Optional</title><link href="https://sweetfood-dev.github.io/Optional/" rel="alternate" type="text/html" title="Optional" /><published>2021-07-19T00:00:00+09:00</published><updated>2021-07-19T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/Optional</id><content type="html" xml:base="https://sweetfood-dev.github.io/Optional/">&lt;p&gt;옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. &lt;br /&gt;
 &lt;br /&gt;
 옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. &lt;br /&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var number : Int? // Int 옵셔널 
@@ -13,7 +13,6 @@ String  값을 Int로 변환을 해야하는 경우 아래처럼 사용할 수 �
 &lt;p&gt;하지만 다음과 같은 경우엔?&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var test: Int = Int(&quot;Hello World&quot;) // test = ??
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
 &lt;p&gt;변환 할 수 없을 것이다. 이때 변환할 수 없음, 값이 없음이란 의미로 &lt;strong&gt;nil&lt;/strong&gt;이란 값을 반환할 것이다 &lt;br /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// var test: Int = Int(&quot;Hello World&quot;) 
@@ -22,7 +21,40 @@ var test: Int? = Int(&quot;Hello World&quot;) // test = nil
 &lt;p&gt;주석 처리한 코드와 그 밑에 코드를 보면 ?가 달려 있는걸 알 수 있다 &lt;br /&gt;
 이 물음표는 해당 타입이 옵셔널이라는 것을 나타낸다! &lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;정리하자면 Optional은 변수 혹은 상수에 &lt;strong&gt;값이 없음&lt;/strong&gt;을 나타낼 수 있게 만들어 주고 값이 없는 상태는 &lt;strong&gt;nil&lt;/strong&gt;로 표현한다!&lt;br /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><summary type="html">옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. 옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. var number : Int? // Int 옵셔널 var text : String? // String 옵셔널</summary></entry><entry><title type="html">간편하게 포스트 하는 법?</title><link href="https://sweetfood-dev.github.io/GitBlog_Post/" rel="alternate" type="text/html" title="간편하게 포스트 하는 법?" /><published>2021-07-06T00:00:00+09:00</published><updated>2021-07-06T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/GitBlog_Post</id><content type="html" xml:base="https://sweetfood-dev.github.io/GitBlog_Post/">&lt;p&gt;터미널에서 로컬의 gitblog 폴더로 이동! &lt;br /&gt;
+&lt;p&gt;정리하자면 Optional은 변수 혹은 상수에 &lt;strong&gt;값이 없음&lt;/strong&gt;을 나타낼 수 있게 만들어 주고 값이 없는 상태는 &lt;strong&gt;nil&lt;/strong&gt;로 표현한다!&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 &lt;strong&gt;nil&lt;/strong&gt; 이란 놈은 이전 obj-c에서도 사용했었던 것 같은데 obj-c와 Swift에서의 nil은 같은 의미로 사용되는걸까? &lt;br /&gt;
+기억에 obj-c에서는 따로 Optional이라는 개념이 없었던 것 같다.&lt;br /&gt;
+&lt;br /&gt;
+obj-c에서의 nil은 &lt;strong&gt;유효한 객체가 없음&lt;/strong&gt;의 의미로 쓰인다고 한다. &lt;br /&gt;
+Swift에서의 nil은 &lt;strong&gt;값이 없음&lt;/strong&gt;을 의미한다는데 같은 뜻 아닌가? 라고 할 수 있지만 &lt;strong&gt;객체&lt;/strong&gt;와 &lt;strong&gt;값&lt;/strong&gt;은 아주 큰 차이다&lt;br /&gt;
+obj-c에서의 nil을 좀 더 풀어 말하면 &lt;strong&gt;존재하지 않는 객체에 대한 포인터&lt;/strong&gt;라고 나와있다. &lt;br /&gt;
+즉 obj-c 에서 nil은 객체 type에 대해서만 사용이 가능하다란 것이다. obj-c에서 &lt;strong&gt;일반 타입&lt;/strong&gt;에 대한 값 없음은 NSNotFound라는 특수 값을 반환하여 나타낸다고 한다!&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;obj-c와 Swift의 nil의 차이점을 정리하자면,&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Obj-c&lt;/th&gt;
+      &lt;th&gt;Swift&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;의미&lt;/td&gt;
+      &lt;td&gt;유효한 “객체”가 없음(포인터)&lt;/td&gt;
+      &lt;td&gt;“값” 없음&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;사용 가능한 Type&lt;/td&gt;
+      &lt;td&gt;객체&lt;/td&gt;
+      &lt;td&gt;모든 유형 ( 객체, 구조체, 열거형등등)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><summary type="html">옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. 옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. var number : Int? // Int 옵셔널 var text : String? // String 옵셔널</summary></entry><entry><title type="html">간편하게 포스트 하는 법?</title><link href="https://sweetfood-dev.github.io/GitBlog_Post/" rel="alternate" type="text/html" title="간편하게 포스트 하는 법?" /><published>2021-07-06T00:00:00+09:00</published><updated>2021-07-06T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/GitBlog_Post</id><content type="html" xml:base="https://sweetfood-dev.github.io/GitBlog_Post/">&lt;p&gt;터미널에서 로컬의 gitblog 폴더로 이동! &lt;br /&gt;
 jekyll serve 실행 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://localhost:4000/admin&quot;&gt;http://localhost:4000/admin&lt;/a&gt; &lt;br /&gt;&lt;/p&gt;
