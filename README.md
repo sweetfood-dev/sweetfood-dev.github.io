@@ -273,4 +273,5 @@ Copyright (c) 2018 Oliver Nightingale.
 Lunr is distributed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 -->
 
-[참조](https://honbabzone.com/jekyll/start-gitHubBlog/#navigation-설정)
+[전반적인 참조](https://honbabzone.com/jekyll/start-gitHubBlog/#navigation-설정)
+[전반적인 참조2](https://devinlife.com/howto/)
