@@ -34,11 +34,11 @@ let result = query1?.query2?.query3
 
 ```swift
 class Person {
-	var residence: Residence?
+    var residence: Residence?
 }
 
 class Residence {
-	var numberOfRooms = 1
+    var numberOfRooms = 1
 }
 ```
 
@@ -62,10 +62,10 @@ let roomCount = john.residence!.numberOfRooms // runtime error
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms { // 옵셔널 바인딩! 
-	// 옵셔널 바인딩으로 인해 일반 프로퍼티처럼 사용 가능
-	print("John residence \(roomCount) room(s)")  
+    // 옵셔널 바인딩으로 인해 일반 프로퍼티처럼 사용 가능
+    print("John residence \(roomCount) room(s)")  
 } else { // nil 일 떄 
-	print("residence == nil")
+    print("residence == nil")
 }
 ```
 
