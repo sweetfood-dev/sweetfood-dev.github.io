@@ -135,6 +135,8 @@
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/categories/">Categories</a>
             </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
               <a href="/posts/">연도별 포스트</a>
             </li></ul>
         
@@ -362,7 +364,15 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><strong>GCD란</strong><br /></p>
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#gcd란">GCD란</a><ul><li><a href="#종류">종류</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="gcd란">GCD란</h1>
 <blockquote>
   <p>Apple에서 제공하는 멀티쓰레드 처리 API</p>
 </blockquote>
@@ -372,6 +382,7 @@ DisPatchQueue가 GCD에 존재합니다<br />
 DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행을 관리하는 객체입니다<br />
 순차적으로 실행하는 Main Queue와 동시에 실행하는 Global Queue를 포함하고 있습니다<br /></p>
 
+<h2 id="종류">종류</h2>
 <ol>
   <li>Main Queue
     <ul>
@@ -394,6 +405,25 @@ DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행�
       <footer class="page__meta">
         
         
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#thread" class="page__taxonomy-item" rel="tag">Thread</a>
+    
+    </span>
+  </p>
+
+
 
 
   
@@ -441,7 +471,7 @@ DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행�
 ">이전</a>
     
     
-      <a href="/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="pagination--pager" title="아키텍처
+      <a href="/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="pagination--pager" title="1 아키텍처
 ">다음</a>
     
   </nav>
@@ -456,6 +486,86 @@ DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행�
     <div class="page__related">
       <h4 class="page__related-title">참고</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Tuple/" rel="permalink">튜플 (Tuple)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">튜플이란?
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/OptionalChaining/" rel="permalink">옵셔널 체이닝 (Optional Chaining)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">옵셔널 체이닝 (Optional Chaining)
+</p>
+  </article>
+</div>
+
         
           
 
@@ -536,88 +646,6 @@ DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행�
 옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. 
 var number : Int? // Int 옵셔널 
 var text : String? // String 옵셔널
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/GitBlog_Post/" rel="permalink">간편하게 포스트 하는 법?
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">터미널에서 로컬의 gitblog 폴더로 이동! 
-jekyll serve 실행 
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/ios/4-MVVM/" rel="permalink">MVVM
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">MVVM 패턴은 MVP와 비슷하다
 
 </p>
   </article>

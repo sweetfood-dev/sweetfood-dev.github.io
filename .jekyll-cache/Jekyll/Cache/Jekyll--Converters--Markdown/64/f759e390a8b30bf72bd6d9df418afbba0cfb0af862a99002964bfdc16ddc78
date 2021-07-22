@@ -1,0 +1,55 @@
+I"�<h1 id="문제">문제</h1>
+<p><a href="https://www.acmicpc.net/problem/11053">링크</a></p>
+
+<h2 id="풀이">풀이</h2>
+
+<p>W[n] : n 번째에 위치해있는 정수<br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td>20</td>
+      <td>10</td>
+      <td>30</td>
+      <td>20</td>
+      <td>50</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>D[n] : n의 위치에서 끝나는 최장 길이 수열<br /></p>
+
+<p>k : 0 ~ n - 1까지의 수라고 정의할 때 <br />
+W[k] &lt; W[n] 일 경우 <br />
+D[n] = max(D[n], D[k] + 1)로 갱신한다<br /></p>
+
+<h3 id="코드">코드</h3>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">solve</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">arr</span> <span class="o">=</span> <span class="nf">readLine</span><span class="p">()</span><span class="o">!.</span><span class="nf">split</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="s">" "</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">Int</span><span class="p">(</span><span class="kt">String</span><span class="p">(</span><span class="nv">$0</span><span class="p">))</span><span class="o">!</span> <span class="p">}</span>
+    
+    <span class="k">var</span> <span class="nv">dp</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">](</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="n">arr</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="n">i</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">{</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="nf">max</span><span class="p">()</span><span class="o">!</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

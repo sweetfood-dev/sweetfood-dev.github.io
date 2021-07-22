@@ -1,0 +1,35 @@
+I"�<p><a href="https://www.acmicpc.net/problem/11726">링크</a></p>
+
+<h1 id="문제"><strong>문제</strong></h1>
+
+<p>2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.</p>
+
+<p>아래 그림은 2×5 크기의 직사각형을 채운 한 가지 방법의 예이다.</p>
+
+<h2 id="입력"><strong>입력</strong></h2>
+<blockquote>
+  <p>첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)</p>
+</blockquote>
+
+<h2 id="출력"><strong>출력</strong></h2>
+<blockquote>
+  <p>첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.</p>
+</blockquote>
+
+<h2 id="코드">코드</h2>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">solve</span><span class="p">(</span><span class="nv">n</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">guard</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="n">n</span> <span class="p">}</span>
+	<span class="k">var</span> <span class="nv">arr</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">](</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">3</span> <span class="o">...</span> <span class="n">n</span> <span class="p">{</span>
+		<span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span>
+		<span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%=</span> <span class="mi">10007</span>
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>풀이 : 조금 더 이해가 되면 작성할 예정</p>
+:ET

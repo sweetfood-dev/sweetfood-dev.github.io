@@ -1,4 +1,4 @@
-I"t
+I"�
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -11,6 +11,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
             </li><li class="masthead__menu-item">
               <a href="/posts/">연도별 포스트</a>
             </li></ul>

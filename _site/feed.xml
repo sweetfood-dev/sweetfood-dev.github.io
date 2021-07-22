@@ -1,43 +1,196 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-07-20T23:55:07+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">옵셔널의 사용</title><link href="https://sweetfood-dev.github.io/swift/Optional2/" rel="alternate" type="text/html" title="옵셔널의 사용" /><published>2021-07-20T00:00:00+09:00</published><updated>2021-07-20T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/Optional2</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/Optional2/">&lt;p&gt;이전글 &lt;a href=&quot;https://sweetfood-dev.github.io/Optional/&quot;&gt;Optional&lt;/a&gt;에서는 Optional과 nil에 대해 알아 보았다&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sweetfood-dev.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sweetfood-dev.github.io/" rel="alternate" type="text/html" /><updated>2021-07-23T00:01:50+09:00</updated><id>https://sweetfood-dev.github.io/feed.xml</id><title type="html">공부 그리고 기록</title><subtitle>Swift / Algorithm</subtitle><author><name>권지수</name><email>kjsii123@naver.com</email></author><entry><title type="html">튜플 (Tuple)</title><link href="https://sweetfood-dev.github.io/swift/Tuple/" rel="alternate" type="text/html" title="튜플 (Tuple)" /><published>2021-07-22T00:00:00+09:00</published><updated>2021-07-22T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/Tuple</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/Tuple/">&lt;h2 id=&quot;튜플이란&quot;&gt;튜플이란?&lt;/h2&gt;
+
+&lt;p&gt;스위프트 문서에서 직역하자면 &lt;strong&gt;여러 값&lt;/strong&gt;을 단일 복합값으로 그룹화하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;말은 어렵지만 여러 Type의 값을 하나로 묶어 사용할 수 있는 것이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Type은 배열처럼 모두 같아야 하는건 아니다. 다른 Type끼리도 가능하다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;http 상태코드를 예로 들어보자 
+&lt;img src=&quot;/assets/images/Posts/Swift/2021-07-22-Tuple/404NotFound.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;자주 접할 수 있는 창이다. 여기서 404는 Int이며 File not found는 String이다.&lt;/p&gt;
+
+&lt;p&gt;기존에 이러한 데이터는 클래스나 구조체에 담아서 사용 했겠지만 Swift에서는 튜플로 처리가 가능하다!&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;HttpStatus&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;HttpStatus&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;예로 들은 http 상태코드를 튜플로 선언하면 아래와 같다&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;httpError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Not Found&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그러하면 여기서 httpError가 튜플인건 알겠는데 어떤 Type일까?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Posts/Swift/2021-07-22-Tuple/defaultTuple.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Xcode에서 확인해보면 httpError의 Type은 (Int, String)이다. Int와 String을 하나의 그룹으로 만들어 사용하는 것 그것이 바로 튜플이다.&lt;/p&gt;
+
+&lt;p&gt;이제 처음 말했던 튜플이란 &lt;strong&gt;여러 값을 단일 복합값으로 그룹화하는 것&lt;/strong&gt;이라는 말을 이해할 수 있다!&lt;/p&gt;
+
+&lt;h2 id=&quot;튜플의-사용&quot;&gt;튜플의 사용&lt;/h2&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;httpError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Not Found&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// httpError의 타입은 (Int, String)&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;httpError is &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;httpError&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// output : httpError is (404, &quot;Not Found&quot;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위에 처럼 httpError를 출력 하였을 때는 튜플 그대로 출력이 된다. 우리가 원하는건 튜플 안의 값이다!&lt;/p&gt;
+
+&lt;p&gt;그럼 저 튜플에 있는 값을 어떻게 사용할 수 있을까?&lt;/p&gt;
+
+&lt;h3 id=&quot;튜플을-각각-분해하여-사용&quot;&gt;튜플을 각각 분해하여 사용&lt;/h3&gt;
+
+&lt;p&gt;튜플의 위치에 각각 대응하는 변수나 상수로 분해하여 사용할 수 있다. 무슨말인지 잘 모르겠지만 코드를 보면 금방 이해가 가능할 것이다!&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;httpError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Not Found&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// (Int, String) type의 튜플&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;statusMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpError&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;statusCode &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// output &amp;gt;&amp;gt; statusCode 404&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;statusMessage &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;statusMessage&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// output &amp;gt;&amp;gt; statusMessage Not Found&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;httpError를 (statusCode, statusMessage) 튜플에 복사하였다!&lt;/p&gt;
+
+&lt;p&gt;튜플의 순서상으로 보면 statusCode는 404가 될 것이고, statusMessage는 “Not Found”가 될 것이다.&lt;/p&gt;
+
+&lt;p&gt;우리의 친구 print로 확인해보자&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Posts/Swift/2021-07-22-Tuple/usetuple1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;예상대로 잘 나와 주었다!&lt;/p&gt;
+
+&lt;p&gt;만약 튜플의 모든 값이 필요 하지 않고 몇개의 값만 필요 하다면 &lt;strong&gt;_&lt;/strong&gt;를 이용하여 생략하여 줄 수도 있다&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;justStatusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpError&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//  _ 로 생략 가능!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;인덱스로-접근&quot;&gt;인덱스로 접근&lt;/h3&gt;
+
+&lt;p&gt;가장 간단한 방법으로 인덱스로 접근이 가능하다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;httpError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Not Found&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 좌측 부터 인덱스 0으로 시작&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;httpError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 404&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;httpError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Not Found&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Posts/Swift/2021-07-22-Tuple/useTuple2_index.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;인덱스를 사용하면 정말 간단하겠지만 아무래도 가독성에는 좋지가 않다.&lt;/p&gt;
+
+&lt;h3 id=&quot;튜플-정의-시-이름을-지정&quot;&gt;튜플 정의 시 이름을 지정!&lt;/h3&gt;
+
+&lt;p&gt;튜플의 값들에 대해 별명을 지어줄 수 있다!&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;httpStatus&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;statusMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;OK&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;httpStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 200&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;httpStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;statusMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// OK&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같이 정의할 때 별명을 명시하고 튜플을 생성하면 클래스나 구조체의 프로퍼티에 접근하는 것처럼 사용이 가능하다!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Posts/Swift/2021-07-22-Tuple/useTyple_naming.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">튜플이란?</summary></entry><entry><title type="html">옵셔널의 사용</title><link href="https://sweetfood-dev.github.io/swift/Optional2/" rel="alternate" type="text/html" title="옵셔널의 사용" /><published>2021-07-20T00:00:00+09:00</published><updated>2021-07-20T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/Optional2</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/Optional2/">&lt;p&gt;이전글 &lt;a href=&quot;https://sweetfood-dev.github.io/swift/Optional/&quot;&gt;Optional&lt;/a&gt;에서는 Optional과 nil에 대해 알아 보았다&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;옵셔널을 사용하기 위해 아래와 같은 코드를 실행해보았다&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/optional.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/assets/images/Posts/Swift/optional.png&quot; alt=&quot;&quot; /&gt;
 Swift는 Type에 대해 엄격하다. Int Type과 Int? Type은 엄연히 다른 타입이다.&lt;br /&gt;
 Int type으로 선언된 변수에는 Int? type의 값이 들어 갈 수 없다. 그렇다면?&lt;br /&gt;
 옵셔널을 &lt;strong&gt;해제&lt;/strong&gt; 해주어야 한다.  그렇다면 어떻게 해제를 하여 사용하는지 알아보자!!&lt;br /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;if문과 강제 언래핑&lt;/strong&gt;&lt;br /&gt;
-if 문을 사용하여 옵셔널과 nil을 비교하여 옵셔널에 값이 있는지, 아니면 없는지(nil)를 확인할 수 있다&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/Optional_if.png&quot; alt=&quot;&quot; /&gt;
+&lt;h1 id=&quot;1--if문과-강제-언래핑&quot;&gt;1.  &lt;strong&gt;if문과 강제 언래핑&lt;/strong&gt;&lt;br /&gt;&lt;/h1&gt;
+&lt;p&gt;if 문을 사용하여 옵셔널과 nil을 비교하여 옵셔널에 값이 있는지, 아니면 없는지(nil)를 확인할 수 있다&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Posts/Swift/Optional_if.png&quot; alt=&quot;&quot; /&gt;
 if 문에서 nil 이 아닐 때 print가 실행이 된다. 그럼 print가 되었을때 옵셔널 변수의 값은 어떨까?&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/Optional_if2.png&quot; alt=&quot;&amp;lt;br&amp;gt;&quot; /&gt;
+&lt;img src=&quot;/assets/images/Posts/Swift/Optional_if2.png&quot; alt=&quot;&amp;lt;br&amp;gt;&quot; /&gt;
 optional 변수인 &lt;strong&gt;convertedNumber&lt;/strong&gt;는 Optional(123)이 출력되고, 일반 Int 타입의 변수 intTypeNumber은 123이 출력된다.&lt;br /&gt;
 Optional(123)에서 괄호 안에 있는 123을 꺼내 사용하고 싶다면?&lt;br /&gt; 변수명 이름뒤에 &lt;strong&gt;!&lt;/strong&gt; 만 붙이면 된다&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/Optional_if3.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/assets/images/Posts/Swift/Optional_if3.png&quot; alt=&quot;&quot; /&gt;
 &lt;strong&gt;!&lt;/strong&gt; 를 붙여 Optionald 해제하는 것을 &lt;strong&gt;강제 언래핑&lt;/strong&gt; 이라고 한다. 이 강제 언래핑을 사용할 때에는 항상 nil인지를 확인 후에 사용해야한다. 만약 확인을 하지 않았을 때 변수가 nil인 상태라면 런타임 오류가 발생할 것이다!
-&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Optional Binding&lt;/strong&gt; &lt;br /&gt;
-옵셔널을 해제 하는 또 다른 방법엔 옵셔널 바인딩이 있다.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;2--optional-binding-&quot;&gt;2.  &lt;strong&gt;Optional Binding&lt;/strong&gt; &lt;br /&gt;&lt;/h1&gt;
+&lt;p&gt;옵셔널을 해제 하는 또 다른 방법엔 옵셔널 바인딩이 있다.&lt;br /&gt;
 옵셔널 바인딩을 사용하면 옵셔널에 값이 있는지 확인하고 값이 있다면&lt;strong&gt;해당 값&lt;/strong&gt;을  임시 상수나 변수로 &lt;strong&gt;추출&lt;/strong&gt;하여  사용할 수 있다&lt;br /&gt;
-이 때, 추출된 값은 옵셔널이 해제된 순수한 값이므로 일반 변수처럼 사용 가능하다.&lt;br /&gt;
-    &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Optional Binding의 형태&lt;/span&gt;
+이 때, 추출된 값은 옵셔널이 해제된 순수한 값이므로 일반 변수처럼 사용 가능하다.&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Optional Binding의 형태&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;혹은&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;추출&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;후&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;사용할&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;변수&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;옵셔널&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;변수&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 코드 실행&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 코드 실행&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;강제 언래핑에 사용한 예제 코드를 옵셔널 바인딩 형태로 변경 하면 다음과 같다&lt;/p&gt;
-    &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;possibleNumber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;123&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;강제 언래핑에 사용한 예제 코드를 옵셔널 바인딩 형태로 변경 하면 다음과 같다&lt;/p&gt;
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;possibleNumber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;123&quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;actualNumber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possibleNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;문자열 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possibleNumber&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;은 Int &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actualNumber&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; 이다!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;문자열 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possibleNumber&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;은 Int &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actualNumber&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; 이다!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;문자열 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possibleNumber&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;는 Int로 변환할 수 없다&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;문자열 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possibleNumber&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;는 Int로 변환할 수 없다&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;Int(possibleNumber)가 반환하는 옵셔널 Int에 값이 있으면 해당 값을 &lt;strong&gt;추출&lt;/strong&gt;하여 actualNumber에 설정해라!&lt;br /&gt;
-actualNumber에 값이 들어가 있다면 해당 if문 안에서는 일반 상수처럼(var로 선언하였다면 변수) 사용이 가능하다!&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">이전글 Optional에서는 Optional과 nil에 대해 알아 보았다</summary></entry><entry><title type="html">Optional</title><link href="https://sweetfood-dev.github.io/swift/Optional/" rel="alternate" type="text/html" title="Optional" /><published>2021-07-19T00:00:00+09:00</published><updated>2021-07-19T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/Optional</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/Optional/">&lt;p&gt;옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. &lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Int(possibleNumber)가 반환하는 옵셔널 Int에 값이 있으면 해당 값을 &lt;strong&gt;추출&lt;/strong&gt;하여 actualNumber에 설정해라!&lt;br /&gt;
+actualNumber에 값이 들어가 있다면 해당 if문 안에서는 일반 상수처럼(var로 선언하였다면 변수) 사용이 가능하다!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">이전글 Optional에서는 Optional과 nil에 대해 알아 보았다</summary></entry><entry><title type="html">옵셔널 체이닝 (Optional Chaining)</title><link href="https://sweetfood-dev.github.io/swift/OptionalChaining/" rel="alternate" type="text/html" title="옵셔널 체이닝 (Optional Chaining)" /><published>2021-07-20T00:00:00+09:00</published><updated>2021-07-20T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/OptionalChaining</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/OptionalChaining/">&lt;h1 id=&quot;옵셔널-체이닝-optional-chaining&quot;&gt;옵셔널 체이닝 (Optional Chaining)&lt;/h1&gt;
+
+&lt;p&gt;옵셔널 체이닝은 &lt;strong&gt;nil&lt;/strong&gt;일 수도 있는 &lt;strong&gt;프로퍼티&lt;/strong&gt;나 &lt;strong&gt;메소드&lt;/strong&gt;, &lt;strong&gt;서브스크립트&lt;/strong&gt;에 &lt;strong&gt;질의&lt;/strong&gt;를 하는 과정을 말한다.&lt;/p&gt;
+
+&lt;p&gt;기본 동작은 옵셔널과 마찬가지고 값이 있으면 값을 반환, 값이 없다면 nil을 반환한다. 여러 &lt;strong&gt;질의&lt;/strong&gt;를 연결할 수도 있는데 연결된 질의에서 어느 하나라도 nil이면 전체 결과는 nil이 된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// query1, query2 중 하나라도 값이 nil이라면 result는 nil이 된다&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query3&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;강제-언래핑의-대체로써의-옵셔널-체이닝&quot;&gt;강제 언래핑의 대체로써의 옵셔널 체이닝&lt;/h2&gt;
+
+&lt;p&gt;위 코드에서 보이듯 옵셔널 체이닝은 옵셔널 값 뒤에 물음표(?)를 붙여서 표현한다. 강제 언래핑을 했는데 만약 그값이 없으면(nil 반환) 런타임 에러가 발생하지만, 옵셔널 체이닝을 사용하면 런타임 에러대신 nil이 반환된다.&lt;/p&gt;
+
+&lt;p&gt;옵셔널 체이닝에 의해 nil 값이 호출 될 수 있기 때문에 옵셔널 체이닝을 사용한 구문의 값은 항상 옵셔널이 된다.&lt;/p&gt;
+
+&lt;p&gt;코드를 보면서 이해해보자&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;residence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Residence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Residence&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;numberOfRooms&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Residence는 Int 프로퍼티(numberOfRooms)를 소유하고 있고 Person은 옵셔널 프로퍼티(residence)를 소유하고 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;john&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;john은 Person 인스턴스이고 이 시점에서 john의 residence는 nil로 초기화 되어있을 것이다.&lt;/p&gt;
+
+&lt;p&gt;근데 이 때 강제 언래핑을 사용한다면?&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;roomCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;john&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;residence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numberOfRooms&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// runtime error&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;당연하게도 런타임 에러가 발생할 것이다.&lt;/p&gt;
+
+&lt;p&gt;이를 옵셔널 체이닝으로 한다면 보다 안전하게 접근할 수 있다&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;roomCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;john&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;residence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numberOfRooms&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 옵셔널 바인딩! &lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 옵셔널 바인딩으로 인해 일반 프로퍼티처럼 사용 가능&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;John residence &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;roomCount&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; room(s)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// nil 일 떄 &lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;residence == nil&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;numberOfRooms는 옵셔널이 아닌데 어째서 옵셔널 바인딩을 사용했나?&lt;/p&gt;
+
+&lt;p&gt;앞에서 설명하였듯이 옵셔널 체인으로 접근하는 프로퍼티, 메소드등의 결과는 항상 옵셔널 값이 되기 때문에 이렇게 옵셔널을 벗겨줘야한다.&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">옵셔널 체이닝 (Optional Chaining)</summary></entry><entry><title type="html">Optional</title><link href="https://sweetfood-dev.github.io/swift/Optional/" rel="alternate" type="text/html" title="Optional" /><published>2021-07-19T00:00:00+09:00</published><updated>2021-07-19T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/Optional</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/Optional/">&lt;p&gt;옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. &lt;br /&gt;
 &lt;br /&gt;
 옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. &lt;br /&gt;&lt;/p&gt;
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Int 옵셔널 &lt;/span&gt;
@@ -98,9 +251,53 @@ jekyll serve 실행 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://localhost:4000/admin&quot;&gt;http://localhost:4000/admin&lt;/a&gt; &lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;편하게 글 올리자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><summary type="html">터미널에서 로컬의 gitblog 폴더로 이동! jekyll serve 실행</summary></entry><entry><title type="html">MVC 패턴</title><link href="https://sweetfood-dev.github.io/ios/2-MVC/" rel="alternate" type="text/html" title="MVC 패턴" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-MVC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-MVC/">&lt;p&gt;Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;편하게 글 올리자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><summary type="html">터미널에서 로컬의 gitblog 폴더로 이동! jekyll serve 실행</summary></entry><entry><title type="html">MVVM</title><link href="https://sweetfood-dev.github.io/ios/4-MVVM/" rel="alternate" type="text/html" title="MVVM" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/4-MVVM</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/4-MVVM/">&lt;h2 id=&quot;설명&quot;&gt;설명&lt;/h2&gt;
+&lt;p&gt;MVVM 패턴은 MVP와 비슷하다&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Posts/iOS/mvvm.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/tranditional_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;ViewController를 MVP에선 &lt;strong&gt;PassiveView&lt;/strong&gt;로 보앗듯이 &lt;br /&gt;
+&lt;strong&gt;MVVM&lt;/strong&gt;에서는 &lt;strong&gt;View&lt;/strong&gt;로 본다&lt;br /&gt;
+View와 Model이 연결되지 않는다 &lt;br /&gt;
+View와 ViewModel사이를 바인딩으로 연결해 준다&lt;br /&gt;
+다만 구조자체가 복잡하기 때문에 디버깅이 비교적 오래 걸린다&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;viewmodel이란&quot;&gt;ViewModel이란?&lt;/h2&gt;
+&lt;p&gt;View의 독립된 표현 혹은 상태를 말한다&lt;br /&gt;
+Model에서 변경을 호출하고 Model 자체를 갱신한다&lt;br /&gt;
+View와 Model 사이에서 바인딩을 하여 갱신한다&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;좋은-아키텍쳐-특징에서-보기&quot;&gt;좋은 아키텍쳐 특징에서 보기&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;책임분배 : MVVM에서의 View는 MVP의 View보다 책임지는 것이 더 많다&lt;/li&gt;
+  &lt;li&gt;테스트 : ViewModel은 View에 대해 전혀 모르기 때문에 테스트가 용이하다&lt;/li&gt;
+  &lt;li&gt;사용용이성 : MVP보다 비교적 적은 코드로 개발할 수 있다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;View 입장에서 바인딩을 하기 때문에 View를 갱신하는데 추가 코드가 필요하지 않다!&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;테스트에도 좋은 난이도 있는 아키텍처&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><category term="Architecture" /><summary type="html">설명 MVVM 패턴은 MVP와 비슷하다</summary></entry><entry><title type="html">MVP</title><link href="https://sweetfood-dev.github.io/ios/3-MVP/" rel="alternate" type="text/html" title="MVP" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-MVP</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-MVP/">&lt;h2 id=&quot;설명&quot;&gt;설명&lt;/h2&gt;
+&lt;p&gt;MVC에 이어 MVP를 알아보자&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Posts/iOS/mvp1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기본적으로 MVC와 유사하다&lt;br /&gt;
+차이점은 ViewController가 View와 함께 &lt;strong&gt;Passive View&lt;/strong&gt;에 속해있다는 점!&lt;br /&gt;
+&lt;strong&gt;presenter&lt;/strong&gt;는 Model과 Passive View 사이에 다리 역할을 하며 &lt;br /&gt;
+이로 인해 MVC에서의 문제였던 View의 생명 주기에서 자유로울 수 있다 &lt;br /&gt;
+View는 이로 인해 데이터와 상태를 갱신하는 역할에 집중 할 수 있다&lt;br /&gt;
+같은 이유로 View도 Test가 가능하게 되었다&lt;br /&gt;
+다만 View의 갱신, 이벤트 처리에 대한 메소드 바인딩이 이루어저야 하여&lt;br /&gt;
+개발비용이 MVC보다 더 많이 든다!&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;좋은-아키텍처-특징에서-보기&quot;&gt;좋은 아키텍처 특징에서 보기&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;책임 분배 : Presenter와 Model을 완벽하게 분리하고 View는 단순히 출력하는 용도로 분리 되었다&lt;/li&gt;
+  &lt;li&gt;테스트 : View의 재사용이 가능하여 대부분의 로직을 테스트할 수 있다&lt;/li&gt;
+  &lt;li&gt;사용 용이성 : 코드는 MVC에 비해 늘어나지만 각 요소들의 역할이 더 명확해 진다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;iOS에서 테스트를 하기에 좋다!, 다만 코드는 길어진다!&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><category term="Architecture" /><summary type="html">설명 MVC에 이어 MVP를 알아보자</summary></entry><entry><title type="html">MVC 패턴</title><link href="https://sweetfood-dev.github.io/ios/2-MVC/" rel="alternate" type="text/html" title="MVC 패턴" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/2-MVC</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/2-MVC/">&lt;h2 id=&quot;설명&quot;&gt;설명&lt;/h2&gt;
+&lt;p&gt;Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Posts/iOS/tranditional_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;그림을 보면 MVC가 모두 밀접하게 연관되어 있다&lt;br /&gt;
 이는 곧 재사용성이 떨어짐을 의미한다&lt;br /&gt;
@@ -108,15 +305,15 @@ jekyll serve 실행 &lt;br /&gt;&lt;/p&gt;
 &lt;strong&gt;전통적인 MVC는 iOS에 적합해 보이지 않는다!&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;Apple이 권고하는 MVC에 대해 알아보자.&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/cocoa_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/images/Posts/iOS/cocoa_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;그림에서 볼 수 있듯 Controller는 중간에서 Model과 View를 이어준다&lt;br /&gt;
 Model – View는 서로 알 필요가 없다&lt;br /&gt;
 Controller는 여전히 재사용이 어려워 보인다&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;한계&lt;/strong&gt;&lt;br /&gt;
-위의 그림과 대조적이게 실제로 Cocoa MVC는 다음 그림과 같다&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/real_cocoa_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;한계&quot;&gt;한계&lt;/h2&gt;
+&lt;p&gt;위의 그림과 대조적이게 실제로 Cocoa MVC는 다음 그림과 같다&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Posts/iOS/real_cocoa_mvc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;왜 위와 같이 구성될까?&lt;br /&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -125,8 +322,8 @@ Controller는 여전히 재사용이 어려워 보인다&lt;br /&gt;&lt;/p&gt;
   &lt;li&gt;이렇게 View를 가지고 있고, 그 생명주기도 관리하기 때문에 Controller자체가 거대해진다&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;좋은 아키텍쳐 특징에서 바라보기&lt;/strong&gt;&lt;br /&gt;
-좋은 아키텍처의 특징, 요소 측면에서 이 패턴을 파악해보자!&lt;br /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;좋은-아키텍쳐-특징에서-바라보기&quot;&gt;좋은 아키텍쳐 특징에서 바라보기&lt;/h2&gt;
+&lt;p&gt;좋은 아키텍처의 특징, 요소 측면에서 이 패턴을 파악해보자!&lt;br /&gt;&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;책임 분리
     &lt;ul&gt;
@@ -145,29 +342,25 @@ Controller는 여전히 재사용이 어려워 보인다&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;정리&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;정리&quot;&gt;정리&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;개발속도가 빠르기에 아키텍처에 투자할 시간이 부족할 때 사용하면 유용하다&lt;/li&gt;
   &lt;li&gt;유지보수 비용이 많이 들어가는 편이다&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;MVC가 개발속도는 짱이다! 그러나 유지보수 비용은 많이 들어간다!&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!</summary></entry><entry><title type="html">아키텍처</title><link href="https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" rel="alternate" type="text/html" title="아키텍처" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/">&lt;p&gt;&lt;strong&gt;왜 아키텍처를 사용해야하지?&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MVC가 개발속도는 짱이다! 그러나 유지보수 비용은 많이 들어간다!&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><category term="Architecture" /><summary type="html">설명 Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!</summary></entry><entry><title type="html">1 아키텍처</title><link href="https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" rel="alternate" type="text/html" title="1 아키텍처" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/">&lt;h1 id=&quot;왜-아키텍처를-사용해야하지&quot;&gt;왜 아키텍처를 사용해야하지?&lt;/h1&gt;
 
 &lt;p&gt;개발을 하다보면 디버깅을 해야하는 상황이 필연적으로 찾아온다&lt;br /&gt;
 이 때 프로젝트의 몸집이 크다면 디버깅을 하는데 있어 어려움을 겪게 될 것이다&lt;br /&gt;
 구조적으로 잘 정의된 프로젝트는 디버깅을 쉽게 해주며, 개발자간의 의사소통, 유지보수에도 도움이 된다!&lt;br /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;좋은 아키텍쳐의 특징
-    &lt;ul&gt;
-      &lt;li&gt;객체간 &lt;strong&gt;책임 분리&lt;/strong&gt;가 균형있게 잡혀 있고 명확하게 이루어저야 한다.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;테스트&lt;/strong&gt;가 용이해야 한다&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;사용이 용이&lt;/strong&gt;해야 한다. 즉 유지 보수가 쉬워야 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
+&lt;h2 id=&quot;좋은-아키텍쳐의-특징&quot;&gt;좋은 아키텍쳐의 특징&lt;/h2&gt;
 &lt;ul&gt;
+  &lt;li&gt;객체간 &lt;strong&gt;책임 분리&lt;/strong&gt;가 균형있게 잡혀 있고 명확하게 이루어저야 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;테스트&lt;/strong&gt;가 용이해야 한다&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;사용이 용이&lt;/strong&gt;해야 한다. 즉 유지 보수가 쉬워야 한다.&lt;/p&gt;
+  &lt;/li&gt;
   &lt;li&gt;책임 분리는 왜 이루어 저야 할까?&lt;br /&gt;
 로직을 쉽게, 단순하게 한눈에 볼 수 있다&lt;br /&gt;
 즉, 복잡함을 극복하는 방법은 &lt;strong&gt;단일책임 원칙&lt;/strong&gt;으로 책임을 나누는 것이다!&lt;br /&gt;&lt;/li&gt;
@@ -178,8 +371,8 @@ Controller는 여전히 재사용이 어려워 보인다&lt;br /&gt;&lt;/p&gt;
 단순하다. &lt;strong&gt;유지보수&lt;/strong&gt;가 용이하니까!&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;어떤 아키텍쳐들이 있는데?&lt;/strong&gt;&lt;br /&gt;
-기본적으로 많이 접해본 mvc, mvp, mvvm, viper가 있고 이러한 아키텍쳐는 &lt;br /&gt;
+&lt;h2 id=&quot;어떤-아키텍쳐들이-있는데&quot;&gt;어떤 아키텍쳐들이 있는데?&lt;/h2&gt;
+&lt;p&gt;기본적으로 많이 접해본 mvc, mvp, mvvm, viper가 있고 이러한 아키텍쳐는 &lt;br /&gt;
 3가지 카테고리(요소)를 포함한다&lt;br /&gt;&lt;/p&gt;
 
 &lt;table&gt;
@@ -218,66 +411,7 @@ Controller는 여전히 재사용이 어려워 보인다&lt;br /&gt;&lt;/p&gt;
 &lt;/table&gt;
 
 &lt;p&gt;이러한 구성을 통해 이해가 용이, 재사용이 가능, 독립적으로 테스트가 가능한 이점을 얻을 수 있다!&lt;br /&gt;
-다음 포스트를 통해 mvc 부터 차근차근 알아보자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">왜 아키텍처를 사용해야하지?</summary></entry><entry><title type="html">MVVM</title><link href="https://sweetfood-dev.github.io/ios/4-MVVM/" rel="alternate" type="text/html" title="MVVM" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/4-MVVM</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/4-MVVM/">&lt;p&gt;MVVM 패턴은 MVP와 비슷하다&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/mvvm.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ViewController를 MVP에선 &lt;strong&gt;PassiveView&lt;/strong&gt;로 보앗듯이 &lt;br /&gt;
-&lt;strong&gt;MVVM&lt;/strong&gt;에서는 &lt;strong&gt;View&lt;/strong&gt;로 본다&lt;br /&gt;
-View와 Model이 연결되지 않는다 &lt;br /&gt;
-View와 ViewModel사이를 바인딩으로 연결해 준다&lt;br /&gt;
-다만 구조자체가 복잡하기 때문에 디버깅이 비교적 오래 걸린다&lt;br /&gt;
-&lt;br /&gt;
-&lt;strong&gt;ViewModel이란?&lt;/strong&gt;&lt;br /&gt;
-View의 독립된 표현 혹은 상태를 말한다&lt;br /&gt;
-Model에서 변경을 호출하고 Model 자체를 갱신한다&lt;br /&gt;
-View와 Model 사이에서 바인딩을 하여 갱신한다&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;좋은 아키텍쳐 특징에서 보기&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;책임분배 : MVVM에서의 View는 MVP의 View보다 책임지는 것이 더 많다&lt;/li&gt;
-  &lt;li&gt;테스트 : ViewModel은 View에 대해 전혀 모르기 때문에 테스트가 용이하다&lt;/li&gt;
-  &lt;li&gt;사용용이성 : MVP보다 비교적 적은 코드로 개발할 수 있다&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;View 입장에서 바인딩을 하기 때문에 View를 갱신하는데 추가 코드가 필요하지 않다!&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;테스트에도 좋은 난이도 있는 아키텍처&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">MVVM 패턴은 MVP와 비슷하다</summary></entry><entry><title type="html">MVP</title><link href="https://sweetfood-dev.github.io/ios/3-MVP/" rel="alternate" type="text/html" title="MVP" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/ios/3-MVP</id><content type="html" xml:base="https://sweetfood-dev.github.io/ios/3-MVP/">&lt;p&gt;MVC에 이어 MVP를 알아보자&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/images/Posts/iOS/mvp1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;기본적으로 MVC와 유사하다&lt;br /&gt;
-차이점은 ViewController가 View와 함께 &lt;strong&gt;Passive View&lt;/strong&gt;에 속해있다는 점!&lt;br /&gt;
-&lt;strong&gt;presenter&lt;/strong&gt;는 Model과 Passive View 사이에 다리 역할을 하며 &lt;br /&gt;
-이로 인해 MVC에서의 문제였던 View의 생명 주기에서 자유로울 수 있다 &lt;br /&gt;
-View는 이로 인해 데이터와 상태를 갱신하는 역할에 집중 할 수 있다&lt;br /&gt;
-같은 이유로 View도 Test가 가능하게 되었다&lt;br /&gt;
-다만 View의 갱신, 이벤트 처리에 대한 메소드 바인딩이 이루어저야 하여&lt;br /&gt;
-개발비용이 MVC보다 더 많이 든다!&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;좋은 아키텍처 특징에서 보기&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;책임 분배 : Presenter와 Model을 완벽하게 분리하고 View는 단순히 출력하는 용도로 분리 되었다&lt;/li&gt;
-  &lt;li&gt;테스트 : View의 재사용이 가능하여 대부분의 로직을 테스트할 수 있다&lt;/li&gt;
-  &lt;li&gt;사용 용이성 : 코드는 MVC에 비해 늘어나지만 각 요소들의 역할이 더 명확해 진다&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;iOS에서 테스트를 하기에 좋다!, 다만 코드는 길어진다!&lt;/strong&gt;&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><summary type="html">MVC에 이어 MVP를 알아보자</summary></entry><entry><title type="html">오토레이아웃의 우선순위</title><link href="https://sweetfood-dev.github.io/swift/4-autolayout-priority/" rel="alternate" type="text/html" title="오토레이아웃의 우선순위" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/4-autolayout-priority</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/4-autolayout-priority/">&lt;p&gt;&lt;strong&gt;constraint&lt;/strong&gt;의 priority&lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;제약 사항간의 우선순위&lt;/li&gt;
-  &lt;li&gt;뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다&lt;/li&gt;
-  &lt;li&gt;이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">constraint의 priority 제약 사항간의 우선순위 뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다 이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.</summary></entry><entry><title type="html">Frame과 Bounds</title><link href="https://sweetfood-dev.github.io/swift/3-frame-bounds/" rel="alternate" type="text/html" title="Frame과 Bounds" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/3-frame-bounds</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/3-frame-bounds/">&lt;p&gt;&lt;strong&gt;Frame&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;상위뷰 좌표 시스템 내에서 View의 위치와 크기&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Bounds&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;자기 자신의 좌표시스템에서의 (sub view들의)위치와 크기, 부모뷰와는 관계가 없다&lt;/li&gt;
-  &lt;li&gt;default origin은 0,0이다&lt;/li&gt;
-  &lt;li&gt;origin의 변경은 sub view들의 위치가 변경됨을 의미&lt;/li&gt;
-  &lt;li&gt;sub view의 위치가 변한다는 것은 그려져야하는 위치가 달라지는 것이지 sub view들의 frame 값의 변화는 없다&lt;/li&gt;
-  &lt;li&gt;스크롤 시 sub view들의 위치가 달라지는 것이 대표적인 예이다&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="Swift" /><summary type="html">Frame 상위뷰 좌표 시스템 내에서 View의 위치와 크기</summary></entry><entry><title type="html">as as? as!</title><link href="https://sweetfood-dev.github.io/swift/1-type-casting/" rel="alternate" type="text/html" title="as as? as!" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/1-type-casting</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/1-type-casting/">&lt;table&gt;
+다음 포스트를 통해 mvc 부터 차근차근 알아보자!&lt;/p&gt;</content><author><name>권지수</name><email>kjsii123@naver.com</email></author><category term="iOS" /><category term="Architecture" /><summary type="html">왜 아키텍처를 사용해야하지?</summary></entry><entry><title type="html">as as? as!</title><link href="https://sweetfood-dev.github.io/swift/1-type-casting/" rel="alternate" type="text/html" title="as as? as!" /><published>2021-02-05T00:00:00+09:00</published><updated>2021-02-05T00:00:00+09:00</updated><id>https://sweetfood-dev.github.io/swift/1-type-casting</id><content type="html" xml:base="https://sweetfood-dev.github.io/swift/1-type-casting/">&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt; &lt;/th&gt;

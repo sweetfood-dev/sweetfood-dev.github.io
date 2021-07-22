@@ -1,0 +1,25 @@
+I"I<h2 id="설명">설명</h2>
+<p>MVVM 패턴은 MVP와 비슷하다<br />
+<img src="/assets/images/Posts/iOS/mvvm.png" alt="" /></p>
+
+<p>ViewController를 MVP에선 <strong>PassiveView</strong>로 보앗듯이 <br />
+<strong>MVVM</strong>에서는 <strong>View</strong>로 본다<br />
+View와 Model이 연결되지 않는다 <br />
+View와 ViewModel사이를 바인딩으로 연결해 준다<br />
+다만 구조자체가 복잡하기 때문에 디버깅이 비교적 오래 걸린다<br />
+<br /></p>
+<h2 id="viewmodel이란">ViewModel이란?</h2>
+<p>View의 독립된 표현 혹은 상태를 말한다<br />
+Model에서 변경을 호출하고 Model 자체를 갱신한다<br />
+View와 Model 사이에서 바인딩을 하여 갱신한다<br /></p>
+
+<h2 id="좋은-아키텍쳐-특징에서-보기">좋은 아키텍쳐 특징에서 보기</h2>
+<ol>
+  <li>책임분배 : MVVM에서의 View는 MVP의 View보다 책임지는 것이 더 많다</li>
+  <li>테스트 : ViewModel은 View에 대해 전혀 모르기 때문에 테스트가 용이하다</li>
+  <li>사용용이성 : MVP보다 비교적 적은 코드로 개발할 수 있다</li>
+</ol>
+
+<p><strong>View 입장에서 바인딩을 하기 때문에 View를 갱신하는데 추가 코드가 필요하지 않다!</strong><br />
+<strong>테스트에도 좋은 난이도 있는 아키텍처</strong></p>
+:ET

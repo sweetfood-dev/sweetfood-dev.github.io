@@ -1,0 +1,52 @@
+I",<h1 id="문제">문제</h1>
+<p><a href="https://www.acmicpc.net/problem/11055">링크</a></p>
+
+<h2 id="풀이">풀이</h2>
+
+<p><a href="https://sweetfood-dev.github.io/algorithm/dp/lis/BOJ11053-DP/">가장 긴 증가하는 수열</a> 문제와 비슷하다.<br />
+다만 <strong>길이</strong>가 아니라 <strong>합</strong>이 라는게 차이 .<br /></p>
+
+<p>따라서 가장 긴 증가하는 수열의 코드에서 if 조건문의 수식만 살짝 바꿔주면 된다<br /></p>
+
+<p>정의를 살펴 보면<br />
+arr[n] : 문제의 입력으로 주어진 배열, n번째 숫자<br />
+map[n] : n번째 에서 가장 큰 수열의 합<br />
+k = 0 ..&lt; n 까지의 인덱스<br /></p>
+
+<p>따라서 수식은 <br />
+map[n] = max(map[n], arr[n] + map[k]) <br /></p>
+
+<p>위에 정의된 수식을 2중 포문으로 탐색한다<br /></p>
+<h3 id="코드">코드</h3>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 0 부터 배열의 마지막 인덱스까지 탐색</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span> 
+<span class="c1">// 자기 자신은 부분 수열의 합에 항상 들어감</span>
+	<span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+	<span class="c1">// 0 ~ i - 1까지 탐색 , j == k( 위에 정의한 k를 j로 사용)</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="n">i</span> <span class="p">{</span> 
+	<span class="c1">// i 인덱스의 값보다 j 인덱스의 값이 작으면 부분 수열에 포함 </span>
+		<span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">{</span> 
+		<span class="c1">// 현재 map[i]값 보다 arr[i] + map[j]의 값이 더 크면 더 큰 부분 수열의 합</span>
+		<span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">map</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> 
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>최종 코드는 아래와 같다<br /></p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">solve</span><span class="p">(</span><span class="nv">n</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">arr</span> <span class="o">=</span> <span class="nf">readLine</span><span class="p">()</span><span class="o">!.</span><span class="nf">split</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span><span class="s">" "</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">Int</span><span class="p">(</span><span class="kt">String</span><span class="p">(</span><span class="nv">$0</span><span class="p">))</span><span class="o">!</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">map</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">](</span><span class="nv">repeating</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+        <span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="n">i</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">{</span>
+                <span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">map</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="n">map</span><span class="o">.</span><span class="nf">max</span><span class="p">()</span><span class="o">!</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

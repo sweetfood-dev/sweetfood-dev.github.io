@@ -1,0 +1,96 @@
+I"�)<p><a href="http://https://www.acmicpc.net/problem/1463">링크</a></p>
+
+<h1 id="문제">문제</h1>
+
+<p>정수 X에 사용할 수 있는 연산은 다음과 같이 세 가지 이다.</p>
+<ol>
+  <li>X가 3으로 나누어 떨어지면, 3으로 나눈다.</li>
+  <li>X가 2로 나누어 떨어지면, 2로 나눈다.</li>
+  <li>1을 뺀다.
+    <blockquote>
+      <p>정수 N이 주어졌을 때, 위와 같은 연산 세 개를 적절히 사용해서 1을 만들려고 한다. 연산을 사용하는 횟수의 최솟값을 출력하시오.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<h2 id="입력">입력</h2>
+<blockquote>
+  <p>첫째 줄에 1보다 크거나 같고, 106보다 작거나 같은 정수 N이 주어진다.</p>
+</blockquote>
+
+<h2 id="출력">출력</h2>
+<blockquote>
+  <p>첫째 줄에 연산을 하는 횟수의 최솟값을 출력한다.</p>
+</blockquote>
+
+<h2 id="구현-">구현 :</h2>
+<p>메모이제이션을 사용한 재귀로 구현.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">cache</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">](</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">1000001</span><span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">solve</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+	<span class="k">guard</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span> <span class="p">}</span>
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span> <span class="p">}</span>
+	<span class="k">if</span> <span class="n">cache</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+	<span class="p">}</span>
+	<span class="k">var</span> <span class="nv">minVal</span> <span class="o">=</span> <span class="kt">Int</span><span class="o">.</span><span class="n">max</span>
+	<span class="n">minVal</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">minVal</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span> <span class="n">minVal</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">3</span><span class="p">),</span> <span class="n">minVal</span><span class="p">)</span> <span class="p">}</span> 
+	<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span> <span class="n">minVal</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">minVal</span><span class="p">)</span> <span class="p">}</span>
+	<span class="n">cache</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">minVal</span> <span class="o">+</span> <span class="mi">1</span>
+	<span class="k">return</span> <span class="n">minVal</span> <span class="o">+</span> <span class="mi">1</span>
+	<span class="p">}</span>
+
+<span class="k">if</span> <span class="k">let</span> <span class="nv">x</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="nf">readLine</span><span class="p">()</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nf">print</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>x가 10000 이하일때는 잘 동작했지만
+그 이상이 되면 재귀의 깊이가 깊어져 런타임 에러 발생.</p>
+
+<p>고민고민을 해봤지만 고민만 1시간이 넘어가 결국 구글링…</p>
+
+<p>재귀가 아닌 상향식 DP를 사용하여 접근하는 방법이 많았다</p>
+
+<p>일련의 규칙이 있는데</p>
+
+<p>x == 1 ,  0  , 연산 필요 없음
+x == 2 , <strong>( 2 / 2 )</strong> = 1, 1번 연산
+x == 3,  ( 3 / 3 ) = 1, 1번 연산
+x == 4,  <strong>( 4 / 2 ) = 2, (2 / 2)</strong> = 1, 총 2번 연산
+x == 5 , ( 5 - 1 ) =  4 , <strong>( 4 / 2 ) = 2, ( 2 / 2 )</strong> = 1, 총 3번 연산</p>
+
+<p>x 가 4 이상 일 때는 이 전의 결과를 포함하고 있다 .</p>
+
+<p>이를 코드로 나타내면</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">func</span> <span class="nf">solve</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span> <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span> <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span> <span class="p">}</span>
+    <span class="k">else</span><span class="p">{</span>
+        <span class="k">var</span> <span class="nv">cache</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">](</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cache</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">cache</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">cache</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">4</span> <span class="o">...</span> <span class="n">x</span> <span class="p">{</span>
+            <span class="n">cache</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="n">cache</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">cache</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cache</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="n">cache</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">cache</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cache</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">x</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="nf">readLine</span><span class="p">()</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

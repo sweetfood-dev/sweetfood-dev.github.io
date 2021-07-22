@@ -1,0 +1,741 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>옵셔널 체이닝 (Optional Chaining) - 공부 그리고 기록</title>
+<meta name="description" content="옵셔널 체이닝 (Optional Chaining)">
+
+
+  <meta name="author" content="권지수">
+  
+  <meta property="article:author" content="권지수">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부 그리고 기록">
+<meta property="og:title" content="옵셔널 체이닝 (Optional Chaining)">
+<meta property="og:url" content="https://sweetfood-dev.github.io/swift/OptionalChaining/">
+
+
+  <meta property="og:description" content="옵셔널 체이닝 (Optional Chaining)">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-07-20T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://sweetfood-dev.github.io/swift/OptionalChaining/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "권지수",
+      "url": "https://sweetfood-dev.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부 그리고 기록 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부 그리고 기록
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">연도별 포스트</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://sweetfood-dev.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#swift" itemprop="item"><span itemprop="name">Swift</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">옵셔널 체이닝 (Optional Chaining)</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/profile/main.jpg" alt="권지수" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">권지수</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>여행, 축구를 좋아하는, <br /> 개발을 잘하고 싶은,</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">대한민국</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:kjsii123@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/sweetfood-dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kjsii123@naver.com">
+            <meta itemprop="email" content="kjsii123@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="옵셔널 체이닝 (Optional Chaining)">
+    <meta itemprop="description" content="옵셔널 체이닝 (Optional Chaining)">
+    <meta itemprop="datePublished" content="2021-07-20T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">옵셔널 체이닝 (Optional Chaining)
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#옵셔널-체이닝-optional-chaining">옵셔널 체이닝 (Optional Chaining)</a><ul><li><a href="#강제-언래핑의-대체로써의-옵셔널-체이닝">강제 언래핑의 대체로써의 옵셔널 체이닝</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="옵셔널-체이닝-optional-chaining">옵셔널 체이닝 (Optional Chaining)</h1>
+
+<p>옵셔널 체이닝은 <strong>nil</strong>일 수도 있는 <strong>프로퍼티</strong>나 <strong>메소드</strong>, <strong>서브스크립트</strong>에 <strong>질의</strong>를 하는 과정을 말한다.</p>
+
+<p>기본 동작은 옵셔널과 마찬가지고 값이 있으면 값을 반환, 값이 없다면 nil을 반환한다. 여러 <strong>질의</strong>를 연결할 수도 있는데 연결된 질의에서 어느 하나라도 nil이면 전체 결과는 nil이 된다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// query1, query2 중 하나라도 값이 nil이라면 result는 nil이 된다</span>
+<span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="n">query1</span><span class="p">?</span><span class="o">.</span><span class="n">query2</span><span class="p">?</span><span class="o">.</span><span class="n">query3</span> 
+</code></pre></div></div>
+
+<h2 id="강제-언래핑의-대체로써의-옵셔널-체이닝">강제 언래핑의 대체로써의 옵셔널 체이닝</h2>
+
+<p>위 코드에서 보이듯 옵셔널 체이닝은 옵셔널 값 뒤에 물음표(?)를 붙여서 표현한다. 강제 언래핑을 했는데 만약 그값이 없으면(nil 반환) 런타임 에러가 발생하지만, 옵셔널 체이닝을 사용하면 런타임 에러대신 nil이 반환된다.</p>
+
+<p>옵셔널 체이닝에 의해 nil 값이 호출 될 수 있기 때문에 옵셔널 체이닝을 사용한 구문의 값은 항상 옵셔널이 된다.</p>
+
+<p>코드를 보면서 이해해보자</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Person</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">residence</span><span class="p">:</span> <span class="kt">Residence</span><span class="p">?</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">Residence</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">numberOfRooms</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Residence는 Int 프로퍼티(numberOfRooms)를 소유하고 있고 Person은 옵셔널 프로퍼티(residence)를 소유하고 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">john</span> <span class="o">=</span> <span class="kt">Person</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>john은 Person 인스턴스이고 이 시점에서 john의 residence는 nil로 초기화 되어있을 것이다.</p>
+
+<p>근데 이 때 강제 언래핑을 사용한다면?</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">roomCount</span> <span class="o">=</span> <span class="n">john</span><span class="o">.</span><span class="n">residence</span><span class="o">!.</span><span class="n">numberOfRooms</span> <span class="c1">// runtime error</span>
+</code></pre></div></div>
+
+<p>당연하게도 런타임 에러가 발생할 것이다.</p>
+
+<p>이를 옵셔널 체이닝으로 한다면 보다 안전하게 접근할 수 있다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">roomCount</span> <span class="o">=</span> <span class="n">john</span><span class="o">.</span><span class="n">residence</span><span class="p">?</span><span class="o">.</span><span class="n">numberOfRooms</span> <span class="p">{</span> <span class="c1">// 옵셔널 바인딩! </span>
+    <span class="c1">// 옵셔널 바인딩으로 인해 일반 프로퍼티처럼 사용 가능</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"John residence </span><span class="se">\(</span><span class="n">roomCount</span><span class="se">)</span><span class="s"> room(s)"</span><span class="p">)</span>  
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// nil 일 떄 </span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"residence == nil"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>numberOfRooms는 옵셔널이 아닌데 어째서 옵셔널 바인딩을 사용했나?</p>
+
+<p>앞에서 설명하였듯이 옵셔널 체인으로 접근하는 프로퍼티, 메소드등의 결과는 항상 옵셔널 값이 되기 때문에 이렇게 옵셔널을 벗겨줘야한다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#swift" class="page__taxonomy-item" rel="tag">Swift</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-07-20T00:00:00+09:00">July 20, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%98%B5%EC%85%94%EB%84%90+%EC%B2%B4%EC%9D%B4%EB%8B%9D+%28Optional+Chaining%29%20https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FOptionalChaining%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FOptionalChaining%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FOptionalChaining%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/swift/Optional2/" class="pagination--pager" title="옵셔널의 사용
+">이전</a>
+    
+    
+      <a href="/swift/Tuple/" class="pagination--pager" title="튜플 (Tuple)
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Tuple/" rel="permalink">튜플 (Tuple)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">튜플이란?
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Optional2/" rel="permalink">옵셔널의 사용
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">이전글 Optional에서는 Optional과 nil에 대해 알아 보았다
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Optional/" rel="permalink">Optional
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다. 
+
+옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. 
+var number : Int? // Int 옵셔널 
+var text : String? // String 옵셔널
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/GitBlog_Post/" rel="permalink">간편하게 포스트 하는 법?
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">터미널에서 로컬의 gitblog 폴더로 이동! 
+jekyll serve 실행 
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/sweetfood-dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 권지수. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>MVC 패턴 - 공부 그리고 기록</title>
-<meta name="description" content="Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!">
+<meta name="description" content="설명 Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!">
 
 
   <meta name="author" content="권지수">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://sweetfood-dev.github.io/ios/2-MVC/">
 
 
-  <meta property="og:description" content="Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!">
+  <meta property="og:description" content="설명 Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!">
 
 
 
@@ -134,6 +134,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
             </li><li class="masthead__menu-item">
               <a href="/posts/">연도별 포스트</a>
             </li></ul>
@@ -327,7 +329,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="MVC 패턴">
-    <meta itemprop="description" content="Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!">
+    <meta itemprop="description" content="설명Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!">
     <meta itemprop="datePublished" content="2021-02-10T00:00:00+09:00">
     
 
@@ -362,9 +364,18 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!<br /></p>
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#설명">설명</a></li><li><a href="#한계">한계</a></li><li><a href="#좋은-아키텍쳐-특징에서-바라보기">좋은 아키텍쳐 특징에서 바라보기</a></li><li><a href="#정리">정리</a></li></ul>
 
-<p><img src="http://localhost:4000/assets/images/Posts/iOS/tranditional_mvc.png" alt="" /></p>
+            </nav>
+          </aside>
+        
+        <h2 id="설명">설명</h2>
+<p>Apple의 MVC를 학습하기전에 전통적인 MVC에 대해 알아보자!<br /></p>
+
+<p><img src="/assets/images/Posts/iOS/tranditional_mvc.png" alt="" /></p>
 
 <p>그림을 보면 MVC가 모두 밀접하게 연관되어 있다<br />
 이는 곧 재사용성이 떨어짐을 의미한다<br />
@@ -372,15 +383,15 @@
 <strong>전통적인 MVC는 iOS에 적합해 보이지 않는다!</strong><br /></p>
 
 <p>Apple이 권고하는 MVC에 대해 알아보자.<br />
-<img src="http://localhost:4000/assets/images/Posts/iOS/cocoa_mvc.png" alt="" /></p>
+<img src="/assets/images/Posts/iOS/cocoa_mvc.png" alt="" /></p>
 
 <p>그림에서 볼 수 있듯 Controller는 중간에서 Model과 View를 이어준다<br />
 Model – View는 서로 알 필요가 없다<br />
 Controller는 여전히 재사용이 어려워 보인다<br /></p>
 
-<p><strong>한계</strong><br />
-위의 그림과 대조적이게 실제로 Cocoa MVC는 다음 그림과 같다<br />
-<img src="http://localhost:4000/assets/images/Posts/iOS/real_cocoa_mvc.png" alt="" /></p>
+<h2 id="한계">한계</h2>
+<p>위의 그림과 대조적이게 실제로 Cocoa MVC는 다음 그림과 같다<br />
+<img src="/assets/images/Posts/iOS/real_cocoa_mvc.png" alt="" /></p>
 
 <p>왜 위와 같이 구성될까?<br /></p>
 <ul>
@@ -389,8 +400,8 @@ Controller는 여전히 재사용이 어려워 보인다<br /></p>
   <li>이렇게 View를 가지고 있고, 그 생명주기도 관리하기 때문에 Controller자체가 거대해진다</li>
 </ul>
 
-<p><strong>좋은 아키텍쳐 특징에서 바라보기</strong><br />
-좋은 아키텍처의 특징, 요소 측면에서 이 패턴을 파악해보자!<br /></p>
+<h2 id="좋은-아키텍쳐-특징에서-바라보기">좋은 아키텍쳐 특징에서 바라보기</h2>
+<p>좋은 아키텍처의 특징, 요소 측면에서 이 패턴을 파악해보자!<br /></p>
 <ol>
   <li>책임 분리
     <ul>
@@ -409,7 +420,7 @@ Controller는 여전히 재사용이 어려워 보인다<br /></p>
   </li>
 </ol>
 
-<p><strong>정리</strong><br /></p>
+<h2 id="정리">정리</h2>
 <ol>
   <li>개발속도가 빠르기에 아키텍처에 투자할 시간이 부족할 때 사용하면 유용하다</li>
   <li>유지보수 비용이 많이 들어가는 편이다</li>
@@ -423,6 +434,25 @@ Controller는 여전히 재사용이 어려워 보인다<br /></p>
       <footer class="page__meta">
         
         
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#architecture" class="page__taxonomy-item" rel="tag">Architecture</a>
+    
+    </span>
+  </p>
+
+
 
 
   
@@ -466,7 +496,7 @@ Controller는 여전히 재사용이 어려워 보인다<br /></p>
       
   <nav class="pagination">
     
-      <a href="/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="pagination--pager" title="아키텍처
+      <a href="/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/" class="pagination--pager" title="1 아키텍처
 ">이전</a>
     
     
@@ -485,6 +515,86 @@ Controller는 여전히 재사용이 어려워 보인다<br /></p>
     <div class="page__related">
       <h4 class="page__related-title">참고</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Tuple/" rel="permalink">튜플 (Tuple)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">튜플이란?
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/OptionalChaining/" rel="permalink">옵셔널 체이닝 (Optional Chaining)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">옵셔널 체이닝 (Optional Chaining)
+</p>
+  </article>
+</div>
+
         
           
 
@@ -565,88 +675,6 @@ Controller는 여전히 재사용이 어려워 보인다<br /></p>
 옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다. 
 var number : Int? // Int 옵셔널 
 var text : String? // String 옵셔널
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/GitBlog_Post/" rel="permalink">간편하게 포스트 하는 법?
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">터미널에서 로컬의 gitblog 폴더로 이동! 
-jekyll serve 실행 
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/ios/4-MVVM/" rel="permalink">MVVM
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">MVVM 패턴은 MVP와 비슷하다
 
 </p>
   </article>

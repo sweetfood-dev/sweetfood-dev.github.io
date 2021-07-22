@@ -1,0 +1,6 @@
+I"C<h1 id="app-생명주기란">App 생명주기란</h1>
+<blockquote>
+  <p>앱의 실행부터 종료까지의 주기를 말하며, 앱이 foreground나 background에 있을 때 시스템 알림에 응답하고 기타 중요한 시스템 관련 이벤트를 처리하는 단계들을 말한다.<br />
+<br /></p>
+</blockquote>
+:ET
