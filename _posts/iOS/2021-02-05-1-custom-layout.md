@@ -27,12 +27,15 @@ tag:
 <br>
 ## prepare()
 - UICollectionView에 표시되는 전체 크기를 계산하고 각 셀의 레이아웃 속성, collectionView의 크기와 cell의 위치를 미리 계산(캐싱)하여 메모리에 적재한 뒤 유지합니다.
+
 ## collectionViewContentSize
 - collectionView의 전체 높이와 너비를 반환합니다.
 - 화면에 보이는 contents 뿐만 아니라 collectionView의 전체를 반환해야 합니다.
 - collectionView는 이 정보를 활용하여 내부적으로 scrollView의 크기를 구성합니다.
+
 ## layoutAttributesForElements (in :)
 - in의 범위 안에 있는 모든 셀들의 레이아웃 속성들을 배열에 담아 반환합니다
+
 ## layoutAttributesForItem (at :)
 - at으로 들어온 cell의 레이아웃 속성을 반환합니다.
 
