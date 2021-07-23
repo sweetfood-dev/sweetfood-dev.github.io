@@ -284,3 +284,5 @@ Lunr is distributed under the terms of the [MIT License](http://opensource.org/l
 [notion to github](https://swieeft.github.io/2020/03/02/NotionToGithubioPorting.html)
 
 [노션 (마크다운 에디터용)](https://www.notion.so/0a57aa8f82624c0684cabfa51f461dae?v=6576d966b08f4a70872ea6dfaa766f2c)
+
+[Swift Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
