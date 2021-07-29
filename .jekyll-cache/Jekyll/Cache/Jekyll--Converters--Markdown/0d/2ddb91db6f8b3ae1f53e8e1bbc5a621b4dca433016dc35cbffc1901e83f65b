@@ -1,0 +1,68 @@
+I"u<h2 id="in-out">In-Out</h2>
+
+<p>함수의 파라미터는 let으로 정의된 상수와 같다.</p>
+
+<p>따라서 함수안에서 파라미터의 값을 변경하려 하면 컴파일 에러가 발생한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">increseAndPrint</span><span class="p">(</span><span class="n">_</span> <span class="nv">param</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">param</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">// 컴파일 에러</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">value</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nf">increseAndPrint</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이해를 돕기 위해 위의 코드를 풀어보면</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">value</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">let</span> <span class="nv">param</span> <span class="o">=</span> <span class="n">value</span> <span class="c1">// == increseAndPrint(value)</span>
+<span class="c1">// 함수의 본문 </span>
+<span class="n">param</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이렇게 보면 에러가 나는 것이 당연한 것 처럼 보인다.</p>
+
+<p>Swift에서 함수에 값을 전달할 때 변수 자체를 전달하는 것이 아니라 변수의 값을 파라미터에 <strong>복사</strong>한다</p>
+
+<p>이런 방식을 값에 의한 전달, pass by value라고 한다. 그럼 어떻게 파라미터로 들어온 변수의 값을 변경할 수 있을까?</p>
+
+<p>설명을 쉽게하기 위해 위 코드에서 함수 호출시 사용한 변수 value를 <strong>인수,</strong> 해당 인수의 값을 함수 내부에서 사용하는 param을 <strong>파라미터</strong>로 정의하겠다.</p>
+
+<p>함수가 실행되고 끝날 때 파라미터의 값을 인수에 재차 복사를 해주면 된다. 이를 copy-<strong>in</strong> copy-<strong>out</strong> 이라 한다.</p>
+
+<blockquote>
+  <p>그래서 이름이 inout일지도???</p>
+</blockquote>
+
+<p>단계를 다시 설명하면</p>
+
+<ol>
+  <li>함수가 호출되면 인수(value)값이 파라미터(param)에 복사된다.</li>
+  <li>함수 본문에서 파라미터(param)값이 수정이 된다.</li>
+  <li>함수가 종료 혹은 반환되면 파라미터(param)값이 인수(value)에 할당된다.</li>
+</ol>
+
+<p>inout 키워드는 파라미터가 이렇게 인수에 다시 복사되어야함을 알려준다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">increseAndPrint</span><span class="p">(</span><span class="n">_</span> <span class="nv">param</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// inout은 파라미터의 Type 앞에 선언</span>
+    <span class="n">param</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">// 컴파일 에러</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"param is </span><span class="se">\(</span><span class="n">param</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">value</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nf">increseAndPrint</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">)</span> <span class="c1">// &amp;은 뭐지?</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"value is </span><span class="se">\(</span><span class="n">value</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>함수 호출에서도 다른점이 보이는데 inout 으로 선언된 파라미터에 전달된 인수에는 &amp;을 붙여 전달해야 한다.</p>
+
+<blockquote>
+  <p>내 생각인데 c언어의 포인터와 같은 개념으로 복사를 하기위해 해당 인수의 주소값을 받는 거란 생각이 든다.</p>
+</blockquote>
+
+<p>실행해 보면 모두 6이 출력되는걸 확인할 수 있다!</p>
+
+<p>유의할 점은 기본값이 있는 파라미터와 가변 파라미터에는 inout으로 정의할 수 없다.</p>
+:ET

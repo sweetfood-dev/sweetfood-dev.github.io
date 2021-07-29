@@ -1,0 +1,850 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Swift] Dictionary (사전) - 공부 그리고 기록</title>
+<meta name="description" content="Dictionary란">
+
+
+  <meta name="author" content="권지수">
+  
+  <meta property="article:author" content="권지수">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부 그리고 기록">
+<meta property="og:title" content="[Swift] Dictionary (사전)">
+<meta property="og:url" content="https://sweetfood-dev.github.io/swift/Dictionary/">
+
+
+  <meta property="og:description" content="Dictionary란">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-07-27T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://sweetfood-dev.github.io/swift/Dictionary/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "권지수",
+      "url": "https://sweetfood-dev.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부 그리고 기록 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부 그리고 기록
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">연도별 포스트</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://sweetfood-dev.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#swift" itemprop="item"><span itemprop="name">Swift</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[Swift] Dictionary (사전)</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/profile/main.jpg" alt="권지수" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">권지수</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>실패를 걱정하지 말고<br />부지런히 목표를 향하여 노력하라.<br />노력한 만큼 보상받을 것이다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">대한민국</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:kjsii123@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/sweetfood-dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kjsii123@naver.com">
+            <meta itemprop="email" content="kjsii123@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Swift] Dictionary (사전)">
+    <meta itemprop="description" content="Dictionary란">
+    <meta itemprop="datePublished" content="2021-07-27T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Swift] Dictionary (사전)
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-27T00:00:00+09:00">July 27, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#dictionary란">Dictionary란</a><ul><li><a href="#array와의-차이점">Array와의 차이점?</a></li><li><a href="#dictionary-생성">Dictionary 생성</a><ul><li><a href="#리터럴-사용">리터럴 사용</a></li><li><a href="#빈-dictionary">빈 Dictionary</a></li></ul></li><li><a href="#값-접근">값 접근</a><ul><li><a href="#key-접근">Key 접근</a></li></ul></li><li><a href="#property--method">Property &amp; Method</a></li><li><a href="#dictionary-수정">Dictionary 수정</a></li><li><a href="#dictionary-삭제">Dictionary 삭제</a></li><li><a href="#dictionary-순회">Dictionary 순회</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="dictionary란">Dictionary란</h1>
+
+<p>사전은 순서가 지정되지 않은 <strong>키와 값으로 구성된 쌍의 모음</strong>이다</p>
+
+<p>키는 중복되지 않고 고유하지만 각기 다른 키는 같은 값을 가리킬 수 있다.</p>
+
+<p>모든 키는 같은 Type이어야 하고, 모든 값도 같은 Type이어야 한다.</p>
+
+<blockquote>
+  <p>키와 값은 서로 같은 Type일 필요는 없다 !</p>
+</blockquote>
+
+<p><img src="/assets/images/Posts/Swift/2021-07-27-Dictionary/dictionary.png" alt="" /></p>
+
+<p>좌측의 Key는 모두 String type, 우측의 값은 모두 Int Type</p>
+
+<p>key들은 모두 서로 다른 값이지만 Anna, Brian이 가지는 값을 보면 알 수 있듯이 값은 같을 수 있다.</p>
+
+<h2 id="array와의-차이점">Array와의 차이점?</h2>
+
+<p>Array는 인덱스로만 값에 접근할 수 있으며, 해당 인덱스는 정수여야만 한다. 또한 Array에서 모든 인덱스는 순차적이다.</p>
+
+<p>반면에 Dictionary에서 Key를 가지고 값에 접근할 수 있으며, Key는 정수를 포함한 모든 Type이 될 수 있다. 특정한 순서가 없다.</p>
+
+<blockquote>
+  <p>모든 Type이 Key가 가능하다고 하지만 조건이 있다. 바로 Key로 사용할 Type이 <strong>Hashable 프로토콜</strong>을 따라야 한다는 것인데, 기본적으로 Int, String, Double같은 기본 타입은 해당 프로토콜을 이미 따르고 있지만 내가 정의한 Type의 경우 Hashable 프로토콜을 채택해야한다. 추후 Protocol 정리에서 해당내용을 다룰 수 있을 것 같다!</p>
+</blockquote>
+
+<h2 id="dictionary-생성">Dictionary 생성</h2>
+
+<h3 id="리터럴-사용">리터럴 사용</h3>
+
+<p>대괄호로 묶인 쉼표로 구분된 키 - 값 쌍의 목록을 사용한다.</p>
+
+<p>역시나 말은 어려우니 코드로 보자!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesAndScores</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Anna"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Brian"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Craig"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"Donna"</span> <span class="p">:</span> <span class="mi">6</span> <span class="p">]</span>
+</code></pre></div></div>
+
+<p>이 코드에서 Key의 Type은 String, Value의 Type은 Int이고 따라서,</p>
+
+<p>namesAndScores의 Type은 [String: Int] 이다.</p>
+
+<h3 id="빈-dictionary">빈 Dictionary</h3>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">pairs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:]</span> <span class="c1">// 타입 추론이 </span>
+<span class="k">var</span> <span class="nv">pairs2</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Int</span><span class="p">]()</span>
+</code></pre></div></div>
+
+<p>컴파일러는 빈 Dictionary 리터럴에서 유형추론을 할수 없으므로 Type을 명시하여 사용하거나</p>
+
+<p>2번째 라인 처럼 이니셜라이저로 생성해줘야 한다 !</p>
+
+<h2 id="값-접근">값 접근</h2>
+
+<h3 id="key-접근">Key 접근</h3>
+
+<p>Array와 유사한데 Array에서는 인덱스를 사용하지만 Dictionary에서는 Key로 접근한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesAndScores</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Anna"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Brian"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Craig"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"Donna"</span> <span class="p">:</span> <span class="mi">6</span> <span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Anna Score : </span><span class="se">\(</span><span class="n">namesAndScores</span><span class="p">[</span><span class="s">"Anna"</span><span class="p">]</span><span class="o">!</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// output &gt;&gt; 2</span>
+</code></pre></div></div>
+
+<p>Key로 접근할 때 Key에 대한 값이 있는지 확인을 하고 없으면 nil을 반환해야하기 때문에 반환 Type은 옵셔널이다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesAndScores</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Anna"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Brian"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Craig"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"Donna"</span> <span class="p">:</span> <span class="mi">6</span> <span class="p">]</span>
+<span class="n">namesAndScores</span><span class="p">[</span><span class="s">"jisoo"</span><span class="p">]</span> <span class="c1">// nil</span>
+</code></pre></div></div>
+
+<h2 id="property--method">Property &amp; Method</h2>
+
+<p>Array와 Dictionary는 Collection Protocol을 따릅니다</p>
+
+<blockquote>
+  <p>Protocol은 추후에 다시 학습해봅시다.</p>
+</blockquote>
+
+<p>이 Collection 프로토콜을 따르기 떄문에 많은 프로퍼티와 메소드를 공유합니다.</p>
+
+<p>자주 사용하는 isEmpty, count 또한 이 Collection 프로토콜에서 제공하는 프로퍼티입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesAndScores</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Anna"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Brian"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Craig"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"Donna"</span> <span class="p">:</span> <span class="mi">6</span> <span class="p">]</span>
+<span class="n">namesAndScores</span><span class="o">.</span><span class="n">isEmpty</span> <span class="c1">// 텅 비어있는가? -&gt; false</span>
+<span class="n">namesAndScores</span><span class="o">.</span><span class="n">count</span> <span class="c1">// Key - Value가 몇 쌍 있어? -&gt; 4</span>
+</code></pre></div></div>
+
+<h2 id="dictionary-수정">Dictionary 수정</h2>
+
+<p>사전을 만들고 그 사전에 접근하여 값을 가져오는 것까지 해봤습니다. 그렇다면 수정을 하는 것은 어떨까요?</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesAndScores</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Anna"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Brian"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Craig"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"Donna"</span> <span class="p">:</span> <span class="mi">6</span> <span class="p">]</span>
+<span class="c1">// sweetfood의 Key가 있다면 해당 값을 5로 수정, 없다면 5로 ! </span>
+<span class="n">namesAndScores</span><span class="p">[</span><span class="s">"sweetfood"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span> 
+<span class="c1">//위와 동일한 코드</span>
+<span class="n">namesAndScores</span><span class="o">.</span><span class="nf">updateValue</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span><span class="s">"sweetfood"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>첨자에 Key를 사용하여 값을 넣어도 되고 마지막 줄 처럼 메소드를 사용하여 값을 넣어도 된다.</p>
+
+<p>결과는 같지만 다른 점이 하나 있다. 첨자를 사용하는 경우에 원래 해당 Key에 값이 있었다면 그냥 덮어쓰기처럼 5로 변경이 되지만 마지막줄과 같이 메소드를 사용하면 기존에 있던 값을 옵셔널로 감싸서 반환하고 3으로 변경이 된다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">namesAndScores</span><span class="p">[</span><span class="s">"sweetfood"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">let</span> <span class="nv">returnValue</span> <span class="o">=</span> <span class="n">namesAndScores</span><span class="o">.</span><span class="nf">updateValue</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span><span class="s">"sweetfood"</span><span class="p">)</span>
+<span class="c1">// returnValue = 5, namesAndScores["sweetfood"] = 3</span>
+</code></pre></div></div>
+
+<p>만약 이전 값이 없다면? 반환 값이 옵셔널 타입이기 떄문에 nil이 반환된다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">mDic</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Int</span><span class="p">]()</span>
+<span class="k">let</span> <span class="nv">returnValue</span> <span class="o">=</span> <span class="n">mDic</span><span class="o">.</span><span class="nf">updateValue</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"sweetfood"</span><span class="p">)</span>
+<span class="c1">// returnValue = nil, mDic["sweetfood"] = 3</span>
+</code></pre></div></div>
+
+<h2 id="dictionary-삭제">Dictionary 삭제</h2>
+
+<p>수정과 마찬가지로 첨자를 사용한 방법, 메소드를 사용한 방법이 있다 !</p>
+
+<p>값 접근 예시에서 설명할 때 Key에 대한 값이 없으면 nil을 반환한다고 했었다!. 첨자를 사용할 땐 해당 Key값에  nil을 넣어주면 된다!</p>
+
+<p>메소드를 사용할땐 removeValue(forKey:) 메소드를 사용한다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">namesAndScores</span><span class="p">[</span><span class="s">"sweetfood"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="n">namesAndScores</span><span class="o">.</span><span class="nf">removeValue</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"sweetfood"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>removeValue함수를 사용하여 삭제를 할 경우 삭제한 값이 반환된다.</p>
+
+<blockquote>
+  <p>주의해야할 점이 하나 있다. 만약 Dictionary의 타입이 [String: Int?] 처럼 옵셔널 타입을 값으로 사용할 때 첨자를 사용하여 삭제를 하려고 namesAndScores[“sweetfood”] = nil 을 사용한다면 이는 키까지 완전히 제거하기 때문에 키를 유지하고 값만 nil로 변경하길 바란다면 updateValue메소드를 사용해야한다.</p>
+</blockquote>
+
+<h2 id="dictionary-순회">Dictionary 순회</h2>
+
+<p>Array처럼 for문을 사용하여 순회할 수 있다. Dictionary의 Elements는 키 - 값 쌍으로 이루어 지기 때문에 튜플을 사용한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="k">in</span> <span class="n">namesAndScores</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"name: </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s"> score: </span><span class="se">\(</span><span class="n">score</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>만약 Key나 Value 하나에 대해서만 순회를 하고 싶다면 keys, values를 통해 단일 항목에대해서 순회도 가능하다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Key만 순회</span>
+<span class="k">for</span> <span class="n">key</span> <span class="k">in</span> <span class="n">namesAndScores</span><span class="o">.</span><span class="n">keys</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"key </span><span class="se">\(</span><span class="n">key</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Value만 순회</span>
+<span class="k">for</span> <span class="n">value</span> <span class="k">in</span> <span class="n">namesAndScores</span><span class="o">.</span><span class="n">values</span><span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"value </span><span class="se">\(</span><span class="n">value</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#collection" class="page__taxonomy-item" rel="tag">Collection</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#swift" class="page__taxonomy-item" rel="tag">Swift</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-07-27T00:00:00+09:00">July 27, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BSwift%5D+Dictionary+%28%EC%82%AC%EC%A0%84%29%20https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FDictionary%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FDictionary%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FDictionary%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/swift/Array/" class="pagination--pager" title="[Swift] Array (배열)
+">이전</a>
+    
+    
+      <a href="/swift/Function/" class="pagination--pager" title="[Swift] Function
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/function4-functiontype/" rel="permalink">[Swift] Function(4) 함수 타입(Function Type)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">함수 타입
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/function3-inout/" rel="permalink">[Swift] Function(3) in-out
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">In-Out
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Function2-ParameterAndReturn/" rel="permalink">[Swift] Function(2) Parameter와 Retrun
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Parameter 와 Returns
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Function/" rel="permalink">[Swift] Function
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">함수란?
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/sweetfood-dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 권지수. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://sweetfood-dev.github.io/swift/Dictionary/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/swift/Dictionary"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sweetfood-dev.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

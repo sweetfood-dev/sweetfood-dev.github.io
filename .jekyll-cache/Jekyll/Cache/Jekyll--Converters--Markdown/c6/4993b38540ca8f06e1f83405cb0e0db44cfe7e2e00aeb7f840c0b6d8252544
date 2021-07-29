@@ -1,0 +1,188 @@
+I"�@<h1 id="parameter-와-returns">Parameter 와 Returns</h1>
+
+<h2 id="parameter가-없는-함수">Parameter가 없는 함수</h2>
+
+<p>파라미터는 기본적으로 함수의 이름 뒤에 오는 () 사이에 정의해주는데 파라미터가 없는경우 그냥 ()만 작성한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">noParameter</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="parameter가-있는-함수">Parameter가 있는 함수</h2>
+
+<p>1개 혹은 그 이상의 파라미터도 정의 가능하다.</p>
+
+<p>()안에 파라미터이름 : Type 으로 정의하며 1개 이상일 때는 , 로 구분을 해준다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">oneParameter</span><span class="p">(</span><span class="nv">param1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">twoParameter</span><span class="p">(</span><span class="nv">param1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">param2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">threeParameter</span><span class="p">(</span><span class="nv">param1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">param2</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">param3</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h2 id="return이-없는-함수">Return이 없는 함수</h2>
+
+<p>Return 값이 있는 경우 파라미터 정의 끝에 → Type 으로 작성을 해준다. 다만 Return 값이 없을 경우</p>
+
+<p>→ Type은 생략 해주면 된다!</p>
+
+<blockquote>
+  <p>Return의 Type에는 모든 타입이 들어갈 수 있으며 옵셔널 또한 가능하다!</p>
+</blockquote>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">noReturnFunc</span><span class="p">()</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>엄밀히 말하자면 Return값이 있다 바로 → Void 인데 Void는 () Type의 빈 튜플이다</p>
+</blockquote>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">noReturnFunc</span><span class="p">()</span> <span class="c1">// 이 함수는 엄밀히 말하자면</span>
+<span class="kd">func</span> <span class="nf">noReturnFunc</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span>  <span class="c1">// 요 함수이다. </span>
+</code></pre></div></div>
+
+<h2 id="return이-있는-함수">Return이 있는 함수</h2>
+
+<h3 id="return이-1개만-있을-경우">Return이 1개만 있을 경우</h3>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">returnOneFunc</span><span class="p">(</span><span class="nv">parameter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">parameter</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 처럼 → Type을 뒤에 붙여 주며 함수 내부에서는 해당 Type의 값이나 변수를 return 해주어야 한다.</p>
+
+<h3 id="단일-표현식에서의-return">단일 표현식에서의 Return</h3>
+
+<p>위의 예제처럼 단일 표현식의 경우에는 return의 생략이 가능하며 추후 학습할 프로퍼티 getter에서도 이런 문법은 동일하게 적용 된다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">returnPlusThree</span><span class="p">(</span><span class="nv">parameter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="n">parameter</span> <span class="o">+</span> <span class="mi">3</span> <span class="c1">// return 생략 가능</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="여러-return값이-있는-함수">여러 Return값이 있는 함수</h3>
+
+<p>앞서 학습한 튜플을 사용하면 된다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">returnTwoValue</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">min</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">max</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">minValue</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="nf">min</span><span class="p">()</span><span class="o">!</span> <span class="c1">// 옵셔널 강제 해제</span>
+    <span class="k">let</span> <span class="nv">maxValue</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="nf">max</span><span class="p">()</span><span class="o">!</span> <span class="c1">// 옵셔널 강제 해제</span>
+    
+    <span class="nf">return</span> <span class="p">(</span><span class="n">minValue</span><span class="p">,</span> <span class="n">maxValue</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="nf">returnTwoValue</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">result</span><span class="o">.</span><span class="n">max</span> 
+<span class="n">result</span><span class="o">.</span><span class="n">min</span>
+</code></pre></div></div>
+
+<p>이때 Return에 정의한 튜플은 앞서 학습한 튜플의 기능을 모두 사용할 수 있다.</p>
+
+<p>이 코드에서는 min,max라는 별칭을 정해줬으며 함수의 return을 받은 result 상수에서 해당 별칭을 사용하였다.</p>
+
+<h2 id="함수의-인수-레이블과-파라미터매개변수-이름">함수의 인수 레이블과 파라미터(매개변수) 이름</h2>
+
+<p>모든 함수에는 <strong>인수 레이블</strong>과 <strong>파라미터 이름</strong>이 있다.</p>
+
+<p><strong>인수 레이블</strong>은 <strong>함수를 호출</strong>할 때 사용하고 <strong>파라미터 이름</strong>은 <strong>함수 내부</strong>에서 사용한다</p>
+
+<p>만약 인수 레이블을 따로 작성하지 않으면 인수레이블은 파라미터 이름과 같다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">myFunction</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="c1">// value는 인수 레이블이자 파라미터 이름!</span>
+</code></pre></div></div>
+
+<h3 id="인수-레이블">인수 레이블</h3>
+
+<p>인수레이블 작성은 파라미터 이름 앞에 공간을 두고 작성한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">myFunction</span><span class="p">(</span><span class="n">label</span> <span class="nv">parameter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">){</span> <span class="c1">// 인수레이블은 label, 파라미터 이름은 parameter</span>
+    <span class="k">let</span> <span class="nv">plusOne</span> <span class="o">=</span> <span class="n">parameter</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">// 함수 내부에서는 파라미터 이름을 사용</span>
+<span class="p">}</span>
+
+<span class="nf">myFunction</span><span class="p">(</span><span class="nv">label</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// 함수 호출시에는 인수 레이블을 사용</span>
+</code></pre></div></div>
+
+<p>위의 코드에서 볼 수 있듯 인수 레이블은 함수 호출 시 사용하고 파라미터 이름은 함수의 내부에서 사용한다</p>
+
+<p>이러한 레이블은 적절히 사용한다면 영어 문장처럼 표현할 수 있어 <strong>가독성</strong>이 좋아지는 장점이 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">from</span> <span class="nv">hometown</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="c1">// 단일 표현식으로 return 생략</span>
+    <span class="s">"Hello </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">! Glad you could visit from </span><span class="se">\(</span><span class="n">hometown</span><span class="se">)</span><span class="s">
+}
+
+print(greet(person:"</span><span class="n">jisoo</span><span class="s">", from: "</span><span class="n">home</span><span class="s">"))
+</span></code></pre></div></div>
+
+<h4 id="인수레이블의-생략">인수레이블의 생략</h4>
+
+<p>print()처럼 인수가 없는 함수는 인수 레이블 위치에 _ 를 사용하여 만든다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">emptyLabel</span><span class="p">(</span><span class="n">_</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">emptyLabel</span><span class="p">(</span><span class="s">"인수레이블 없이 사용할 수 있어요"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="파라미터매개변수">파라미터(매개변수)</h3>
+
+<h4 id="기본값">기본값</h4>
+
+<p>파라미터 정의 다음에 값을 <strong>할당</strong>하여 기본값을 사용할 수 있다.</p>
+
+<p>기본값을 설정하면 함수 호출 시 기본값이 설정되어 있는 인자 레이블은 생략이 가능하다.</p>
+
+<p>생략을 하게 되면 함수 내부에서 파라미터를 사용할 때 기본값이 적용된다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">defaultValue</span><span class="p">(</span><span class="n">num</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">defaultValue</span><span class="p">()</span> <span class="c1">// 10</span>
+<span class="nf">defaultValue</span><span class="p">(</span><span class="nv">num</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span> <span class="c1">// 20</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>파라미터의 Type은 유형 추론이 안된다!</p>
+</blockquote>
+
+<h4 id="가변-파라미터">가변 파라미터</h4>
+
+<p>가변파라미터를 사용하면 0개 이상의 값을 사용할 수 있다.</p>
+
+<p>파라미터 Type뒤에 …를 붙여 선언한다.</p>
+
+<p>가변 파라미터로 전달된 값은 함수 내에서 Array로 사용이 가능하다.</p>
+
+<p>하지만 함수 호출 시에는 인자레이블의 Type으로 호출을 해야한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">variadicParameter</span><span class="p">(</span><span class="n">num</span> <span class="nv">numbers</span><span class="p">:</span> <span class="kt">Int</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">{</span>
+    <span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="nf">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span> <span class="c1">// 배열의 모든 요소를 더해줌</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="p">}</span>
+
+<span class="nf">variadicParameter</span><span class="p">(</span><span class="nv">num</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c1">// 21</span>
+<span class="nf">variadicParameter</span><span class="p">(</span><span class="nv">num</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c1">// Int Type이 아닌 Array Type 으로 컴파일 에러</span>
+</code></pre></div></div>
+
+<h2 id="swift-version에-따른-변경점">Swift Version에 따른 변경점</h2>
+
+<h3 id="swift-54">Swift 5.4</h3>
+
+<p>5.4 버전 이후 부터 가변 파라미터를 한개 이상 사용할 수 있다!</p>
+
+<p>이전 버전에서는 2개 이상 사용 시</p>
+<blockquote>
+  <p>Only a single variadic parameter ‘…’ is permitted</p>
+</blockquote>
+
+<p>오류가 발생하였는데</p>
+
+<p>5.4 이후 부터 <a href="https://sweetfood-dev.github.io/swift/Function2-ParameterAndReturn/#인수-레이블">인수 레이블</a>만 달려 있다면 1개 이상의 가변 파라미터를 사용할 수 있다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span><span class="kt">Int</span><span class="p">,</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Double</span><span class="o">...</span><span class="p">)</span> <span class="p">{}</span> <span class="c1">// Swift 5.4 이전 오류</span>
+<span class="nf">foor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">b</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span> <span class="c1">// Swift 5.4 이후 사용 가능 </span>
+
+</code></pre></div></div>
+:ET

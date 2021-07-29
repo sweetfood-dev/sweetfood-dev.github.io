@@ -1,5 +1,5 @@
 ---
-title: Dictionary (사전)
+title: "[Swift] Dictionary (사전)"
 layout: single
 author_profile: true
 comments: true

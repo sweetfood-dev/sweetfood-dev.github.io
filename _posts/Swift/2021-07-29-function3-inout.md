@@ -1,5 +1,5 @@
 ---
-title: Function(3) in-out
+title: "[Swift] Function(3) in-out"
 layout: single
 author_profile: true
 comments: true

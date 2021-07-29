@@ -1,0 +1,20 @@
+I"o<h2 id="함수란">함수란?</h2>
+
+<p>특정 작업을 수행하는 <strong>코드 덩어리</strong>이다</p>
+
+<p>이 덩어리에 <strong>이름을 부여</strong>하고 추후 특정작업을 수행할 때 이 부여한 <strong>이름을 사용</strong>해 함수를 <strong>호출</strong>할 수 있다</p>
+
+<h2 id="함수의-정의와-호출">함수의 정의와 호출</h2>
+
+<h3 id="정의">정의</h3>
+
+<p>함수의 입력으로 사용되는 파라미터(혹 매개변수)를 하나 이상 정의하거나 정의하지 않을 수 있고 함수가 완료되었을 때 다시 전달할 값도 정의할 수 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// func : 함수를 정의할 때 사용하는 Keyword</span>
+<span class="c1">// funcName :  함수의 이름 </span>
+<span class="c1">// (parameter: String) : 파라미터의 이름과 그 Type으로 함수의 입력 값 </span>
+<span class="c1">// -&gt; Int : 함수 실행 완료 후 반활할 값의 Type</span>
+<span class="kd">func</span> <span class="nf">funcName</span><span class="p">(</span><span class="nv">parameter</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

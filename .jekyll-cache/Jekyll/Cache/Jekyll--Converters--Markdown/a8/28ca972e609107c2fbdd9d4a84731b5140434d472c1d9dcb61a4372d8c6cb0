@@ -1,0 +1,166 @@
+I"9<h1 id="array배열이란">Array(배열)이란?</h1>
+
+<p>정렬된 목록에 <strong>같은 Type</strong>의 값을 저장하는 자료구조 Collection이다.</p>
+
+<p>중복된 값이 허용되는 자주 사용하는 자료구조!</p>
+
+<h2 id="swift에서-array">Swift에서 Array</h2>
+
+<p>Swift에서 배열을 생성하는 기본적인 문법은 다음과 같다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">var</span> <span class="o">/</span> <span class="kd">let</span><span class="p">)</span> <span class="nv">변수명</span> <span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>여기서 <Element>는 배열에 들어가는 Type이다. 예를 들어</Element></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">intArray</span> <span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">()</span> <span class="c1">// Int 배열</span>
+<span class="k">var</span> <span class="nv">stringArray</span> <span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="c1">// String 배열</span>
+<span class="k">var</span> <span class="nv">doubleArray</span> <span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">()</span> <span class="c1">// Double 배열</span>
+</code></pre></div></div>
+
+<p>이렇듯 Int, String, Double등 모든 Type에 대하여 배열을 만들 수 있고, 추후 공부할 Struct, Class, 프로토콜등의 Type도 배열로 사용할 수 있다. 이러한 형태를 <strong>Generic</strong>이라고 하는데 이는 추후에 다시 공부할 계획!!</p>
+
+<p>지금은 Array에 집중을 해보자!</p>
+
+<p>기본적인 Array의 선언은 위와 같은데 딱봐도 너무 길다… 좀 줄여 보자 !</p>
+
+<p>Swift는 <strong>타입 추론</strong>이라는 기능을 지원하는데 이러한 기능은 해당 변수가 어떤 Type인지 명시하지 않아도 Swift가 알아서 척척 해당 Type을 유추해주는 훌륭한 기능이다. 따라서 Type을 생략할 수 있다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// var intArray ~~: Array&lt;Int&gt;~~ = Array&lt;Int&gt;() </span>
+<span class="k">var</span> <span class="nv">intArray</span> <span class="o">=</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>벌써 확 줄어 들었다. 근데 놀라운건 더 줄일 수 있다!!!! 바로 아래와 같이!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">intArray</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+</code></pre></div></div>
+
+<p>보통 우리는 Array를 표현할 때, [1,2,3,4,5]로 표현할텐데 이를 형상화 한거 같다!.</p>
+
+<p>[ ] 사이에 Type을 명시해준다! 즉 [Int]!</p>
+
+<h3 id="array-생성">Array 생성</h3>
+
+<p>Swift에서는 Array에 대해 여러 이니셜라이저를 제공한다. 차례대로 알아보자!</p>
+
+<blockquote>
+  <p>이니셜라이저란 초기 값을 생성하는 메소드 혹은 함수 정도로 생각하자!</p>
+</blockquote>
+
+<h4 id="빈-array-생성">빈 Array 생성</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">intArray</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+</code></pre></div></div>
+
+<p>그렇다 위에서 본 코드다!</p>
+
+<h4 id="기본-값을-가진-array-생성">기본 값을 가진 Array 생성</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// repeating:반복하여 넣을 값 , count: 반복하여 삽입할 횟수</span>
+<span class="k">var</span> <span class="nv">intArray</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">](</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// result : [ 5, 5, 5 ]</span>
+</code></pre></div></div>
+
+<p>처음에 이 이니셜라이저를 보고 좀 헷갈렸다, repeating도 반복이고 count도 반복이잖아? 뭐야?</p>
+
+<p>쉽게 생각하자 repeating은 값, count는 repeating의 값을 몇 개나 넣을 것인지..</p>
+
+<h4 id="리터럴-값으로-생성">리터럴 값으로 생성</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">shppingList</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Apple"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>처음부터 Array에 값을 넣어 주는 방법이다.</p>
+
+<h4 id="다른-array들로-생성">다른 Array들로 생성</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">threeArray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">var</span> <span class="nv">twoArray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">var</span> <span class="nv">oneArray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">var</span> <span class="nv">mergeArray</span> <span class="o">=</span> <span class="n">oneArray</span> <span class="o">+</span> <span class="n">threeArray</span> <span class="o">+</span> <span class="n">twoArray</span>
+<span class="c1">// -&gt; [1, 3, 3, 3, 2, 2] 왼쪽부터 오른쪽 Array순으로 !</span>
+</code></pre></div></div>
+
+<p>기존의 배열들을 합쳐서 생성하는 것도 가능하다. 이 때 mergeArray 값들의 순서는 당연하겠지만 왼쪽 Array부터 오른쪽 Array 순으로 값이 들어 간다.</p>
+
+<p>주의할 점은 합칠 Array들의 Type이 모두 같아야 한다! Swift는 Type을 굉장히 엄격하게 관리하기 때문에 기본적으로 모든 연산들은 <strong>같은 Type</strong>에서 이뤄저야 한다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">stringArray</span> <span class="o">=</span> <span class="p">[</span><span class="s">"문자열 배열"</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">intArray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">mergeArray</span> <span class="o">=</span> <span class="n">stringArray</span> <span class="o">+</span> <span class="n">intArray</span> <span class="c1">// 에러에러에러!!!</span>
+</code></pre></div></div>
+
+<h3 id="array-수정">Array 수정</h3>
+
+<p>개발을 하다보면 처음부터 Array에 기본 값이 주어진 상황보다는 빈 Array로 시작해서 추가 하고 필요에 따라 삭제하는 상황이 더 많다.</p>
+
+<h4 id="append">append</h4>
+
+<p>Array의 맨 끝에 Element를 추가 한다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">shppingList</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Apple"</span><span class="p">]</span>
+<span class="n">shoppingList</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Banana"</span><span class="p">)</span> <span class="c1">// ["Eggs", "Apple", "Banana"]</span>
+</code></pre></div></div>
+
+<h4 id="insert">insert</h4>
+
+<p>지정한 위치에 Element를 추가 한다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shoppingList</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"Grape"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// ["Eggs", "Apple", "Grape", "Banana"]</span>
+</code></pre></div></div>
+
+<h4 id="연산자를-사용한-다른-array-추가">연산자를 사용한 다른 Array 추가</h4>
+
+<p>+= 연산자를 사용하여 다른 Array의 값을 쉽게 추가할 수 있다. ( 물론 같은 Type의 Array이어야한다!)</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 맨 뒤에서 부터 데이터가 추가 된다.</span>
+<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"배"</span><span class="p">,</span> <span class="s">"감"</span><span class="p">]</span> <span class="c1">// ["Eggs", "Apple", "Grape", "Banana", "배", "감"]</span>
+</code></pre></div></div>
+
+<h4 id="array-삭제">Array 삭제</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">removedItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// 2번째 인덱스의 Element 삭제 </span>
+<span class="c1">// _ = shoppingList.remove(at: 2) 생략 가능</span>
+<span class="c1">// 수행 후 shoppingList 항목</span>
+<span class="c1">//["Eggs", "Apple", "Banana", "배", "감"] // Grape가 삭제</span>
+</code></pre></div></div>
+
+<p>remove(at:) 메소드는 입력한 인덱스의 Element를 삭제하고 그 Element를 반환한다.</p>
+
+<p>_ 키워드로 생략 가능하다.</p>
+
+<p>처음과 마지막 Element를 삭제하는 메소드 또한 존재한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">removeLast</span><span class="p">()</span> <span class="c1">// 마지막 Element 삭제</span>
+<span class="n">_</span><span class="o">=</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">removeFirst</span><span class="p">()</span> <span class="c1">// 첫 Element 삭제</span>
+</code></pre></div></div>
+
+<h3 id="array의-순회">Array의 순회</h3>
+
+<p>Array 뿐만 아니라 Set, Dictionary와 같은 Swift의 모든 Collection Type에서는 편리한 순회를 제공한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">shoppingList</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 위의 코드는 아래 코드와 같다</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">...</span> <span class="n">shoppingList</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">shoppingList</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>짜잔. 가독성도 좋고 코드의 길이도 짧아졌다.</p>
+
+<p>만약 값과 인덱스가 모두 필요한 경우라면 아래와 같은 기능도 지원한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">in</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"index : </span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> item : </span><span class="se">\(</span><span class="n">item</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>바로 enumerated() 메소드를 사용하는 것.! 해당 메소드는 (index, value) 튜플을 반환하는데 이를 그대로 튜플로 받아 사용할 수 있다. 참 여러모로 편리하다!</p>
+
+<p>.map, .filter 등과 같은 고차 함수 같은 더 많은 편리한 메소드들이 있다. 이러한 메소드들도 계속 추가하여 다뤄보도록 하겠다!</p>
+:ET

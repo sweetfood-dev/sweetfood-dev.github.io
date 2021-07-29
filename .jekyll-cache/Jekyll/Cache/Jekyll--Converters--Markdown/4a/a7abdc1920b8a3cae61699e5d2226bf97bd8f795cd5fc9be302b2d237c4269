@@ -1,0 +1,97 @@
+I"�,<h1 id="함수-타입">함수 타입</h1>
+
+<p>Swift에서는 함수를 Int, String과 같은 다른 타입들 처럼 변수 / 상수에 할당할 수 있다.</p>
+
+<p>이 말은 <strong>함수를 하나의 타입으로 사용</strong>할 수 있다라는 것이다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">intType</span><span class="p">:</span> <span class="kt">Int</span>
+<span class="k">var</span> <span class="nv">stringType</span><span class="p">:</span> <span class="kt">String</span>
+<span class="k">var</span> <span class="nv">funcType</span><span class="p">:</span> <span class="kd">func</span> <span class="c1">// ???????????</span>
+</code></pre></div></div>
+
+<p>그렇다면 함수 타입은 어떻게 선언을 해줘야 하나..?</p>
+
+<p>함수의 타입은 인자레이블의 타입, 반환값의 타입을 구성하여 나타낸다. 코드로 보면 이해가 더 빠르니 코드로 봐보자!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// type : (Int, String) -&gt; Void</span>
+<span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">_</span> <span class="nv">num</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">from</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="c1">// type : (Int, String) -&gt; [Int]</span>
+<span class="kd">func</span> <span class="nf">foo2</span><span class="p">(</span><span class="n">num</span> <span class="nv">val</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">at</span> <span class="nv">home</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="p">{</span> <span class="p">}</span>
+<span class="c1">// type : (Double, [Int]) -&gt; Bool</span>
+<span class="kd">func</span> <span class="nf">foo3</span><span class="p">(</span><span class="n">_</span> <span class="nv">param1</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">_</span> <span class="nv">param2</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>주석으로 보면 알 수 있듯 함수의 이름과 인자레이블, 파라미터 이름을 다 생략하고 <strong>타입만 나열</strong>해준 것이</p>
+
+<p>바로 함수의 타입이다</p>
+
+<p>모든 타입은 변수 혹은 상수로 사용이 가능하기 때문에 함수 역시 변수 / 상수에 할당이 가능한 것이다.</p>
+
+<p>그렇다면 어떻게 사용할까? 변수 / 상수에 할당을 했다면은 레이블이 없는 함수처럼 사용이 가능하다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// type : (Int, Int) -&gt; Int</span>
+<span class="kd">func</span> <span class="nf">addNumber</span><span class="p">(</span><span class="n">_</span> <span class="nv">num1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">and</span> <span class="nv">num2</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="c1">// return 생략 가능</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">mathFunction</span> <span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">addNumber</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">mathFunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">// 3 출력</span>
+</code></pre></div></div>
+
+<p>여기서 함수의 타입을 미리 선언해 주었지만 <strong>타입 추론도 가능</strong>하여 생략이 가능하다.</p>
+
+<p>함수의 타입만 같다면 다른 기능을 하는 함수(이름이 다른 함수)도 얼마든지 할당이 가능하다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// type : (Int, Int) -&gt; Int</span>
+<span class="kd">func</span> <span class="nf">addNumber</span><span class="p">(</span><span class="n">_</span> <span class="nv">num1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">and</span> <span class="nv">num2</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="c1">// return 생략 가능</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">minusNumber</span><span class="p">(</span><span class="nv">num1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">and</span> <span class="nv">num2</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">mathFunction</span> <span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">addNumber</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">mathFunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">// 3 출력</span>
+<span class="n">mathFunction</span> <span class="o">=</span> <span class="n">minusNumber</span> <span class="c1">// 다른 함수 할당 </span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">mathFunction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="c1">// 1 출력</span>
+</code></pre></div></div>
+
+<p>타입이기 때문에 함수의 파라미터로도, 리턴 값에도 함수를 사용할 수 있다.</p>
+
+<h2 id="파라미터로서의-함수-타입">파라미터로서의 함수 타입</h2>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">_</span> <span class="nv">mathFunction</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">num1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">num2</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="nf">mathFunction</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="리턴-타입으로서의-함수-타입">리턴 타입으로서의 함수 타입</h2>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">stepBackward</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="n">value</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">stepForward</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="c1">// (Int) -&gt; Int 타입의 함수를 리턴</span>
+<span class="kd">func</span> <span class="nf">chooseStepFunction</span><span class="p">(</span><span class="nv">backward</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span> 
+    <span class="n">backward</span> <span class="p">?</span> <span class="nv">stepBackward</span> <span class="p">:</span> <span class="n">stepForward</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">current</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">let</span> <span class="nv">function</span> <span class="o">=</span> <span class="nf">chooseStepFunction</span><span class="p">(</span><span class="nv">backward</span><span class="p">:</span> <span class="n">current</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">current</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"current : </span><span class="se">\(</span><span class="n">current</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Swift의 타입은 값(value)타입과 참조(Reference)타입으로 나뉘는데 함수와 클래스는 참조 타입이다.
+그래서 그런지 함수를 변수에 할당하거나 반환값에 함수를 적용할 때 Xcode에서 만들어주는 자동완성
+목록에 stepForward(_:)가 있는데 아마 이 <strong>함수의 이름</strong>에도 <strong>주소값</strong>이 들어가 있는듯 하다</p>
+</blockquote>
+:ET

@@ -1,5 +1,5 @@
 ---
-title: Function(2) Parameter와 Retrun
+title: "[Swift] Function(2) Parameter와 Retrun"
 layout: single
 author_profile: true
 comments: true
@@ -208,5 +208,3 @@ func foo(_ a:Int, b: Double...) {} // Swift 5.4 이전 오류
 foor(1, 2, 3, 4, 5, b: 1.0, 2.0, 3.0) // Swift 5.4 이후 사용 가능 
 
 ```
-
-

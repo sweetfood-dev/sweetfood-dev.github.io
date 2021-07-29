@@ -1,0 +1,886 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Swift] Function(2) Parameter와 Retrun - 공부 그리고 기록</title>
+<meta name="description" content="Parameter 와 Returns">
+
+
+  <meta name="author" content="권지수">
+  
+  <meta property="article:author" content="권지수">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부 그리고 기록">
+<meta property="og:title" content="[Swift] Function(2) Parameter와 Retrun">
+<meta property="og:url" content="https://sweetfood-dev.github.io/swift/Function2-ParameterAndReturn/">
+
+
+  <meta property="og:description" content="Parameter 와 Returns">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-07-29T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://sweetfood-dev.github.io/swift/Function2-ParameterAndReturn/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "권지수",
+      "url": "https://sweetfood-dev.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부 그리고 기록 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부 그리고 기록
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">연도별 포스트</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://sweetfood-dev.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#swift" itemprop="item"><span itemprop="name">Swift</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[Swift] Function(2) Parameter와 Retrun</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/profile/main.jpg" alt="권지수" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">권지수</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>실패를 걱정하지 말고<br />부지런히 목표를 향하여 노력하라.<br />노력한 만큼 보상받을 것이다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">대한민국</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:kjsii123@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/sweetfood-dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kjsii123@naver.com">
+            <meta itemprop="email" content="kjsii123@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Swift] Function(2) Parameter와 Retrun">
+    <meta itemprop="description" content="Parameter 와 Returns">
+    <meta itemprop="datePublished" content="2021-07-29T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Swift] Function(2) Parameter와 Retrun
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#parameter-와-returns">Parameter 와 Returns</a><ul><li><a href="#parameter가-없는-함수">Parameter가 없는 함수</a></li><li><a href="#parameter가-있는-함수">Parameter가 있는 함수</a></li><li><a href="#return이-없는-함수">Return이 없는 함수</a></li><li><a href="#return이-있는-함수">Return이 있는 함수</a><ul><li><a href="#return이-1개만-있을-경우">Return이 1개만 있을 경우</a></li><li><a href="#단일-표현식에서의-return">단일 표현식에서의 Return</a></li><li><a href="#여러-return값이-있는-함수">여러 Return값이 있는 함수</a></li></ul></li><li><a href="#함수의-인수-레이블과-파라미터매개변수-이름">함수의 인수 레이블과 파라미터(매개변수) 이름</a><ul><li><a href="#인수-레이블">인수 레이블</a><ul><li><a href="#인수레이블의-생략">인수레이블의 생략</a></li></ul></li><li><a href="#파라미터매개변수">파라미터(매개변수)</a><ul><li><a href="#기본값">기본값</a></li><li><a href="#가변-파라미터">가변 파라미터</a></li></ul></li></ul></li><li><a href="#swift-version에-따른-변경점">Swift Version에 따른 변경점</a><ul><li><a href="#swift-54">Swift 5.4</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="parameter-와-returns">Parameter 와 Returns</h1>
+
+<h2 id="parameter가-없는-함수">Parameter가 없는 함수</h2>
+
+<p>파라미터는 기본적으로 함수의 이름 뒤에 오는 () 사이에 정의해주는데 파라미터가 없는경우 그냥 ()만 작성한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">noParameter</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="parameter가-있는-함수">Parameter가 있는 함수</h2>
+
+<p>1개 혹은 그 이상의 파라미터도 정의 가능하다.</p>
+
+<p>()안에 파라미터이름 : Type 으로 정의하며 1개 이상일 때는 , 로 구분을 해준다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">oneParameter</span><span class="p">(</span><span class="nv">param1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">twoParameter</span><span class="p">(</span><span class="nv">param1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">param2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">threeParameter</span><span class="p">(</span><span class="nv">param1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">param2</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">param3</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h2 id="return이-없는-함수">Return이 없는 함수</h2>
+
+<p>Return 값이 있는 경우 파라미터 정의 끝에 → Type 으로 작성을 해준다. 다만 Return 값이 없을 경우</p>
+
+<p>→ Type은 생략 해주면 된다!</p>
+
+<blockquote>
+  <p>Return의 Type에는 모든 타입이 들어갈 수 있으며 옵셔널 또한 가능하다!</p>
+</blockquote>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">noReturnFunc</span><span class="p">()</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>엄밀히 말하자면 Return값이 있다 바로 → Void 인데 Void는 () Type의 빈 튜플이다</p>
+</blockquote>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">noReturnFunc</span><span class="p">()</span> <span class="c1">// 이 함수는 엄밀히 말하자면</span>
+<span class="kd">func</span> <span class="nf">noReturnFunc</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span>  <span class="c1">// 요 함수이다. </span>
+</code></pre></div></div>
+
+<h2 id="return이-있는-함수">Return이 있는 함수</h2>
+
+<h3 id="return이-1개만-있을-경우">Return이 1개만 있을 경우</h3>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">returnOneFunc</span><span class="p">(</span><span class="nv">parameter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">parameter</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 처럼 → Type을 뒤에 붙여 주며 함수 내부에서는 해당 Type의 값이나 변수를 return 해주어야 한다.</p>
+
+<h3 id="단일-표현식에서의-return">단일 표현식에서의 Return</h3>
+
+<p>위의 예제처럼 단일 표현식의 경우에는 return의 생략이 가능하며 추후 학습할 프로퍼티 getter에서도 이런 문법은 동일하게 적용 된다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">returnPlusThree</span><span class="p">(</span><span class="nv">parameter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="n">parameter</span> <span class="o">+</span> <span class="mi">3</span> <span class="c1">// return 생략 가능</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="여러-return값이-있는-함수">여러 Return값이 있는 함수</h3>
+
+<p>앞서 학습한 튜플을 사용하면 된다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">returnTwoValue</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">min</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">max</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">minValue</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="nf">min</span><span class="p">()</span><span class="o">!</span> <span class="c1">// 옵셔널 강제 해제</span>
+    <span class="k">let</span> <span class="nv">maxValue</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="nf">max</span><span class="p">()</span><span class="o">!</span> <span class="c1">// 옵셔널 강제 해제</span>
+    
+    <span class="nf">return</span> <span class="p">(</span><span class="n">minValue</span><span class="p">,</span> <span class="n">maxValue</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="nf">returnTwoValue</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">result</span><span class="o">.</span><span class="n">max</span> 
+<span class="n">result</span><span class="o">.</span><span class="n">min</span>
+</code></pre></div></div>
+
+<p>이때 Return에 정의한 튜플은 앞서 학습한 튜플의 기능을 모두 사용할 수 있다.</p>
+
+<p>이 코드에서는 min,max라는 별칭을 정해줬으며 함수의 return을 받은 result 상수에서 해당 별칭을 사용하였다.</p>
+
+<h2 id="함수의-인수-레이블과-파라미터매개변수-이름">함수의 인수 레이블과 파라미터(매개변수) 이름</h2>
+
+<p>모든 함수에는 <strong>인수 레이블</strong>과 <strong>파라미터 이름</strong>이 있다.</p>
+
+<p><strong>인수 레이블</strong>은 <strong>함수를 호출</strong>할 때 사용하고 <strong>파라미터 이름</strong>은 <strong>함수 내부</strong>에서 사용한다</p>
+
+<p>만약 인수 레이블을 따로 작성하지 않으면 인수레이블은 파라미터 이름과 같다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">myFunction</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="c1">// value는 인수 레이블이자 파라미터 이름!</span>
+</code></pre></div></div>
+
+<h3 id="인수-레이블">인수 레이블</h3>
+
+<p>인수레이블 작성은 파라미터 이름 앞에 공간을 두고 작성한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">myFunction</span><span class="p">(</span><span class="n">label</span> <span class="nv">parameter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">){</span> <span class="c1">// 인수레이블은 label, 파라미터 이름은 parameter</span>
+    <span class="k">let</span> <span class="nv">plusOne</span> <span class="o">=</span> <span class="n">parameter</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">// 함수 내부에서는 파라미터 이름을 사용</span>
+<span class="p">}</span>
+
+<span class="nf">myFunction</span><span class="p">(</span><span class="nv">label</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// 함수 호출시에는 인수 레이블을 사용</span>
+</code></pre></div></div>
+
+<p>위의 코드에서 볼 수 있듯 인수 레이블은 함수 호출 시 사용하고 파라미터 이름은 함수의 내부에서 사용한다</p>
+
+<p>이러한 레이블은 적절히 사용한다면 영어 문장처럼 표현할 수 있어 <strong>가독성</strong>이 좋아지는 장점이 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">from</span> <span class="nv">hometown</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="c1">// 단일 표현식으로 return 생략</span>
+    <span class="s">"Hello </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">! Glad you could visit from </span><span class="se">\(</span><span class="n">hometown</span><span class="se">)</span><span class="s">
+}
+
+print(greet(person:"</span><span class="n">jisoo</span><span class="s">", from: "</span><span class="n">home</span><span class="s">"))
+</span></code></pre></div></div>
+
+<h4 id="인수레이블의-생략">인수레이블의 생략</h4>
+
+<p>print()처럼 인수가 없는 함수는 인수 레이블 위치에 _ 를 사용하여 만든다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">emptyLabel</span><span class="p">(</span><span class="n">_</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">emptyLabel</span><span class="p">(</span><span class="s">"인수레이블 없이 사용할 수 있어요"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="파라미터매개변수">파라미터(매개변수)</h3>
+
+<h4 id="기본값">기본값</h4>
+
+<p>파라미터 정의 다음에 값을 <strong>할당</strong>하여 기본값을 사용할 수 있다.</p>
+
+<p>기본값을 설정하면 함수 호출 시 기본값이 설정되어 있는 인자 레이블은 생략이 가능하다.</p>
+
+<p>생략을 하게 되면 함수 내부에서 파라미터를 사용할 때 기본값이 적용된다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">defaultValue</span><span class="p">(</span><span class="n">num</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">defaultValue</span><span class="p">()</span> <span class="c1">// 10</span>
+<span class="nf">defaultValue</span><span class="p">(</span><span class="nv">num</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span> <span class="c1">// 20</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>파라미터의 Type은 유형 추론이 안된다!</p>
+</blockquote>
+
+<h4 id="가변-파라미터">가변 파라미터</h4>
+
+<p>가변파라미터를 사용하면 0개 이상의 값을 사용할 수 있다.</p>
+
+<p>파라미터 Type뒤에 …를 붙여 선언한다.</p>
+
+<p>가변 파라미터로 전달된 값은 함수 내에서 Array로 사용이 가능하다.</p>
+
+<p>하지만 함수 호출 시에는 인자레이블의 Type으로 호출을 해야한다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">variadicParameter</span><span class="p">(</span><span class="n">num</span> <span class="nv">numbers</span><span class="p">:</span> <span class="kt">Int</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">{</span>
+    <span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="nf">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span> <span class="c1">// 배열의 모든 요소를 더해줌</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="p">}</span>
+
+<span class="nf">variadicParameter</span><span class="p">(</span><span class="nv">num</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c1">// 21</span>
+<span class="nf">variadicParameter</span><span class="p">(</span><span class="nv">num</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c1">// Int Type이 아닌 Array Type 으로 컴파일 에러</span>
+</code></pre></div></div>
+
+<h2 id="swift-version에-따른-변경점">Swift Version에 따른 변경점</h2>
+
+<h3 id="swift-54">Swift 5.4</h3>
+
+<p>5.4 버전 이후 부터 가변 파라미터를 한개 이상 사용할 수 있다!</p>
+
+<p>이전 버전에서는 2개 이상 사용 시</p>
+<blockquote>
+  <p>Only a single variadic parameter ‘…’ is permitted</p>
+</blockquote>
+
+<p>오류가 발생하였는데</p>
+
+<p>5.4 이후 부터 <a href="https://sweetfood-dev.github.io/swift/Function2-ParameterAndReturn/#인수-레이블">인수 레이블</a>만 달려 있다면 1개 이상의 가변 파라미터를 사용할 수 있다!</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span><span class="kt">Int</span><span class="p">,</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Double</span><span class="o">...</span><span class="p">)</span> <span class="p">{}</span> <span class="c1">// Swift 5.4 이전 오류</span>
+<span class="nf">foor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">b</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span> <span class="c1">// Swift 5.4 이후 사용 가능 </span>
+
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#function" class="page__taxonomy-item" rel="tag">Function</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#swift" class="page__taxonomy-item" rel="tag">Swift</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BSwift%5D+Function%282%29+Parameter%EC%99%80+Retrun%20https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FFunction2-ParameterAndReturn%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FFunction2-ParameterAndReturn%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsweetfood-dev.github.io%2Fswift%2FFunction2-ParameterAndReturn%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/swift/Function/" class="pagination--pager" title="[Swift] Function
+">이전</a>
+    
+    
+      <a href="/swift/function3-inout/" class="pagination--pager" title="[Swift] Function(3) in-out
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/function4-functiontype/" rel="permalink">[Swift] Function(4) 함수 타입(Function Type)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">함수 타입
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/function3-inout/" rel="permalink">[Swift] Function(3) in-out
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">In-Out
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Function/" rel="permalink">[Swift] Function
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-29T00:00:00+09:00">July 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">함수란?
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/swift/Dictionary/" rel="permalink">[Swift] Dictionary (사전)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-07-27T00:00:00+09:00">July 27, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Dictionary란
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/sweetfood-dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 권지수. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://sweetfood-dev.github.io/swift/Function2-ParameterAndReturn/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/swift/Function2-ParameterAndReturn"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sweetfood-dev.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
