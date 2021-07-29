@@ -196,7 +196,9 @@ variadicParameter(num: [1,2,3,4,5,6]) // Int Type이 아닌 Array Type 으로 �
 
 5.4 버전 이후 부터 가변 파라미터를 한개 이상 사용할 수 있다!
 
-이전 버전에서는 2개 이상 사용 시 **Only a single variadic parameter '...' is permitted** 오류가 발생하였는데
+이전 버전에서는 2개 이상 사용 시
+>Only a single variadic parameter '...' is permitted
+오류가 발생하였는데
 
 5.4 이후 부터 [인수 레이블](https://sweetfood-dev.github.io/swift/Function2-ParameterAndReturn/#인수-레이블)만 달려 있다면 1개 이상의 가변 파라미터를 사용할 수 있다!
 
