@@ -1,5 +1,5 @@
 ---
-title: Function(2)
+title: Function(2) Parameter와 Retrun
 layout: single
 author_profile: true
 comments: true
