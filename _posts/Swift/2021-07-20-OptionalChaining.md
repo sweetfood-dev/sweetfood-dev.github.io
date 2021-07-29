@@ -1,5 +1,5 @@
 ---
-title: 옵셔널 체이닝 (Optional Chaining)
+title: "[Swift] 옵셔널 체이닝 (Optional Chaining)"
 layout: single
 author_profile: true
 comments: true

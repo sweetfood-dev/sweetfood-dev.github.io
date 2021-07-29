@@ -83,49 +83,37 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/algorithm/BOJ11722-DP/",
         "teaser": null
       },{
-        "title": "ARC 및 참조 타입",
+        "title": "[Swift] ARC 및 참조 타입",
         "excerpt":"ARC Swift에서 메모리를 자동으로 관리   특정 객체가 참조되면 참조 카운트(Reference Count, RC)를 1증가 시키고, 모든 참조가 해제되어 0이 되면 메모리에서 해제시킨다.  컴파일 단계에서 실행되고 이 때문에 추가 자원 즉, 오버헤드가 있는 GC 대비 효율적이지만  참조 순환 즉, Memory Leak을 발생시킬 수 있다      순환 참조가 발생하는 경우      프로퍼티에서 인스턴스를 서로 강하게 참조    class App {     var os : iOS?          deinit {         print(\"app deinit\")     } }  class iOS {     var applications : App?          deinit {         print(\"ios deinit\")     } }  var app : App? = App() var ios : iOS? = iOS()  app?.os = ios ios?.applications = app   app = nil ios = nil   위 코드에서 각각 프로퍼티 os, applications가 App, iOS 인스턴스를 참조하여  App, iOS의 RC는 1씩 증가한 1인 상태이다  그 상태에서 참조 변수 app,ios가 nil로 변경되어 프로퍼티에 접근할 수 없어 순환참조가 발생하여 Memory Leak발생          클로저에서 참조하는 경우      class App {     var os : iOS?     let name : String          init(name: String) {         self.name = name     }          lazy var info: () -&gt; String = {         return self.name     }     deinit {         print(\"app deinit\")     } }  var app : App? = App(name: \"Wallet\") app = nil    위의 경우처럼 info 안에서 self를 참조 하고 있을때,   참조변수 app을 nil로 변경되면 클로저와 인스턴스 사이 순환참조가 발생된다        순환 참조 방지 하는 방법       weak, unowend 사용            해당 키워드들로 인스턴스를 참조시 RC가 증가하지 않는다       weak은 아래서 설명하겠지만 옵셔널 타입으로 옵셔널 바인딩, 체이닝을 사용하여 런타임 크래시를 방지할 수 있다       unowend는 생명주기가 길거나 인스턴스가 존재함을 확신할 때 사용된다           클로저에서 캡처리스트 작성            캡처리스트란 클로저가 참조하는 대상, 참조하는 방식을 지정하는 형식이다       즉, 강하게 캡처(참조)할지 약하게 캡처(참조)할지 지정이 가능하다             참조 방식     strong            객체를 소유하여 RC를 증가시키는 프로퍼티       ARC로 인한 메모리 해제를 피하고 객체를 안전하게 사용할 때 사용           weak            객체를 소유하지 않고 주소값만을 가지고 있는 포인터 개념       메모리에서 해제될 경우 자동으로 nil로 초기화되기 때문에 옵셔널 타입으로 사용해야한다           unowend            weak과 비슷한 개념이지만 nil값이 될 수 없기 때문에 옵셔널 타입으로 선언하면 안된다           잘못된 설명이 있으면 지적 부탁드립니다.   ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/ARC/",
         "teaser": null
       },{
-        "title": "클로저",
+        "title": "[Swift] 클로저",
         "excerpt":"클로저         클로저의 형태            이름을 가진 어떤 값도 캡처하지 않는 전역 함수       이름을 가진 자신을 감싸고 있는 함수에서 값을 캡쳐해 가질 수 있는 중첩 함수       이름이 없으며 주변 환경의 값을 캡처해 가질 수 있는 클로저 표현식           @escaping            인자값으로 전달된 클로저를 저장해 두었다가 다른 곳에서도 실행할 수 있도록 허용해주는 속성       인자값으로 전달된 클로저는 기본적으로 탈출불가의 성격을 가진다       이는 함수 내에서, 직접 실행을 위해서만 사용해야하는 것을 의미한다       중첩된 내부 함수에서도 사용이 불가하다           func outerFunc( c: () -&gt; () ) -&gt; () -&gt; (){     c()     func innerFunc() {         c()     } \t\t// innerFunc() 안에서 매개변수 c를 호출하고 있기 때문에 에러 발생     return innerFunc  }   let inner = outerFunc {     print(\"run func\") }   inner()   이러한 제약조건을 모두 제거하여 사용 가능 하게 만들어 주는 것이 @escaping 속성이다  아래와 같은 상황에서 사용       완료에 따른 처리   비동기로 실행 시 함수 사이의 실행 순서를 정할 수 있음              값의 캡처           클로저 내부에서 사용되는 외부 변수의 값을 내부적으로 저장, 이를 캡처되었다고 한다   클로저에서의 캡처는 value type이여도 reference 캡처(카피)를 한다. 변수가 사용되는 시점의 값을 캡처   단, capture list를 이용하면 value 카피로 사용 가능하다.   value 캡쳐된 값은 클로저안에서 변경이 불가하다   Reference Capture   var anInteger = 42 let testClosure = {     // anInteger는 capture되는 순간 reference copy됨     print(\"Integer is: \\(anInteger)\") } testClosure() // \"Integer is 42\" anInteger = 84  testClosure() // \"Integer is 84\"   Value Capture   var anInteger = 42  let testClosure = { [anInteger] in     // anInteger는 capture되는 순간 value copy됨     print(\"Integer is: \\(anInteger)\") } testClosure() // \"Integer is 42\" anInteger = 84  testClosure() // \"Integer is 42\"   ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/Closure/",
         "teaser": null
       },{
-        "title": "defer",
-        "excerpt":"defer        작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다   defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다   ","categories": ["Swift"],
+        "title": "[Swift] defer",
+        "excerpt":"defer        작성된 위치와 순서에 상관없이 함수가 종료되기 직전에 호출된다   defer블록을 읽기전에 함수가 종료되면 defer블록은 실행되지 않는다.   defer 블록은 여러번 사용가능하다. defer문을 만나면 순차적으로 스택에 저장되고 스코프 종료 후 하나씩 pop해서 실행하기에 마지막 defer문 부터 역순으로 실행된다   defer 블록은 중첩으로도 사용 가능하다. 이때 순서는 바깥쪽 defer문으로부터 안쪽 defer문의 순서로 실행된다  ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/defer/",
         "teaser": null
       },{
-        "title": "클래스와 구조체",
+        "title": "[Swift] 클래스와 구조체",
         "excerpt":"               Class       Struct                       레퍼런스 타입       밸류 타입                 객체화시 힙영역에 저장되고 그 주소값은 스택 영역에 저장, ARC로 메모리 관리       스택 영역에 저장                 상속가능       상속 불가, Protocol은 사용가능하다                 대입 연산 시 레퍼런스 공유       대입 연산 시  값 복사          ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/02-Class-Struct/",
         "teaser": null
       },{
-        "title": "as as? as!",
+        "title": "[Swift] as as? as!",
         "excerpt":"                       설명       실행 시점       캐스팅 종류                       as       컴파일러가 타입 변환의 성공을 보장       컴파일 타임       업 캐스팅                 as?       변환에 실패하는 경우 nil을 반환       런타임       다운 캐스팅                 as!       변환에 실패하는 경우 런타임에러 발생       런타임       다운 캐스팅          ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/1-type-casting/",
         "teaser": null
       },{
-        "title": "Frame과 Bounds",
-        "excerpt":"Frame      상위뷰 좌표 시스템 내에서 View의 위치와 크기      Bounds      자기 자신의 좌표시스템에서의 (sub view들의)위치와 크기, 부모뷰와는 관계가 없다   default origin은 0,0이다   origin의 변경은 sub view들의 위치가 변경됨을 의미   sub view의 위치가 변한다는 것은 그려져야하는 위치가 달라지는 것이지 sub view들의 frame 값의 변화는 없다   스크롤 시 sub view들의 위치가 달라지는 것이 대표적인 예이다  ","categories": ["Swift"],
-        "tags": [],
-        "url": "https://sweetfood-dev.github.io/swift/3-frame-bounds/",
-        "teaser": null
-      },{
-        "title": "오토레이아웃의 우선순위",
-        "excerpt":"constraint의 priority      제약 사항간의 우선순위   뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다   이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.  ","categories": ["Swift"],
-        "tags": [],
-        "url": "https://sweetfood-dev.github.io/swift/4-autolayout-priority/",
-        "teaser": null
-      },{
-        "title": "Lazy",
+        "title": "[Swift] Lazy",
         "excerpt":"Lazy란     처음 사용되기전까지 연산이 되지 않습니다.     고려 사항      항상 var 키워드와 함께 사용            처음에는 아무 값이 없고 추후 사용될 때 값이 할당되기 때문에 let은 사용할 수 없습니다           구조체, 클래스에서 사용 가능   연산 프로퍼티에는 사용 불가            처음 사용 될 때, 메모리에 값을 올리고 이후에 사용 될 때는 메모리에 올린 값을 사용하기 때문에  사용할 때마다 연산이 되는 연산프로퍼티에서는 사용할 수 없습니다           클로저에서의 사용            클로저의 결과값으로 사용 될 때는 실행 이후 종료되기 때문에 메모리 누수의 걱정이 없지만       클로저 자체를 사용할 때는 클로저 리스트를 사용해 메모리 누수 방지를 해줘야 합니다          ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/5-Lazy/",
@@ -155,13 +143,25 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/ios/3-ViewController-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0/",
         "teaser": null
       },{
+        "title": "[iOS] Frame과 Bounds",
+        "excerpt":"Frame      상위뷰 좌표 시스템 내에서 View의 위치와 크기      Bounds      자기 자신의 좌표시스템에서의 (sub view들의)위치와 크기, 부모뷰와는 관계가 없다   default origin은 0,0이다   origin의 변경은 sub view들의 위치가 변경됨을 의미   sub view의 위치가 변한다는 것은 그려져야하는 위치가 달라지는 것이지 sub view들의 frame 값의 변화는 없다   스크롤 시 sub view들의 위치가 달라지는 것이 대표적인 예이다  ","categories": ["iOS"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/ios/3-frame-bounds/",
+        "teaser": null
+      },{
         "title": "GCD",
         "excerpt":"GCD란     Apple에서 제공하는 멀티쓰레드 처리 API      DisPatchQueue가 GCD에 존재합니다  DisPatchQueue는 메인스레드 / 백그라운드 스레드에서 작업실행을 관리하는 객체입니다  순차적으로 실행하는 Main Queue와 동시에 실행하는 Global Queue를 포함하고 있습니다    종류     Main Queue            보통 UI관련된 처리를 담당하고 앱이 실행 되었을 때 자동으로 실행됩니다           Gloabal Queue            백그라운드에서 동작하고       동시에 작업을 수행합니다.       메인큐 작업에 영향을 주면 안되는 작업을 처리할 때 사용하며       QoS를 통해 작업의 우선순위를 부여할 수 있습니다.          ","categories": ["iOS"],
         "tags": ["Thread"],
         "url": "https://sweetfood-dev.github.io/ios/4-GCD/",
         "teaser": null
       },{
-        "title": "1 아키텍처",
+        "title": "오토레이아웃의 우선순위",
+        "excerpt":"constraint의 priority      제약 사항간의 우선순위   뷰들의 크기가 유동적으로 변할 때, 제약들간에 충돌이 발생할 수 있다   이 때 우선순위를 결정함으로 충돌을 해결할 수 있다.  ","categories": ["Swift"],
+        "tags": [],
+        "url": "https://sweetfood-dev.github.io/swift/4-autolayout-priority/",
+        "teaser": null
+      },{
+        "title": "아키텍처",
         "excerpt":"왜 아키텍처를 사용해야하지?   개발을 하다보면 디버깅을 해야하는 상황이 필연적으로 찾아온다  이 때 프로젝트의 몸집이 크다면 디버깅을 하는데 있어 어려움을 겪게 될 것이다  구조적으로 잘 정의된 프로젝트는 디버깅을 쉽게 해주며, 개발자간의 의사소통, 유지보수에도 도움이 된다!    좋은 아키텍쳐의 특징     객체간 책임 분리가 균형있게 잡혀 있고 명확하게 이루어저야 한다.   테스트가 용이해야 한다        사용이 용이해야 한다. 즉 유지 보수가 쉬워야 한다.       책임 분리는 왜 이루어 저야 할까?  로직을 쉽게, 단순하게 한눈에 볼 수 있다  즉, 복잡함을 극복하는 방법은 단일책임 원칙으로 책임을 나누는 것이다!    왜 테스트가 가능해야 할까?  런타임 내에서 이슈를 찾는것을 도와준다  실사용자가 이슈를 접한다면 그 이슈를 수정하는데 오랜 시간이 걸리니까, 미연에 방지해야한다!    사용의 용이  단순하다. 유지보수가 용이하니까!    어떤 아키텍쳐들이 있는데?  기본적으로 많이 접해본 mvc, mvp, mvvm, viper가 있고 이러한 아키텍쳐는   3가지 카테고리(요소)를 포함한다                   요소       설명                       Model       데이터, 데이터 접근자                       View       화면에 표시되는 UI적인 요소                       Controller,Presentor,ViewModel       model과 View를 붙여준다                         View의 액션을 처리하여 Model을 변경하거나                         Model이 변경되었을 때 View를 갱신하는 책임을 가진다           이러한 구성을 통해 이해가 용이, 재사용이 가능, 독립적으로 테스트가 가능한 이점을 얻을 수 있다!  다음 포스트를 통해 mvc 부터 차근차근 알아보자!  ","categories": ["iOS"],
         "tags": ["Architecture"],
         "url": "https://sweetfood-dev.github.io/ios/1-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/",
@@ -191,19 +191,19 @@ var store = [{
         "url": "https://sweetfood-dev.github.io/GitBlog_Post/",
         "teaser": null
       },{
-        "title": "Optional",
+        "title": "[Swift] Optional",
         "excerpt":"옵셔널이란? : 값이 없을 수 있는 상황에서 Optional을 사용한다.     옵셔널로 사용할 Type뒤에 ?를 붙여 사용한다.    var number : Int? // Int 옵셔널  var text : String? // String 옵셔널   값이 없을 수 있다는 것은 무슨 의미일까?   String  값을 Int로 변환을 해야하는 경우 아래처럼 사용할 수 있다.   var test: Int = Int(\"123\") // test = 123   하지만 다음과 같은 경우엔?  var test: Int = Int(\"Hello World\") // test = ??  변환 할 수 없을 것이다. 이때 변환할 수 없음, 값이 없음이란 의미로 nil이란 값을 반환할 것이다     // var test: Int = Int(\"Hello World\")  var test: Int? = Int(\"Hello World\") // test = nil  주석 처리한 코드와 그 밑에 코드를 보면 ?가 달려 있는걸 알 수 있다   이 물음표는 해당 타입이 옵셔널이라는 것을 나타낸다!     정리하자면 Optional은 변수 혹은 상수에 값이 없음을 나타낼 수 있게 만들어 주고 값이 없는 상태는 nil로 표현한다!      이 nil 이란 놈은 이전 obj-c에서도 사용했었던 것 같은데 obj-c와 Swift에서의 nil은 같은 의미로 사용되는걸까?   기억에 obj-c에서는 따로 Optional이라는 개념이 없었던 것 같다.    obj-c에서의 nil은 유효한 객체가 없음의 의미로 쓰인다고 한다.   Swift에서의 nil은 값이 없음을 의미한다는데 같은 뜻 아닌가? 라고 할 수 있지만 객체와 값은 아주 큰 차이다  obj-c에서의 nil을 좀 더 풀어 말하면 존재하지 않는 객체에 대한 포인터라고 나와있다.   즉 obj-c 에서 nil은 객체 type에 대해서만 사용이 가능하다란 것이다. obj-c에서 일반 타입에 대한 값 없음은 NSNotFound라는 특수 값을 반환하여 나타낸다고 한다!    obj-c와 Swift의 nil의 차이점을 정리하자면,                           Obj-c       Swift                       의미       유효한 “객체”가 없음(포인터)       “값” 없음                 사용 가능한 Type       객체       모든 유형 ( 객체, 구조체, 열거형등등)          ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/Optional/",
         "teaser": null
       },{
-        "title": "옵셔널의 사용",
+        "title": "[Swift] 옵셔널의 사용",
         "excerpt":"이전글 Optional에서는 Optional과 nil에 대해 알아 보았다    옵셔널을 사용하기 위해 아래와 같은 코드를 실행해보았다   Swift는 Type에 대해 엄격하다. Int Type과 Int? Type은 엄연히 다른 타입이다.  Int type으로 선언된 변수에는 Int? type의 값이 들어 갈 수 없다. 그렇다면?  옵셔널을 해제 해주어야 한다.  그렇다면 어떻게 해제를 하여 사용하는지 알아보자!!    1.  if문과 강제 언래핑   if 문을 사용하여 옵셔널과 nil을 비교하여 옵셔널에 값이 있는지, 아니면 없는지(nil)를 확인할 수 있다   if 문에서 nil 이 아닐 때 print가 실행이 된다. 그럼 print가 되었을때 옵셔널 변수의 값은 어떨까?   optional 변수인 convertedNumber는 Optional(123)이 출력되고, 일반 Int 타입의 변수 intTypeNumber은 123이 출력된다.  Optional(123)에서 괄호 안에 있는 123을 꺼내 사용하고 싶다면?  변수명 이름뒤에 ! 만 붙이면 된다   ! 를 붙여 Optionald 해제하는 것을 강제 언래핑 이라고 한다. 이 강제 언래핑을 사용할 때에는 항상 nil인지를 확인 후에 사용해야한다. 만약 확인을 하지 않았을 때 변수가 nil인 상태라면 런타임 오류가 발생할 것이다!    2.  Optional Binding    옵셔널을 해제 하는 또 다른 방법엔 옵셔널 바인딩이 있다.  옵셔널 바인딩을 사용하면 옵셔널에 값이 있는지 확인하고 값이 있다면해당 값을  임시 상수나 변수로 추출하여  사용할 수 있다  이 때, 추출된 값은 옵셔널이 해제된 순수한 값이므로 일반 변수처럼 사용 가능하다.   // Optional Binding의 형태 if (let 혹은 var) 추출 후 사용할 변수 = 옵셔널 변수 {     // 코드 실행 }  강제 언래핑에 사용한 예제 코드를 옵셔널 바인딩 형태로 변경 하면 다음과 같다  let possibleNumber = \"123\" if let actualNumber = Int(possibleNumber) {     print(\"문자열 \\(possibleNumber)은 Int \\(actualNumber) 이다!\") }else {     print(\"문자열 \\(possibleNumber)는 Int로 변환할 수 없다\") }  Int(possibleNumber)가 반환하는 옵셔널 Int에 값이 있으면 해당 값을 추출하여 actualNumber에 설정해라!  actualNumber에 값이 들어가 있다면 해당 if문 안에서는 일반 상수처럼(var로 선언하였다면 변수) 사용이 가능하다!  ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/Optional2/",
         "teaser": null
       },{
-        "title": "옵셔널 체이닝 (Optional Chaining)",
+        "title": "[Swift] 옵셔널 체이닝 (Optional Chaining)",
         "excerpt":"옵셔널 체이닝 (Optional Chaining)   옵셔널 체이닝은 nil일 수도 있는 프로퍼티나 메소드, 서브스크립트에 질의를 하는 과정을 말한다.   기본 동작은 옵셔널과 마찬가지고 값이 있으면 값을 반환, 값이 없다면 nil을 반환한다. 여러 질의를 연결할 수도 있는데 연결된 질의에서 어느 하나라도 nil이면 전체 결과는 nil이 된다.   // query1, query2 중 하나라도 값이 nil이라면 result는 nil이 된다 let result = query1?.query2?.query3    강제 언래핑의 대체로써의 옵셔널 체이닝   위 코드에서 보이듯 옵셔널 체이닝은 옵셔널 값 뒤에 물음표(?)를 붙여서 표현한다. 강제 언래핑을 했는데 만약 그값이 없으면(nil 반환) 런타임 에러가 발생하지만, 옵셔널 체이닝을 사용하면 런타임 에러대신 nil이 반환된다.   옵셔널 체이닝에 의해 nil 값이 호출 될 수 있기 때문에 옵셔널 체이닝을 사용한 구문의 값은 항상 옵셔널이 된다.   코드를 보면서 이해해보자   class Person {     var residence: Residence? }  class Residence {     var numberOfRooms = 1 }   Residence는 Int 프로퍼티(numberOfRooms)를 소유하고 있고 Person은 옵셔널 프로퍼티(residence)를 소유하고 있다.   let john = Person()   john은 Person 인스턴스이고 이 시점에서 john의 residence는 nil로 초기화 되어있을 것이다.   근데 이 때 강제 언래핑을 사용한다면?   let roomCount = john.residence!.numberOfRooms // runtime error   당연하게도 런타임 에러가 발생할 것이다.   이를 옵셔널 체이닝으로 한다면 보다 안전하게 접근할 수 있다   if let roomCount = john.residence?.numberOfRooms { // 옵셔널 바인딩!      // 옵셔널 바인딩으로 인해 일반 프로퍼티처럼 사용 가능     print(\"John residence \\(roomCount) room(s)\")   } else { // nil 일 떄      print(\"residence == nil\") }   numberOfRooms는 옵셔널이 아닌데 어째서 옵셔널 바인딩을 사용했나?   앞에서 설명하였듯이 옵셔널 체인으로 접근하는 프로퍼티, 메소드등의 결과는 항상 옵셔널 값이 되기 때문에 이렇게 옵셔널을 벗겨줘야한다.  ","categories": ["Swift"],
         "tags": [],
         "url": "https://sweetfood-dev.github.io/swift/OptionalChaining/",
