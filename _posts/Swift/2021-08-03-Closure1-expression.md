@@ -1,5 +1,5 @@
 ---
-title: "[Swift] 클로저 표현식1(Closure expression)"
+title: "[Swift] 클로저 표현식(Closure expression) (1)"
 layout: single
 author_profile: true
 comments: true
