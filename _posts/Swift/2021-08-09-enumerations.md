@@ -235,7 +235,7 @@ switch food {
 
 ## 순회
 
-열거형의 각 항목(case)에 대해 순회를 할 수 있습니다. 다만 프로토콜을 사용해야하는데요 바로 [**CaseIterable](https://sweetfood-dev.github.io/swift/CaseIterable/)** 프로토콜입니다! 
+열거형의 각 항목(case)에 대해 순회를 할 수 있습니다. 다만 프로토콜을 사용해야하는데요 바로 [**CaseIterable**](https://sweetfood-dev.github.io/swift/CaseIterable/) 프로토콜입니다! 
 
 > Swift에서 열거형은 일급 클래스이라고 하였죠? 그렇기 때문에 프로토콜을 채택할 수 있습니다.
 [CaseIterable에 대해 자세한 설명은 여기에서 봐주세요!](https://sweetfood-dev.github.io/swift/CaseIterable/)
