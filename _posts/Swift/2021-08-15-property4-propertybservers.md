@@ -42,11 +42,11 @@ toc_label: 목차
 
 ```swift
 class StepCounter {
-	var totalSteps = 0 {
-		willSet(steps) {
+    var totalSteps = 0 {
+        willSet(steps) {
             print("new Total Steps = \(steps)")
-		}
-	}
+        }
+    }
 }
 
 let counter = StepCounter()
@@ -57,10 +57,10 @@ counter.totalSteps = 5
 ```swift
 class StepCounter {
 	var totalSteps = 0 {
-		willSet {
-			print("new Total Steps = \(newValue)")
-		}
-	}
+        willSet {
+            print("new Total Steps = \(newValue)")
+        }
+    }
 }
 
 let counter = StepCounter()
@@ -78,16 +78,16 @@ didSet은 새로운 값이 프로퍼티에 **저장된 직후에 호출**되는 
 
 ```swift
 class StepCounter {
-	var totalSteps = 0 {
-		willSet {
-			print("new Total Steps = \(newValue)")
-		}
-		didSet {
-			if totalSteps > oldValue {
-				print("add \(totalSteps - oldValue) steps")
-			}
-		}
-	}
+    var totalSteps = 0 {
+        willSet {
+            print("new Total Steps = \(newValue)")
+        }
+        didSet {
+            if totalSteps > oldValue {
+                print("add \(totalSteps - oldValue) steps")
+            }
+        }
+    }
 }
 
 let counter = StepCounter()
@@ -111,10 +111,10 @@ let으로 사용되는 **상수는 초기화 중에 값이 할당**되어 지기
 
 ```swift
 class Foo {
-	var age = 0 {
-		willSet { print("willSet \(newValue)") }
-		didSet { print("didSet \(age) oldAge = \(oldValue)") }
-	}
+    var age = 0 {
+        willSet { print("willSet \(newValue)") }
+        didSet { print("didSet \(age) oldAge = \(oldValue)") }
+    }
 }
 
 // 초기화 단계에서는 옵저버 호출이 안된다
