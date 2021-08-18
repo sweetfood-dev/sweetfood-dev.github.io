@@ -1,5 +1,5 @@
 ---
-title: "[Swift] 프로퍼티 관찰자 (Property Observers)"
+title: "[Swift] 프로퍼티 랩퍼 (Property Wrapper)"
 layout: single
 author_profile: true
 comments: true
