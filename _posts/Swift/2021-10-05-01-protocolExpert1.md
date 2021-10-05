@@ -46,7 +46,8 @@ counter.increment(by: 10)
 
 `counter`는 `increment(by:)` 메서드를 가지고 있는 `Counter` 타입의 인스턴스라고 가정해보자
 
-컴파일러는 ` counter `의 타입이 ` Counter `임을 알고 있고 ` Counter ` 타입에 일치하는 메서드를 찾을 수 있기 때문에 ` increment(by:) ` 메서드가 존재하는지 알고 있다
+컴파일러는 `counter`의 타입이 `Counter`임을 알고 있고 `Counter` 타입에 일치하는 메서드를 찾을 수 있기 때문에
+`increment(by:)` 메서드가 존재하는지 알고 있다
 
 그러나 간혹, 혹은 자주 개발자와 컴파일러가 어떤 타입을 사용할 지 정확히 모르는 상황도 발생한다.
 
