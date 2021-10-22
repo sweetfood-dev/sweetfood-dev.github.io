@@ -147,3 +147,18 @@ Received local notification <UNNotification: 0x600003af49f0; source: sweetfood-d
 ), badge: (null), sound: <UNNotificationSound: 0x600001f9d420>, realert: 0, interruptionLevel: 1, relevanceScore: 0.00, trigger: <UNTimeIntervalNotificationTrigger: 0x6000034e37c0; repeats: NO, timeInterval: 10.000000>>, intents: (
 )>
 ```
+
+## 메소드들
+
+### 노티피케이션 request 삭제
+
+```swift
+func removeNotification() {
+    // Notification 인스턴스 
+    let center = UNUserNotificationCenter.current()
+    center.removePendingNotificationRequests(withIdentifier:["\(itemID)]
+}
+```
+request 생성시 전달한 identifier를 사용하여 request를 삭제할 수 있음
+
+배열로 전달
