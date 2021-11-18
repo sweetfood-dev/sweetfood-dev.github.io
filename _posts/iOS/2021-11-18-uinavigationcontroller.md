@@ -88,7 +88,7 @@ delegate 프로퍼티로 전달
 
 SceneDelegate.swift에 다음과 같이 코드를 넣어줌
 
-<SceneDelegate.swift>
+[SceneDelegate.swift]
 
 ```swift
 func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
@@ -154,7 +154,7 @@ UIViewController를 3개 만들고 각각 Navigational 프로토콜을 채택하
 
 moveButton에 addTarget 메소드를 사용해 push를 해보자
 
-<ViewController.swift>
+[ViewController.swift]
 
 ```swift
 @objc func pushAction() {
@@ -163,7 +163,7 @@ moveButton에 addTarget 메소드를 사용해 push를 해보자
 }
 ```
 
-<SecondViewController.swift>
+[SecondViewController.swift]
 
 ```swift
 @objc func pushAction() {
