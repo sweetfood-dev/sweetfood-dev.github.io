@@ -131,6 +131,29 @@ self?.navigationController?.navigationBar.titleTextAttributes = [.foregroundColo
 
 ![blackStyle.png](/assets/images/Posts/iOS/2021-11-18-uinavigationbar/blackStyle.png)
 
+## 문제 및 해결
+
+### backButtonTitle
+```swift
+let vc = UIViewController()
+vc.navigationItem.backButtonTitle = "1"
+```
+
+vc의 backButtonTitle이 1이 되는게 아니라 
+
+vc를 이전 화면으로 하는 ViewController의 backButtonTitle이 1로 설정됨.
+
+예를 들어 navigationStack에 아래와같이 3개의 ViewController가 있다고 가정할 때 
+
+vc2 - 윈도우에 display 최상위 ViewController 
+
+vc
+
+main
+
+vc2에서 보이는 backButton의 title
+
+
 ## 코드
 
 [Git](https://github.com/sweetfood-dev/iOSTutorialProject/tree/main/NavigationTutorial)
