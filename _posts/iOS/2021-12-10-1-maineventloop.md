@@ -76,3 +76,7 @@ Window 객체는 이 이벤트를 다시 처리하기 가장 적절한 (first re
 이벤트를 Handle(처리)하게 되면 Application의 state, data를 업데이트하는 작업을 시작하고
 
 작업이 완료되면 Application 객체로 control이 반환되고 Application 객체는 다시 Event Queue에서 이벤트를 꺼내 UIEvent객체로 변환, Window 객체로 전달 → UIEvent객체 처리 하는 과정을 반복 한다.
+
+
+## 참고
+[Apple](https://developer.apple.com/library/archive/documentation/General/Conceptual/Devpedia-CocoaApp/MainEventLoop.html#//apple_ref/doc/uid/TP40009071-CH18-SW1)
