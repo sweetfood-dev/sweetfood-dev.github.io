@@ -79,4 +79,5 @@ Window 객체는 이 이벤트를 다시 처리하기 가장 적절한 (first re
 
 
 ## 참고
+
 [Apple](https://developer.apple.com/library/archive/documentation/General/Conceptual/Devpedia-CocoaApp/MainEventLoop.html#//apple_ref/doc/uid/TP40009071-CH18-SW1)
