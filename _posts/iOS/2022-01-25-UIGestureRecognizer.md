@@ -182,7 +182,7 @@ minimumNumberOfTouches, maxmumNumberOfTouch로 각각 최소 손가락수, 최�
 
 `began` 상태에서 손가락을 움직일 때 마다 `changed`로 변경이 되고 손을 떼면 `ended`로 변경된다
 
-<Pan 제스처 인식조건 정리>
+**Pan 제스처 인식조건 정리**
 
 `began` : 설정된 손가락 수로 설정된 거리를 이동한 시점
 
