@@ -131,3 +131,11 @@ Application에서 개발자가 직접 호출하면 안되는 메소드
 `Application`의 `state`가 `active`상태에서만 호출이 되는것 같음
 
 반면 `traitCollectionDidChange` / `viewWillLayoutSubviews` / `viewDidLayoutSubviews`는 계속 호출 되는되는 이유는 화면에 보여지는 것과 관련되있기 때문인것 같음
+
+## 참고
+
+[UIViewController Lifecycle](https://varga-zolt.medium.com/uiviewcontroller-lifecycle-part-4-c732a1601ea2)
+
+[UITraitCollection 공부](https://wnstkdyu.github.io/2018/01/06/uitraitcollection/)
+
+[iOS 다크모드 알아보기](https://hcn1519.github.io/articles/2020-03/ios_darkmode)
